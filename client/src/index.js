@@ -6,6 +6,7 @@ import WithNavi from './Components/Layout/WithNavigation.jsx';
 import WithoutNavi from './Components/Layout/WithoutNavigation.jsx';
 import MainProvider from './Components/Providers/MainProvider.jsx';
 import Login from './Components/Login/Login.jsx';
+import Profile from './Components/Profile/Profile.jsx';
 
 // const App = () => {
 //   return (
@@ -31,10 +32,10 @@ ReactDOM.render(
       <Routes>
         <Route element={<WithoutNavi />}>
           <Route path="/" element={<Navigate to="/login" />} />
-          {/* <Route path="/login" element={<Login />} /> */}
+          <Route path="/login" element={<Login />} />
         </Route>
         <Route element={<WithNavi />}>
-          {/* <Route path="profile" element={<Profile />} /> */}
+          <Route path="profile" element={<Profile />} />
         </Route>
       </Routes>
     </BrowserRouter>

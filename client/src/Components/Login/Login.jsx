@@ -9,19 +9,13 @@ import axios from 'axios';
 import LoadingButton from '@mui/lab/LoadingButton';
 
 const loginBackground = {
-  backgroundImage: "url('https://res.cloudinary.com/dzltbaxwz/image/upload/v1649261658/cognitive-wallpaper_ijjoo2.jpg')",
+  backgroundImage: "url('https://res.cloudinary.com/davidmo/image/upload/v1649261658/cognitive-wallpaper_ijjoo2.jpg')",
   backgroundRepeat: 'repeat',
   backgroundSize: 'auto',
-  // sizes: '100vw',
-  // height: '100%',
-  // width: '100%',
-  // overflow: 'hidden',
 }
 
 const loginStyle = {
   height: '100%',
-  // display: 'flex',
-  // flexDirection: 'column',
   alignItems: 'center'
 }
 
@@ -39,17 +33,15 @@ function Login() {
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      console.log('Login user :', user)
       if (user) {
         const config = { params: {uid: user.uid} }
-        console.log('User config :', config)
         axios.get('/api/profile', config)
           .then((result) => {
-            // console.log('loginGetAW:', result.data)
+            console.log('loginGetAW:', result.data)
             if (result.data.name) {
               setUserProfile(result.data);
               localStorage.setItem('userProfile', JSON.stringify(result.data));
-              navigate("/swipe");
+              navigate("/cognitivetest1s1");
             } else {
               setUserProfile({uid: user.uid});
               setLoggedIn(true);
@@ -78,7 +70,6 @@ function Login() {
 
   return (
     <>
-    {/* {console.log('loggedIn :', loggedIn)} */}
       {loggedIn ?
         <ProfileSetup submitLabel="Register"/>
         :

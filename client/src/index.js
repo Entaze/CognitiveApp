@@ -7,21 +7,8 @@ import WithoutNavi from './Components/Layout/WithoutNavigation.jsx';
 import MainProvider from './Components/Providers/MainProvider.jsx';
 import Login from './Components/Login/Login.jsx';
 import Profile from './Components/Profile/Profile.jsx';
-
-// const App = () => {
-//   return (
-//     <div>
-//       <h1>Cognitive App</h1>
-//       <div>
-//         <div>
-//           <h3>Categories</h3>
-//         </div>
-//       </div>
-//     </div>
-//   );
-//  }
-
-// ReactDOM.render(<App />, document.getElementById('app'));
+import Cognitivetest from './Components/cognitivetest/Cognitivetest.jsx';
+import Cognitivetest1s2 from './Components/cognitivetest/Cognitivetest1s2.jsx';
 
 const appElement = document.getElementById('app');
 
@@ -35,7 +22,9 @@ ReactDOM.render(
           <Route path="/login" element={<Login />} />
         </Route>
         <Route element={<WithNavi />}>
-          <Route path="profile" element={<Profile />} />
+          {/* <Route path="profile" element={<Profile />} /> */}
+          <Route path="cognitivetest1s1" element={<Cognitivetest />} />
+          <Route path="cognitivetest1s2" element={<Cognitivetest1s2 />} />
         </Route>
       </Routes>
     </BrowserRouter>

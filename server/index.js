@@ -4,7 +4,8 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
-const controller = require('./Controller/controllerProfile');
+const profController = require('./Controller/controllerProfile');
+const testController = require('./Controller/controllerTest');
 
 const db = require('../db/db.js');
 const model = require('../db');
@@ -15,15 +16,13 @@ app.use(express.json());
 
 
 // AUTHENTICATE
-app.get('/api/profile', controller.getProfile)
-app.post('/api/profile', controller.postProfile)
+app.get('/api/profile', profController.getProfile)
+app.post('/api/profile', profController.postProfile)
 
-app.post('/api/profile', (req, res) => {
-  console.log('Reqq :', req.body.name);
-  db.postProfile(req, res, (err, data) => {
-    res.status(201).send();
-  });
-});
+//Cognitive Test
+app.get('/api/cognitivetest', testController.getTest);
+app.post('/api/cognitivetest', testController.postTest);
+
 
 
 // DO NOT REMOVE OR ROUTES WON'T WORK ON REFRESH. KEEP AT BOTTOM.

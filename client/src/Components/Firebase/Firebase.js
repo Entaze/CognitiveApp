@@ -11,8 +11,8 @@ const analytics = getAnalytics(app);
 export const auth = getAuth(app);
 
 const provider = new GoogleAuthProvider()
-console.log('provider :', provider)
-console.log('auth :', auth)
+// console.log('provider :', provider)
+// console.log('auth :', auth)
 export const signInWithGoogle = () => {
   return signInWithPopup(auth, provider)
 };

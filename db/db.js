@@ -12,15 +12,42 @@ const profileSchema = new mongoose.Schema({
     enum : ['Female', 'Male'],
     default: 'Male'
 },
+  tests: [],
   imgUrl: String,
   uid: String,
 });
 
+// const messageSchema = new mongoose.Schema({
+//   body: String,
+//   sender: String
+// },
+// {timestamps: true}
+// );
+
+
+// const chatSchema = new mongoose.Schema({
+//   time: Date,
+//   users: [],
+//   messages: [messageSchema]
+// });
+
+const wordsSchema = new mongoose.Schema({
+  body: String,
+  userTested: String
+}
+);
+
+const testSchema = new mongoose.Schema({
+  time: Date,
+  users: [],
+  words: [wordsSchema],
+});
 
 
 
 const Profile = mongoose.model('Profile', profileSchema, 'profile');
-// const Swipe = mongoose.model('Swipe', swipeSchema, 'swipe');
+const CognitiveTest = mongoose.model('CognitiveTest', testSchema, 'test');
+const TestWords = mongoose.model('TestWords', wordsSchema, 'testwords');
 // const Chat = mongoose.model('Chat', chatSchema, 'chat');
 
-module.exports = { Profile };
+module.exports = { Profile, CognitiveTest, TestWords };

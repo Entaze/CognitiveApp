@@ -6,7 +6,6 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PersonIcon from '@mui/icons-material/Person';
 import InfoIcon from '@mui/icons-material/Info';
 import Typography from '@mui/material/Typography';
-// import breeds from '../../../breeds.js'
 import { useMainContext } from '../Providers/MainProvider.jsx';
 import { LoadingButton } from '@mui/lab';
 import SendIcon from '@mui/icons-material/Send';
@@ -44,7 +43,6 @@ function ProfileSetup(props) {
     gender: '',
     name: '',
     imgUrl: ''
-
   })
   let navigate = useNavigate();
   let { username } = useParams();
@@ -99,17 +97,6 @@ function ProfileSetup(props) {
   ];
 
 
-  // function reverseSearch(string, marksName, leashIndicator) {
-  //   if (string && leashIndicator) {
-  //     string ? string = "off" : string = "on"
-  //   }
-  //   for (let i = 0; i < marksName.length; i++) {
-  //     if (marksName[i].label === string) {
-  //       return sizeMarks[i].value;
-  //     }
-  //   }
-  // }
-
   function ageFormatVal(value) {
     for (let i = 0; i < ageMarks.length; i++) {
       if (ageMarks[i].value === value) {
@@ -132,49 +119,47 @@ function ProfileSetup(props) {
     setLoading(true);
     e.persist();
     console.log('E... :', e);
+    //If photo uploaded
     if (e.target.photo.files.length === 0) {
       let serverPackage = {
         name: e.target.name.value,
         age: ageFormatVal(Number(e.target.age.value)),
         gender: genderFormatVal(Number(e.target.gender.value)),
-
         uid: userProfile.uid,
         imgUrl: userProfile.imgUrl,
       };
-
       axios.post('/api/profile', serverPackage)
           .then((result) => {
             setUserProfile(result.data);
             localStorage.setItem('userProfile', JSON.stringify(result.data));
             localStorage.setItem('uid', result.data.uid);
             props.submitLabel === 'Register' ?
-              navigate("/preferences")
+              navigate("/cognitivetest1s1")
               : props.exitOutEdit();
           })
           .catch(err => console.log(`Profile post error:`, err))
     } else {
       const data = new FormData();
       data.append('file', e.target.photo.files[0]);
-      data.append('upload_preset', 'pupper');
-      data.append('cloud_name', 'chewychewy');
-      axios.post('https://api.cloudinary.com/v1_1/chewychewy/image/upload', data)
+      data.append('upload_preset', 'ztr1wmou');
+      axios.post('https://api.cloudinary.com/v1_1/davidmo/image/upload/', data)
         .then((res) => {
           let serverPackage = {
             name: e.target.name.value,
             age: ageFormatVal(Number(e.target.age.value)),
             gender: genderFormatVal(Number(e.target.gender.value)),
-
             uid: userProfile.uid,
             imgUrl: res.data.url,
           };
-
           axios.post('/api/profile', serverPackage)
             .then((result) => {
               setUserProfile(result.data);
               localStorage.setItem('userProfile', JSON.stringify(result.data));
               localStorage.setItem('uid', result.data.uid)
               props.submitLabel === 'Register' ?
-              navigate("/preferences")
+
+              navigate("/cognitivetest1s1")
+
               : props.exitOutEdit();
             })
             .catch(err => console.log(`Profile post error:`, err))

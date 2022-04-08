@@ -122,14 +122,7 @@ function Profile() {
               <br />
 
               <div style={infoStyle}>
-                <div style={invidiualInfoStyle}>
-                  <Typography>Breed: </Typography>
-                  <Typography> {userProfile.breed} </Typography>
-                </div>
-                <div style={invidiualInfoStyle}>
-                  <Typography>Size: </Typography>
-                  <Typography> {userProfile.size} </Typography>
-                </div>
+
                 <div style={invidiualInfoStyle}>
                   <Typography>Gender: </Typography>
                   <Typography> {userProfile.gender} </Typography>
@@ -138,18 +131,7 @@ function Profile() {
                   <Typography>Age: </Typography>
                   <Typography> {userProfile.age} </Typography>
                 </div>
-                <div style={invidiualInfoStyle}>
-                  <Typography>Energy: </Typography>
-                  <Typography> {userProfile.energy} </Typography>
-                </div>
-                <div style={invidiualInfoStyle}>
-                  <Typography>Off-Leash: </Typography>
-                  <Typography> {userProfile.offLeash ? 'Yes' : 'No'} </Typography>
-                </div>
-                <div style={invidiualInfoStyle}>
-                  <Typography>Owner: </Typography>
-                  <Typography> {userProfile.ownerName} </Typography>
-                </div>
+
               </div>
 
               <br />

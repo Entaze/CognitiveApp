@@ -24,7 +24,7 @@ module.exports = {
   },
 
   createProfile: (body, cb) => {
-    console.log('createprofileAWbody:', body)
+    // console.log('createprofileAWbody:', body)
     Profile.findOneAndUpdate({uid: body.uid}, body, {upsert: true, new: true})
       .then(result => {
         console.log('AWcreateprofileresultCL', result)

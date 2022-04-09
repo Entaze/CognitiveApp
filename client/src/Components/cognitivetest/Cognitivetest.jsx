@@ -245,7 +245,7 @@ useEffect(() => {
 useEffect(() => {
   if (testListATrials > 0 && testListATrials < 5) {
     //Page to say how many trials left
-    // console.log({testListATrials})
+    console.log('How many tests left after test 1? :', testListATrials)
     navigate("/cognitivetest1s2");
   }
 }, [testListATrials])
@@ -254,7 +254,7 @@ useEffect(() => {
 useEffect(()=> {
   if (countModal === wordsArr.length - 1 ) {
     const modalCountdown = testListATrials - 1;
-    console.log({testListATrials})
+    console.log('testListATrials before end :', testListATrials)
     modalCountdown > 0 ? setTestListATrials(modalCountdown) : null;
   }
 }, [countModal])

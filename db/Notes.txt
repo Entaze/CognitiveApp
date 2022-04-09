@@ -1,0 +1,4 @@
+
+// Pointing connection string to mongodb atlas is better than localhost to be honest. That way other collaborators can use same data.
+  // I also have direct access to a cloud db after pull from AWS
+  // Termincal connectioncommand to mongodb atlas: mongosh "mongodb+srv://cluster0.bnaep.mongodb.net/cogniapp" --apiVersion 1 --username moadmin

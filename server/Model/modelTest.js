@@ -24,7 +24,7 @@ const getTest = async (params, callback) => {
 }
 
 const postTest = async (params) => {
-  console.log('Cognitive test post body model:', params)
+  // console.log('Cognitive test post body model:', params)
   try {
     db.CognitiveTest.updateOne(
        { _id : params.id },

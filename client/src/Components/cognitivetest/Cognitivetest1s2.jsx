@@ -165,7 +165,7 @@ function Cognitivetest () {
  }, [startTest])
 
 
-console.log('We are in stage 2 ...')
+// console.log('We are in stage 2 ...')
 
 if (word === wordsArr[wordsArr.length - 1]) {
   setNav(true);
@@ -200,7 +200,7 @@ const handleWordEnter = () => {
 };
 
 useEffect(() => {
-  console.log('Axios post data :', data.word)
+  console.log('Axios post data :', data)
   const param = {id: userProfile._id, word: data};
   axios.post('/api/cognitivetest', param)
   .then(() => {
@@ -217,7 +217,7 @@ useEffect(() => {
 
 useEffect(() => {
   if (testListATrials > 0 && testListATrials < 5) {
-    console.log({testListATrials})
+    console.log('How many tests left after test 2? : :', testListATrials)
     setFinalComm(true);
   }
 }, [testListATrials])
@@ -226,7 +226,7 @@ useEffect(() => {
 useEffect(()=> {
   if (countModal === wordsArr.length - 1 ) {
     const modalCountdown = testListATrials - 1;
-    console.log({testListATrials})
+    console.log('testListATrials before end :', testListATrials)
     modalCountdown > 0 ? setTestListATrials(modalCountdown) : null;
   }
 }, [countModal])

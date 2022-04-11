@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
   // useUnifiedTopology: true});
 
 
-  mongoose.connect('mongodb://moadmin:chewychewy@3.89.88.250:27017/cogniapp', {useNewUrlParser: true,
+  mongoose.connect('mongodb://admin:chewychewy@3.89.88.250:27017/cogniapp', {useNewUrlParser: true,
   useUnifiedTopology: true});
 
 

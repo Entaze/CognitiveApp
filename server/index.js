@@ -4,6 +4,8 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
+const hostname = 'ec2-3-94-171-164.compute-1.amazonaws.com';
+
 const profController = require('./Controller/controllerProfile');
 const testController = require('./Controller/controllerTest');
 
@@ -34,6 +36,6 @@ app.get('/*', function(req, res) {
   })
 })
 
-app.listen(PORT, () => {
+app.listen(PORT, hostname, () => {
   console.log(`Server is listening on port: ${PORT}`)
 })

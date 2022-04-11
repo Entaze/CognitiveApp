@@ -1,41 +1,57 @@
-const express = require('express');
-const axios = require('axios');
-const path = require('path');
-const app = express();
-const PORT = 3000;
+// const express = require('express');
+// const axios = require('axios');
+// const path = require('path');
+// const app = express();
+// const PORT = 3000;
 
-const hostname = 'ec2-3-94-171-164.compute-1.amazonaws.com';
+// const hostname = 'ec2-3-94-171-164.compute-1.amazonaws.com';
 
-const profController = require('./Controller/controllerProfile');
-const testController = require('./Controller/controllerTest');
+// const profController = require('./Controller/controllerProfile');
+// const testController = require('./Controller/controllerTest');
 
-const db = require('../db/db.js');
-const model = require('../db');
+// const db = require('../db/db.js');
+// const model = require('../db');
 
-app.use(express.static('client/dist'));
-app.use(express.urlencoded({extended: true}));
-app.use(express.json());
-
-
-// AUTHENTICATE
-app.get('/api/profile', profController.getProfile)
-app.post('/api/profile', profController.postProfile)
-
-//Cognitive Test
-app.get('/api/cognitivetest', testController.getTest);
-app.post('/api/cognitivetest', testController.postTest);
+// app.use(express.static('client/dist'));
+// app.use(express.urlencoded({extended: true}));
+// app.use(express.json());
 
 
+// // AUTHENTICATE
+// app.get('/api/profile', profController.getProfile)
+// app.post('/api/profile', profController.postProfile)
 
-// DO NOT REMOVE OR ROUTES WON'T WORK ON REFRESH. KEEP AT BOTTOM.
-app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, '../client/dist/index.html'), function(err) {
-    if (err) {
-      res.status(500).send(err)
-    }
-  })
-})
+// //Cognitive Test
+// app.get('/api/cognitivetest', testController.getTest);
+// app.post('/api/cognitivetest', testController.postTest);
 
-app.listen(PORT, hostname, () => {
-  console.log(`Server is listening on port: ${PORT}`)
-})
+
+
+// // DO NOT REMOVE OR ROUTES WON'T WORK ON REFRESH. KEEP AT BOTTOM.
+// app.get('/*', function(req, res) {
+//   res.sendFile(path.join(__dirname, '../client/dist/index.html'), function(err) {
+//     if (err) {
+//       res.status(500).send(err)
+//     }
+//   })
+// })
+
+// app.listen(PORT, hostname, () => {
+//   console.log(`Server is listening on port: ${PORT}`)
+// })
+
+
+const http = require('http');
+
+const hostname = 'ec2-3-94-171-164.compute-1.amazonaws.com/';
+const port = 3000;
+
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World\n');
+});
+
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});

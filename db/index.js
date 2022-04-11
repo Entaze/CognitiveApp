@@ -6,7 +6,11 @@ const mongoose = require('mongoose');
 //   useUnifiedTopology: true});
 
   //Uncomment below and comment both above to use monogdb atlas remote server.
-  mongoose.connect('mongodb+srv://moadmin:chewychewy@cluster0.bnaep.mongodb.net/cogniapp?retryWrites=true&w=majority', {useNewUrlParser: true,
+  // mongoose.connect('mongodb+srv://moadmin:chewychewy@cluster0.bnaep.mongodb.net/cogniapp?retryWrites=true&w=majority', {useNewUrlParser: true,
+  // useUnifiedTopology: true});
+
+
+  mongoose.connect('mongodb://moadmin:chewychewy@3.89.88.250:27017/cogniapp', {useNewUrlParser: true,
   useUnifiedTopology: true});
 
 

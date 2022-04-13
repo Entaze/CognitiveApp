@@ -22,7 +22,7 @@ ReactDOM.render(
           <Route path="/login" element={<Login />} />
         </Route>
         <Route element={<WithNavi />}>
-          {/* <Route path="profile" element={<Profile />} /> */}
+          <Route path="profile" element={<Profile />} />
           <Route path="cognitivetest1s1" element={<Cognitivetest />} />
           <Route path="cognitivetest1s2" element={<Cognitivetest1s2 />} />
         </Route>

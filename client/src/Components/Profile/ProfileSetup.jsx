@@ -126,7 +126,7 @@ function ProfileSetup(props) {
         age: ageFormatVal(Number(e.target.age.value)),
         gender: genderFormatVal(Number(e.target.gender.value)),
         uid: userProfile.uid,
-        imgUrl: userProfile.imgUrl,
+        imgUrl: userProfile.imgUrl || 'https://res.cloudinary.com/davidmo/image/upload/v1649809933/avatar-1577909_1280_ijj1cp.png',
       };
       axios.post('/api/profile', serverPackage)
           .then((result) => {
@@ -149,7 +149,7 @@ function ProfileSetup(props) {
             age: ageFormatVal(Number(e.target.age.value)),
             gender: genderFormatVal(Number(e.target.gender.value)),
             uid: userProfile.uid,
-            imgUrl: res.data.url,
+            imgUrl: res.data.url || 'https://res.cloudinary.com/davidmo/image/upload/v1649809933/avatar-1577909_1280_ijj1cp.png',
           };
           axios.post('/api/profile', serverPackage)
             .then((result) => {
@@ -204,7 +204,7 @@ function ProfileSetup(props) {
           >
             Upload Profile Pic
             <input
-              required={props.submitLabel === "Register" ? true : false}
+              // required={props.submitLabel === "Register" ? true : false}
               id="photo"
               type="file"
               hidden

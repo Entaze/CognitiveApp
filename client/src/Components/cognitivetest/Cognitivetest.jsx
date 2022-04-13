@@ -179,7 +179,7 @@ function Cognitivetest () {
               setWord(wordsArr[ind]);
               // console.log(wordsArr[ind]);
               //100 200
-          }, 1000 + (3000 * ind));
+          }, 1000 + (2000 * ind));
       })(i);
     }
    }

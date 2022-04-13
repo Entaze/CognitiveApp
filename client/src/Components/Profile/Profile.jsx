@@ -10,6 +10,7 @@ import ProfileSetup from './ProfileSetup';
 import { signOut } from 'firebase/auth';
 import { auth } from '../Firebase/Firebase';
 import LogoutIcon from '@mui/icons-material/Logout';
+import StartIcon from '@mui/icons-material/Start';
 import { useNavigate } from 'react-router-dom';
 
 const profileContainer = {
@@ -18,6 +19,14 @@ const profileContainer = {
   justifyContent: 'center',
   alignItems: 'center',
   margin: '20px 10px 0px 10px'
+}
+
+const buttonStyle = {
+  display: 'flex',
+  flexDirection: 'row',
+  width: '400px',
+  justifyContent: 'space-between',
+  margin: '5%'
 }
 
 const cardStyle = {
@@ -88,26 +97,18 @@ function Profile() {
     setSetup(false);
   }
 
-  function handleLogOut() {
-    setLoading(true);
-    signOut(auth)
-      .then(() => {
-        navigate("/login");
-      })
-      .catch(() => {
-        console.log('Firebase logout error', err)
-      })
-
+  function handleStartTest() {
+    navigate("/cognitivetest1s1");
   }
 
-  console.log('setup lorene', setup)
+  // console.log('setup lorene', setup)
   return (
     <>
       {setup ?
           <ProfileSetup submitLabel="Save Profile" exitOutEdit={exitOutEdit}/>
       : (
           <div className='profileContainer' style={profileContainer}>
-            <Card className='card' raised="true" style={cardStyle}>
+            <Card className='card' style={cardStyle}>
               <div style={editStyle}>
                 <EditProfile  setSetup={setSetup}/>
               </div>
@@ -135,16 +136,16 @@ function Profile() {
               </div>
 
               <br />
-              <LoadingButton
-                sx={{backgroundColor:'#ff9800'}}
-                onClick={handleLogOut}
-                size="small"
-                loading={loading}
-                loadingPosition="end"
-                variant="contained"
-                endIcon={<LogoutIcon />}
+                  <LoadingButton
+                  sx={{backgroundColor:'#c28832'}}
+                  onClick={handleStartTest}
+                  size="small"
+                  // loading={loading}
+                  // loadingPosition="end"
+                  variant="contained"
+                  startIcon={<StartIcon />}
               >
-                Log Out
+                Start Test
               </LoadingButton>
             </Card>
           </div>

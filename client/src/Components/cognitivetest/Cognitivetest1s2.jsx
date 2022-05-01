@@ -138,11 +138,11 @@ function Cognitivetest () {
   const [firstPage, setFirstPage] = useState(true);
   const [startTest, setStartTest] = useState(false);
   const [tests, setTests] = useState([]);
-  const [wordsArr, setWordsArr] = useState(['Make', 'love', 'not', 'war', '❤️!', '' ]);
+  const [wordsArr, setWordsArr] = useState(['Asia', 'Sun', 'Key', 'Cat', 'Travel', 'Winter', '' ]);
   const [word, setWord] = useState();
   const [nav, setNav] = useState(false);
   const [formState, setFormState] = useState(false);
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const [data, setData] = useState([]);
   const [val, setVal] = useState();
   const [countModal, setCountModal] = useState(0);
@@ -150,7 +150,7 @@ function Cognitivetest () {
   const navigate = useNavigate();
 
 
-  const handleRegistration = (data) => setData(data);
+  const handleRegistration = (data) => { setData(data); handleWordEnter(); reset(); }
 
  useEffect(() => {
    if (startTest) {
@@ -158,7 +158,7 @@ function Cognitivetest () {
       (function(ind) {
           setTimeout(function(){
               setWord(wordsArr[ind]);
-          }, 1000 + (3000 * ind));
+          }, 1000 + (2000 * ind));
       })(i);
     }
    }
@@ -169,7 +169,7 @@ function Cognitivetest () {
 
 if (word === wordsArr[wordsArr.length - 1]) {
   setNav(true);
-  setWord(null);
+  setWord();
 }
 
 
@@ -191,6 +191,7 @@ const toggleFormState = () => {
 }
 
 const handleWordEnter = () => {
+  setVal();
   const count = (countModal + 1);
   setCountModal(count);
   setFormState(false);
@@ -241,7 +242,7 @@ useEffect(()=> {
             {firstPage ?
               <>
                 <Typography style={{fontSize: 40, fontWeight: 700,  }}>
-                Click start to begin trail two...
+                Click start to begin trial two...
                 </Typography>
                 <Button variant="outlined" style={button} onClick={handleStartTest}  type='submit' >
                 Start
@@ -272,12 +273,12 @@ useEffect(()=> {
                       {countModal < wordsArr.length - 2 ?
                         <>
                          <div style={formTitle}>Enter word {wordCount}..</div>
-                         <input name="name" value={val} {...register("word")} placeholder="Word 1.." style={formInput} />
+                         <input name="name" {...register("word")} placeholder="Word.." style={formInput} />
                         </>
                         :
                       null}
                       <DialogActions>
-                        <Button variant="outlined" style={button} onClick={handleWordEnter} type='submit' >
+                        <Button variant="outlined" style={button} onClick={handleSubmit} type='submit' >
                         {buttonEntry}
                         </Button>
                       </DialogActions>

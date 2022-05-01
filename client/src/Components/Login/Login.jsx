@@ -87,7 +87,7 @@ function Login() {
         <div style={loginBackground}>
           <div >
             <Typography style={{ fontSize: 50, fontWeight: 700, color: '#4a3d29', textAlign: 'center', fontFamily:'Courgette', }}>Cognitive App</Typography>
-            <LoadingButton loading={loading} variant="contained" sx={{backgroundColor:'#4a3d29'}} style={loginButtonStyle} onClick={handleClick}>login Cognizant</LoadingButton>
+            <LoadingButton loading={loading} variant="contained" sx={{backgroundColor:'#4a3d29'}} style={loginButtonStyle} onClick={handleClick}>login</LoadingButton>
           </div>
         </div>
       }

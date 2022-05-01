@@ -139,18 +139,18 @@ function Cognitivetest () {
   const [firstPage, setFirstPage] = useState(true);
   const [startTest, setStartTest] = useState(false);
   const [tests, setTests] = useState([]);
-  const [wordsArr, setWordsArr] = useState(['Make', 'love', 'not', 'war', '❤️!', '' ]);
+  const [wordsArr, setWordsArr] = useState(['Asia', 'Sun', 'Key', 'Cat', 'Travel', 'Winter', '' ]);
   const [word, setWord] = useState();
   const [nav, setNav] = useState(false);
   const [formState, setFormState] = useState(false);
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const [data, setData] = useState([]);
   const [val, setVal] = useState();
   const [countModal, setCountModal] = useState(0);
   const navigate = useNavigate();
 
 
-  const handleRegistration = (data) => setData(data);
+  const handleRegistration = (data) => { setData(data); handleWordEnter(); reset(); }
 
 
   useEffect(() => {
@@ -178,7 +178,7 @@ function Cognitivetest () {
           setTimeout(function(){
               setWord(wordsArr[ind]);
               // console.log(wordsArr[ind]);
-              //100 200
+              //100 2000
           }, 1000 + (2000 * ind));
       })(i);
     }
@@ -192,7 +192,7 @@ if (word === wordsArr[wordsArr.length - 1]) {
   //Bring up dialogue with button and click event handleButtonClick to navigate to form
   setNav(true);
   //Do this to prevent infinite loop on words
-  setWord(null);
+  setWord();
 }
 
 /* ........................... */
@@ -205,6 +205,7 @@ const handleStartTest = (e) => {
 
 const handleButtonClick = (e) => {
   e.preventDefault();
+
   setFormState(true);
   //Take away dialogue and leave just form
   setNav(false);
@@ -214,10 +215,10 @@ const toggleFormState = () => {
   setFormState(true);
 }
 
-const handleWordEnter = () => {
+const handleWordEnter = (e) => {
+  setVal();
   const count = (countModal + 1);
   setCountModal(count);
-  // setVal('');
   setFormState(false);
   //Keep popping up modal if count is less than wordsArr.length - All words aside the last '' are displayed
   if (count < wordsArr.length - 1) {
@@ -226,11 +227,12 @@ const handleWordEnter = () => {
 };
 
 useEffect(() => {
-  console.log('Axios post data :', data.word)
+  console.log('Axios post data :', data);
+
   const param = {id: userProfile._id, word: data};
   axios.post('/api/cognitivetest', param)
   .then(() => {
-    console.log(res.data)
+    console.log(res.data);
   })
 }, [data])
 
@@ -269,9 +271,9 @@ useEffect(()=> {
             {firstPage ?
               <>
                 <Typography style={{fontSize: 40, fontWeight: 700, display: 'inline-block', }}>
-                This test consists of two trials, and takes about 3 mins to complete both trials. Once you begin, try complete both trials in one go in order to not start over from scratch.
+                This test consists of two trials, and takes less than 2 mins to complete both trials. Once you begin, try complete both trials in one go in order to not start over from scratch.
                 A set of words will flash on screen then you'll try to recollect those words.
-                Click on start button to begin trail one...
+                Click on start button to begin trial one...
 
                 </Typography>
                 <Button variant="outlined" style={button} onClick={handleStartTest}  type='submit' >
@@ -304,12 +306,12 @@ useEffect(()=> {
                       {countModal < wordsArr.length - 2 ?
                         <>
                          <div style={formTitle}>Enter word {wordCount}..</div>
-                         <input name="name" value={val} {...register("word")} placeholder="Word 1.." style={formInput} />
+                         <input name="name" {...register("word")} placeholder="Word.." style={formInput} />
                         </>
                         :
                       null}
                       <DialogActions>
-                        <Button variant="outlined" style={button} onClick={handleWordEnter} type='submit' >
+                        <Button variant="outlined" style={button} onClick={handleSubmit} type='submit' >
                         {buttonEntry}
                         </Button>
                       </DialogActions>

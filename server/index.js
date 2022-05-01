@@ -28,7 +28,7 @@ app.post('/api/cognitivetest', testController.postTest);
 
 // DO NOT REMOVE OR ROUTES WON'T WORK ON REFRESH. KEEP AT BOTTOM.
 app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, '../client/dist/main.js'), function(err) {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'), function(err) {
     if (err) {
       res.status(500).send(err)
     }

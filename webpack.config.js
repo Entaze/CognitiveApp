@@ -51,9 +51,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, "client/src", "index.html"),
-    }),
-  ],
+  // plugins: [
+  //   new HtmlWebpackPlugin({
+  //     template: path.join(__dirname, "client/dist", "index.html"),
+  //   }),
+  // ],
 }

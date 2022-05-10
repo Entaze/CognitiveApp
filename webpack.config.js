@@ -32,7 +32,7 @@ module.exports = {
   entry: path.join(__dirname, "client/src", "index.js"),
   mode: "development",
   output: {
-    path:path.resolve(__dirname, "client/dist/main.js"),
+    path:path.resolve(__dirname, "client/dist"),
   },
   module: {
     rules: [

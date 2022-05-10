@@ -30,7 +30,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: path.join(__dirname, "client/src", "index.js"),
-  mode: "development",
+  mode: "production",
   output: {
     path:path.resolve(__dirname, "client/dist"),
     filename: "main.js",

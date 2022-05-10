@@ -33,6 +33,7 @@ module.exports = {
   mode: "development",
   output: {
     path:path.resolve(__dirname, "client/dist"),
+    filename: "main.js",
   },
   module: {
     rules: [

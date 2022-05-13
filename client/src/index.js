@@ -8,13 +8,13 @@ import MainProvider from './Components/Providers/MainProvider.jsx';
 // import Login from './Components/Login/Login.jsx';
 // import Profile from './Components/Profile/Profile.jsx';
 // import Cognitivetest from './Components/cognitivetest/Cognitivetest.jsx';
-// import Cognitivetest1s2 from './Components/cognitivetest/Cognitivetest1s2.jsx';
+import Cognitivetest1s2 from './Components/cognitivetest/Cognitivetest1s2.jsx';
 
 const appElement = document.getElementById('app');
 const Login = lazy(() => import('./Components/Login/Login.jsx'));
 const Profile = lazy(() => import('./Components/Profile/Profile.jsx'));
 const Cognitivetest = lazy(() => import('./Components/cognitivetest/Cognitivetest.jsx'));
-const Cognitivetest1s2 = lazy(() => import('./Components/cognitivetest/Cognitivetest1s2.jsx'));
+// const Cognitivetest1s2 = lazy(() => import('./Components/cognitivetest/Cognitivetest1s2.jsx'));
 
 ReactDOM.render(
   <MainProvider>

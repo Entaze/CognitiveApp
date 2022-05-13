@@ -121,11 +121,13 @@ function ProfileSetup(props) {
     console.log('E... :', e);
     //If photo uploaded
     if (e.target.photo.files.length === 0) {
+      const date = new Date();
       let serverPackage = {
         name: e.target.name.value,
         age: ageFormatVal(Number(e.target.age.value)),
         gender: genderFormatVal(Number(e.target.gender.value)),
         uid: userProfile.uid,
+        userCreated: date,
         imgUrl: userProfile.imgUrl || 'https://res.cloudinary.com/davidmo/image/upload/v1649809933/avatar-1577909_1280_ijj1cp.png',
       };
       axios.post('/api/profile', serverPackage)
@@ -149,6 +151,7 @@ function ProfileSetup(props) {
             age: ageFormatVal(Number(e.target.age.value)),
             gender: genderFormatVal(Number(e.target.gender.value)),
             uid: userProfile.uid,
+            userCreated: Date.now(),
             imgUrl: res.data.url || 'https://res.cloudinary.com/davidmo/image/upload/v1649809933/avatar-1577909_1280_ijj1cp.png',
           };
           axios.post('/api/profile', serverPackage)

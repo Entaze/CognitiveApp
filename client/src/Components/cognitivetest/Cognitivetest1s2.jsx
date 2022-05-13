@@ -137,7 +137,7 @@ function Cognitivetest () {
   const [testListATrials, setTestListATrials] = useState(5);
   const [firstPage, setFirstPage] = useState(true);
   const [startTest, setStartTest] = useState(false);
-  const [tests, setTests] = useState([]);
+  const [tests, setTests] = useState({});
   const [wordsArr, setWordsArr] = useState(['Asia', 'Sun', 'Key', 'Cat', 'Travel', 'Winter', '' ]);
   const [word, setWord] = useState();
   const [nav, setNav] = useState(false);

@@ -42,7 +42,7 @@ function Login() {
       // console.log('Login user :', user)
       if (user) {
         const config = { params: {uid: user.uid} }
-        // console.log('User config :', config)
+        console.log('User config :', config)
         axios.get('/api/profile', config)
           .then((result) => {
             // console.log('loginGetAW:', result.data)

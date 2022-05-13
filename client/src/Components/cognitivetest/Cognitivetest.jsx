@@ -138,7 +138,7 @@ function Cognitivetest () {
   const [testListATrials, setTestListATrials] = useState(5);
   const [firstPage, setFirstPage] = useState(true);
   const [startTest, setStartTest] = useState(false);
-  const [tests, setTests] = useState([]);
+  const [tests, setTests] = useState({});
   const [wordsArr, setWordsArr] = useState(['Asia', 'Sun', 'Key', 'Cat', 'Travel', 'Winter', '' ]);
   const [word, setWord] = useState();
   const [nav, setNav] = useState(false);
@@ -229,7 +229,8 @@ const handleWordEnter = (e) => {
 useEffect(() => {
   console.log('Axios post data :', data);
 
-  const param = {id: userProfile._id, word: data};
+  const date = new Date();
+  const param = {id: userProfile._id, word: data, time: date};
   axios.post('/api/cognitivetest', param)
   .then(() => {
     console.log(res.data);

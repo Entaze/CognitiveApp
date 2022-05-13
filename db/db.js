@@ -12,9 +12,10 @@ const profileSchema = new mongoose.Schema({
     enum : ['Female', 'Male'],
     default: 'Male'
 },
-  tests: [],
+  // tests: [],
   imgUrl: String,
   uid: String,
+  userCreated: Date,
 });
 
 // const messageSchema = new mongoose.Schema({
@@ -40,7 +41,7 @@ const wordsSchema = new mongoose.Schema({
 const testSchema = new mongoose.Schema({
   time: Date,
   users: [],
-  words: [wordsSchema],
+  words: [],
 });
 
 

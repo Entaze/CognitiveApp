@@ -63,7 +63,7 @@ const loginButton = {
   marginRight: '30%',
 }
 
-function Login() {
+export function Login() {
   const { setUserProfile } = useMainContext()
   const [loginNavbar, setLoginNavbar] = useState(false)
   const [errorMessage, setErrorMessage] = useState("")

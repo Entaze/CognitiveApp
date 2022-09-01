@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { signInWithGoogle, auth, onAuthStateChanged } from "../Firebase/Firebase.js";
+import { signInWithGoogle, auth, onAuthStateChanged } from "../Firebase/Firebase.js"
+import { AccountBox } from "../ProfileSetUp/AccountBox";
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { useMainContext } from '../Providers/MainProvider.jsx';
@@ -23,15 +24,17 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Slider } from '@mui/material';
+import {
+  BoldLink,
+  BoxContainer,
+  FormContainer,
+  SliderContainer,
+  TextContainer,
+  Input,
+  MutedLink,
+  SubmitButton,
+} from "../ProfileSetUp/AccountBox/common";
 
-
-const SliderContainer = {
-  width: '100%',
-  display: 'flex',
-  border: 'none',
-  flexDirection: 'column',
-  padding: '10px',
-}
 
 const loginBackground = {
   backgroundImage: "url('https://res.cloudinary.com/davidmo/image/upload/v1649261658/cognitive-wallpaper_ijjoo2.jpg')",
@@ -63,7 +66,7 @@ const loginButton = {
   marginRight: '30%',
 }
 
-export function Login() {
+function Login() {
   const { setUserProfile } = useMainContext()
   const [loginNavbar, setLoginNavbar] = useState(false)
   const [errorMessage, setErrorMessage] = useState("")

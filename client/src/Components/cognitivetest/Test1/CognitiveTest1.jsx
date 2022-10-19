@@ -15,6 +15,9 @@ import CheckIcon from '@mui/icons-material/Check';
 import { useMainContext } from '../../Providers/MainProvider.jsx';
 import { Dialog, DialogContent } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
+import NavigationBar from '../../Layout/WithNavigation.jsx';
+import '../../Styles.scss'
+
 
 const swipeStyle = {
   position: "absolute",
@@ -85,11 +88,18 @@ const modalStyle = {
 };
 
 const centerScreen = {
+  width: '70vw',
+  height: '50vh',
+  background: '#000000',
+  color: '#f5f5f5',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  textAlign: 'center',
-  minHeight: '100vh',
+  marginLeft: '10%',
+  marginRight: '10%',
+  paddingTop: '15%',
+  paddingBottom: '10%',
+  flexDirection: 'column',
 }
 
 const submitButton = {
@@ -173,8 +183,10 @@ function Cognitivetest () {
   const [startTestListB, setStartTestListB] = useState(false);
   const [startTestListARecall, setStartTestListARecall] = useState(false);
   const [tests, setTests] = useState({});
-  const [wordsArr, setWordsArr] = useState(['Drum', 'Curtain', 'Bell', 'Coffee', 'School', 'Parent', 'Moon', 'Garden', 'Hat', 'Farmer', 'Nose', 'Turkey', 'Colour', 'House', 'River', '', '' ]); //
-  const [listB, setListB] = useState(['Desk', 'Ranger', 'Bird', 'Show', 'Stove', 'Mountain', 'Glasses', 'Towel', 'Cloud', 'Boat', 'Lamb', 'Gun', 'Pencil', 'Church', 'Fish', '', '' ]); //
+  const [wordsArr, setWordsArr] = useState(['Drum', 'Curtain', 'Bell', 'Coffee', 'School', 'Parent', 'Moon', 'Garden', 'Hat', 'Farmer', 'Nose', 'Turkey', 'Colour', 'House', 'River', '', '' ]);
+  const [listB, setListB] = useState(['Desk', 'Ranger', 'Bird', 'Show', 'Stove', 'Mountain', 'Glasses', 'Towel', 'Cloud', 'Boat', 'Lamb', 'Gun', 'Pencil', 'Church', 'Fish', '', '' ]);
+  const [wordsArrRe, setWordsArrRe] = useState(['', '' ]);
+
   const [listBStart, setListBStart] = useState(false);
   const [listAReEntry, setListAReEntry] = useState(false);
   const [test1End, setTest1End] = useState(false);
@@ -183,9 +195,11 @@ function Cognitivetest () {
   const [wordErr, setWordErr] = useState({});
   const [wordsEnteredListA, SetWordsEnteredListA] = useState([]);
   const [nav, setNav] = useState(false);
+
   const [wordRecall, setWordRecall] = useState(false);
   const [listAReEntryModal, setListAReEntryModal] = useState(false);
   const [formState, setFormState] = useState(false);
+
   const [repeatListA, setRepeatListA] = useState(false);
   const { register, handleSubmit, reset } = useForm({
     mode: 'onSubmit',
@@ -236,22 +250,13 @@ function Cognitivetest () {
     }
    }, [testListATrials])
 
-  useEffect(() => {
-    if (userProfile) {
-    axios.get('/api/cognitivetest', { params: { id: userProfile._id }})
-      .then((res) => {
-        setTests(res.data);
-      })
-    }
-  }, []);
-
  useEffect(() => {
    if (startTest) {
     for (let i = 0; i < wordsArr.length; i++) {
       (function(ind) {
           setTimeout(function(){
               setWord(wordsArr[ind]);
-          }, 1000 + (1000 * ind));
+          }, 500 + (500 * ind));
       })(i);
     }
    }
@@ -263,7 +268,7 @@ function Cognitivetest () {
        (function(ind) {
            setTimeout(function(){
                setWord(listB[ind]);
-           }, 1000 + (1000 * ind));
+           }, 500 + (500 * ind));
        })(i);
      }
     }
@@ -271,10 +276,10 @@ function Cognitivetest () {
 
   useEffect(() => {
     if (startTestListARecall) {
-      for (let i = 0; i < wordsArr.length; i++) {
+      for (let i = 0; i < wordsArrRe.length; i++) {
         (function(ind) {
             setTimeout(function(){
-                setWord(wordsArr[ind]);
+                setWord(wordsArrRe[ind]);
             }, 5 + (5 * ind));
         })(i);
       }
@@ -282,11 +287,14 @@ function Cognitivetest () {
   }, [startTestListARecall])
 
 
-if (word === wordsArr[wordsArr.length - 1]) {
-  setWordRecall(true);
-  setStartTest(false);
-  setWord();
-}
+useEffect(()=> {
+  if (word === wordsArr[wordsArr.length - 1]) {
+    setFirstPage(false);
+    setWordRecall(true);
+    setStartTest(false);
+    setWord();
+  }
+}, [word])
 
 const handleStartTest = (e) => {
   e.preventDefault();
@@ -307,6 +315,9 @@ useEffect(() => {
   if (keyClicked === 'Enter' && listAReEntry) {
     setListAReEntry(false);
     handleListAReentry();
+  }
+  if (keyClicked === 'Enter' && test1End) {
+    navigate('/cognitivetest2')
   }
 }, [keyClicked])
 
@@ -368,10 +379,11 @@ const handlePostWords = () => {
   if (param.ListAEntriesRecall) {
     axios.post('/api/cognitivetest', param)
     .then((res) => {
-      let complete = {id: userProfile._id, test1Completion: true, time: date};
-      axios.post('/api/profile', complete)
+      let complete = {_id: userProfile._id, test1Completion: true};
+      axios.post('/api/user', complete)
       .then((result) => {
-
+        console.log('success post test 1 completion', result)
+        setTest1End(true)
       })
     })
   } else {
@@ -422,6 +434,7 @@ useEffect(() => {
     setListAReEntry(true);
   }
   if (testListATrials === 8) {
+    setListAReEntry(false);
     setTest1End(true);
   }
 }, [testListATrials])
@@ -434,8 +447,11 @@ const handleListAReentry = (e) => {
 
 const handleStartTest2 = (e) => {
   e.preventDefault();
-  console.log('Navigating to test two...')
-  // navigate('/cognitivetest2');
+  setListAReEntry(false);
+  setFirstPage(false);
+  if (!listAReEntry) {
+    navigate('/cognitivetest2');
+  }
 }
 
 const onSubmitWord = (data) => {
@@ -461,39 +477,45 @@ const handleInput = (e) => {
   return (
     <>
     {userAuth ?
-      <div className='centerScreen' style={centerScreen}>
-          <div style={{marginBottom: '350px'}} >
+    <>
+      <NavigationBar />
+
+      <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', height: '100vh', maxWidth: '100vw', background: '#000', color: '#fff', top: 0, bottom: 0, }} >
+
             {firstPage ?
               <>
-                <Typography style={{fontSize: 60, marginBottom: 20, fontWeight: 700, display: 'inline-block', }}>
-                Test 1: Visual Learning Test.
-                </Typography>
-                <Typography style={{fontSize: 40, marginBottom: 20, color: '#be8484', fontWeight: 700, display: 'inline-block', }}>
-                You will be shown a list of 15 words. This same list will be shown to you 5 times. Each time after you see the list you will be asked to type all the words you remember from the list. [Press enter or click start to continue]
-                </Typography>
-                <Button variant="outlined" style={button} onClick={handleStartTest}  type='submit' >
-                Start
-                </Button>
-                </>
-                :
+              <div style={centerScreen} >
+               <h1 style={{ color: '#e67373', fontSize: 50, }} >TEST 1.</h1>
+               <div style={{ fontSize: 35, fontWeight: 700, display: 'flex', padding: '110px 40px 120px 40px', lineHeight: '1.6', }} >
+               You will be shown a list of 15 words. This same list will be shown to you 5 times. Each time after you see the list you will be asked to type all the words you remember from the list.  <br /> [Press ENTER or click start to continue]
+               </div>
+               <div>
+                 <button onClick={handleStartTest} >Start</button>
+               </div>
+              </div>
+              </>
+              :
               null}
-          </div>
-          <Typography style={{ fontSize: 40, fontWeight: 700, marginBottom: '300px', textAlign: 'center', fontFamily:'Courgette' }} >{word}</Typography>
+
+          {!listAReEntry ?
+            <Typography style={{ fontSize: 40, fontWeight: 700, textAlign: 'center', fontFamily:'Courgette' }} >{word}</Typography>
+           : null}
           {wordRecall ?
           <>
-          <div style={{display: 'inline-block', marginBottom: '300px'}} >
-              <div style={{ fontSize: 40, marginBottom: 40, fontWeight: 700}}>Click on button to enter as many words as you can remember...</div>
-              <Button variant="outlined" style={button} onClick={handleButtonClick} type='submit' >
-              Go..
-              </Button>
-          </div>
+            <div style={centerScreen} >
+              <div style={{  fontSize: 35, fontWeight: 700, display: 'flex', padding: '0px 40px 120px 40px', }} >Click on button to enter as many words as you can remember...</div>
+              <div>
+                 <button onClick={handleButtonClick}>Go..</button>
+              </div>
+            </div>
           </>
           :
           null }
           {formState ?
           <>
+            <div style={centerScreen} >
             <div style={{ fontSize: 40, fontWeight: 700}} >
-              <Dialog open PaperProps={{ classes: { root: classes.root } }} style={{marginBottom: '200px'}} >
+              <Dialog open PaperProps={{ classes: { root: classes.root } }} >
                 <DialogContent >
                   <div>
                     <form onSubmit={handleSubmit(onSubmitWord)} >
@@ -523,61 +545,66 @@ const handleInput = (e) => {
                 </DialogContent>
               </Dialog>
             </div>
+            </div>
           </>
           :
           null}
-          {(repeatListA && testListATrials <= 5) ?
+          {(repeatListA && testListATrials <= 5 ) ?
            <>
-             <div style={{marginBottom: '350px'}}>
-             <Typography style={{fontSize: 40, fontWeight: 700,  }}>
+            <div style={{  fontSize: 35, fontWeight: 700, display: 'flex', padding: '40px 40px 120px 40px', }} >
              Click start to begin trial {testListATrials}...
-             </Typography>
-             <Button variant="outlined" style={button} onClick={handleRepeatListA}  type='submit' >
-             Start
-             </Button>
-             </div>
+            </div>
+            <div>
+              <button onClick={handleRepeatListA}>Start</button>
+            </div>
            </>
           :
           null}
+
+          {/** ------- LIST B ------- **/}
           {listBStart ?
             <>
-            <div style={{marginBottom: '350px'}}>
-              <Typography style={{fontSize: 40, fontWeight: 700, marginBottom: 20, color: '#be8484',  }}>
-              You will now be shown a different list of words. Try and remember all the words from this new list. [Click start or press enter to continue]
-              </Typography>
-              <Button variant="outlined" style={button} onClick={handleStartListB}  type='submit' >
-              Start
-              </Button>
+            <div style={centerScreen} >
+
+             <div style={{ fontSize: 35, fontWeight: 700, display: 'flex', padding: '0px 40px 120px 40px', lineHeight: '1.6', }} >
+             You will now be shown a different list of words. Try and remember all the words from this new list.  <br /> [Click start or press ENTER to continue]
+             </div>
+            <div>
+              <button onClick={handleStartListB}>Start</button>
+            </div>
             </div>
             </>
             :
           null}
-           {listAReEntry ?
+
+           {listAReEntry && !test1End ?
             <>
-              <div style={{marginBottom: '350px'}}>
-                <Typography style={{fontSize: 40, fontWeight: 700, marginBottom: 20 }}>
-                Now, please enter all the words you remember from the original list you saw 5 times. [Click start or press enter to continue]
-                </Typography>
-                <Button variant="outlined" style={button} onClick={handleListAReentry}  type='submit' >
-                Start
-                </Button>
-              </div>
+            <div style={centerScreen} >
+             <div style={{ fontSize: 35, fontWeight: 700, display: 'flex', padding: '0px 40px 120px 40px', lineHeight: '1.6', }} >
+             Now, please enter all the words you remember from the original list you saw 5 times.  <br /> [Click start or press ENTER to continue]
+             </div>
+            <div>
+              <button onClick={handleListAReentry}>Start</button>
+            </div>
+            </div>
             </>
            : null}
+
            {test1End ?
           <>
-            <div style={{marginBottom: '350px'}}>
-              <Typography style={{fontSize: 40, fontWeight: 700, marginBottom: 20 }}>
-              Test 1 - Auditory verbal learning test completed. [Click start or press enter to begin Test 2]
-              </Typography>
-              <Button variant="outlined" style={button} onClick={handleStartTest2}  type='submit' >
-              Start
-              </Button>
+            <div style={centerScreen} >
+            <div style={{ fontSize: 35, fontWeight: 700, display: 'flex', padding: '0px 40px 120px 40px', lineHeight: '1.6', }} >
+              Test 1 - Verbal Learning Test Completed.  <br /> [Click start or press ENTER to begin Test 2]
+            </div>
+            <div>
+              <button onClick={handleStartTest2}>Start</button>
+            </div>
             </div>
           </>
           :
           null}
       </div>
+      </>
      :
      null
      }

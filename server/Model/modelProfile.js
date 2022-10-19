@@ -39,6 +39,7 @@ if (!body.test1Completion) {
       Profile.updateOne({id: body.id}, {$set: param})
         .then(result => {
           cb(null, result)
+          console.log(result)
         })
         .catch(err => cb(err));
     }

@@ -19,6 +19,17 @@ import StartIcon from '@mui/icons-material/Start';
 import { useNavigate } from 'react-router-dom';
 import LogoutIcon from '@mui/icons-material/Logout';
 import axios from 'axios';
+import {
+  NavbarContainer,
+  LeftContainer,
+  RightContainer,
+  NavbarText,
+  NavbarButton,
+  NavbarInnerContainer,
+  NavbarLink,
+  Logo,
+} from "./Login/NavBar.style";
+import './Styles.scss'
 
 
 const App = () => {
@@ -60,21 +71,21 @@ const App = () => {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <div display='flex'>
-        <Box sx={{ backgroundColor: '#346611', height: 80, paddingTop: 0}}>
-        <Typography style={{ fontSize: 40, fontWeight: 700, color: '#fff', textAlign: 'center', fontFamily:'Courgette' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#113c66', height: '14vh', top: 0, left: 0, padding: 0, width: '100vw', position: 'fixed',  }} >
+          <NavbarText style={{ marginLeft: '5%' }}>
           Cognitive Test
-          </Typography>
-          <Box display="flex" justifyContent="flex-end">
+          </NavbarText>
+          <Box display="flex" justifyContent="flex-end" marginRight= '3%' >
           <LoadingButton
-              sx={{backgroundColor:'#200909'}}
+              sx={{backgroundColor:'#200909',  }}
               onClick={handleLogOut}
               size="small"
               float='right'
               position='absolute'
               loading={loading}
-              justify="flex-end"
+              // justify="flex-end"
               align="flex-end"
+              justify= "space-between"
               loadingPosition="end"
               variant="contained"
               endIcon={<LogoutIcon />}
@@ -82,10 +93,8 @@ const App = () => {
               Log Out
           </LoadingButton>
           </Box>
-        </Box>
         </div>
-        <Cognitivetest loggedOut={loggedOut}  />
-
+        {/* <Cognitivetest loggedOut={loggedOut}  /> */}
       </ThemeProvider>
     </>
   )

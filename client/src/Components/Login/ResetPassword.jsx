@@ -28,7 +28,7 @@ import { useLocation } from 'react-router-dom';
 
 
 const loginBackground = {
-  backgroundImage: "url('https://res.cloudinary.com/davidmo/image/upload/v1649261658/cognitive-wallpaper_ijjoo2.jpg')",
+  backgroundImage: "url('https://res.cloudinary.com/entazesoftware/image/upload/v1649261658/cognitive-wallpaper_ijjoo2.jpg')",
   backgroundRepeat: 'repeat',
   backgroundPosition: 'center',
   backgroundSize: 'auto',

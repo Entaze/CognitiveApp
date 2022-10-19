@@ -34,10 +34,11 @@ app.post('/api/signup', [
   check("password", "Password should be at least 6 characters").isLength({min: 6}),
 ], userController.signUp)
 app.get('/api/verifyuser', userController.verifyUser)
-app.get('/api/getuser', userController.getUser)
+app.get('/api/user', userController.getUser)
+app.post('/api/user', userController.updateUser)
 app.put('/api/forgotpassword', userController.forgotPassword)
 app.put('/api/resetpassword', userController.resetPassword)
-
+app.post('/api/cognitivetest', testController.postTest);
 // app.get('/api/resetpassword/:token', (req, res) => {
 
 //   var myRegexp = /(?:\/resetpassword\/:)(.+)/g;
@@ -47,10 +48,8 @@ app.put('/api/resetpassword', userController.resetPassword)
 //     token: token
 //   })
 // })
-app.post('/api/cognitivetest', testController.postTest);
-
-app.get('/api/profile', profController.getProfile)
-app.post('/api/profile', profController.postProfile)
+// app.get('/api/profile', profController.getProfile)
+// app.post('/api/profile', profController.postProfile)
 
 
 

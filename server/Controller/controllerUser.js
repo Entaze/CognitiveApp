@@ -18,7 +18,6 @@ const sender = {
   name: 'Cognitive App',
 }
 
-
 exports.signUp = (req, res) => {
 const errors = validationResult(req)
 
@@ -85,7 +84,7 @@ exports.getUser = (req, res) => {
     }
     //Send response
     try {
-      const {_id, name, age, email, test1Completion, test2Completion } = user;
+      const {_id, name, age, email, test1Completion, test2Completion, test3Completion } = user;
       return res.status(200).send({
         user: {
           _id,
@@ -94,6 +93,7 @@ exports.getUser = (req, res) => {
           email,
           test1Completion,
           test2Completion,
+          test3Completion,
         }
       })
     } catch (err) {
@@ -101,7 +101,38 @@ exports.getUser = (req, res) => {
     }})
 }
 
+exports.updateUser = (req, res) => {
+  let query = req.query;
+  let body = req.body;
+  console.log('Req :', req.body)
+  let param;
+  if (body.test1Completion) {
+    param = { test1Completion: body.test1Completion };
+  } else if (body.test2Completion) {
+    console.log('Req :', req.body)
+    param = { test2Completion: body.test2Completion };
+  }
+
+  User.updateOne({_id: body._id}, {$set: param}, (err, user) => {
+    if(err || !user) {
+      return res.status(400).json({
+        error: "User with this id not found/could not be updated"
+      })
+    }
+
+  //Send response
+  try {
+    return res.status(200).send({
+     message: "Successful post"
+    })
+  } catch (err) {
+    console.log(err)
+  }
+ })
+}
+
 exports.logIn = (req, res) => {
+  // console.log('req :', req.body)
   const {email, password} = req.body;
 
   User.findOne({email}, (err, user) => {
@@ -111,7 +142,8 @@ exports.logIn = (req, res) => {
       })
     }
     //Authenticate user
-    if(!user.authenticate(password)) {
+    if(user.authenticate(password) === false) {
+      console.log('we oucheaa.....')
       return res.status(400).json({
         error: "Email and password do not match"
       })

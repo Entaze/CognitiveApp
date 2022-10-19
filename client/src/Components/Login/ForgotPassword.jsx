@@ -23,14 +23,22 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Slider } from '@mui/material';
+import Navbar from './NavBar'
+
 
 const loginBackground = {
-  backgroundImage: "url('https://res.cloudinary.com/davidmo/image/upload/v1649261658/cognitive-wallpaper_ijjoo2.jpg')",
+  // marginTop: '10px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  paddingLeft: '20px',
+  paddingRight: '20px',
+  backgroundImage: "url('https://res.cloudinary.com/entazesoftware/image/upload/v1649261658/cognitive-wallpaper_ijjoo2.jpg')",
   backgroundRepeat: 'repeat',
   backgroundPosition: 'center',
   backgroundSize: 'auto',
-  minHeight: '100%',
-  height: '100vh',
+  minHeight: '100vh',
+  // height: '100vh',
 }
 
 const loginStyle = {
@@ -69,8 +77,8 @@ function ForgotPassword() {
     return (
       <Typography variant="body2" color="text.secondary" align="center" {...props}>
         {'Copyright © '}
-        <Link color="inherit" href="https://mui.com/">
-          Entaze systems
+        <Link color="inherit" href="#">
+          David U.
         </Link>{' '}
         {new Date().getFullYear()}
         {'.'}
@@ -98,6 +106,7 @@ function ForgotPassword() {
       .then((res) => {
         if (res.data.error) {
           setErrorMessage(res.data.error)
+
         } else {
           setSuccessMessage('Password reset link sent succcessfully. Check your email to reset your password.')
         }
@@ -121,40 +130,20 @@ function ForgotPassword() {
   return (
     <>
       <>
-      <AppBar style={{position: "fixed", backgroundColor: '#346611'}} >
-          <Toolbar>
-            <div style={switchTypoStyle}>
-              <Typography style={{ fontSize: 50, whiteSpace: 'nowrap', fontWeight: 700, color: '#fff', fontFamily:'Courgette'}}>Cognitive App</Typography>
-            </div>
-            <div style={loginButton}>
-              <Button variant="contained" sx={{backgroundColor:'#555555', }} onClick={handleLoginButton}>
-              Login
-              {loginNavbar ?
-                <ExpandLessIcon /> : <ExpandMoreIcon />
-              }
-            </Button>
-            </div>
-            {loginNavbar ?
-            <div >
-                <LoginNavBar />
-            </div>
-            :
-            null }
-          </Toolbar>
+      <AppBar style={{ display: 'flex', width: '100%', position: "fixed", }} >
+          <Navbar loginNavbar={loginNavbar} setLoginNavbar={setLoginNavbar} handleLoginButton={handleLoginButton} />
       </AppBar>
      <div style={loginBackground}>
-      <ThemeProvider theme={theme}>
-        <Container component="main" maxWidth="xs"  >
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginLeft: 'auto', marginRight: 'auto', marginTop: 'auto', marginBottom: 'auto' }} >
           <CssBaseline />
           <Box
             sx={{
-              // marginTop: 8,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: '#2EB67D', marginTop: '180px', }}>
+            <Avatar sx={{ m: 1, bgcolor: '#2EB67D', marginTop: '30px', }}>
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
@@ -173,7 +162,6 @@ function ForgotPassword() {
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
-                    style = {{width: 450}}
                     required
                     fullWidth
                     id="email"
@@ -188,8 +176,9 @@ function ForgotPassword() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2, bgcolor: '#2EB67D' }}
-              >
+                sx={{ mt: 3, mb: 2, color: '#fff', bgcolor: '#2EB67D', '&:hover': { color: '#fff', bgcolor: '#2EB67D', } }}
+                disableRipple
+                >
                 Submit
               </Button>
               <Box
@@ -205,21 +194,20 @@ function ForgotPassword() {
               }}
               >
                 <Grid item xs={12}>
-                  <Link onClick={handleLoginButton} underline="always" fontStyle='italic'  >
+                  <Link onClick={handleLoginButton} underline="always" fontStyle='italic' color='inherit' backgroundColor="inherit" >
                     {'Remember your password?'}
                   </Link>
                 </Grid>
                 <Grid item xs={12}>
-                  <Link href="/login" underline="always" fontStyle='italic'  >
+                  <Link href="/login" underline="always" fontStyle='italic' color='inherit' backgroundColor="inherit" >
                     {'Sign up?'}
                   </Link>
                 </Grid>
               </Box>
             </Box>
-          </Box>
           <Copyright sx={{ mt: 5 }} />
-        </Container>
-      </ThemeProvider>
+          </Box>
+       </div>
       </div>
      </>
     </>

@@ -22,8 +22,8 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Slider } from '@mui/material';
+import { createTheme, ThemeProvider, } from '@mui/material/styles';
+import { Slider, } from '@mui/material';
 import {
   BoldLink,
   BoxContainer,
@@ -34,15 +34,19 @@ import {
   MutedLink,
   SubmitButton,
 } from "../ProfileSetUp/AccountBox/common";
+import Navbar from './NavBar'
 
 
 const loginBackground = {
-  backgroundImage: "url('https://res.cloudinary.com/davidmo/image/upload/v1649261658/cognitive-wallpaper_ijjoo2.jpg')",
+  marginTop: '70px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundImage: "url('https://res.cloudinary.com/entazesoftware/image/upload/v1649261658/cognitive-wallpaper_ijjoo2.jpg')",
   backgroundRepeat: 'repeat',
   backgroundPosition: 'center',
   backgroundSize: 'auto',
-  minHeight: '100%',
-  height: '100vh',
+  minHeight: '100vh',
 }
 
 const loginStyle = {
@@ -123,9 +127,18 @@ function Login() {
       .then((res) => {
         setUserAuth(true)
         setCheckUserLogin(true)
-        axios.get('/api/getuser', {params: {_id: res.data.jwtResponse._id}})
+        axios.get('/api/user', {params: {_id: res.data.jwtResponse._id}})
         .then((res) => {
-          setUserProfile(res.data.user)
+          let user = res.data.user;
+          setUserProfile(user)
+          // console.log('User logged in :', user)
+          if (!user.test1Completion) {
+            navigate('/cognitivetest1')
+          } else if (!user.test2Completion) {
+            navigate('/cognitivetest2')
+          } else if (!user.test3Completion) {
+            navigate('/test-end')
+          }
         })
         .catch((err) => {
           console.log(err)
@@ -143,18 +156,18 @@ function Login() {
   }
   }, [])
 
-  useEffect(() => {
-    if (userAuth) {
-      navigate('/cognitivetest1')
-    }
-  }, [userAuth])
+  // useEffect(() => {
+  //   if (userAuth) {
+  //     navigate('/cognitivetest1')
+  //   }
+  // }, [userAuth])
 
   function Copyright(props) {
     return (
-      <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      <Typography variant="body2" color="text.secondary" {...props}>
         {'Copyright © '}
-        <Link color="inherit" href="https://mui.com/">
-          Entaze systems
+        <Link color="inherit" href="#" target="_blank" >
+          David U.
         </Link>{' '}
         {new Date().getFullYear()}
         {'.'}
@@ -222,40 +235,25 @@ function Login() {
     <>
       {!userAuth && checkUserLogin ?
       <>
-      <AppBar style={{position: "fixed", backgroundColor: '#346611'}} >
-          <Toolbar>
-            <div style={switchTypoStyle}>
-              <Typography style={{ fontSize: 50, whiteSpace: 'nowrap', fontWeight: 700, color: '#fff', fontFamily:'Courgette'}}>Cognitive App</Typography>
-            </div>
-            <div style={loginButton}>
-              <Button variant="contained" sx={{backgroundColor:'#555555', }} onClick={handleLoginButton}>
-              Login
-              {loginNavbar ?
-                <ExpandLessIcon /> : <ExpandMoreIcon />
-              }
-            </Button>
-            </div>
-            {loginNavbar ?
-            <div >
-                <LoginNavBar />
-            </div>
-            :
-            null }
-          </Toolbar>
+      <AppBar style={{ display: 'flex', width: '100%', position: "fixed", }} >
+          <Navbar loginNavbar={loginNavbar} setLoginNavbar={setLoginNavbar} handleLoginButton={handleLoginButton} />
       </AppBar>
+
      <div style={loginBackground}>
-      <ThemeProvider theme={theme}>
-        <Container component="main" maxWidth="xs"  >
+      {/* <span style={{ background: 'red' }}>Hey there</span> */}
+      {/* <ThemeProvider theme={theme}> */}
+        {/* <Container component="main" maxWidth="xs"  > */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginLeft: 'auto', marginRight: 'auto', marginTop: 'auto', marginBottom: 'auto' }} >
           <CssBaseline />
           <Box
             sx={{
-              // marginTop: 8,
+              margin: '26px',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: '#2EB67D', marginTop: '180px', }}>
+            <Avatar sx={{ m: 1, bgcolor: '#2EB67D',  }}>
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
@@ -268,8 +266,8 @@ function Login() {
             {successMessage ?
               <Alert sx={{marginBottom: '20px'}} severity="success"> {successMessage}</Alert>
             : null}
-              <Grid container spacing={2}>
-                <Grid item xs={12} sm={6} >
+              <Grid container spacing={2} >
+                <Grid item xs={12} sm={6}  >
                   <TextField
                     autoComplete="given-name"
                     name="firstName"
@@ -314,30 +312,33 @@ function Login() {
               </Grid>
               <Grid>
                 <SliderContainer>
-                  <Typography style={{textAlign: "center", marginTop: "10px"}}>Gender</Typography>
+                  <Typography style={{textAlign: "center", }}>Gender</Typography>
                   <Slider name="gender" id="gender" step={1} min={0} max={2}  marks={genderMarks} valueLabelFormat={genderFormatVal} aria-label="Default"  valueLabelDisplay="auto" style={{color: "#000000e6", fontStyle: 'Bold', }} />
                 </SliderContainer>
               </Grid>
               <Button
                 type="submit"
                 fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2, bgcolor: '#2EB67D' }}
-              >
+                sx={{ mt: 3, mb: 2, color: '#fff', bgcolor: '#2EB67D', '&:hover': { color: '#fff', bgcolor: '#2EB67D', } }}
+                disableRipple
+                >
                 Sign Up
               </Button>
               <Grid container justifyContent="flex-end">
                 <Grid item>
-                  <Link href="#" underline="always" fontStyle='italic' onClick={handleLoginButton} >
+                  <Link href="#" underline="always" fontStyle='italic' color='inherit' backgroundColor="inherit" onClick={handleLoginButton} >
                   {'Already have an account?'}
                   </Link>
                 </Grid>
               </Grid>
             </Box>
-          </Box>
+
           <Copyright sx={{ mt: 5 }} />
-        </Container>
-      </ThemeProvider>
+
+          </Box>
+          </div>
+        {/* </Container> */}
+      {/* </ThemeProvider> */}
       </div>
      </>
      :

@@ -4,6 +4,7 @@ import { useMainContext } from '../Providers/MainProvider.jsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import LoadingButton from '@mui/lab/LoadingButton';
+import Button from '@mui/material/Button';
 import { Box, TextField, InputAdornment, } from '@mui/material';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import KeyIcon from '@mui/icons-material/Key';
@@ -14,6 +15,26 @@ import Stack from "@mui/material/Stack";
 import Link from '@mui/material/Link';
 import { useNavigate } from 'react-router-dom';
 import Cognitivetest from '../cognitivetest/Test1/CognitiveTest1.jsx'
+// import '../Styles.scss'
+
+import {
+  NavbarContainer,
+  LeftContainer,
+  RightContainer,
+  NavbarText,
+  NavbarButton,
+  NavbarInnerContainer,
+  NavbarLink,
+  Logo,
+  DropContainer,
+  LeftDropContainer,
+  RightDropContainer,
+  DropColumn1,
+  DropColumn2,
+  DropColumn3,
+  LoginFormSub,
+  ForgotPassword,
+} from "./NavBar.style";
 
 
 const facebookButton = {
@@ -32,6 +53,7 @@ const loginButton = {
   marginLeft: '93%',
   marginRight: '3%',
 }
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,7 +74,8 @@ const useStyles = makeStyles((theme) => ({
   appBarSolid: {
     backgroundColor: 'rgba(46, 182, 125, 0.9)',
     marginTop: '78px',
-  }
+    flexDirection: 'column',
+  },
 }))
 
 const LoginNavBar = () => {
@@ -132,122 +155,242 @@ const LoginNavBar = () => {
         setUserProfile(res.data.user);
         const data = res.data;
         if (data.token && !data.user.test1Completion) {
-          navigate("/cognitivetest1")
+          navigate("/cognitivetest2")
         } else if (data.token && !data.user.test2Completion) {
           navigate("/cognitivetest2")
         }
       })
-      .catch((err) => {
-        setErrorMessage('Email and password do not match.');
-      })
+      // .catch((err) => {
+      //   setErrorMessage('Email and password do not match.');
+      // })
     }
   }
 
   const classes = useStyles();
   return (
     <>
-      <AppBar position="fixed" className={classes.appBarSolid}  >
-        <Toolbar>
-          <Stack sx={{
-            marginTop: 1,
-            direction: 'column',
-            alignItems: 'center',
-            marginLeft: '51%'
-          }}
-          >
-            {errorMessage ?
-              <Alert sx={{ height: '44px', whiteSpace: 'nowrap', marginLeft: '25%' }} severity="error" > {errorMessage} </Alert>
+
+      <AppBar position="fixed" className={classes.appBarSolid} >
+        <DropContainer >
+          <LeftDropContainer ></LeftDropContainer>
+          <RightDropContainer >
+          {errorMessage ?
+              <Alert sx={{ height: '44px', whiteSpace: 'nowrap', marginLeft: '5px', marginTop: '10px' }} severity="error" > {errorMessage} </Alert>
               :
             null}
-          <form onSubmit={handleLogin} autoComplete="off" >
-            <Grid container spacing={2} >
-              <Grid item xs={12} sm={4} justifyContent = {'center'} >
-                <Box
-                  sx={{
-                    '& .MuiTextField-root': { m: 1, },
-                  }}
-                  noValidate
-                  autoComplete="off"
-                >
-                  <TextField
-                    id="email-input-with-icon-textfield"
-                    required
-                    autoFocus
-                    type={"email"}
-                    style={{backgroundColor: '#fff', marginTop: "8%", borderBottom: '1px solid #485a6b', width: '310px', }}
-                    className="form-inputEmail"
-                    placeholder="Email"
-                    value={ emailLogin }
-                    InputProps={{
-                      disableUnderline: true,
-                      startAdornment: (
-                        <InputAdornment position="start">
-                        <div></div>
-                          <EmailOutlinedIcon style={{width: '25px', height: '26px', marginLeft: '10px', marginRight: '10px'}}  />
-                        </InputAdornment>
-                      ),
-                    }}
-                    variant="standard"
-                    onChange={handleEmail}
-                  />
-                </Box>
-              </Grid>
-              <Grid item xs={12} sm={4} justifyContent = {'center'} >
-                <Box
-                  sx={{
-                    '& .MuiTextField-root': { m: 1, },
-                  }}
-                  noValidate
-                  autoComplete="off"
-                >
-                  <TextField
-                    id="pword-input-with-icon-textfield"
-                    required
-                    type={"password"}
-                    style={{backgroundColor: '#fff', marginTop: "8%", marginLeft: '190px', borderBottom: '1px solid #485a6b', width: '310px',  }}
-                    className="form-inputEmail"
-                    placeholder="Password"
-                    value={ passwordLogin }
-                    InputProps={{
-                      disableUnderline: true,
-                      startAdornment: (
-                        <InputAdornment position="start">
-                        <div></div>
-                          <KeyIcon style={{width: '25px', height: '26px', marginLeft: '10px', marginRight: '10px'}}  />
-                        </InputAdornment>
-                      ),
-                    }}
-                    variant="standard"
-                    onChange={handlePassword}
-                  />
-                </Box>
-              </Grid>
-              <Grid item xs={12} sm={4} justifyContent = {'center'}>
-              <Box
-                  sx={{
-                    '& .MuiTextField-root': { m: 1, },
-                    justifyContent: 'flex-end',
-                  }}
-                  noValidate
-                  autoComplete="off"
-                >
-                  <LoadingButton variant="contained" sx={{backgroundColor:'#555555', marginTop: "8%", marginLeft: '390px', }}  onClick={handleLogin}> Login </LoadingButton>
-                </Box>
-              </Grid>
-              <Grid container justifyContent="flex-end">
-                <Grid item>
-                <Link href="/forgotpassword" underline="always" fontStyle='italic' color='#fff' >
-                  {'Forgot password?'}
-                </Link>
-                </Grid>
-              </Grid>
-            </Grid>
-            </form>
-          </Stack>
-          <div style={loginButton}>
-          </div>
-        </Toolbar>
+            <LoginFormSub onSubmit={handleLogin} autoComplete="off" >
+
+                <DropColumn1 >
+                      <TextField
+                        id="email-input-with-icon-textfield"
+                        required
+                        autoFocus
+                        type={"email"}
+                        style={{ backgroundColor: '#fff', borderBottom: '1px solid #485a6b', width: '80%', }}
+                        className="form-inputEmail"
+                        placeholder="Email"
+                        value={ emailLogin }
+                        InputProps={{
+                          disableUnderline: true,
+                          startAdornment: (
+                            <InputAdornment position="start">
+                            <div></div>
+                              <EmailOutlinedIcon style={{ width: '25px', height: '26px', marginLeft: '10px', marginRight: '10px'}}  />
+                            </InputAdornment>
+                          ),
+                        }}
+                        variant="standard"
+                        onChange={handleEmail}
+                      />
+                </DropColumn1>
+                <DropColumn2 >
+                      <TextField
+                        id="pword-input-with-icon-textfield"
+                        required
+                        type={"password"}
+                        style={{backgroundColor: '#fff', borderBottom: '1px solid #485a6b', width: '80%',  }}
+                        className="form-inputEmail"
+                        placeholder="Password"
+                        value={ passwordLogin }
+                        InputProps={{
+                          disableUnderline: true,
+                          startAdornment: (
+                            <InputAdornment position="start">
+                            <div></div>
+                              <KeyIcon style={{ width: '25px', height: '26px', margin: '0px 10px', }}  />
+                            </InputAdornment>
+                          ),
+                        }}
+                        variant="standard"
+                        onChange={handlePassword}
+                      />
+                </DropColumn2>
+                <DropColumn3 >
+                  <Button variant="contained" sx={{ mt: 3, mb: 2, color: '#fff', bgcolor: '#555555', opacity: '1', boxShadow: "none", '&:hover': { color: '#fff', bgcolor: '#555555', } }}  onClick={handleLogin} disableRipple> Login </Button>
+                </DropColumn3>
+              </LoginFormSub>
+            <ForgotPassword href="/forgotpassword" >
+              Forgot password
+            </ForgotPassword>
+
+          {/* <Toolbar>
+              <Stack sx={{
+                marginTop: 1,
+                direction: 'column',
+                alignItems: 'center',
+                // marginLeft: '51%'
+              }}
+              >
+                {errorMessage ?
+                  <Alert sx={{ height: '44px', whiteSpace: 'nowrap', marginLeft: '25%' }} severity="error" > {errorMessage} </Alert>
+                  :
+                null}
+              <form onSubmit={handleLogin} autoComplete="off" >
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
+                <DropColumn1 >
+                      <TextField
+                        id="email-input-with-icon-textfield"
+                        required
+                        autoFocus
+                        type={"email"}
+                        style={{ backgroundColor: '#fff', borderBottom: '1px solid #485a6b', width: '310px', }}
+                        className="form-inputEmail"
+                        placeholder="Email"
+                        value={ emailLogin }
+                        InputProps={{
+                          disableUnderline: true,
+                          startAdornment: (
+                            <InputAdornment position="start">
+                            <div></div>
+                              <EmailOutlinedIcon style={{width: '25px', height: '26px', marginLeft: '10px', marginRight: '10px'}}  />
+                            </InputAdornment>
+                          ),
+                        }}
+                        variant="standard"
+                        onChange={handleEmail}
+                      />
+                </DropColumn1>
+                <DropColumn2 >
+                      <TextField
+                        id="pword-input-with-icon-textfield"
+                        required
+                        type={"password"}
+                        style={{backgroundColor: '#fff', borderBottom: '1px solid #485a6b', width: '310px',  }}
+                        className="form-inputEmail"
+                        placeholder="Password"
+                        value={ passwordLogin }
+                        InputProps={{
+                          disableUnderline: true,
+                          startAdornment: (
+                            <InputAdornment position="start">
+                            <div></div>
+                              <KeyIcon style={{width: '25px', height: '26px', margin: '0px 10px', }}  />
+                            </InputAdornment>
+                          ),
+                        }}
+                        variant="standard"
+                        onChange={handlePassword}
+                      />
+                </DropColumn2>
+                <DropColumn3 >
+                  <LoadingButton variant="contained" sx={{backgroundColor:'#555555',  }}  onClick={handleLogin}> Login </LoadingButton>
+                </DropColumn3> */}
+                {/* <Grid container spacing={2} > */}
+                  {/* <Grid item xs={12} sm={4} justifyContent = {'center'} >
+                    <Box
+                      sx={{
+                        '& .MuiTextField-root': { m: 1, },
+                      }}
+                      noValidate
+                      autoComplete="off"
+                    >
+                      <TextField
+                        id="email-input-with-icon-textfield"
+                        required
+                        autoFocus
+                        type={"email"}
+                        style={{ backgroundColor: '#fff', borderBottom: '1px solid #485a6b', width: '310px', }}
+                        className="form-inputEmail"
+                        placeholder="Email"
+                        value={ emailLogin }
+                        InputProps={{
+                          disableUnderline: true,
+                          startAdornment: (
+                            <InputAdornment position="start">
+                            <div></div>
+                              <EmailOutlinedIcon style={{width: '25px', height: '26px', marginLeft: '10px', marginRight: '10px'}}  />
+                            </InputAdornment>
+                          ),
+                        }}
+                        variant="standard"
+                        onChange={handleEmail}
+                      />
+                    </Box>
+                  </Grid> */}
+                  {/* <Grid item xs={12} sm={4} justifyContent = {'center'} >
+                    <Box
+                      sx={{
+                        '& .MuiTextField-root': { m: 1, },
+                      }}
+                      noValidate
+                      autoComplete="off"
+                    >
+                      <TextField
+                        id="pword-input-with-icon-textfield"
+                        required
+                        type={"password"}
+                        style={{backgroundColor: '#fff', marginLeft: '190px', borderBottom: '1px solid #485a6b', width: '310px',  }}
+                        className="form-inputEmail"
+                        placeholder="Password"
+                        value={ passwordLogin }
+                        InputProps={{
+                          disableUnderline: true,
+                          startAdornment: (
+                            <InputAdornment position="start">
+                            <div></div>
+                              <KeyIcon style={{width: '25px', height: '26px', margin: '0px 10px', }}  />
+                            </InputAdornment>
+                          ),
+                        }}
+                        variant="standard"
+                        onChange={handlePassword}
+                      />
+                    </Box>
+                  </Grid> */}
+                  {/* <Grid item xs={12} sm={4} justifyContent = {'center'}>
+                  <Box
+                      sx={{
+                        '& .MuiTextField-root': { m: 1, },
+                        justifyContent: 'flex-end',
+                      }}
+                      noValidate
+                      autoComplete="off"
+                    >
+                      <LoadingButton variant="contained" sx={{backgroundColor:'#555555', margin: '6% 0 0 390px', }}  onClick={handleLogin}> Login </LoadingButton>
+                    </Box>
+                  </Grid> */}
+
+                  {/* <Grid container justifyContent="flex-end">
+                    <Grid item>
+                    <Link href="/forgotpassword" underline="always" fontStyle='italic' color='#fff' >
+                      {'Forgot password?'}
+                    </Link>
+                    </Grid>
+                  </Grid> */}
+
+                {/* </Grid> */}
+                {/* </div>
+                </form>
+              </Stack>
+              <div style={loginButton}>
+              </div>
+            </Toolbar> */}
+      </RightDropContainer>
+      </DropContainer>
+
       </AppBar>
+
+
     </>
   )
 }

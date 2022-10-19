@@ -25,6 +25,11 @@ test2Completion: {
   enum: [false, true],
   default: false
 },
+test3Completion: {
+  type: Boolean,
+  enum: [false, true],
+  default: false
+},
 email: {
   type: String,
   trim: true,
@@ -42,45 +47,6 @@ encry_password: {
 salt: String,
 }, {timeStamps: true})
 
-const profileSchema = new mongoose.Schema({
-  name: String,
-  age: {
-    type: String,
-    enum : ['Youth','Adult', 'Senior'],
-    default: 'Adult'
-},
-  gender: {
-    type: String,
-    enum : ['Female', 'Male', 'Other'],
-    default: 'Female'
-},
-test1Completion: {
-  type: Boolean,
-  enum: [false, true],
-  default: false
-},
-test2Completion: {
-  type: Boolean,
-  enum: [false, true],
-  default: false
-},
-  imgUrl: String,
-  uid: String,
-  userCreated: Date,
-
-  email: {
-    type: String,
-    trim: true,
-    required: true,
-    unique: true
-  },
-  encry_password: {
-    type: String,
-    required: true
-  },
-  salt: String,
-});
-
 const testSchema = new mongoose.Schema({
   time: Date,
   ListAEntriesRecall: [],
@@ -90,7 +56,59 @@ const testSchema = new mongoose.Schema({
   ListAEntries_Trial4: [],
   ListAEntries_Trial5: [],
   ListBEntries: [],
+  Test2_Entry_1: [],
+  Test2_Entry_2: [],
+  Test2_Entry_3: [],
+  Test2_Entry_4: [],
+  Test2_Entry_5: [],
+  Test2_Entry_6: [],
+  Test2_Entry_7: [],
+  Test2_Entry_8: [],
+  Test2_Entry_9: [],
+  Test2_Entry_10: [],
+  Test2_Entry_11: [],
+  Test2_Entry_12: [],
+
 });
+
+// const profileSchema = new mongoose.Schema({
+//   name: String,
+//   age: {
+//     type: String,
+//     enum : ['Youth','Adult', 'Senior'],
+//     default: 'Adult'
+// },
+//   gender: {
+//     type: String,
+//     enum : ['Female', 'Male', 'Other'],
+//     default: 'Female'
+// },
+// test1Completion: {
+//   type: Boolean,
+//   enum: [false, true],
+//   default: false
+// },
+// test2Completion: {
+//   type: Boolean,
+//   enum: [false, true],
+//   default: false
+// },
+//   imgUrl: String,
+//   uid: String,
+//   userCreated: Date,
+
+//   email: {
+//     type: String,
+//     trim: true,
+//     required: true,
+//     unique: true
+//   },
+//   encry_password: {
+//     type: String,
+//     required: true
+//   },
+//   salt: String,
+// });
 
 userSchema.virtual("password")
   .set(function (password) {
@@ -119,7 +137,7 @@ userSchema.methods = {
 }
 
 const User = mongoose.model('User', userSchema, 'user');
-const Profile = mongoose.model('Profile', profileSchema, 'profile');
 const CognitiveTest = mongoose.model('CognitiveTest', testSchema, 'test');
+// const Profile = mongoose.model('Profile', profileSchema, 'profile');
 
-module.exports = { User, Profile, CognitiveTest };
+module.exports = { User, CognitiveTest };

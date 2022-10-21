@@ -158,6 +158,8 @@ const LoginNavBar = () => {
           navigate("/cognitivetest2")
         } else if (data.token && !data.user.test2Completion) {
           navigate("/cognitivetest2")
+        } else if (data.token && data.user.test2Completion) {
+          navigate("/test-end")
         }
       })
       // .catch((err) => {

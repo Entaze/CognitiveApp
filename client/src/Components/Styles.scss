@@ -116,10 +116,17 @@ button:hover{
 	0%{transform:rotateZ(360deg)}
 	100%{transform:rotateZ(0deg)}
 }
-.loadingText{
+.loadingText {
 	color:#9e9e9e;
 	font-family:Arial;
 	font-size:20px;
 	position:relative;
 	top:-207px;
+}
+.WelcomeTitle {
+  font-size: 3rem;
+  letter-spacing: .5em;
+  text-transform: uppercase;
+  margin: 4rem;
+  font-family: Oswald, Verdana, sans-serif;
 }

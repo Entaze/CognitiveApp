@@ -205,7 +205,7 @@ function Login() {
           localStorage.setItem('token', JSON.stringify(res.data.token));
           localStorage.setItem('loggedIn', JSON.stringify(true));
           setUserProfile(res.data);
-          navigate("/cognitivetest1");
+          navigate("/test-begin");
         }
       })
       .catch((err) => {

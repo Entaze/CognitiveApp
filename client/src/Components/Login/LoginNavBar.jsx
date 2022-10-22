@@ -155,7 +155,7 @@ const LoginNavBar = () => {
         setUserProfile(res.data.user);
         const data = res.data;
         if (data.token && !data.user.test1Completion) {
-          navigate("/cognitivetest2")
+          navigate("/cognitivetest1")
         } else if (data.token && !data.user.test2Completion) {
           navigate("/cognitivetest2")
         } else if (data.token && data.user.test2Completion) {

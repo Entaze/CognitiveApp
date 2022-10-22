@@ -124,7 +124,7 @@ function Login() {
         .then((res) => {
           let user = res.data.user;
           setUserProfile(user)
-          // console.log('User logged in :', user)
+          console.log('User logged in :', user)
           if (!user.test1Completion) {
             navigate('/cognitivetest1')
           } else if (!user.test2Completion) {

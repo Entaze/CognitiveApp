@@ -382,7 +382,7 @@ const handlePostWords = () => {
       let complete = {_id: userProfile._id, test1Completion: true};
       axios.post('/api/user', complete)
       .then((result) => {
-        console.log('success post test 1 completion', result)
+        // console.log('success post test 1 completion', result)
         setTest1End(true)
       })
     })

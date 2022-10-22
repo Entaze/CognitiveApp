@@ -170,9 +170,13 @@ const Cognitivetest2 = () => {
           let complete = {_id: userProfile._id, test2Completion: true};
           axios.post('/api/user', complete)
           .then((result) => {
-            console.log('success post test 2 completion', result)
+            // console.log('success post test 2 completion', result)
             setStartTest2(false)
-            setTest2End(true)
+
+            navigate('/test-end')
+
+
+            // setTest2End(true)
           })
         }
       }, 60000)

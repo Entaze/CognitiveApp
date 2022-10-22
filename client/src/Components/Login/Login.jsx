@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { signInWithGoogle, auth, onAuthStateChanged } from "../Firebase/Firebase.js"
-// import { AccountBox } from "../ProfileSetUp/AccountBox";
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { useMainContext } from '../Providers/MainProvider.jsx';

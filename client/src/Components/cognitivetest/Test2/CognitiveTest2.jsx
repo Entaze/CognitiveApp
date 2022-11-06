@@ -240,7 +240,7 @@ const Cognitivetest2 = () => {
         <div id="page" className="page one">
         <NavigationBar />
           <div style={centerScreen} >
-            <h1 style={{ color: '#e67373', fontSize: 50, }} >TEST 2.</h1>
+            <h1 style={{ color: '#e67373', fontSize: 50, }} >TEST 2</h1>
             <div style={{ fontSize: 35, margin: '8% 0', fontWeight: 700, lineHeight: '1.6' }}>
             You will be shown a sequence of numbers on the screen. Using your dominant hand (i.e., the hand you use to write with), type the sequence as fast and accurately as possible. Keep typing the sequence over and over until the numbers disappear. <br /> [Click next to continue]
             </div>

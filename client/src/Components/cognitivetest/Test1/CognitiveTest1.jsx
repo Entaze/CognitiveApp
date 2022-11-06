@@ -114,8 +114,7 @@ const submitButton = {
   borderRadius: '100px 100px 100px 100px',
   cursor: 'pointer',
   transition: 'all, 240ms ease-in-out',
-  backgroundColor: '#6F8363',
-  background: 'linear-gradient(0deg, #6F8363 3%, #6F8363 0%)'
+  backgroundColor: '#113c66',
 }
 
 const button = {
@@ -126,7 +125,22 @@ const button = {
   marginLeft: '15px'
 }
 
-const buttonInfo = {
+const buttonInfo1 = {
+  fontSize: '15px',
+  fontStyle: 'italic',
+  color: 'rgba(200, 200, 200, 0.99)',
+  fontWeight: '500',
+  textDecoration: 'none',
+  float: 'center',
+  clear: 'both',
+  align: 'center',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginLeft: '19px',
+}
+
+const buttonInfo2 = {
   fontSize: '15px',
   fontStyle: 'italic',
   color: 'rgba(200, 200, 200, 0.99)',
@@ -139,8 +153,21 @@ const buttonInfo = {
   marginLeft: '19px'
 }
 
+const buttonImportantInfo = {
+  fontSize: '15px',
+  fontStyle: 'italic',
+  color: 'rgba(162, 7, 7, 0.99)',
+  fontWeight: '500',
+  textDecoration: 'none',
+  float: 'left',
+  clear: 'both',
+  align: 'center',
+  display: 'block',
+  marginLeft: '19px'
+}
+
 const formTitle = {
-  color: '#b82b32',
+  color: '#000',
   fontWeight: '700',
   fontSize: '30px',
   height: '30px',
@@ -148,6 +175,7 @@ const formTitle = {
   border: 'none',
   margin: '15px 25px 15px 15px',
   textAlign: 'center',
+  paddingBottom: '40px',
 }
 
 const formInput = {
@@ -219,7 +247,7 @@ function Cognitivetest () {
   const navigate = useNavigate();
   const [keyClicked, SetKeyClicked] = useState('');
   const handleRegistration = (data) => { setData(data); handleModalAppear(); reset();  }
-  const buttonEntry = countModal < wordsArr.length - 2 ? 'Enter Word' : 'Submit Test';
+  const buttonEntry = countModal < wordsArr.length - 2 ? 'Enter' : 'Submit Test';
   const wordCount = countModal + 1;
 
 
@@ -256,7 +284,7 @@ function Cognitivetest () {
       (function(ind) {
           setTimeout(function(){
               setWord(wordsArr[ind]);
-          }, 500 + (500 * ind));
+          }, 1000 + (1000 * ind));
       })(i);
     }
    }
@@ -268,7 +296,7 @@ function Cognitivetest () {
        (function(ind) {
            setTimeout(function(){
                setWord(listB[ind]);
-           }, 500 + (500 * ind));
+           }, 1000 + (1000 * ind));
        })(i);
      }
     }
@@ -485,7 +513,7 @@ const handleInput = (e) => {
             {firstPage ?
               <>
               <div style={centerScreen} >
-               <h1 style={{ color: '#e67373', fontSize: 50, }} >TEST 1.</h1>
+               <h1 style={{ color: '#e67373', fontSize: 50, }} >TEST 1</h1>
                <div style={{ fontSize: 35, fontWeight: 700, display: 'flex', padding: '110px 40px 120px 40px', lineHeight: '1.6', }} >
                You will be shown a list of 15 words. This same list will be shown to you 5 times. Each time after you see the list you will be asked to type all the words you remember from the list.  <br /> [Press ENTER or click start to continue]
                </div>
@@ -518,28 +546,34 @@ const handleInput = (e) => {
               <Dialog open PaperProps={{ classes: { root: classes.root } }} >
                 <DialogContent >
                   <div>
-                    <form onSubmit={handleSubmit(onSubmitWord)} >
+                    <form onSubmit={handleSubmit(onSubmitWord)} autoComplete='off' >
                       {countModal < wordsArr.length - 2 ?
                         <>
-                         <div style={formTitle}>Enter word {wordCount}..</div>
-                         <div style={{position: 'relative', display: 'inline-block'}}>
-                           <input name="name" {...register("word")} autoFocus placeholder="Word.." style={formInput} onChange={handleInput} />
-                           <Button variant="outlined" style={button} onClick={handleSubmit} type='submit' >
-                            {buttonEntry}
-                           </Button>
-                         </div>
+                         <div style={formTitle}>ENTER WORD {wordCount}</div>
+                          <div style={{ position: 'relative', display: 'inline-block', paddingBottom: '85px' }}>
+                            <input name="name" {...register("word")} autoFocus placeholder="Word.." style={formInput} onChange={handleInput} />
+                            <Button  style={button} onClick={handleSubmit} type='submit' >
+                              {buttonEntry}
+                            </Button>
+                            <div style={buttonInfo1} >
+                              Press enter to submit word!
+                            </div>
+                          </div>
                          <Typography color = '#bf1650' fontFamily = 'Segoe UI, Roboto, Oxygen, Ubuntu' marginLeft = '19px' fontSize = '14px' fontStyle = 'italic' >{wordErr.error}</Typography>
                         </>
                         :
                       null}
                         <DialogActions>
-                          <Button variant="outlined" style={submitButton} onClick={handlePostWords} type='submit' >
+                          <Button  style={submitButton} onClick={handlePostWords} type='submit' disableHover='true' >
                           Submit Test
                           </Button>
                         </DialogActions>
-                        <div style={buttonInfo}>
-                          Click submit when you are done entering as many words as you remember!
+                        <div style={buttonImportantInfo}>
+                          Do not hit the submit button until you have finished entering all the words you can remember!
                         </div>
+                        {/* <div style={buttonInfo2}>
+                          Click submit when you are done entering as many words as you remember!
+                        </div> */}
                     </form>
                   </div>
                 </DialogContent>

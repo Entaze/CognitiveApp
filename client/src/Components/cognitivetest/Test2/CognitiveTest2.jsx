@@ -48,6 +48,17 @@ const button = {
   marginLeft: '45%'
 }
 
+const formInput = {
+  boxSizing: 'border-box',
+  height: '39px',
+  width: '626px',
+  border: '1px solid #E6E6E6',
+  borderRadius: '10px',
+  margin: '15px 15px 15px 15px',
+  textIndent: '20px',
+  webkitTextSecurity: 'disc',
+}
+
 const exCenter = {
   display: 'flex',
   width: '50vw',
@@ -242,7 +253,7 @@ const Cognitivetest2 = () => {
           <div style={centerScreen} >
             <h1 style={{ color: '#e67373', fontSize: 50, }} >TEST 2</h1>
             <div style={{ fontSize: 35, margin: '8% 0', fontWeight: 700, lineHeight: '1.6' }}>
-            You will be shown a sequence of numbers on the screen. Using your dominant hand (i.e., the hand you use to write with), type the sequence as fast and accurately as possible. Keep typing the sequence over and over until the numbers disappear. <br /> [Click next to continue]
+            You will be shown a sequence of numbers on the screen. Using your dominant hand (i.e., the hand you use to write with), type the sequence as fast and accurately as possible. Keep typing the sequence over and over until you see an X on the screen. The numbers will reappear after 30 secs at which point you will start typing the sequence over and over again until you see the next X. This will happen 12 times. <br /> [Click next to continue]
             </div>
             <div>
               <button onClick={slideNext} >Next</button>
@@ -264,7 +275,7 @@ const Cognitivetest2 = () => {
           <div style={centerScreen} >
             <div id='description' style={exCenter} >
               <img
-              style= {loaded ? { width: '100%', height: '100%', marginBottom: '10vh', } : { display: 'none' } }
+              style= {imgLoaded ? { width: '100%', height: '100%', marginBottom: '10vh', } : { display: 'none' } }
               src="https://res.cloudinary.com/entazesoftware/image/upload/v1664984224/CogniticeTest-Keyboard_tlpkg2.png"
               onLoad={() => setLoaded(true)}
               />
@@ -286,11 +297,13 @@ const Cognitivetest2 = () => {
               {displayNum ?
                 <div style={{ display: 'flex', flexDirection: 'column', width: '100%', justifyContent: 'center', alignItems: 'center', height: '100%', }} >
                   <h1 style={{ fontSize: 45, color: '#fff', paddingBottom: '90px', }} >
-                    41232
+                    4 1 2 3 2
                   </h1>
+                  <form autoComplete='off' >
+
                   <Box component="form" noValidate  sx={{ mt: 3, height: '35px', width: '100%' }}>
                     <Grid item xs={12}>
-                      <TextField
+                      {/* <TextField
                         required
                         fullWidth
                         id="numberentry"
@@ -301,9 +314,12 @@ const Cognitivetest2 = () => {
                         onChange={handleEntry}
                         autoFocus
                         autoComplete="off"
-                      />
+                      /> */}
+                       <input password="password" autoComplete="off" autoFocus placeholder="Type Number.." style={formInput} onChange={handleEntry} />
+
                     </Grid>
                   </Box>
+                  </form>
                 </div>
               : null}
               {displayCross ?

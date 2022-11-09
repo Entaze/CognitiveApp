@@ -164,7 +164,7 @@ const LoginNavBar = () => {
       })
       .catch((err) => {
         setErrorMessage('Email and password do not match.');
-        console.log('Err :', err)
+        // console.log('Err :', err)
       })
     }
   }

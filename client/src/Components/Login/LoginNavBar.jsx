@@ -162,9 +162,9 @@ const LoginNavBar = () => {
           navigate("/test-end")
         }
       })
-      // .catch((err) => {
-      //   setErrorMessage('Email and password do not match.');
-      // })
+      .catch((err) => {
+        setErrorMessage('Email and password do not match.');
+      })
     }
   }
 

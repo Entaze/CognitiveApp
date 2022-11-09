@@ -13,6 +13,7 @@ const ForgotPassword = lazy(() => import('./Components/Login/ForgotPassword.jsx'
 const ResetPassword = lazy(() => import('./Components/Login/ResetPassword.jsx'));
 const CognitiveTest1 = lazy(() => import('./Components/cognitivetest/Test1/CognitiveTest1.jsx'));
 const CognitiveTest2 = lazy(() => import('./Components/cognitivetest/Test2/CognitiveTest2.jsx'));
+const CognitiveTest3 = lazy(() => import('./Components/cognitivetest/Test3/CognitiveTest3.jsx'));
 const Welcome = lazy(() => import('./Components/cognitivetest/Welcome.jsx'));
 const Finish = lazy(() => import('./Components/cognitivetest/Finish.jsx'));
 
@@ -27,6 +28,8 @@ ReactDOM.render(
       <Route path="/login" element={<Login />} />
       <Route path="/forgotpassword" element={<ForgotPassword />} />
       <Route path="/resetpassword" element={<ResetPassword />} />
+      <Route path="/cognitivetest3" element={<CognitiveTest3 />} />
+
       <Route path="/cognitivetest2" element={<CognitiveTest2 />} />
       <Route path="/cognitivetest1" element={<CognitiveTest1 />} />
       <Route path="/test-begin" element={<Welcome />} />

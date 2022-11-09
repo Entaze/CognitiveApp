@@ -35,7 +35,7 @@ const centerScreen = {
   alignItems: 'center',
   marginLeft: '10%',
   marginRight: '10%',
-  paddingTop: '15%',
+  paddingTop: '25%',
   paddingBottom: '10%',
   flexDirection: 'column',
 }

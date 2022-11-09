@@ -147,7 +147,7 @@ const LoginNavBar = () => {
       setErrorMessage('Invalid email entered!');
     } else if (!loginPackage.password) {
       setErrorMessage('Password is required!');
-    } else {
+    } else if (loginPackage.email && loginPackage.password) {
       axios.post('/api/login', loginPackage)
       .then((res) => {
         localStorage.setItem('token', JSON.stringify(res.data.token));
@@ -164,6 +164,7 @@ const LoginNavBar = () => {
       })
       .catch((err) => {
         setErrorMessage('Email and password do not match.');
+        console.log('Err :', err)
       })
     }
   }

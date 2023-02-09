@@ -39,6 +39,11 @@ app.post('/api/user', userController.updateUser)
 app.put('/api/forgotpassword', userController.forgotPassword)
 app.put('/api/resetpassword', userController.resetPassword)
 app.post('/api/cognitivetest', testController.postTest);
+app.get('/api/test3Images', testController.getTest);
+app.post('/api/test3imagerating', testController.postRating)
+app.post('/api/test3imagerating2', testController.postRating2)
+
+
 // app.get('/api/resetpassword/:token', (req, res) => {
 
 //   var myRegexp = /(?:\/resetpassword\/:)(.+)/g;

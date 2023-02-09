@@ -35,8 +35,8 @@ const centerScreen = {
   alignItems: 'center',
   marginLeft: '10%',
   marginRight: '10%',
-  paddingTop: '25%',
-  paddingBottom: '10%',
+  paddingTop: '15%',
+  paddingBottom: '5%',
   flexDirection: 'column',
 }
 
@@ -56,7 +56,7 @@ const formInput = {
   borderRadius: '10px',
   margin: '15px 15px 15px 15px',
   textIndent: '20px',
-  webkitTextSecurity: 'disc',
+  WebkitTextSecurity: 'disc',
 }
 
 const exCenter = {
@@ -104,9 +104,10 @@ const Cognitivetest2 = () => {
 
   useEffect(() => {
     if (TestIntro) {
-      setTimeout(() => {
-        setImgLoaded(true)
-      }, 3000)
+      setImgLoaded(true)
+      // setTimeout(() => {
+      //   setImgLoaded(true)
+      // }, 3000)
       }
   }, [TestIntro, loaded])
 
@@ -167,7 +168,7 @@ const Cognitivetest2 = () => {
         setDisplayNum(false)
         setDisplayCross(true)
         setTrial(true)
-      }, 30000)
+      }, 15000)
 
       setTimeout(() => {
         if (trialCount > 1) {
@@ -183,14 +184,11 @@ const Cognitivetest2 = () => {
           .then((result) => {
             // console.log('success post test 2 completion', result)
             setStartTest2(false)
-
-            navigate('/test-end')
-
-
-            // setTest2End(true)
+            // navigate('/cognitivetest3')
+            setTest2End(true)
           })
         }
-      }, 60000)
+      }, 20000)
     }
 
     useEffect(()=> {
@@ -226,7 +224,7 @@ const Cognitivetest2 = () => {
         setTrialEntry(trialEntry - 1);
         axios.post('/api/cognitivetest', param )
         .then((res) => {
-          console.log(res.data)
+          // console.log(res.data)
           setEntry('')
         })
       }
@@ -252,7 +250,7 @@ const Cognitivetest2 = () => {
         <NavigationBar />
           <div style={centerScreen} >
             <h1 style={{ color: '#e67373', fontSize: 50, }} >TEST 2</h1>
-            <div style={{ fontSize: 35, margin: '8% 0', fontWeight: 700, lineHeight: '1.6' }}>
+            <div style={{ fontSize: 35, margin: '4% 0', fontWeight: 700, lineHeight: '1.6' }}>
             You will be shown a sequence of numbers on the screen. Using your dominant hand (i.e., the hand you use to write with), type the sequence as fast and accurately as possible. Keep typing the sequence over and over until you see an X on the screen. The numbers will reappear after 30 secs at which point you will start typing the sequence over and over again until you see the next X. This will happen 12 times. <br /> [Click next to continue]
             </div>
             <div>
@@ -301,7 +299,7 @@ const Cognitivetest2 = () => {
                   </h1>
                   <form autoComplete='off' >
 
-                  <Box component="form" noValidate  sx={{ mt: 3, height: '35px', width: '100%' }}>
+                  <div component="form" noValidate  sx={{ mt: 3, height: '35px', width: '100%' }}>
                     <Grid item xs={12}>
                       {/* <TextField
                         required
@@ -318,7 +316,7 @@ const Cognitivetest2 = () => {
                        <input password="password" autoComplete="off" autoFocus placeholder="Type Number.." style={formInput} onChange={handleEntry} />
 
                     </Grid>
-                  </Box>
+                  </div>
                   </form>
                 </div>
               : null}

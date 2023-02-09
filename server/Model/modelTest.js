@@ -42,9 +42,6 @@ module.exports = {
     } else if (body.Test2_Entry_12) {
       data = {Test2_Entry_12: body.Test2_Entry_12}
     }
-
-    console.log('Body :', body)
-
     let options = { upsert: true, new: true, setDefaultsOnInsert: true };
     db.CognitiveTest.findOneAndUpdate({_id: body.id}, data, options)
       .then((result) => {
@@ -53,5 +50,41 @@ module.exports = {
       .catch((err) => {
         cb(err);
       })
+  },
+  getTest: (body, cb) => {
+    // console.log('Model test body :', body)
+    db.CognitiveTest.findOne(body)
+    .then((result) => {
+      cb(null, result);
+    })
+    .catch((err) => {
+      cb(err);
+    })
+  },
+  postRating: (body, cb) => {
+    let data = body.obj;
+    db.CognitiveTest.findOneAndUpdate(
+      { _id : body._id },
+      { $push : {Test3Images: data}}
+   )
+    .then((result) => {
+      cb(null, result);
+    })
+    .catch((err) => {
+      cb(err);
+    })
+  },
+  postRating2: (body, cb) => {
+    let data = body.obj;
+    db.CognitiveTest.findOneAndUpdate(
+      { _id : body._id },
+      { $push : {Test3Images2: data}}
+   )
+    .then((result) => {
+      cb(null, result);
+    })
+    .catch((err) => {
+      cb(err);
+    })
   },
 }

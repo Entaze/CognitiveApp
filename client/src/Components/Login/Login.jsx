@@ -120,22 +120,30 @@ function Login() {
       .then((res) => {
         setUserAuth(true)
         setCheckUserLogin(true)
-        axios.get('/api/user', {params: {_id: res.data.jwtResponse._id}})
-        .then((res) => {
-          let user = res.data.user;
-          setUserProfile(user)
-          console.log('User logged in :', user)
-          if (!user.test1Completion) {
-            navigate('/cognitivetest1')
-          } else if (!user.test2Completion) {
-            navigate('/cognitivetest2')
-          } else if (!user.test3Completion) {
-            navigate('/test-end')
-          }
-        })
-        .catch((err) => {
-          console.log(err)
-        })
+        if (res.data.jwtResponse._id) {
+          axios.get('/api/user', {params: {_id: res.data.jwtResponse._id}})
+          .then((res) => {
+            let user = res.data.user;
+            setUserProfile(user)
+            // console.log('User logged in :', user)
+            if (!user.test1Completion) {
+              navigate('/cognitivetest1')
+            } else if (!user.test2Completion) {
+              navigate('/cognitivetest2')
+            } else if (!user.test3Completion) {
+
+              navigate('/cognitivetest3')
+
+            } else {
+              navigate('/test-end')
+              // navigate('/cognitivetest3')
+
+            }
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+        }
       })
       .catch((err) =>{
         console.log(err)
@@ -204,7 +212,9 @@ function Login() {
           setSuccessMessage('Form successfully submitted..')
           localStorage.setItem('token', JSON.stringify(res.data.token));
           localStorage.setItem('loggedIn', JSON.stringify(true));
+          localStorage.setItem('userLoggedIn', JSON.stringify(res.data.user));
           setUserProfile(res.data);
+          // console.log('Sign up res data :', res.data)
           navigate("/test-begin");
         }
       })

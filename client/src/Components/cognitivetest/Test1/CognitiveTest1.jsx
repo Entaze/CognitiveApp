@@ -203,7 +203,8 @@ function Cognitivetest () {
   const [user, setUser] = useState(false);
   const [userAuth, setUserAuth] = useState(false);
 
-
+  const userloggedIn = JSON.parse(window.localStorage.getItem('userLoggedIn'));
+  const [userId, setUserId] = useState(null);
   const [testListATrials, setTestListATrials] = useState(1);
   const [testListBTrials, setTestListBTrials] = useState(1);
   const [firstPage, setFirstPage] = useState(true);
@@ -262,6 +263,17 @@ function Cognitivetest () {
       setIsMounted(false);
     }
   }, []);
+
+  useEffect(()=> {
+    if (userProfile) {
+      if (userloggedIn._id) {
+        setUserId(userloggedIn._id);
+      }
+      if (userProfile._id) {
+        setUserId(userProfile._id);
+      }
+    }
+  }, [userloggedIn, userProfile])
 
  useEffect(() => {
   if (userProfile) {
@@ -383,44 +395,56 @@ useEffect(()=> {
 }, [data])
 
 const handlePostWords = () => {
+  // console.log('userId :', userId)
   setFormState(false);
   setRepeatListA(true);
   const date = new Date();
   let param;
-  if(testListATrials === 1) {
-    param = {id: userProfile._id, ListAEntries_Trial1: wordsEnteredListA, time: date};
-  } else if (testListATrials === 2) {
-    param = {id: userProfile._id, ListAEntries_Trial2: wordsEnteredListA, time: date};
-  } else if (testListATrials === 3) {
-    param = {id: userProfile._id, ListAEntries_Trial3: wordsEnteredListA, time: date};
-  } else if (testListATrials === 4) {
-    param = {id: userProfile._id, ListAEntries_Trial4: wordsEnteredListA, time: date};
-  } else if (testListATrials === 5) {
-    param = {id: userProfile._id, ListAEntries_Trial5: wordsEnteredListA, time: date};
-  } else if (testListATrials === 6) {
-    param = {id: userProfile._id, ListBEntries: wordsEnteredListA, time: date};
-  } else {
-    param = {id: userProfile._id, ListAEntriesRecall: wordsEnteredListA, time: date};
-  }
+
   let countUp = testListATrials + 1;
   setTestListATrials(countUp);
-  if (param.ListAEntriesRecall) {
+  if (testListATrials === 1) {
+    param = {id: userId, ListAEntries_Trial1: wordsEnteredListA, time: date};
+  }
+  if (testListATrials === 2) {
+    param = {id: userId, ListAEntries_Trial2: wordsEnteredListA, time: date};
+  }
+  if (testListATrials === 3) {
+    param = {id: userId, ListAEntries_Trial3: wordsEnteredListA, time: date};
+  }
+  if (testListATrials === 4) {
+    param = {id: userId, ListAEntries_Trial4: wordsEnteredListA, time: date};
+  }
+  if (testListATrials === 5) {
+    param = {id: userId, ListAEntries_Trial5: wordsEnteredListA, time: date};
+  }
+  if (testListATrials === 6) {
+    param = {id: userId, ListBEntries: wordsEnteredListA, time: date};
+  }
+  if (testListATrials === 7) {
+    param = {id: userId, ListAEntriesRecall: wordsEnteredListA, time: date};
+  }
+
+  // console.log('Post wrds :', param)
+
+  if (testListATrials <= 6) {
     axios.post('/api/cognitivetest', param)
     .then((res) => {
-      let complete = {_id: userProfile._id, test1Completion: true};
+      // console.log('res :', res)
+    })
+  } else if (testListATrials === 7) {
+    axios.post('/api/cognitivetest', param)
+    .then((res) => {
+      let complete = {_id: userId, test1Completion: true};
       axios.post('/api/user', complete)
       .then((result) => {
         // console.log('success post test 1 completion', result)
         setTest1End(true)
       })
     })
-  } else {
-    axios.post('/api/cognitivetest', param)
-    .then((res) => {
-
-    })
   }
 }
+
 
 useEffect(() => {
   if (countModal === wordsArr.length - 1) {
@@ -564,7 +588,7 @@ const handleInput = (e) => {
                         :
                       null}
                         <DialogActions>
-                          <Button  style={submitButton} onClick={handlePostWords} type='submit' disableHover='true' >
+                          <Button  style={submitButton} onClick={handlePostWords} type='submit' disablehover='true' >
                           Submit Test
                           </Button>
                         </DialogActions>

@@ -111,6 +111,10 @@ exports.updateUser = (req, res) => {
   } else if (body.test2Completion) {
     console.log('Req :', req.body)
     param = { test2Completion: body.test2Completion };
+  } else if (body.test3Completion) {
+    param = { test3Completion: body.test3Completion };
+  } else if (body.test4Completion) {
+    param = { test4Completion: body.test4Completion };
   }
 
   User.updateOne({_id: body._id}, {$set: param}, (err, user) => {

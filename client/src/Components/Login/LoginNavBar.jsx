@@ -158,9 +158,14 @@ const LoginNavBar = () => {
           navigate("/cognitivetest1")
         } else if (data.token && !data.user.test2Completion) {
           navigate("/cognitivetest2")
-        } else if (data.token && data.user.test2Completion) {
-          navigate("/test-end")
+        } else if (data.token && !data.user.test3Completion) {
+          navigate("/cognitivetest3")
         }
+        // else if (data.token && !data.user.test4Completion) {
+        //   navigate("/cognitivetest4")
+        // } else if (data.token && data.user.test4Completion) {
+        //   navigate("/test-end")
+        // }
       })
       .catch((err) => {
         setErrorMessage('Email and password do not match.');

@@ -226,6 +226,7 @@ function Cognitivetest () {
   const [nav, setNav] = useState(false);
 
   const [wordRecall, setWordRecall] = useState(false);
+  const [wrdRecall, setwrdRecall] = useState(false);
   const [listAReEntryModal, setListAReEntryModal] = useState(false);
   const [formState, setFormState] = useState(false);
 
@@ -370,6 +371,14 @@ const handleButtonClick = (e) => {
   setFormState(true);
   setNav(false);
 }
+
+useEffect(()=>{
+  if (wordRecall) {
+    setwrdRecall(true)
+  } else {
+    setwrdRecall(false)
+  }
+}, [wordRecall])
 
 const toggleFormState = () => {
   setFormState(true);
@@ -552,7 +561,7 @@ const handleInput = (e) => {
           {!listAReEntry ?
             <Typography style={{ fontSize: 40, fontWeight: 700, textAlign: 'center', fontFamily:'Courgette' }} >{word}</Typography>
            : null}
-          {wordRecall ?
+          {wrdRecall ?
           <>
             <div style={centerScreen} >
               <div style={{  fontSize: 35, fontWeight: 700, display: 'flex', padding: '0px 40px 120px 40px', }} >Click on button to enter as many words as you can remember...</div>

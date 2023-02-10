@@ -159,8 +159,8 @@ const Cognitivetest3 = () => {
     'https://res.cloudinary.com/entazesoftware/image/upload/v1671644479/WomanTwoSAAPS_hsyc4j.jpg',
     'https://res.cloudinary.com/entazesoftware/image/upload/v1671644479/WomanThreeSAAPS_djtvab.jpg',
 
-    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1671644970/PoliceTwoSAAPS_eywquv.jpg',
-    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1671644970/PoliceBatonSAAPS_lqpxj3.jpg',
+    'https://res.cloudinary.com/entazesoftware/image/upload/v1671644970/PoliceTwoSAAPS_eywquv.jpg',
+    'https://res.cloudinary.com/entazesoftware/image/upload/v1671644970/PoliceBatonSAAPS_lqpxj3.jpg',
     // 'https://res.cloudinary.com/entazesoftware/image/upload/v1671644971/RepeatBloodyKiss_cx3bey.jpg',
     // 'https://res.cloudinary.com/entazesoftware/image/upload/v1671644971/PoleVaulterSAAPS_gbmkyz.jpg',
     // 'https://res.cloudinary.com/entazesoftware/image/upload/v1671644971/RepeatAbstractArtOne_ffshve.jpg',
@@ -285,8 +285,8 @@ const Cognitivetest3 = () => {
       'https://res.cloudinary.com/entazesoftware/image/upload/v1675958955/RepeatSoldierOne_fy5l8v.jpg',
       'https://res.cloudinary.com/entazesoftware/image/upload/v1675958955/RepeatOctopus_1_yzausy.jpg',
 
-      // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958955/RepeatSnakeOne_1_vj2vlp.jpg',
-      // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958954/RepeatPitBull_wynbef.jpg',
+      'https://res.cloudinary.com/entazesoftware/image/upload/v1675958955/RepeatSnakeOne_1_vj2vlp.jpg',
+      'https://res.cloudinary.com/entazesoftware/image/upload/v1675958954/RepeatPitBull_wynbef.jpg',
       // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958953/RepeatCoulds_ddlbsx.jpg',
       // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958953/RepeatMutilationSeven_wbm7mq.jpg',
       // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958953/RepeatMutilationEight_1_abh9sv.jpg',
@@ -1211,7 +1211,7 @@ const Cognitivetest3 = () => {
             </>
           : null}
           {sectionTwoStart ?
-          <div style={{ fontSize: 40, fontWeight: 700, display: 'flex', flexDirection: 'column', padding: '60px 40px 120px 40px', lineHeight: '1.6', alignItems: 'center', justifyContent: 'center', }} >
+          <div style={{ fontSize: 40, fontWeight: 300, display: 'flex', flexDirection: 'column', padding: '60px 40px 2px 40px', lineHeight: '1.6', alignItems: 'center', justifyContent: 'center', }} >
           Welcome back! <br />
           Just like last time you will see some pictures appear on the screen, one after each other. Again some pictures will be positive, some will be neutral and some will be negative.
           However, some pictures will be the same as last time, but some will be new.

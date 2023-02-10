@@ -880,7 +880,7 @@ const Cognitivetest3 = () => {
      axios.post('/api/test3imagerating2', param)
      .then((res) => {
       //  console.log('res.data confirm 2:', res.data)
-      //  setImageConfirm(null);
+       setImageConfirm(null);
        setAxiosSend2(false);
        setImageRatingS2(null);
        setImageRating2S2(null);

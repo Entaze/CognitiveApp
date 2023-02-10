@@ -130,7 +130,7 @@ function Login() {
               navigate('/cognitivetest1')
             } else if (!user.test2Completion) {
               navigate('/cognitivetest2')
-            } else if (!user.test3Completion) {
+            } else if (user.test3Completion) {
               navigate('/cognitivetest3')
             } else {
               navigate('/test-end')

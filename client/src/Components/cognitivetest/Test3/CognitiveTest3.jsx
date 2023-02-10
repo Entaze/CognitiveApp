@@ -274,16 +274,16 @@ const Cognitivetest3 = () => {
       'https://res.cloudinary.com/entazesoftware/image/upload/v1675958962/SkierOneSAAPS_hh8gos.jpg',
       'https://res.cloudinary.com/entazesoftware/image/upload/v1675958962/SkySurderSAAPS_1_md1xaj.jpg',
 
-      // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958961/ShipWaveSAAPS_cdgqy6.jpg',
-      // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958961/SealOneSAAPS_1_mxiust.jpg',
-      // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958961/RunnersSAAPS_gqlhow.jpg',
-      // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958957/RomanceThreeSAAPS_hzhrq7.jpg',
-      // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958957/RowerSAAPS_1_expupk.jpg',
-      // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958957/RepeatVomitTwo_1_q7sbu5.jpg',
-      // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958956/RepeatTrain_1_armvzq.jpg',
-      // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958956/RepeatStilLIfe_xd8rsg.jpg',
-      // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958955/RepeatSoldierOne_fy5l8v.jpg',
-      // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958955/RepeatOctopus_1_yzausy.jpg',
+      'https://res.cloudinary.com/entazesoftware/image/upload/v1675958961/ShipWaveSAAPS_cdgqy6.jpg',
+      'https://res.cloudinary.com/entazesoftware/image/upload/v1675958961/SealOneSAAPS_1_mxiust.jpg',
+      'https://res.cloudinary.com/entazesoftware/image/upload/v1675958961/RunnersSAAPS_gqlhow.jpg',
+      'https://res.cloudinary.com/entazesoftware/image/upload/v1675958957/RomanceThreeSAAPS_hzhrq7.jpg',
+      'https://res.cloudinary.com/entazesoftware/image/upload/v1675958957/RowerSAAPS_1_expupk.jpg',
+      'https://res.cloudinary.com/entazesoftware/image/upload/v1675958957/RepeatVomitTwo_1_q7sbu5.jpg',
+      'https://res.cloudinary.com/entazesoftware/image/upload/v1675958956/RepeatTrain_1_armvzq.jpg',
+      'https://res.cloudinary.com/entazesoftware/image/upload/v1675958956/RepeatStilLIfe_xd8rsg.jpg',
+      'https://res.cloudinary.com/entazesoftware/image/upload/v1675958955/RepeatSoldierOne_fy5l8v.jpg',
+      'https://res.cloudinary.com/entazesoftware/image/upload/v1675958955/RepeatOctopus_1_yzausy.jpg',
 
       // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958955/RepeatSnakeOne_1_vj2vlp.jpg',
       // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958954/RepeatPitBull_wynbef.jpg',
@@ -869,7 +869,7 @@ const Cognitivetest3 = () => {
     if (AxiosSend2 && UnratedImages2) {
       // For interrupted test due to refresh or sign out
       imNum = imageNum2 + 1;
-      const key = 'Image'+ imNum, value = srcIm22;
+      const key = 'Image'+ imNum, value = srcIm2;
 
       const obj = {
         [`${key}`]: {src: value, YesNo: imageConfirm, NegativePositiveRating: ImageRatingS2, CalmExcitedRating: ImageRating2S2 }

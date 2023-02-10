@@ -937,7 +937,7 @@ const Cognitivetest3 = () => {
     setImageRating2(5);
   }
   const Rate16 = () => {
-    setImageRating(6);
+    setImageRating2(6);
   }
   const Rate17 = () => {
     setImageRating2(7);

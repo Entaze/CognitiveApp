@@ -69,6 +69,7 @@ const exCenter = {
 }
 
 const Cognitivetest2 = () => {
+  const token = window.localStorage.getItem('token');
   const { userProfile, cognitiveTest, setCognitiveTest } = useMainContext();
   const [userAuth, setUserAuth] = useState(false);
 
@@ -112,7 +113,7 @@ const Cognitivetest2 = () => {
   }, [TestIntro, loaded])
 
   useEffect(() => {
-    if (userProfile) {
+    if (userProfile && token) {
       setUserAuth(true);
     } else {
       navigate('/login')

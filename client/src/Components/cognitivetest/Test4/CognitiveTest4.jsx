@@ -58,6 +58,7 @@ const exCenter = {
 }
 
 const Cognitivetest4 = () => {
+  const token = window.localStorage.getItem('token');
   const { userProfile, cognitiveTest, setCognitiveTest } = useMainContext();
   const [userAuth, setUserAuth] = useState(false);
   const [firstPage, setFirstPage] = useState(true);

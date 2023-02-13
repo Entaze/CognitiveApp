@@ -34,6 +34,7 @@ const button = {
 }
 
 const Finish = () => {
+  const token = window.localStorage.getItem('token');
   const { userProfile, cognitiveTest, setCognitiveTest } = useMainContext();
   const [userAuth, setUserAuth] = useState(false);
   const [firstPage, setFirstPage] = useState(true);
@@ -53,7 +54,7 @@ const Finish = () => {
   }, []);
 
   useEffect(() => {
-    if (userProfile) {
+    if (userProfile && token) {
       setUserAuth(true);
     } else {
       navigate('/login')

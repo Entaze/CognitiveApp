@@ -174,6 +174,7 @@ exports.logIn = (req, res) => {
 exports.logOut = (req, res) => {
   res.clearCookie("token")
   return res.json({
+    // console.log('token :': res)
     message: "User sign out successful"
   })
 }

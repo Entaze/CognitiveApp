@@ -89,6 +89,7 @@ const TestRatings2 = {
 }
 
 const Cognitivetest3 = () => {
+  const token = window.localStorage.getItem('token');
   const { userProfile, cognitiveTest, setCognitiveTest } = useMainContext();
   const [userAuth, setUserAuth] = useState(false);
   const [firstPage, setFirstPage] = useState(null);
@@ -159,8 +160,8 @@ const Cognitivetest3 = () => {
     'https://res.cloudinary.com/entazesoftware/image/upload/v1671644479/WomanTwoSAAPS_hsyc4j.jpg',
     'https://res.cloudinary.com/entazesoftware/image/upload/v1671644479/WomanThreeSAAPS_djtvab.jpg',
 
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1671644970/PoliceTwoSAAPS_eywquv.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1671644970/PoliceBatonSAAPS_lqpxj3.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1671644970/PoliceTwoSAAPS_eywquv.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1671644970/PoliceBatonSAAPS_lqpxj3.jpg',
     // 'https://res.cloudinary.com/entazesoftware/image/upload/v1671644971/RepeatBloodyKiss_cx3bey.jpg',
     // 'https://res.cloudinary.com/entazesoftware/image/upload/v1671644971/PoleVaulterSAAPS_gbmkyz.jpg',
     // 'https://res.cloudinary.com/entazesoftware/image/upload/v1671644971/RepeatAbstractArtOne_ffshve.jpg',
@@ -274,19 +275,19 @@ const Cognitivetest3 = () => {
       'https://res.cloudinary.com/entazesoftware/image/upload/v1675958962/SkierOneSAAPS_hh8gos.jpg',
       'https://res.cloudinary.com/entazesoftware/image/upload/v1675958962/SkySurderSAAPS_1_md1xaj.jpg',
 
-      'https://res.cloudinary.com/entazesoftware/image/upload/v1675958961/ShipWaveSAAPS_cdgqy6.jpg',
-      'https://res.cloudinary.com/entazesoftware/image/upload/v1675958961/SealOneSAAPS_1_mxiust.jpg',
-      'https://res.cloudinary.com/entazesoftware/image/upload/v1675958961/RunnersSAAPS_gqlhow.jpg',
-      'https://res.cloudinary.com/entazesoftware/image/upload/v1675958957/RomanceThreeSAAPS_hzhrq7.jpg',
-      'https://res.cloudinary.com/entazesoftware/image/upload/v1675958957/RowerSAAPS_1_expupk.jpg',
-      'https://res.cloudinary.com/entazesoftware/image/upload/v1675958957/RepeatVomitTwo_1_q7sbu5.jpg',
-      'https://res.cloudinary.com/entazesoftware/image/upload/v1675958956/RepeatTrain_1_armvzq.jpg',
-      'https://res.cloudinary.com/entazesoftware/image/upload/v1675958956/RepeatStilLIfe_xd8rsg.jpg',
-      'https://res.cloudinary.com/entazesoftware/image/upload/v1675958955/RepeatSoldierOne_fy5l8v.jpg',
-      'https://res.cloudinary.com/entazesoftware/image/upload/v1675958955/RepeatOctopus_1_yzausy.jpg',
+      // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958961/ShipWaveSAAPS_cdgqy6.jpg',
+      // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958961/SealOneSAAPS_1_mxiust.jpg',
+      // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958961/RunnersSAAPS_gqlhow.jpg',
+      // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958957/RomanceThreeSAAPS_hzhrq7.jpg',
+      // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958957/RowerSAAPS_1_expupk.jpg',
+      // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958957/RepeatVomitTwo_1_q7sbu5.jpg',
+      // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958956/RepeatTrain_1_armvzq.jpg',
+      // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958956/RepeatStilLIfe_xd8rsg.jpg',
+      // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958955/RepeatSoldierOne_fy5l8v.jpg',
+      // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958955/RepeatOctopus_1_yzausy.jpg',
 
-      'https://res.cloudinary.com/entazesoftware/image/upload/v1675958955/RepeatSnakeOne_1_vj2vlp.jpg',
-      'https://res.cloudinary.com/entazesoftware/image/upload/v1675958954/RepeatPitBull_wynbef.jpg',
+      // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958955/RepeatSnakeOne_1_vj2vlp.jpg',
+      // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958954/RepeatPitBull_wynbef.jpg',
       // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958953/RepeatCoulds_ddlbsx.jpg',
       // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958953/RepeatMutilationSeven_wbm7mq.jpg',
       // 'https://res.cloudinary.com/entazesoftware/image/upload/v1675958953/RepeatMutilationEight_1_abh9sv.jpg',
@@ -670,7 +671,7 @@ const Cognitivetest3 = () => {
 
   /*  HOOK CALL FOR USER AUTH */
   useEffect(() => {
-    if (userProfile) {
+    if (userProfile && token) {
       setUserAuth(true);
     } else {
       navigate('/login')
@@ -1035,7 +1036,7 @@ const Cognitivetest3 = () => {
             <>
             <div style={centerScreen} >
               <h1 style={{ color: '#e67373', fontSize: 50, }} >TEST 3</h1>
-              <div style={{ fontSize: 30, fontWeight: 700, display: 'flex', flexDirection: 'column', padding: '60px 40px 120px 40px', lineHeight: '1.6', }} >
+              <div style={{ fontSize: 30, fontWeight: 400, display: 'flex', flexDirection: 'column', padding: '60px 40px 120px 40px', lineHeight: '1.6', }} >
               You will see some pictures appear on the screen, one after each other. Some pictures will be positive, some will be neutral, and some will be negative. Please note that some pictures may be offensive to sensitive viewers.
               Please look at each picture carefully and try to remember it. <br />
               {!Text2 ?

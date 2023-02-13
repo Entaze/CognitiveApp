@@ -197,9 +197,8 @@ const useStyles = makeStyles({
 });
 
 function Cognitivetest () {
-  const classes = useStyles();
+  const token = window.localStorage.getItem('token');
   const { userProfile, cognitiveTest, setCognitiveTest } = useMainContext();
-
   const [user, setUser] = useState(false);
   const [userAuth, setUserAuth] = useState(false);
 
@@ -229,7 +228,7 @@ function Cognitivetest () {
   const [wrdRecall, setwrdRecall] = useState(false);
   const [listAReEntryModal, setListAReEntryModal] = useState(false);
   const [formState, setFormState] = useState(false);
-
+  const classes = useStyles();
   const [repeatListA, setRepeatListA] = useState(false);
   const { register, handleSubmit, reset } = useForm({
     mode: 'onSubmit',
@@ -277,7 +276,7 @@ function Cognitivetest () {
   }, [userloggedIn, userProfile])
 
  useEffect(() => {
-  if (userProfile) {
+  if (userProfile && token) {
     setUserAuth(true);
   } else {
     navigate('/login')

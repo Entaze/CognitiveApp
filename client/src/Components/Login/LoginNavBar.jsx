@@ -139,6 +139,7 @@ const LoginNavBar = () => {
       email: emailLogin,
       password: passwordLogin
     };
+    // console.log(loginPackage)
     if (!loginPackage.email && !loginPackage.password) {
       setErrorMessage('Enter email and password to login!');
     } else if (!loginPackage.email) {
@@ -150,22 +151,38 @@ const LoginNavBar = () => {
     } else if (loginPackage.email && loginPackage.password) {
       axios.post('/api/login', loginPackage)
       .then((res) => {
-        localStorage.setItem('token', JSON.stringify(res.data.token));
-        localStorage.setItem('loggedIn', JSON.stringify(true));
-        setUserProfile(res.data.user);
+        // console.log("RES :", res.data.user.userConfirmed)
+        if (res.data.user.userConfirmed) {
+          localStorage.setItem('token', JSON.stringify(res.data.token));
+          localStorage.setItem('loggedIn', JSON.stringify(true));
+          setUserProfile(res.data.user);
+
         const data = res.data;
-        if (data.token && !data.user.test1Completion) {
+        if (!data.user.userConfirmed) {
+          setErrorMessage('Account not confirmed!');
+          navigate('/login')
+        } else if (data.token && !data.user.test1Completion) {
           navigate("/cognitivetest1")
         } else if (data.token && !data.user.test2Completion) {
           navigate("/cognitivetest2")
         } else if (data.token && !data.user.test3Completion) {
           navigate("/cognitivetest3")
+        } else if (data.token && !data.user.test4Completion) {
+          navigate("/cognitivetest4")
+        } else if (data.token && !data.user.test1CompletionRecall) {
+          navigate("/cognitivetest1recall")
+        } else if (data.token && !data.user.test2CompletionRecall) {
+          navigate("/cognitivetest2recall")
+        } else if (data.token && !data.user.test3CompletionRecall) {
+          navigate("/cognitivetest3recall")
+        } else if (data.token && !data.user.test3CompletionRecall) {
+          navigate("/cognitivetest4recall")
+        } else if (data.token && data.user.test4Completion) {
+          navigate("/test-end")
         }
-        // else if (data.token && !data.user.test4Completion) {
-        //   navigate("/cognitivetest4")
-        // } else if (data.token && data.user.test4Completion) {
-        //   navigate("/test-end")
-        // }
+      } else {
+        setErrorMessage('Account not confirmed!');
+      }
       })
       .catch((err) => {
         setErrorMessage('Email and password do not match.');
@@ -183,7 +200,7 @@ const LoginNavBar = () => {
           <LeftDropContainer ></LeftDropContainer>
           <RightDropContainer >
           {errorMessage ?
-              <Alert sx={{ height: '44px', whiteSpace: 'nowrap', marginLeft: '5px', marginTop: '10px' }} severity="error" > {errorMessage} </Alert>
+              <Alert sx={{ height: '50px', width: '300px', whiteSpace: 'nowrap', marginLeft: '5px', marginTop: '10px' }} severity="error" > {errorMessage} </Alert>
               :
             null}
             <LoginFormSub onSubmit={handleLogin} autoComplete="off" >

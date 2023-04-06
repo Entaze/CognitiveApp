@@ -78,7 +78,7 @@ function ForgotPassword() {
       <Typography variant="body2" color="text.secondary" align="center" {...props}>
         {'Copyright © '}
         <Link color="inherit" href="#">
-          David U.
+          David Unuigbe
         </Link>{' '}
         {new Date().getFullYear()}
         {'.'}

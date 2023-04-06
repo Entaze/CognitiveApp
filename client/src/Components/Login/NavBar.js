@@ -17,7 +17,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 function Navbar({ loginNavbar, setLoginNavbar, handleLoginButton }) {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   return (
     <NavbarContainer>

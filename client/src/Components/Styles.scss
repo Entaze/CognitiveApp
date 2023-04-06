@@ -124,6 +124,7 @@ button:hover{
 	top:-207px;
 }
 .WelcomeTitle {
+  color: #36C5F0;
   font-size: 3rem;
   letter-spacing: .5em;
   text-transform: uppercase;
@@ -131,17 +132,27 @@ button:hover{
   font-family: Oswald, Verdana, sans-serif;
 }
 //  Cognitive Test 3
+.TestImages {
+  display: flex;
+  width: 70vw;
+  height: 60vh;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  border: solid 50px #f5f5f0;
+}
 .confirm-box {
-	width:280px;
+	width:480px;
+  height: 150px;
   position:relative;
   margin:30px auto;
 
   color:rgba(0,0,0,0.8);
   font-family:Helvetica;
-  font-size:15px;
+  font-size:25px;
   font-weight:bold;
 
-  background:#333;
+  background:#9b9292;
   border-radius:0.4em;
   border:1px solid rgba(0,0,0,0.6);
   box-shadow:
@@ -170,12 +181,13 @@ button:hover{
 }
 
 .confirm-box p {
+  height: auto;
  	text-align:center;
   padding:10px 0;
   border-radius:0.4em 0.4em 0 0;
   text-shadow:0 1px 0 rgba(255,255,255,0.1);
 	border-bottom:1px solid rgba(0,0,0,0.5);
-  margin-bottom:10px;
+  margin-bottom:19px;
 }
 
 
@@ -190,7 +202,7 @@ button:hover{
 
   text-decoration:none;
   text-align:center;
-  font-size:13px;
+  font-size:19px;
 
   border:1px solid rgba(0,0,0,0.7);
   border-radius:0.2em;
@@ -221,11 +233,25 @@ button:hover{
   }
 
   &:first-of-type {
-    margin-left:30px;
+    margin-left:130px;
     background:#5f9a2e ;
   }
 
   &:last-of-type {
    background:#d02211;
   }
+}
+
+.timer {
+	font-size: 46px;
+	padding: 16px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.timer span {
+	font-size: 16px;
+	color: #b8aeae;
 }

@@ -204,9 +204,9 @@ function Cognitivetest () {
 
   const userloggedIn = JSON.parse(window.localStorage.getItem('userLoggedIn'));
   const [userId, setUserId] = useState(null);
-  const [testListATrials, setTestListATrials] = useState(1);
+  const [testListATrials, setTestListATrials] = useState(null);
   const [testListBTrials, setTestListBTrials] = useState(1);
-  const [firstPage, setFirstPage] = useState(true);
+  const [firstPage, setFirstPage] = useState(false);
   const [startTest, setStartTest] = useState(false);
   const [startTestListB, setStartTestListB] = useState(false);
   const [startTestListARecall, setStartTestListARecall] = useState(false);
@@ -223,6 +223,9 @@ function Cognitivetest () {
   const [wordErr, setWordErr] = useState({});
   const [wordsEnteredListA, SetWordsEnteredListA] = useState([]);
   const [nav, setNav] = useState(false);
+  const [beginSec1, setBeginSec1] = useState(false);
+  const [IntroStep, setIntroStep] = useState(false);
+  const [times, setTimes] = useState(0)
 
   const [wordRecall, setWordRecall] = useState(false);
   const [wrdRecall, setwrdRecall] = useState(false);
@@ -266,11 +269,10 @@ function Cognitivetest () {
 
   useEffect(()=> {
     if (userProfile) {
-      if (userloggedIn._id) {
-        setUserId(userloggedIn._id);
-      }
       if (userProfile._id) {
         setUserId(userProfile._id);
+      } else if (userloggedIn._id) {
+        setUserId(userloggedIn._id);
       }
     }
   }, [userloggedIn, userProfile])
@@ -283,12 +285,27 @@ function Cognitivetest () {
   }
  }, [userProfile])
 
+ useEffect(()=>{
+   if (userId) {
+    axios.get('/api/user', {params: {_id: userId}})
+    .then((res)=>{
+      // console.log('Test1Tracker :', res.data.user.Test1Tracker)
+      //Set test trials
+      setTestListATrials(res.data.user.Test1Tracker)
+      if (res.data.user.Test1Tracker < 6) {
+        setBeginSec1(true)
+        setFirstPage(true)
+        const xTimes = 6 - res.data.user.Test1Tracker;
+        setTimes(xTimes)
+        // setIntroStep(true)
+      }
+    })
+    .catch((err)=>{
+      console.log('err :', err)
+    })
+   }
+ }, [userAuth, userId])
 
-  useEffect(() => {
-    if(testListATrials === 6) {
-      setListBStart(true);
-    }
-   }, [testListATrials])
 
  useEffect(() => {
    if (startTest) {
@@ -345,21 +362,26 @@ const handleStartTest = (e) => {
 
 useEffect(() => {
   if (keyClicked === 'Enter' && firstPage) {
+    SetKeyClicked('')
     setFirstPage(false);
     setStartTest(true);
   }
   if (keyClicked === 'Enter' && listBStart) {
-    setListBStart(false);
-    handleStartListB();
+    SetKeyClicked('')
+    handleStartListB()
   }
   if (keyClicked === 'Enter' && listAReEntry) {
+    SetKeyClicked('')
     setListAReEntry(false);
     handleListAReentry();
   }
   if (keyClicked === 'Enter' && test1End) {
-    navigate('/cognitivetest2')
+    SetKeyClicked('')
+    setListAReEntry(false);
+    setFirstPage(false);
+    navigate('/cognitivetest2');
   }
-}, [keyClicked])
+}, [keyClicked, test1End, listAReEntry])
 
 const handleButtonClick = (e) => {
   e.preventDefault();
@@ -403,7 +425,7 @@ useEffect(()=> {
 }, [data])
 
 const handlePostWords = () => {
-  // console.log('userId :', userId)
+  // console.log('testListATrials :', testListATrials)
   setFormState(false);
   setRepeatListA(true);
   const date = new Date();
@@ -412,19 +434,19 @@ const handlePostWords = () => {
   let countUp = testListATrials + 1;
   setTestListATrials(countUp);
   if (testListATrials === 1) {
-    param = {id: userId, ListAEntries_Trial1: wordsEnteredListA, time: date};
+    param = {id: userId, ListAEntries_Trial1: wordsEnteredListA, time: date };
   }
   if (testListATrials === 2) {
-    param = {id: userId, ListAEntries_Trial2: wordsEnteredListA, time: date};
+    param = {id: userId, ListAEntries_Trial2: wordsEnteredListA, time: date };
   }
   if (testListATrials === 3) {
-    param = {id: userId, ListAEntries_Trial3: wordsEnteredListA, time: date};
+    param = {id: userId, ListAEntries_Trial3: wordsEnteredListA, time: date };
   }
   if (testListATrials === 4) {
-    param = {id: userId, ListAEntries_Trial4: wordsEnteredListA, time: date};
+    param = {id: userId, ListAEntries_Trial4: wordsEnteredListA, time: date };
   }
   if (testListATrials === 5) {
-    param = {id: userId, ListAEntries_Trial5: wordsEnteredListA, time: date};
+    param = {id: userId, ListAEntries_Trial5: wordsEnteredListA, time: date };
   }
   if (testListATrials === 6) {
     param = {id: userId, ListBEntries: wordsEnteredListA, time: date};
@@ -438,7 +460,19 @@ const handlePostWords = () => {
   if (testListATrials <= 6) {
     axios.post('/api/cognitivetest', param)
     .then((res) => {
-      // console.log('res :', res)
+      const cnt = testListATrials + 1;
+        const param2 = {_id: userProfile._id, Test1Tracker: cnt};
+      axios.post('/api/user', param2)
+      .then((res)=>{
+        console.log('testListATrials :', testListATrials)
+        if (testListATrials === 6) {
+          setListAReEntry(true);
+        }
+
+      })
+      .catch((err)=>{
+
+      })
     })
   } else if (testListATrials === 7) {
     axios.post('/api/cognitivetest', param)
@@ -452,7 +486,6 @@ const handlePostWords = () => {
     })
   }
 }
-
 
 useEffect(() => {
   if (countModal === wordsArr.length - 1) {
@@ -486,22 +519,15 @@ const handleRepeatListA = (e) => {
 const handleStartListB = (e) => {
   setListBStart(false);
   setStartTestListB(false);
+  setWordRecall(false);
+  setBeginSec1(true)
   setStartTestListB(true);
 }
-
-useEffect(() => {
-  if (testListATrials === 7) {
-    setListAReEntry(true);
-  }
-  if (testListATrials === 8) {
-    setListAReEntry(false);
-    setTest1End(true);
-  }
-}, [testListATrials])
 
 const handleListAReentry = (e) => {
   setListAReEntry(false);
   setStartTestListARecall(false);
+  setBeginSec1(true)
   setStartTestListARecall(true);
 }
 
@@ -517,10 +543,17 @@ const handleStartTest2 = (e) => {
 const onSubmitWord = (data) => {
   const numberRegEx = /\-?\d*\.?\d{1,2}/;
   const input = data.word.trim();
-  if (numberRegEx.test(String(data.word).toLowerCase()) || typeof input !== 'string' || input === '') {
+  if ((numberRegEx.test(String(data.word).toLowerCase()) || typeof input !== 'string' || input === '') && !wordInput) {
     setWordErr({error: 'Enter a valid word!'});
   } else {
-    setData(data); handleModalAppear(); reset();
+    if (!data.word) {
+     let data2 = { word: wordInput }
+     setData(data2);
+    } else {
+     setData(data);
+    }
+    handleModalAppear(); reset();
+    setWordInput();
   }
 }
 
@@ -534,6 +567,27 @@ const handleInput = (e) => {
   setWordInput(e.target.value);
 }
 
+useEffect(() => {
+  if (testListATrials !== null) {
+    if(testListATrials === 6) {
+      setBeginSec1(false)
+      setFirstPage(false)
+      setListBStart(true);
+    }
+    if (testListATrials === 7) {
+      setBeginSec1(false)
+      setFirstPage(false)
+      setListAReEntry(true);
+    }
+    if (testListATrials === 8) {
+      setBeginSec1(false)
+      setFirstPage(false)
+      setListAReEntry(false);
+      setTest1End(true);
+    }
+  }
+ }, [testListATrials])
+
   return (
     <>
     {userAuth ?
@@ -542,112 +596,116 @@ const handleInput = (e) => {
 
       <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', height: '100vh', maxWidth: '100vw', background: '#000', color: '#fff', top: 0, bottom: 0, }} >
 
-            {firstPage ?
-              <>
-              <div style={centerScreen} >
+      {beginSec1 ?
+      <>
+        {firstPage && testListATrials ?
+         <>
+            <div style={centerScreen} >
                <h1 style={{ color: '#e67373', fontSize: 50, }} >TEST 1</h1>
                <div style={{ fontSize: 35, fontWeight: 700, display: 'flex', padding: '110px 40px 120px 40px', lineHeight: '1.6', }} >
-               You will be shown a list of 15 words. This same list will be shown to you 5 times. Each time after you see the list you will be asked to type all the words you remember from the list.  <br /> [Press ENTER or click start to continue]
-               </div>
-               <div>
-                 <button onClick={handleStartTest} >Start</button>
-               </div>
+               You will be shown a list of 15 words. This same list will be shown to you {times} times. Each time after you see the list you will be asked to type all the words you remember from the list.
+               <br /><br /> [Press ENTER or click start to continue.]
               </div>
-              </>
-              :
-              null}
-
-          {!listAReEntry ?
-            <Typography style={{ fontSize: 40, fontWeight: 700, textAlign: 'center', fontFamily:'Courgette' }} >{word}</Typography>
-           : null}
-          {wrdRecall ?
-          <>
-            <div style={centerScreen} >
-              <div style={{  fontSize: 35, fontWeight: 700, display: 'flex', padding: '0px 40px 120px 40px', }} >Click on button to enter as many words as you can remember...</div>
               <div>
-                 <button onClick={handleButtonClick}>Go..</button>
+                <button onClick={handleStartTest} >Start</button>
               </div>
             </div>
           </>
-          :
-          null }
-          {formState ?
-          <>
-            <div style={centerScreen} >
-            <div style={{ fontSize: 40, fontWeight: 700}} >
-              <Dialog open PaperProps={{ classes: { root: classes.root } }} >
-                <DialogContent >
-                  <div>
-                    <form onSubmit={handleSubmit(onSubmitWord)} autoComplete='off' >
-                      {countModal < wordsArr.length - 2 ?
-                        <>
-                         <div style={formTitle}>ENTER WORD {wordCount}</div>
-                          <div style={{ position: 'relative', display: 'inline-block', paddingBottom: '85px' }}>
-                            <input name="name" {...register("word")} autoFocus placeholder="Word.." style={formInput} onChange={handleInput} />
-                            <Button  style={button} onClick={handleSubmit} type='submit' >
-                              {buttonEntry}
-                            </Button>
-                            <div style={buttonInfo1} >
-                              Press enter to submit word!
-                            </div>
-                          </div>
-                         <Typography color = '#bf1650' fontFamily = 'Segoe UI, Roboto, Oxygen, Ubuntu' marginLeft = '19px' fontSize = '14px' fontStyle = 'italic' >{wordErr.error}</Typography>
-                        </>
-                        :
-                      null}
-                        <DialogActions>
-                          <Button  style={submitButton} onClick={handlePostWords} type='submit' disablehover='true' >
-                          Submit Test
+        :
+        null}
+        {!listAReEntry ?
+          <Typography style={{ fontSize: 60, fontWeight: 700, textAlign: 'center', fontFamily:'Arial' }} >{word}</Typography>
+          : null}
+        {wrdRecall ?
+        <>
+          <div style={centerScreen} >
+            <div style={{  fontSize: 35, fontWeight: 700, display: 'flex', padding: '100px 40px 190px 100px', }} >Click on button to enter as many words as you can remember...</div>
+            <div>
+                <button onClick={handleButtonClick}>Go..</button>
+            </div>
+          </div>
+        </>
+        :
+        null }
+        {formState ?
+        <>
+          <div style={centerScreen} >
+          <div style={{ fontSize: 40, fontWeight: 700}} >
+            <Dialog open PaperProps={{ classes: { root: classes.root } }} >
+              <DialogContent >
+                <div>
+                  <form onSubmit={handleSubmit(onSubmitWord)} autoComplete='off' >
+                    {countModal < wordsArr.length - 2 ?
+                      <>
+                        <div style={formTitle}>ENTER WORD {wordCount}</div>
+                        <div style={{ position: 'relative', display: 'inline-block', paddingBottom: '85px' }}>
+                          <input name="name" {...register("word")} autoFocus placeholder="Word.." style={formInput} onChange={handleInput} />
+                          <Button  style={button} onClick={handleSubmit} type='submit' >
+                            {buttonEntry}
                           </Button>
-                        </DialogActions>
-                        <div style={buttonImportantInfo}>
-                          Do not hit the submit button until you have finished entering all the words you can remember!
+                          <div style={buttonInfo1} >
+                          To submit a word, press or click ENTER!
+                          </div>
                         </div>
-                        {/* <div style={buttonInfo2}>
-                          Click submit when you are done entering as many words as you remember!
-                        </div> */}
-                    </form>
-                  </div>
-                </DialogContent>
-              </Dialog>
-            </div>
-            </div>
+                        <Typography color = '#bf1650' fontFamily = 'Segoe UI, Roboto, Oxygen, Ubuntu' marginLeft = '19px' fontSize = '14px' fontStyle = 'italic' >{wordErr.error}</Typography>
+                      </>
+                      :
+                    null}
+                      <DialogActions>
+                        <Button  style={submitButton} onClick={handlePostWords} type='submit' disablehover='true' >
+                        Submit Test
+                        </Button>
+                      </DialogActions>
+                      <div style={buttonImportantInfo}>
+                        Do not hit the submit button until you have finished entering all the words you can remember!
+                      </div>
+                      {/* <div style={buttonInfo2}>
+                        Click submit when you are done entering as many words as you remember!
+                      </div> */}
+                  </form>
+                </div>
+              </DialogContent>
+            </Dialog>
+          </div>
+          </div>
+        </>
+        :
+        null}
+        {(repeatListA && testListATrials <= 5 ) ?
+          <>
+          <div style={{  fontSize: 35, fontWeight: 700, display: 'flex', padding: '40px 40px 120px 40px', }} >
+            Click start to begin trial {testListATrials}...
+          </div>
+          <div>
+            <button onClick={handleRepeatListA}>Start</button>
+          </div>
           </>
-          :
-          null}
-          {(repeatListA && testListATrials <= 5 ) ?
-           <>
-            <div style={{  fontSize: 35, fontWeight: 700, display: 'flex', padding: '40px 40px 120px 40px', }} >
-             Click start to begin trial {testListATrials}...
-            </div>
-            <div>
-              <button onClick={handleRepeatListA}>Start</button>
-            </div>
-           </>
-          :
-          null}
+        :
+        null}
+      </>
+      : null}
 
-          {/** ------- LIST B ------- **/}
-          {listBStart ?
-            <>
-            <div style={centerScreen} >
+      {/** ------- LIST B ------- **/}
+      {listBStart ?
+        <>
+        <div style={centerScreen} >
 
-             <div style={{ fontSize: 35, fontWeight: 700, display: 'flex', padding: '0px 40px 120px 40px', lineHeight: '1.6', }} >
-             You will now be shown a different list of words. Try and remember all the words from this new list.  <br /> [Click start or press ENTER to continue]
-             </div>
-            <div>
-              <button onClick={handleStartListB}>Start</button>
-            </div>
-            </div>
-            </>
-            :
-          null}
+          <div style={{ fontSize: 35, fontWeight: 700, display: 'flex', padding: '0px 40px 120px 40px', lineHeight: '1.6', }} >
+          You will now be shown a different list of words. Try and remember all the words from this new list.  <br /><br /> [Click start or press ENTER to continue.]
+          </div>
+        <div>
+          <button onClick={handleStartListB}>Start</button>
+        </div>
+        </div>
+        </>
+        :
+      null}
 
            {listAReEntry && !test1End ?
             <>
             <div style={centerScreen} >
              <div style={{ fontSize: 35, fontWeight: 700, display: 'flex', padding: '0px 40px 120px 40px', lineHeight: '1.6', }} >
-             Now, please enter all the words you remember from the original list you saw 5 times.  <br /> [Click start or press ENTER to continue]
+             Now, please enter all the words you remember from the original list you saw 5 times.  <br /><br /> [Click start or press ENTER to continue.]
              </div>
             <div>
               <button onClick={handleListAReentry}>Start</button>
@@ -660,7 +718,7 @@ const handleInput = (e) => {
           <>
             <div style={centerScreen} >
             <div style={{ fontSize: 35, fontWeight: 700, display: 'flex', padding: '0px 40px 120px 40px', lineHeight: '1.6', }} >
-              Test 1 - Verbal Learning Test Completed.  <br /> [Click start or press ENTER to begin Test 2]
+              Test 1 - Verbal Learning Test Completed.  <br /> [Click start or press ENTER to begin Test 2.]
             </div>
             <div>
               <button onClick={handleStartTest2}>Start</button>

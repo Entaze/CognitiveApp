@@ -17,6 +17,8 @@ module.exports = {
       data = {ListBEntries: body.ListBEntries}
     } else if (body.ListAEntriesRecall) {
       data = {ListAEntriesRecall: body.ListAEntriesRecall}
+    } else if (body.ListAEntriesTest5_Recall) {
+      data = {ListAEntriesTest5_Recall: body.ListAEntriesTest5_Recall}
     } else if (body.Test2_Entry_1) {
       data = {Test2_Entry_1: body.Test2_Entry_1}
     } else if (body.Test2_Entry_2) {
@@ -41,6 +43,12 @@ module.exports = {
       data = {Test2_Entry_11: body.Test2_Entry_11}
     } else if (body.Test2_Entry_12) {
       data = {Test2_Entry_12: body.Test2_Entry_12}
+    } else if (body.Test2Recall_Entry_1) {
+      data = {Test2Recall_Entry_1: body.Test2Recall_Entry_1}
+    } else if (body.Test2Recall_Entry_2) {
+      data = {Test2Recall_Entry_2: body.Test2Recall_Entry_2}
+    } else if (body.Test2Recall_Entry_3) {
+      data = {Test2Recall_Entry_3: body.Test2Recall_Entry_3}
     }
     let options = { upsert: true, new: true, setDefaultsOnInsert: true };
     db.CognitiveTest.findOneAndUpdate({_id: body.id}, data, options)
@@ -87,4 +95,169 @@ module.exports = {
       cb(err);
     })
   },
+  postRating3: (body, cb) => {
+    let data = body.obj;
+    db.CognitiveTest.findOneAndUpdate(
+      { _id : body._id },
+      { $push : {Test3ImagesRecall: data}}
+   )
+    .then((result) => {
+      cb(null, result);
+    })
+    .catch((err) => {
+      cb(err);
+    })
+  },
+  postTest4Sect1: (body, cb) => {
+    // let data = {letter: body.letter, response: body.response };
+    let data = body.obj;
+    // console.log('data :', data)
+    db.CognitiveTest.findOneAndUpdate(
+      { _id : body._id },
+      { $push : {Test4Section1: data}}
+   )
+    .then((result) => {
+      cb(null, result);
+    })
+    .catch((err) => {
+      cb(err);
+    })
+  },
+  postTest4RecallSect1: (body, cb) => {
+    // let data = {letter: body.letter, response: body.response };
+    let data = body.obj;
+    // console.log('data :', data)
+    db.CognitiveTest.findOneAndUpdate(
+      { _id : body._id },
+      { $push : {Test4RecallSection1: data}}
+   )
+    .then((result) => {
+      cb(null, result);
+    })
+    .catch((err) => {
+      cb(err);
+    })
+  },
+  postTest4Sect2: (body, cb) => {
+    let data = body.obj;
+    db.CognitiveTest.findOneAndUpdate(
+      { _id : body._id },
+      { $push : {Test4Section2: data}}
+   )
+    .then((result) => {
+      cb(null, result);
+    })
+    .catch((err) => {
+      cb(err);
+    })
+  },
+  postTest4RecallSect2: (body, cb) => {
+    // let data = {letter: body.letter, response: body.response };
+    let data = body.obj;
+    // console.log('data :', data)
+    db.CognitiveTest.findOneAndUpdate(
+      { _id : body._id },
+      { $push : {Test4RecallSection2: data}}
+   )
+    .then((result) => {
+      cb(null, result);
+    })
+    .catch((err) => {
+      cb(err);
+    })
+  },
+  postTest4Sect3: (body, cb) => {
+    let data = body.obj;
+    db.CognitiveTest.findOneAndUpdate(
+      { _id : body._id },
+      { $push : {Test4Section3: data}}
+   )
+    .then((result) => {
+      cb(null, result);
+    })
+    .catch((err) => {
+      cb(err);
+    })
+  },
+  postTest4RecallSect3: (body, cb) => {
+    // let data = {letter: body.letter, response: body.response };
+    let data = body.obj;
+    // console.log('data :', data)
+    db.CognitiveTest.findOneAndUpdate(
+      { _id : body._id },
+      { $push : {Test4RecallSection3: data}}
+   )
+    .then((result) => {
+      cb(null, result);
+    })
+    .catch((err) => {
+      cb(err);
+    })
+  },
+  postTest4Sect4: (body, cb) => {
+    let data = body.obj;
+    db.CognitiveTest.findOneAndUpdate(
+      { _id : body._id },
+      { $push : {Test4Section4: data}}
+   )
+    .then((result) => {
+      cb(null, result);
+    })
+    .catch((err) => {
+      cb(err);
+    })
+  },
+  postTest4Sect5: (body, cb) => {
+    let data = body.obj;
+    db.CognitiveTest.findOneAndUpdate(
+      { _id : body._id },
+      { $push : {Test4Section5: data}}
+   )
+    .then((result) => {
+      cb(null, result);
+    })
+    .catch((err) => {
+      cb(err);
+    })
+  },
+  postTest4Sect6: (body, cb) => {
+    let data = body.obj;
+    db.CognitiveTest.findOneAndUpdate(
+      { _id : body._id },
+      { $push : {Test4Section6: data}}
+   )
+    .then((result) => {
+      cb(null, result);
+    })
+    .catch((err) => {
+      cb(err);
+    })
+  },
+  postTest5Sect2: (body, cb) => {
+    let data = body.obj;
+    db.CognitiveTest.findOneAndUpdate(
+      { _id : body._id },
+      { $push : {Test5Section2: data}}
+   )
+    .then((result) => {
+      cb(null, result);
+    })
+    .catch((err) => {
+      cb(err);
+    })
+  },
+  // postTest1Tracker: (body, cb) => {
+  //   let data = body.obj;
+  //   db.CognitiveTest.findOneAndUpdate(
+  //     { _id : body._id },
+  //     { $push : {Test1Tracker: data}}
+  //  )
+  //   .then((result) => {
+  //     cb(null, result);
+  //   })
+  //   .catch((err) => {
+  //     cb(err);
+  //   })
+  // },
+
 }

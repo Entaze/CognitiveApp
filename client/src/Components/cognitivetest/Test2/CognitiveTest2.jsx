@@ -72,6 +72,9 @@ const Cognitivetest2 = () => {
   const token = window.localStorage.getItem('token');
   const { userProfile, cognitiveTest, setCognitiveTest } = useMainContext();
   const [userAuth, setUserAuth] = useState(false);
+  const userloggedIn = JSON.parse(window.localStorage.getItem('userLoggedIn'));
+  const [userId, setUserId] = useState(null);
+
 
   const [keyClicked, SetKeyClicked] = useState('')
   const [pages, setPages] = useState( null )
@@ -89,8 +92,8 @@ const Cognitivetest2 = () => {
   const [loaded, setLoaded] = useState(false);
   const [imgLoaded, setImgLoaded] = useState(false);
 
-  const [trialEntry, setTrialEntry] = useState(12)
-  let trialCount = 12;
+  const [trialEntry, setTrialEntry] = useState(null)
+  let trialCount = trialEntry;
 
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
@@ -120,6 +123,40 @@ const Cognitivetest2 = () => {
     }
    }, [userProfile])
 
+  //  useEffect(()=> {
+  //   if (userProfile) {
+  //     if (userloggedIn._id) {
+  //       setUserId(userloggedIn._id);
+  //     }
+  //     if (userProfile._id) {
+  //       setUserId(userProfile._id);
+  //     }
+  //   }
+  // }, [userloggedIn, userProfile])
+
+  useEffect(()=> {
+    if (userProfile) {
+      if (userProfile._id) {
+        setUserId(userProfile._id);
+      } else if (userloggedIn._id) {
+        setUserId(userloggedIn._id);
+      }
+    }
+  }, [userloggedIn, userProfile])
+
+   useEffect(()=>{
+    if (userId) {
+     axios.get('/api/user', {params: {_id: userId}})
+     .then((res)=>{
+       const trialEn = res.data.user.Test2Tracker  - 1;
+       setTrialEntry(trialEn)
+     })
+     .catch((err)=>{
+
+    })
+    }
+  }, [userAuth, userId])
+
   //-----Listen to keyboard events
 
   useEffect(() => {
@@ -132,6 +169,7 @@ const Cognitivetest2 = () => {
 
   useEffect(() => {
     if (keyClicked === 'Enter' && test2End) {
+      SetKeyClicked('')
       navigate('/cognitivetest3');
     }
   }, [keyClicked])
@@ -169,16 +207,24 @@ const Cognitivetest2 = () => {
         setDisplayNum(false)
         setDisplayCross(true)
         setTrial(true)
-      }, 15000)
+      }, 30000)
 
       setTimeout(() => {
+        console.log('trialCount :', trialCount)
         if (trialCount > 1) {
           setDisplayCross(false)
           setStartTest2(false);
           setDisplayNum(true)
           // timeInterval += 10000;
-          trialCount--;
-          TestStart()
+          const cnt = trialCount--;
+          const param2 = {_id: userProfile._id, Test2Tracker: cnt};
+          axios.post('/api/user', param2)
+          .then((res)=>{
+            TestStart()
+          })
+          .catch((err)=>{
+
+          })
         } else {
           let complete = {_id: userProfile._id, test2Completion: true};
           axios.post('/api/user', complete)
@@ -189,7 +235,7 @@ const Cognitivetest2 = () => {
             setTest2End(true)
           })
         }
-      }, 20000)
+      }, 60000)
     }
 
     useEffect(()=> {
@@ -251,8 +297,9 @@ const Cognitivetest2 = () => {
         <NavigationBar />
           <div style={centerScreen} >
             <h1 style={{ color: '#e67373', fontSize: 50, }} >TEST 2</h1>
-            <div style={{ fontSize: 35, margin: '4% 0', fontWeight: 700, lineHeight: '1.6' }}>
-            You will be shown a sequence of numbers on the screen. Using your dominant hand (i.e., the hand you use to write with), type the sequence as fast and accurately as possible. Keep typing the sequence over and over until you see an X on the screen. The numbers will reappear after 30 secs at which point you will start typing the sequence over and over again until you see the next X. This will happen 12 times. <br /> [Click next to continue]
+            <div style={{ fontSize: 32, margin: '4% 0', fontWeight: 700, lineHeight: '1.6' }}>
+            You will be shown a sequence of numbers on the screen. Using your dominant hand (i.e., the hand you use to write with), type the sequence as fast and accurately as possible. Keep typing the sequence over and over until you see an X on the screen. The numbers will reappear after 30 secs at which point you will start typing the sequence over and over again until you see the next X. This will happen 12 times.
+            <br /><br /> [Click next to continue.]
             </div>
             <div>
               <button onClick={slideNext} >Next</button>
@@ -296,26 +343,12 @@ const Cognitivetest2 = () => {
               {displayNum ?
                 <div style={{ display: 'flex', flexDirection: 'column', width: '100%', justifyContent: 'center', alignItems: 'center', height: '100%', }} >
                   <h1 style={{ fontSize: 45, color: '#fff', paddingBottom: '90px', }} >
-                    4 1 2 3 2
+                    4 1 3 2 4
                   </h1>
-                  <form autoComplete='off' >
-
+                  <form autoComplete='off' onSubmit={e => { e.preventDefault(); }} >
                   <div component="form" noValidate  sx={{ mt: 3, height: '35px', width: '100%' }}>
                     <Grid item xs={12}>
-                      {/* <TextField
-                        required
-                        fullWidth
-                        id="numberentry"
-                        name="numberentry"
-                        type="password"
-                        value={entry}
-                        style={{ width: '100%', height: '100%', background: '#fff', borderRadius: '3%' }}
-                        onChange={handleEntry}
-                        autoFocus
-                        autoComplete="off"
-                      /> */}
                        <input password="password" autoComplete="off" autoFocus placeholder="Type Number.." style={formInput} onChange={handleEntry} />
-
                     </Grid>
                   </div>
                   </form>
@@ -331,7 +364,7 @@ const Cognitivetest2 = () => {
           <>
             <div style={centerScreen} >
             <div style={{ fontSize: 35, fontWeight: 700, display: 'flex', padding: '0px 40px 120px 40px', lineHeight: '1.6', }} >
-              Test 2 - Finger Tapping Task Completed.  <br /> [Click start or press ENTER to begin Test 3]
+              Test 2 - Finger Tapping Task Completed.  <br /><br /> [Click start or press ENTER to begin Test 3.]
             </div>
             <div>
               <button onClick={handleStartTest3}>Start</button>

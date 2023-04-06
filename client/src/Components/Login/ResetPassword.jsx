@@ -86,8 +86,8 @@ function ResetPassword() {
     return (
       <Typography variant="body2" color="text.secondary" align="center" {...props}>
         {'Copyright © '}
-        <Link color="inherit" href="https://mui.com/">
-          Entaze systems
+        <Link color="inherit" href="#">
+          David Unuigbe
         </Link>{' '}
         {new Date().getFullYear()}
         {'.'}
@@ -113,6 +113,7 @@ function ResetPassword() {
       setSuccessMessage('Passwords match')
       const forgotPwordData = {
         newPass: password,
+        userConfirmed: true,
         resetLink: token
       }
       setTimeout(() => {
@@ -142,6 +143,18 @@ function ResetPassword() {
               navigate("/cognitivetest1")
             } else if (data.token && !data.user.test2Completion) {
               navigate("/cognitivetest2")
+            } else if (data.token && !data.user.test3Completion) {
+              navigate("/cognitivetest3")
+            } else if (data.token && !data.user.test4Completion) {
+              navigate("/cognitivetest4")
+            } else if (data.token && !data.user.test1CompletionRecall) {
+              navigate("/cognitivetest1recall")
+            } else if (data.token && !data.user.test2CompletionRecall) {
+              navigate("/cognitivetest2recall")
+            } else if (data.token && !data.user.test3CompletionRecall) {
+              navigate("/cognitivetest3recall")
+            } else if (data.token && !data.user.test4CompletionRecall) {
+              navigate("/cognitivetest4recall")
             }
           })
           .catch((err) => {

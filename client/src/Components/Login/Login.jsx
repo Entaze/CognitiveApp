@@ -70,10 +70,13 @@ function Login() {
   const [successMessage, setSuccessMessage] = useState("")
   const [userAuth, setUserAuth] = useState(false);
   const [checkUserLogin, setCheckUserLogin] = useState(false);
+  // const [navLogIn, setNavLogin] = useState(false);
   const token = window.localStorage.getItem('token');
   const loggedIn = window.localStorage.getItem('loggedIn');
   const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
   const navigate = useNavigate()
+
+  let fdata;
 
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
@@ -125,16 +128,28 @@ function Login() {
           .then((res) => {
             let user = res.data.user;
             setUserProfile(user)
-            // console.log('User logged in :', user)
-            if (!user.test1Completion) {
+            console.log('User logged in :', user)
+            if (!user.userConfirmed) {
+              navigate('/login')
+            } else if (!user.test1Completion) {
               navigate('/cognitivetest1')
             } else if (!user.test2Completion) {
               navigate('/cognitivetest2')
             } else if (!user.test3Completion) {
               navigate('/cognitivetest3')
+            } else if (!user.test4Completion) {
+              navigate('/cognitivetest4')
+            } else if (!user.test1CompletionRecall) {
+              navigate('/cognitivetest1recall')
+            } else if (!user.test2CompletionRecall) {
+              navigate('/cognitivetest2recall')
+            } else if (!user.test3CompletionRecall) {
+              navigate('/cognitivetest3recall')
+            } else if (!user.test4CompletionRecall) {
+              navigate('/cognitivetest4recall')
             } else {
-              navigate('/test-end')
-              // navigate('/cognitivetest3')
+              // navigate('/test-end')
+              navigate('/countdown2')
             }
           })
           .catch((err) => {
@@ -154,18 +169,12 @@ function Login() {
   }
   }, [])
 
-  // useEffect(() => {
-  //   if (userAuth) {
-  //     navigate('/cognitivetest1')
-  //   }
-  // }, [userAuth])
-
   function Copyright(props) {
     return (
       <Typography variant="body2" color="text.secondary" {...props}>
         {'Copyright © '}
         <Link color="inherit" href="#" target="_blank" >
-          David U.
+          David Unuigbe
         </Link>{' '}
         {new Date().getFullYear()}
         {'.'}
@@ -175,52 +184,62 @@ function Login() {
 
   const theme = createTheme();
 
+  const resetErr = () => {
+    setTimeout(()=>{
+      setErrorMessage('')
+    }, 2500)
+  }
+
+
   const handleSignupSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    fdata = new FormData(event.currentTarget);
 
-    if (!data.get('firstName') && !data.get('age') && !data.get('email') && !data.get('password')) {
+    if (!fdata.get('firstName') && !fdata.get('age') && !fdata.get('email') && !fdata.get('password')) {
       setErrorMessage('All fields are required!')
-    } else if (!data.get('firstName')) {
+      resetErr()
+    } else if (!fdata.get('firstName')) {
       setErrorMessage('Name is required!')
-    } else if (!data.get('age')) {
+      resetErr()
+    } else if (!fdata.get('age')) {
       setErrorMessage('Age is required!')
-    } else if (!data.get('email')) {
+      resetErr()
+    } else if (!fdata.get('email')) {
       setErrorMessage('Email is required!')
-    } else if (!(data.get('email')).match(emailRegex)) {
+      resetErr()
+    } else if (!(fdata.get('email')).match(emailRegex)) {
       setErrorMessage('Enter a valid email!')
-    } else if (!data.get('password')) {
+      resetErr()
+    } else if (!fdata.get('password')) {
       setErrorMessage('Password is required!')
+      resetErr()
     } else {
       setErrorMessage('')
       const signUpData = {
-        name: data.get('firstName'),
-        age: data.get('age'),
-        email: data.get('email'),
-        password: data.get('password'),
+        name: fdata.get('firstName'),
+        age: fdata.get('age'),
+        email: fdata.get('email'),
+        password: fdata.get('password'),
         gender: genderFormatVal(Number(event.currentTarget.gender.value)),
       };
       //Signup post request
       axios.post('/api/signup', signUpData)
       .then((res) => {
+        // console.log('Res data :', res.data)
         if (res.data.error) {
           setErrorMessage(res.data.error)
+          setTimeout(()=>{
+            setErrorMessage('')
+          }, 3000)
         } else {
-          setSuccessMessage('Form successfully submitted..')
-          localStorage.setItem('token', JSON.stringify(res.data.token));
-          localStorage.setItem('loggedIn', JSON.stringify(true));
-          localStorage.setItem('userLoggedIn', JSON.stringify(res.data.user));
-          setUserProfile(res.data);
-          // console.log('Sign up res data :', res.data)
-          navigate("/test-begin");
+          setSuccessMessage('Check your email to complete sign up')
         }
       })
       .catch((err) => {
         console.log(err)
       })
-
       setTimeout(() => {
-        setSuccessMessage("");
+        // setSuccessMessage("");
         setErrorMessage("");
       }, 2500)
     }
@@ -311,13 +330,14 @@ function Login() {
                 </Grid>
               </Grid>
               <Grid>
-                <SliderContainer>
-                  <Typography style={{textAlign: "center", }}>Gender</Typography>
-                  <Slider name="gender" id="gender" step={1} min={0} max={2}  marks={genderMarks} valueLabelFormat={genderFormatVal} aria-label="Default"  valueLabelDisplay="auto" style={{color: "#000000e6", fontStyle: 'Bold', }} />
+                <SliderContainer >
+                  <Typography style={{textAlign: "center", }} >Gender</Typography>
+                  <Slider name="gender" id="gender" step={1} min={0} max={2}  marks={genderMarks} valueLabelFormat={genderFormatVal} aria-label="Gender"  valueLabelDisplay="auto" style={{color: "#000000e6", fontStyle: 'Bold', }} />
                 </SliderContainer>
               </Grid>
               <Button
                 type="submit"
+                aria-label="Signup Submit"
                 fullWidth
                 sx={{ mt: 3, mb: 2, color: '#fff', bgcolor: '#2EB67D', '&:hover': { color: '#fff', bgcolor: '#2EB67D', } }}
                 disableRipple

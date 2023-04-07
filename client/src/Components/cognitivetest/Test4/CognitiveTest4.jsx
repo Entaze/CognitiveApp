@@ -118,7 +118,6 @@ const Cognitivetest4 = () => {
   const [eleventhPage05, setEleventhPage05] = useState(false);
   const [eleventhPage06, setEleventhPage06] = useState(false);
 
-
   const [twelvethPage, setTwelvethPage] = useState(false);
   const [thirteenthPage, setThirteenthPage] = useState(false);
   const [fourteenthPage, setFourteenthPage] = useState(false);

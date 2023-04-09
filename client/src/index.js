@@ -3,8 +3,6 @@ import React, { useEffect, Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useParams, Switch } from 'react-router-dom';
 import WithNavi from './Components/Layout/WithNavigation.jsx';
 import WithoutNavi from './Components/Layout/WithoutNavigation.jsx';
-import CognitiveTest3 from './Components/cognitivetest/Test3/CognitiveTest3.jsx';
-
 import MainProvider from './Components/Providers/MainProvider.jsx';
 import App from './Components/App.jsx';
 
@@ -17,7 +15,7 @@ const ConfirmAccount = lazy(() => import('./Components/Login/ConfirmAccount.jsx'
 const ResetPassword = lazy(() => import('./Components/Login/ResetPassword.jsx'));
 const CognitiveTest1 = lazy(() => import('./Components/cognitivetest/Test1/CognitiveTest1.jsx'));
 const CognitiveTest2 = lazy(() => import('./Components/cognitivetest/Test2/CognitiveTest2.jsx'));
-// const CognitiveTest3 = lazy(() => import('./Components/cognitivetest/Test3/CognitiveTest3.jsx'));
+const CognitiveTest3 = lazy(() => import('./Components/cognitivetest/Test3/CognitiveTest3.jsx'));
 const CognitiveTest4 = lazy(() => import('./Components/cognitivetest/Test4/CognitiveTest4.jsx'));
 const CognitiveTest1Recall = lazy(() => import('./Components/cognitivetest/Test5/CognitiveTest1Recall.jsx'));
 const CognitiveTest2Recall = lazy(() => import('./Components/cognitivetest/Test6/CognitiveTest2Recall.jsx'));

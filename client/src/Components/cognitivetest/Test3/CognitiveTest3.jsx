@@ -88,7 +88,7 @@ const TestRatings2 = {
   paddingTop: '4vh',
 }
 
-const Cognitivetest3 = () => {
+const CognitiveTest3 = () => {
   const token = window.localStorage.getItem('token');
   const { userProfile, cognitiveTest, setCognitiveTest } = useMainContext();
   const [userAuth, setUserAuth] = useState(false);
@@ -1303,6 +1303,6 @@ const Cognitivetest3 = () => {
     )
 }
 
-export default Cognitivetest3
+export default CognitiveTest3
 
 

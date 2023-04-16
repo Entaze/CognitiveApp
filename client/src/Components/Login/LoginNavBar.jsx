@@ -151,7 +151,7 @@ const LoginNavBar = () => {
     } else if (loginPackage.email && loginPackage.password) {
       axios.post('/api/login', loginPackage)
       .then((res) => {
-        // console.log("RES :", res.data.user.userConfirmed)
+        console.log("User loggin in :", res.data.user)
         if (res.data.user.userConfirmed) {
           localStorage.setItem('token', JSON.stringify(res.data.token));
           localStorage.setItem('loggedIn', JSON.stringify(true));
@@ -177,7 +177,7 @@ const LoginNavBar = () => {
           navigate("/cognitivetest3recall")
         } else if (data.token && !data.user.test3CompletionRecall) {
           navigate("/cognitivetest4recall")
-        } else if (data.token && data.user.test4Completion) {
+        } else if (data.token && data.user.test4CompletionRecall) {
           navigate("/test-end")
         }
       } else {

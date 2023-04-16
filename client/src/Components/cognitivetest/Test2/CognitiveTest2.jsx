@@ -292,13 +292,13 @@ const Cognitivetest2 = () => {
     <div className="container">
       <div className="pages">
         <>
-        {userAuth ?
+        {userAuth && trialEntry ?
         <div id="page" className="page one">
         <NavigationBar />
           <div style={centerScreen} >
             <h1 style={{ color: '#e67373', fontSize: 50, }} >TEST 2</h1>
             <div style={{ fontSize: 32, margin: '4% 0', fontWeight: 700, lineHeight: '1.6' }}>
-            You will be shown a sequence of numbers on the screen. Using your dominant hand (i.e., the hand you use to write with), type the sequence as fast and accurately as possible. Keep typing the sequence over and over until you see an X on the screen. The numbers will reappear after 30 secs at which point you will start typing the sequence over and over again until you see the next X. This will happen 12 times.
+            You will be shown a sequence of numbers on the screen. Using your dominant hand (i.e., the hand you use to write with), type the sequence as fast and accurately as possible. Keep typing the sequence over and over until you see an X on the screen. The numbers will reappear after 30 secs at which point you will start typing the sequence over and over again until you see the next X. This will happen {trialEntry} times.
             <br /><br /> [Click next to continue.]
             </div>
             <div>

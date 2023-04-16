@@ -82,10 +82,10 @@ function countdownTimer () {
 
   useEffect(()=> {
     if (userProfile) {
-      if (userloggedIn._id) {
+      if (userloggedIn) {
         setUserId(userloggedIn._id);
       }
-      if (userProfile._id) {
+      if (userProfile) {
         setUserId(userProfile._id);
       }
     }
@@ -125,12 +125,12 @@ useEffect(() => {
   if (completionTime) {
     setInterval(() => {
       const now = moment();
-      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(6, 'hours');
+      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(1, 'hours');
 
 
       let duration = moment.duration(then.diff(now));
       let hours = duration.asHours();
-      // console.log('Hours :', hours)
+      console.log('Hours :', hours)
       const countdown = moment(then - now);
       const hr = countdown.format('HH');
       const min = countdown.format('mm');

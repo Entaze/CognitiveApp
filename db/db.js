@@ -24,11 +24,24 @@ Test1Tracker: {
   type: Number,
   default: 1
 },
+Test1Trackerv2: {
+  type: Number,
+  default: 1
+},
 Test2Tracker: {
   type: Number,
   default: 12
 },
+Test2Trackerv2: {
+  type: Number,
+  default: 12
+},
 test1Completion: {
+  type: Boolean,
+  enum: [false, true],
+  default: false
+},
+test1Completionv2: {
   type: Boolean,
   enum: [false, true],
   default: false
@@ -38,7 +51,17 @@ test2Completion: {
   enum: [false, true],
   default: false
 },
+test2Completionv2: {
+  type: Boolean,
+  enum: [false, true],
+  default: false
+},
 test3Completion: {
+  type: Boolean,
+  enum: [false, true],
+  default: false
+},
+test3Completionv2: {
   type: Boolean,
   enum: [false, true],
   default: false
@@ -48,7 +71,17 @@ test4Completion: {
   enum: [false, true],
   default: false
 },
+test4Completionv2: {
+  type: Boolean,
+  enum: [false, true],
+  default: false
+},
 test1CompletionRecall: {
+  type: Boolean,
+  enum: [false, true],
+  default: false
+},
+test1CompletionRecallv2: {
   type: Boolean,
   enum: [false, true],
   default: false
@@ -58,7 +91,17 @@ test2CompletionRecall: {
   enum: [false, true],
   default: false
 },
+test2CompletionRecallv2: {
+  type: Boolean,
+  enum: [false, true],
+  default: false
+},
 test3CompletionRecall: {
+  type: Boolean,
+  enum: [false, true],
+  default: false
+},
+test3CompletionRecallv2: {
   type: Boolean,
   enum: [false, true],
   default: false
@@ -68,7 +111,17 @@ test4CompletionRecallSctn1: {
   enum: [false, true],
   default: false
 },
+test4CompletionRecallSctn1v2: {
+  type: Boolean,
+  enum: [false, true],
+  default: false
+},
 test4CompletionRecallSctn2: {
+  type: Boolean,
+  enum: [false, true],
+  default: false
+},
+test4CompletionRecallSctn2v2: {
   type: Boolean,
   enum: [false, true],
   default: false
@@ -78,7 +131,17 @@ test4CompletionRecallSctn3: {
   enum: [false, true],
   default: false
 },
+test4CompletionRecallSctn3v2: {
+  type: Boolean,
+  enum: [false, true],
+  default: false
+},
 test4CompletionRecall: {
+  type: Boolean,
+  enum: [false, true],
+  default: false
+},
+test4CompletionRecallv2: {
   type: Boolean,
   enum: [false, true],
   default: false
@@ -88,7 +151,17 @@ test4CompletionSctn1: {
   enum: [false, true],
   default: false
 },
+test4CompletionSctn1v2: {
+  type: Boolean,
+  enum: [false, true],
+  default: false
+},
 test4CompletionSctn2: {
+  type: Boolean,
+  enum: [false, true],
+  default: false
+},
+test4CompletionSctn2v2: {
   type: Boolean,
   enum: [false, true],
   default: false
@@ -98,7 +171,17 @@ test4CompletionSctn3: {
   enum: [false, true],
   default: false
 },
+test4CompletionSctn3v2: {
+  type: Boolean,
+  enum: [false, true],
+  default: false
+},
 test4CompletionSctn4: {
+  type: Boolean,
+  enum: [false, true],
+  default: false
+},
+test4CompletionSctn4v2: {
   type: Boolean,
   enum: [false, true],
   default: false
@@ -108,7 +191,18 @@ test4CompletionSctn5: {
   enum: [false, true],
   default: false
 },
+test4CompletionSctn5v2: {
+  type: Boolean,
+  enum: [false, true],
+  default: false
+},
 test4CompletionSctn6: {
+  type: Boolean,
+  enum: [false, true],
+  default: false,
+  timeStamps: true,
+},
+test4CompletionSctn6v2: {
   type: Boolean,
   enum: [false, true],
   default: false,
@@ -120,10 +214,22 @@ test1CompletionRecallSctn2: {
   default: false,
   timeStamps: true,
 },
+test1CompletionRecallSctn2v2: {
+  type: Boolean,
+  enum: [false, true],
+  default: false,
+  timeStamps: true,
+},
 Sctn6CompletionTime: {
   type: Date,
 },
+Sctn6CompletionTimev2: {
+  type: Date,
+},
 Test4RecallCompletionTime: {
+  type: Date,
+},
+Test4RecallCompletionTimev2: {
   type: Date,
 },
 email: {
@@ -148,6 +254,112 @@ salt: String,
 }, {timeStamps: true})
 
 const test3SchemaSect1 = new mongoose.Schema({
+  Image1: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image2: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image3: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image4: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image5: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image6: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image7: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image8: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image9: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image10: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image11: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image12: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image13: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image14: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image15: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image16: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image17: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image18: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image19: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image20: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image21: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image22: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image23: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image24: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image25: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image26: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image27: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image28: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image29: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image30: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image31: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image32: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image33: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image34: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image35: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image36: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image37: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image38: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image39: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image40: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image41: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image42: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image43: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image44: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image45: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image46: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image47: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image48: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image49: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image50: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image51: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image52: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image53: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image54: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image55: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image56: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image57: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image58: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image59: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image60: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image61: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image62: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image63: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image64: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image65: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image66: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image67: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image68: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image69: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image70: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image71: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image72: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image73: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image74: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image75: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image76: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image77: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image78: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image79: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image80: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image81: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image82: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image83: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image84: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image85: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image86: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image87: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image88: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image89: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image90: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image91: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image92: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image93: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image94: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image95: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image96: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image97: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image98: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image99: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image100: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
+
+},
+{timestamps: true}
+);
+
+const test3v2SchemaSect1 = new mongoose.Schema({
   Image1: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
   Image2: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
   Image3: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
@@ -464,7 +676,138 @@ const test3SchemaSect2 = new mongoose.Schema({
 {timestamps: true}
 );
 
+const test3v2SchemaSect2 = new mongoose.Schema({
+  Image1: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image2: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image3: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image4: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image5: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image6: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image7: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image8: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image9: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image10: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image11: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image12: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image13: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image14: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image15: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image16: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image17: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image18: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image19: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image20: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image21: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image22: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image23: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image24: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image25: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image26: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image27: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image28: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image29: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image30: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image31: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image32: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image33: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image34: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image35: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image36: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image37: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image38: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image39: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image40: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image41: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image42: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image43: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image44: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image45: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image46: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image47: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image48: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image49: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image50: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image51: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image52: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image53: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image54: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image55: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image56: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image57: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image58: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image59: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image60: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image61: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image62: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image63: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image64: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image65: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image66: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image67: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image68: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image69: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image70: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image71: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image72: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image73: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image74: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image75: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image76: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image77: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image78: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image79: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image80: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image81: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image82: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image83: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image84: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image85: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image86: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image87: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image88: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image89: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image90: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image91: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image92: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image93: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image94: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image95: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image96: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image97: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image98: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image99: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+  Image100: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
+},
+{timestamps: true}
+);
+
 const test4SchemaSect1 = new mongoose.Schema({
+  Letter1: {letter: String, response: String, },
+  Letter2: {letter: String, response: String, },
+  Letter3: {letter: String, response: String, },
+  Letter4: {letter: String, response: String, },
+  Letter5: {letter: String, response: String, },
+  Letter6: {letter: String, response: String, },
+  Letter7: {letter: String, response: String, },
+  Letter8: {letter: String, response: String, },
+  Letter9: {letter: String, response: String, },
+  Letter10: {letter: String, response: String, },
+  Letter11: {letter: String, response: String, },
+  Letter12: {letter: String, response: String, },
+  Letter13: {letter: String, response: String, },
+  Letter14: {letter: String, response: String, },
+  Letter15: {letter: String, response: String, },
+  Letter16: {letter: String, response: String, },
+  Letter17: {letter: String, response: String, },
+  Letter18: {letter: String, response: String, },
+  Letter19: {letter: String, response: String, },
+  Letter20: {letter: String, response: String, },
+
+},
+{timestamps: true}
+);
+
+const test4SchemaSect1v2 = new mongoose.Schema({
   Letter1: {letter: String, response: String, },
   Letter2: {letter: String, response: String, },
   Letter3: {letter: String, response: String, },
@@ -562,6 +905,32 @@ const test4SchemaSect2 = new mongoose.Schema({
 {timestamps: true}
 );
 
+const test4SchemaSect2v2 = new mongoose.Schema({
+  Letter1: {letter: String, response: String, },
+  Letter2: {letter: String, response: String, },
+  Letter3: {letter: String, response: String, },
+  Letter4: {letter: String, response: String, },
+  Letter5: {letter: String, response: String, },
+  Letter6: {letter: String, response: String, },
+  Letter7: {letter: String, response: String, },
+  Letter8: {letter: String, response: String, },
+  Letter9: {letter: String, response: String, },
+  Letter10: {letter: String, response: String, },
+  Letter11: {letter: String, response: String, },
+  Letter12: {letter: String, response: String, },
+  Letter13: {letter: String, response: String, },
+  Letter14: {letter: String, response: String, },
+  Letter15: {letter: String, response: String, },
+  Letter16: {letter: String, response: String, },
+  Letter17: {letter: String, response: String, },
+  Letter18: {letter: String, response: String, },
+  Letter19: {letter: String, response: String, },
+  Letter20: {letter: String, response: String, },
+
+},
+{timestamps: true}
+);
+
 const test4SchemaSect2Recall = new mongoose.Schema({
   Letter1: {letter: String, response: String, },
   Letter2: {letter: String, response: String, },
@@ -609,6 +978,52 @@ const test4SchemaSect2Recall = new mongoose.Schema({
 );
 
 const test4SchemaSect3 = new mongoose.Schema({
+  Letter1: {letter: String, response: String, },
+  Letter2: {letter: String, response: String, },
+  Letter3: {letter: String, response: String, },
+  Letter4: {letter: String, response: String, },
+  Letter5: {letter: String, response: String, },
+  Letter6: {letter: String, response: String, },
+  Letter7: {letter: String, response: String, },
+  Letter8: {letter: String, response: String, },
+  Letter9: {letter: String, response: String, },
+  Letter10: {letter: String, response: String, },
+  Letter11: {letter: String, response: String, },
+  Letter12: {letter: String, response: String, },
+  Letter13: {letter: String, response: String, },
+  Letter14: {letter: String, response: String, },
+  Letter15: {letter: String, response: String, },
+  Letter16: {letter: String, response: String, },
+  Letter17: {letter: String, response: String, },
+  Letter18: {letter: String, response: String, },
+  Letter19: {letter: String, response: String, },
+  Letter20: {letter: String, response: String, },
+  Letter21: {letter: String, response: String, },
+  Letter22: {letter: String, response: String, },
+  Letter23: {letter: String, response: String, },
+  Letter24: {letter: String, response: String, },
+  Letter25: {letter: String, response: String, },
+  Letter26: {letter: String, response: String, },
+  Letter27: {letter: String, response: String, },
+  Letter28: {letter: String, response: String, },
+  Letter29: {letter: String, response: String, },
+  Letter30: {letter: String, response: String, },
+  Letter31: {letter: String, response: String, },
+  Letter32: {letter: String, response: String, },
+  Letter33: {letter: String, response: String, },
+  Letter34: {letter: String, response: String, },
+  Letter35: {letter: String, response: String, },
+  Letter36: {letter: String, response: String, },
+  Letter37: {letter: String, response: String, },
+  Letter38: {letter: String, response: String, },
+  Letter39: {letter: String, response: String, },
+  Letter40: {letter: String, response: String, },
+
+},
+{timestamps: true}
+);
+
+const test4SchemaSect3v2 = new mongoose.Schema({
   Letter1: {letter: String, response: String, },
   Letter2: {letter: String, response: String, },
   Letter3: {letter: String, response: String, },
@@ -746,6 +1161,51 @@ const test4SchemaSect4 = new mongoose.Schema({
 {timestamps: true}
 );
 
+const test4SchemaSect4v2 = new mongoose.Schema({
+  Letter1: {letter: String, response: String, },
+  Letter2: {letter: String, response: String, },
+  Letter3: {letter: String, response: String, },
+  Letter4: {letter: String, response: String, },
+  Letter5: {letter: String, response: String, },
+  Letter6: {letter: String, response: String, },
+  Letter7: {letter: String, response: String, },
+  Letter8: {letter: String, response: String, },
+  Letter9: {letter: String, response: String, },
+  Letter10: {letter: String, response: String, },
+  Letter11: {letter: String, response: String, },
+  Letter12: {letter: String, response: String, },
+  Letter13: {letter: String, response: String, },
+  Letter14: {letter: String, response: String, },
+  Letter15: {letter: String, response: String, },
+  Letter16: {letter: String, response: String, },
+  Letter17: {letter: String, response: String, },
+  Letter18: {letter: String, response: String, },
+  Letter19: {letter: String, response: String, },
+  Letter20: {letter: String, response: String, },
+  Letter21: {letter: String, response: String, },
+  Letter22: {letter: String, response: String, },
+  Letter23: {letter: String, response: String, },
+  Letter24: {letter: String, response: String, },
+  Letter25: {letter: String, response: String, },
+  Letter26: {letter: String, response: String, },
+  Letter27: {letter: String, response: String, },
+  Letter28: {letter: String, response: String, },
+  Letter29: {letter: String, response: String, },
+  Letter30: {letter: String, response: String, },
+  Letter31: {letter: String, response: String, },
+  Letter32: {letter: String, response: String, },
+  Letter33: {letter: String, response: String, },
+  Letter34: {letter: String, response: String, },
+  Letter35: {letter: String, response: String, },
+  Letter36: {letter: String, response: String, },
+  Letter37: {letter: String, response: String, },
+  Letter38: {letter: String, response: String, },
+  Letter39: {letter: String, response: String, },
+  Letter40: {letter: String, response: String, },
+},
+{timestamps: true}
+);
+
 const test4SchemaSect5 = new mongoose.Schema({
   Letter1: {letter: String, response: String, },
   Letter2: {letter: String, response: String, },
@@ -791,7 +1251,97 @@ const test4SchemaSect5 = new mongoose.Schema({
 {timestamps: true}
 );
 
+const test4SchemaSect5v2 = new mongoose.Schema({
+  Letter1: {letter: String, response: String, },
+  Letter2: {letter: String, response: String, },
+  Letter3: {letter: String, response: String, },
+  Letter4: {letter: String, response: String, },
+  Letter5: {letter: String, response: String, },
+  Letter6: {letter: String, response: String, },
+  Letter7: {letter: String, response: String, },
+  Letter8: {letter: String, response: String, },
+  Letter9: {letter: String, response: String, },
+  Letter10: {letter: String, response: String, },
+  Letter11: {letter: String, response: String, },
+  Letter12: {letter: String, response: String, },
+  Letter13: {letter: String, response: String, },
+  Letter14: {letter: String, response: String, },
+  Letter15: {letter: String, response: String, },
+  Letter16: {letter: String, response: String, },
+  Letter17: {letter: String, response: String, },
+  Letter18: {letter: String, response: String, },
+  Letter19: {letter: String, response: String, },
+  Letter20: {letter: String, response: String, },
+  Letter21: {letter: String, response: String, },
+  Letter22: {letter: String, response: String, },
+  Letter23: {letter: String, response: String, },
+  Letter24: {letter: String, response: String, },
+  Letter25: {letter: String, response: String, },
+  Letter26: {letter: String, response: String, },
+  Letter27: {letter: String, response: String, },
+  Letter28: {letter: String, response: String, },
+  Letter29: {letter: String, response: String, },
+  Letter30: {letter: String, response: String, },
+  Letter31: {letter: String, response: String, },
+  Letter32: {letter: String, response: String, },
+  Letter33: {letter: String, response: String, },
+  Letter34: {letter: String, response: String, },
+  Letter35: {letter: String, response: String, },
+  Letter36: {letter: String, response: String, },
+  Letter37: {letter: String, response: String, },
+  Letter38: {letter: String, response: String, },
+  Letter39: {letter: String, response: String, },
+  Letter40: {letter: String, response: String, },
+},
+{timestamps: true}
+);
+
 const test4SchemaSect6 = new mongoose.Schema({
+  Letter1: {letter: String, response: String, },
+  Letter2: {letter: String, response: String, },
+  Letter3: {letter: String, response: String, },
+  Letter4: {letter: String, response: String, },
+  Letter5: {letter: String, response: String, },
+  Letter6: {letter: String, response: String, },
+  Letter7: {letter: String, response: String, },
+  Letter8: {letter: String, response: String, },
+  Letter9: {letter: String, response: String, },
+  Letter10: {letter: String, response: String, },
+  Letter11: {letter: String, response: String, },
+  Letter12: {letter: String, response: String, },
+  Letter13: {letter: String, response: String, },
+  Letter14: {letter: String, response: String, },
+  Letter15: {letter: String, response: String, },
+  Letter16: {letter: String, response: String, },
+  Letter17: {letter: String, response: String, },
+  Letter18: {letter: String, response: String, },
+  Letter19: {letter: String, response: String, },
+  Letter20: {letter: String, response: String, },
+  Letter21: {letter: String, response: String, },
+  Letter22: {letter: String, response: String, },
+  Letter23: {letter: String, response: String, },
+  Letter24: {letter: String, response: String, },
+  Letter25: {letter: String, response: String, },
+  Letter26: {letter: String, response: String, },
+  Letter27: {letter: String, response: String, },
+  Letter28: {letter: String, response: String, },
+  Letter29: {letter: String, response: String, },
+  Letter30: {letter: String, response: String, },
+  Letter31: {letter: String, response: String, },
+  Letter32: {letter: String, response: String, },
+  Letter33: {letter: String, response: String, },
+  Letter34: {letter: String, response: String, },
+  Letter35: {letter: String, response: String, },
+  Letter36: {letter: String, response: String, },
+  Letter37: {letter: String, response: String, },
+  Letter38: {letter: String, response: String, },
+  Letter39: {letter: String, response: String, },
+  Letter40: {letter: String, response: String, },
+},
+{timestamps: true}
+);
+
+const test4SchemaSect6v2 = new mongoose.Schema({
   Letter1: {letter: String, response: String, },
   Letter2: {letter: String, response: String, },
   Letter3: {letter: String, response: String, },
@@ -902,6 +1452,15 @@ const testSchema = new mongoose.Schema({
   test4CompletionSctn4: Boolean,
   test4CompletionSctn5: Boolean,
   test4CompletionSctn6: Boolean,
+  test1Completionv2: Boolean,
+  test2Completionv2: Boolean,
+  test3Completionv2: Boolean,
+  test4CompletionSctn1v2: Boolean,
+  test4CompletionSctn2v2: Boolean,
+  test4CompletionSctn3v2: Boolean,
+  test4CompletionSctn4v2: Boolean,
+  test4CompletionSctn5v2: Boolean,
+  test4CompletionSctn6v2: Boolean,
   test5CompletionSctn2: Boolean,
   test4Completion: Boolean,
   test5Completion: Boolean,
@@ -918,6 +1477,13 @@ const testSchema = new mongoose.Schema({
   ListAEntries_Trial4: [],
   ListAEntries_Trial5: [],
   ListBEntries: [],
+  ListAEntriesRecallv2: [],
+  ListAEntries_Trial1v2: [],
+  ListAEntries_Trial2v2: [],
+  ListAEntries_Trial3v2: [],
+  ListAEntries_Trial4v2: [],
+  ListAEntries_Trial5v2: [],
+  ListBEntriesv2: [],
   Test2_Entry_1: [],
   Test2_Entry_2: [],
   Test2_Entry_3: [],
@@ -930,22 +1496,53 @@ const testSchema = new mongoose.Schema({
   Test2_Entry_10: [],
   Test2_Entry_11: [],
   Test2_Entry_12: [],
+  Test2_Entry_1v2: [],
+  Test2_Entry_2v2: [],
+  Test2_Entry_3v2: [],
+  Test2_Entry_4v2: [],
+  Test2_Entry_5v2: [],
+  Test2_Entry_6v2: [],
+  Test2_Entry_7v2: [],
+  Test2_Entry_8v2: [],
+  Test2_Entry_9v2: [],
+  Test2_Entry_10v2: [],
+  Test2_Entry_11v2: [],
+  Test2_Entry_12v2: [],
   Test2Recall_Entry_1: [],
   Test2Recall_Entry_2: [],
   Test2Recall_Entry_3: [],
   ListAEntriesTest5_Recall: [],
+  Test2Recall_Entry_1v2: [],
+  Test2Recall_Entry_2v2: [],
+  Test2Recall_Entry_3v2: [],
+  ListAEntriesTest5_Recallv2: [],
   Test3Images: [test3SchemaSect1],
+  Test3v2Images: [test3v2SchemaSect1],
   Test3ImagesRecall: [test3SchemaSect1Recall],
   Test3Images2: [test3SchemaSect2],
+  Test3v2Images2: [test3v2SchemaSect2],
+
   Test4Section1: [test4SchemaSect1],
+  Test4Section1v2: [test4SchemaSect1v2],
+
   Test4RecallSection1: [test4SchemaSect1Recall],
   Test4Section2: [test4SchemaSect2],
+  Test4Section2v2: [test4SchemaSect2v2],
+
   Test4RecallSection2: [test4SchemaSect2Recall],
   Test4Section3: [test4SchemaSect3],
+  Test4Section3v2: [test4SchemaSect3v2],
+
   Test4RecallSection3: [test4SchemaSect3Recall],
   Test4Section4: [test4SchemaSect4],
+  Test4Section4v2: [test4SchemaSect4v2],
+
   Test4Section5: [test4SchemaSect5],
+  Test4Section5v2: [test4SchemaSect5v2],
+
   Test4Section6: [test4SchemaSect6],
+  Test4Section6v2: [test4SchemaSect6v2],
+
   Test5Section2: [test5SchemaSect2]
 });
 

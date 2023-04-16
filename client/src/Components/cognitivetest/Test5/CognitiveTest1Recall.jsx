@@ -201,10 +201,10 @@ function CognitiveTest1Recall () {
 
   useEffect(()=> {
     if (userProfile) {
-      if (userloggedIn._id) {
+      if (userloggedIn) {
         setUserId(userloggedIn._id);
       }
-      if (userProfile._id) {
+      if (userProfile) {
         setUserId(userProfile._id);
       }
     }
@@ -308,6 +308,7 @@ useEffect(() => {
   if (userId) {
     axios.get('/api/user', {params: {_id: userId}})
     .then((res)=>{
+      // console.log('Sctn6CompletionTime :', res.data.user.Sctn6CompletionTime)
       setCompletionTime(res.data.user.Sctn6CompletionTime)
     })
     .catch((err)=>{
@@ -319,8 +320,8 @@ useEffect(() => {
  useEffect(() => {
   if (completionTime) {
       const now = moment();
-      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(10, 'hours');
-      const expiryDate = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(14, 'hours');
+      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(1, 'hours');
+      const expiryDate = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(140, 'hours'); //14
 
       let expired = moment.duration(expiryDate.diff(now));
       // console.log('expired :', expired.format(''))
@@ -329,6 +330,8 @@ useEffect(() => {
       let hours2 = expired.asHours();
       let mins2 = expired.asMinutes();
       let secs2 = expired.asSeconds();
+
+      // console.log('Hrs :', hours)
 
       if (hours2 <= 0 && mins2 <= 0 && secs2 <= 0) {
         navigate('/expired-test')

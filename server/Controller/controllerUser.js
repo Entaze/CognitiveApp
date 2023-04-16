@@ -205,7 +205,7 @@ exports.getUser = (req, res) => {
     }
     //Send response
     try {
-      const {_id, name, age, email, test1Completion, test2Completion, test3Completion, test4CompletionSctn1, test4CompletionSctn2, test4CompletionSctn3, test4CompletionSctn4, test4CompletionSctn5, test4CompletionSctn6, Sctn6CompletionTime, test4Completion, test1CompletionRecallSctn2, test1CompletionRecall, test2CompletionRecall, test3CompletionRecall, test4CompletionRecall, test4CompletionRecallSctn1, test4CompletionRecallSctn2, test4CompletionRecallSctn3, Test4RecallCompletionTime, Test1Tracker, Test2Tracker, userConfirmed, } = user;
+      const {_id, name, age, email, test1Completion, test1Completionv2, test2Completion, test2Completionv2, test3Completion, test3Completionv2, test4CompletionSctn1, test4CompletionSctn1v2, test4CompletionSctn2, test4CompletionSctn2v2, test4CompletionSctn3, test4CompletionSctn3v2, test4CompletionSctn4, test4CompletionSctn4v2, test4CompletionSctn5, test4CompletionSctn5v2, test4CompletionSctn6, test4CompletionSctn6v2, Sctn6CompletionTime, Sctn6CompletionTimev2, test4Completion, test4Completionv2, test1CompletionRecallSctn2, test1CompletionRecallSctn2v2, test1CompletionRecall, test1CompletionRecallv2, test2CompletionRecall, test2CompletionRecallv2, test3CompletionRecall, test3CompletionRecallv2, test4CompletionRecall, test4CompletionRecallv2, test4CompletionRecallSctn1, test4CompletionRecallSctn1v2, test4CompletionRecallSctn2, test4CompletionRecallSctn2v2, test4CompletionRecallSctn3, test4CompletionRecallSctn3v2, Test4RecallCompletionTime, Test4RecallCompletionTimev2, Test1Tracker, Test1Trackerv2, Test2Tracker, Test2Trackerv2, userConfirmed, } = user;
       return res.status(200).send({
         user: {
           _id,
@@ -234,6 +234,28 @@ exports.getUser = (req, res) => {
           Test4RecallCompletionTime,
           Test1Tracker,
           Test2Tracker,
+          test1Completionv2,
+          test2Completionv2,
+          test3Completionv2,
+          test4CompletionSctn1v2,
+          test4CompletionSctn2v2,
+          test4CompletionSctn3v2,
+          test4CompletionSctn4v2,
+          test4CompletionSctn5v2,
+          test4CompletionSctn6v2,
+          Sctn6CompletionTimev2,
+          test4Completionv2,
+          test1CompletionRecallSctn2v2,
+          test1CompletionRecallv2,
+          test2CompletionRecallv2,
+          test3CompletionRecallv2,
+          test4CompletionRecallSctn1v2,
+          test4CompletionRecallSctn2v2,
+          test4CompletionRecallSctn3v2,
+          test4CompletionRecallv2,
+          Test4RecallCompletionTimev2,
+          Test1Trackerv2,
+          Test2Trackerv2,
           userConfirmed,
 
         }
@@ -275,6 +297,30 @@ exports.updateUser = (req, res) => {
     param = { test4CompletionSctn6: body.test4CompletionSctn6, Sctn6CompletionTime: body.Sctn6CompletionTime };
   } else if (body.test4Completion) {
     param = { test4Completion: body.test4Completion };
+  } else if (body.test1Completionv2) {
+    param = { test1Completionv2: body.test1Completionv2 };
+  } else if (body.Test1Trackerv2) {
+    param = { Test1Trackerv2: body.Test1Trackerv2 };
+  } else if (body.Test2Trackerv2) {
+    param = { Test2Trackerv2: body.Test2Trackerv2 };
+  } else if (body.test2Completionv2) {
+    param = { test2Completionv2: body.test2Completionv2 };
+  } else if (body.test3Completionv2) {
+    param = { test3Completionv2: body.test3Completionv2 };
+  } else if (body.test4CompletionSctn1v2) {
+    param = { test4CompletionSctn1v2: body.test4CompletionSctn1v2 };
+  } else if (body.test4CompletionSctn2v2) {
+    param = { test4CompletionSctn2v2: body.test4CompletionSctn2v2 };
+  } else if (body.test4CompletionSctn3v2) {
+    param = { test4CompletionSctn3v2: body.test4CompletionSctn3v2 };
+  } else if (body.test4CompletionSctn4v2) {
+    param = { test4CompletionSctn4v2: body.test4CompletionSctn4v2 };
+  } else if (body.test4CompletionSctn5v2) {
+    param = { test4CompletionSctn5v2: body.test4CompletionSctn5v2 };
+  } else if (body.test4CompletionSctn6v2) {
+    param = { test4CompletionSctn6v2: body.test4CompletionSctn6v2, Sctn6CompletionTimev2: body.Sctn6CompletionTimev2 };
+  } else if (body.test4Completionv2) {
+    param = { test4Completionv2: body.test4Completionv2 };
   } else if (body.test1CompletionRecallSctn2) {
     param = { test1CompletionRecallSctn2: body.test1CompletionRecallSctn2 };
   } else if (body.test1CompletionRecall) {

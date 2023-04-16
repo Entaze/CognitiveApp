@@ -86,6 +86,9 @@ const PracticeStyle = {
 
 const Cognitivetest4 = () => {
   const token = window.localStorage.getItem('token');
+  const userloggedIn = JSON.parse(window.localStorage.getItem('userLoggedIn'));
+  const [userId, setUserId] = useState(null);
+
   const { userProfile, cognitiveTest, setCognitiveTest } = useMainContext();
   const [userAuth, setUserAuth] = useState(false);
   const [firstPage, setFirstPage] = useState(false);
@@ -145,7 +148,7 @@ const Cognitivetest4 = () => {
   const [test3Letter, setTest3Letter] = useState(['Q', 'N', 'S', 'V', 'B', 'H', 'B', 'H', 'P', 'X', 'P', 'C', 'X', 'C', 'M', 'K', 'M', 'K', 'M', 'K' ]); //
   const [test01Letter, setTest01Letter] = useState(['J', 'S', 'B', 'T', 'G', 'N', 'G', 'Q', 'Z', 'K', 'B', 'Z', 'K', 'T', 'Q', 'T', 'G', 'Z', 'Z', 'G', 'Z', 'Z', 'B', 'Z', 'Z', 'S', 'Z', 'Z', 'Z', 'B', 'B', 'Z', 'N', 'J', 'Z', 'V', 'V', ]); //
   const [test02Letter, setTest02Letter] = useState(['X', 'P', 'K', 'R', 'D', 'T', 'X', 'V', 'V', 'P', 'J', 'J', 'J', 'P', 'P', 'H', 'N', 'H', 'H', 'N', 'B', 'B', 'N', 'N', 'T', 'M', 'T', 'T', 'J', 'P', 'P', 'P', 'J', 'J', 'H', 'H', ]); //
-  const [test03Letter, setTest03Letter] = useState(['Q', 'N', 'S', 'V', 'B', 'H', 'B', 'H', 'P', 'X', 'P', 'C', 'X', 'C', 'M', 'K', 'M', 'K', 'M', 'K', 'V', 'S', 'F', 'V', 'V', 'S', 'F', 'V', 'V', 'S', 'F', 'F', 'N', 'C', 'N', 'C', 'M', 'J', 'M', 'J', ]); //
+  const [test03Letter, setTest03Letter] = useState(['Q', 'N', 'S', 'V',  ]); //'B', 'H', 'B', 'H', 'P', 'X', 'P', 'C', 'X', 'C', 'M', 'K', 'M', 'K', 'M', 'K', 'V', 'S', 'F', 'V', 'V', 'S', 'F', 'V', 'V', 'S', 'F', 'F', 'N', 'C', 'N', 'C', 'M', 'J', 'M', 'J',
 
 
   const [countLetter, setCountLetter] = useState(0);
@@ -209,6 +212,15 @@ const Cognitivetest4 = () => {
     }
    }, [userProfile])
 
+   useEffect(()=> {
+    if (userProfile) {
+      if (userProfile._id) {
+        setUserId(userProfile._id);
+      } else if (userloggedIn._id) {
+        setUserId(userloggedIn._id);
+      }
+    }
+  }, [userloggedIn, userProfile])
 
  useEffect(()=>{
   if (userAuth) {
@@ -236,6 +248,7 @@ const Cognitivetest4 = () => {
     }
   }
  },[userAuth ])
+
 
   //-----Listen to keyboard events
 
@@ -804,10 +817,9 @@ const Cognitivetest4 = () => {
 
   useEffect(()=>{
     if (test4Complete) {
-      let complete = {_id: userProfile._id, test4Completion: true, email: userProfile.email, name: userProfile.name };
+      let complete = {_id: userId, test4Completion: true, email: userProfile.email, name: userProfile.name };
       axios.post('/api/user', complete)
       .then((res) => {
-        setTest4End(true);
         //Do something
         navigate('/cognitivetest1recall')
         //Maybe Send email to say when they can resume test

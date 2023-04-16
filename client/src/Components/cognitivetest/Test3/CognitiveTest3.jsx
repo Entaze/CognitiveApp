@@ -757,7 +757,7 @@ const CognitiveTest3 = () => {
       const param = {_id: userProfile._id };
       axios.get('/api/test3Images', {params: param})
       .then((res) => {
-        if (res.data.Test3Images) {
+        if (res.data.Test3Images2) {
           num = (Images2.length - (res.data.Test3Images2.length));
           // console.log('num :', res.data.Test3Images2 )
           // console.log('Images2 :', Images2.length )
@@ -959,6 +959,7 @@ const CognitiveTest3 = () => {
   }
 
   const PreSection2 = () => {
+    setSectionTwoStart(false);
     setSectionTwoStart2(false);
     setSectionTwoClickStart(true);
   }

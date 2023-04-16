@@ -40,18 +40,33 @@ app.put('/api/forgotpassword', userController.forgotPassword)
 app.put('/api/resetpassword', userController.resetPassword)
 app.post('/api/cognitivetest', testController.postTest);
 app.get('/api/test3Images', testController.getTest);
+app.get('/api/test3v2Images', testController.getTestv2);
 app.post('/api/test3imagerating', testController.postRating)
+app.post('/api/test3v2imagerating', testController.postRatingv2)
 app.post('/api/test3imagerating2', testController.postRating2)
+app.post('/api/test3v2imagerating2', testController.postRating2v2)
 app.post('/api/test3recallimagerating', testController.postRating3)
 app.post('/api/test4section1', testController.postTest4Section1)
+app.post('/api/test4section1v2', testController.postTest4Section1v2)
+
 app.post('/api/test4recallsection1', testController.postTest4RecallSection1)
 app.post('/api/test4section2', testController.postTest4Section2)
+app.post('/api/test4section2v2', testController.postTest4Section2v2)
+
 app.post('/api/test4recallsection2', testController.postTest4RecallSection2)
 app.post('/api/test4section3', testController.postTest4Section3)
+app.post('/api/test4section3v2', testController.postTest4Section3v2)
+
 app.post('/api/test4recallsection3', testController.postTest4RecallSection3)
 app.post('/api/test4section4', testController.postTest4Section4)
+app.post('/api/test4section4v2', testController.postTest4Section4v2)
+
 app.post('/api/test4section5', testController.postTest4Section5)
+app.post('/api/test4section5v2', testController.postTest4Section5v2)
+
 app.post('/api/test4section6', testController.postTest4Section6)
+app.post('/api/test4section6v2', testController.postTest4Section6v2)
+
 app.post('/api/test5section2', testController.postTest5Section2)
 // app.post('/api/test1completion', testController.postTest1Tracker)
 
@@ -81,7 +96,7 @@ app.post('/api/test5section2', testController.postTest5Section2)
 // }
 
 //  -----------HEROKU DEPLOYMENT-----------
-if (process.env.NODE_ENV === 'production') {   //production
+if (process.env.NODE_ENV === 'development') {   //production
   app.get("/mockServiceWorker.js", (req, res) => {
     res.sendFile(path.resolve(__dirname, "../client/src/mocks/browser.js"));
   });

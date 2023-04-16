@@ -82,8 +82,8 @@ function countdownTimer2 () {
 
   useEffect(()=> {
     if (userProfile) {
-      if (userloggedIn._id) {
-        setUserId(userloggedIn._id);
+      if (userloggedIn) {
+        setUserId(userloggedIn);
       }
       if (userProfile._id) {
         setUserId(userProfile._id);

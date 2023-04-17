@@ -123,22 +123,12 @@ const Cognitivetest2 = () => {
     }
    }, [userProfile])
 
-  //  useEffect(()=> {
-  //   if (userProfile) {
-  //     if (userloggedIn._id) {
-  //       setUserId(userloggedIn._id);
-  //     }
-  //     if (userProfile._id) {
-  //       setUserId(userProfile._id);
-  //     }
-  //   }
-  // }, [userloggedIn, userProfile])
 
   useEffect(()=> {
     if (userProfile) {
-      if (userProfile._id) {
+      if (userProfile) {
         setUserId(userProfile._id);
-      } else if (userloggedIn._id) {
+      } else if (userloggedIn) {
         setUserId(userloggedIn._id);
       }
     }

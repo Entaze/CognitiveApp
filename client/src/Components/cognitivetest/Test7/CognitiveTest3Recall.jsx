@@ -325,10 +325,10 @@ function CognitiveTest3Recall () {
 
   useEffect(()=> {
     if (userProfile) {
-      if (userloggedIn._id) {
-        setUserId(userloggedIn._id);
+      if (userloggedIn) {
+        setUserId(userloggedIn);
       }
-      if (userProfile._id) {
+      if (userProfile) {
         setUserId(userProfile._id);
       }
     }

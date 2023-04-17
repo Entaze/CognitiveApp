@@ -212,7 +212,7 @@ function Cognitivetest () {
   const [startTestListARecall, setStartTestListARecall] = useState(false);
   const [tests, setTests] = useState({});
   const [wordsArr, setWordsArr] = useState(['Drum', 'Curtain', 'Bell', 'Coffee', 'School', 'Parent', 'Moon', 'Garden', 'Hat', 'Farmer', 'Nose', 'Turkey', 'Colour', 'House', 'River', '', '' ]);
-  const [listB, setListB] = useState(['Desk', 'Ranger', 'Bird', 'Show', 'Stove', 'Mountain', 'Glasses', 'Towel', 'Cloud', 'Boat', 'Lamb', 'Gun', 'Pencil', 'Church', 'Fish', '', '' ]);
+  const [listB, setListB] = useState(['Desk', 'Ranger', 'Bird', 'Shoe', 'Stove', 'Mountain', 'Glasses', 'Towel', 'Cloud', 'Boat', 'Lamb', 'Gun', 'Pencil', 'Church', 'Fish', '', '' ]);
   const [wordsArrRe, setWordsArrRe] = useState(['', '' ]);
 
   const [listBStart, setListBStart] = useState(false);
@@ -269,9 +269,9 @@ function Cognitivetest () {
 
   useEffect(()=> {
     if (userProfile) {
-      if (userProfile._id) {
+      if (userProfile) {
         setUserId(userProfile._id);
-      } else if (userloggedIn._id) {
+      } else if (userloggedIn) {
         setUserId(userloggedIn._id);
       }
     }

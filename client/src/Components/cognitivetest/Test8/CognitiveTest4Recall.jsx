@@ -222,10 +222,10 @@ function CognitiveTest4Recall () {
 
   useEffect(()=> {
     if (userProfile) {
-      if (userloggedIn._id) {
+      if (userloggedIn) {
         setUserId(userloggedIn._id);
       }
-      if (userProfile._id) {
+      if (userProfile) {
         setUserId(userProfile._id);
       }
     }

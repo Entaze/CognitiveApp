@@ -125,9 +125,9 @@ const Cognitivetest2v2 = () => {
 
   useEffect(()=> {
     if (userProfile) {
-      if (userProfile._id) {
+      if (userProfile) {
         setUserId(userProfile._id);
-      } else if (userloggedIn._id) {
+      } else if (userloggedIn) {
         setUserId(userloggedIn._id);
       }
     }

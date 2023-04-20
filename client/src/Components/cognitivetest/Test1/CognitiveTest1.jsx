@@ -427,28 +427,33 @@ useEffect(()=> {
 const handlePostWords = () => {
   // console.log('testListATrials :', testListATrials)
   setFormState(false);
-  setRepeatListA(true);
   const date = new Date();
   let param;
 
   let countUp = testListATrials + 1;
   setTestListATrials(countUp);
   if (testListATrials === 1) {
+    setRepeatListA(true);
     param = {id: userId, ListAEntries_Trial1: wordsEnteredListA, time: date };
   }
   if (testListATrials === 2) {
+    setRepeatListA(true);
     param = {id: userId, ListAEntries_Trial2: wordsEnteredListA, time: date };
   }
   if (testListATrials === 3) {
+    setRepeatListA(true);
     param = {id: userId, ListAEntries_Trial3: wordsEnteredListA, time: date };
   }
   if (testListATrials === 4) {
+    setRepeatListA(true);
     param = {id: userId, ListAEntries_Trial4: wordsEnteredListA, time: date };
   }
   if (testListATrials === 5) {
+    setRepeatListA(false);
     param = {id: userId, ListAEntries_Trial5: wordsEnteredListA, time: date };
   }
   if (testListATrials === 6) {
+    // setRepeatListA(true);
     param = {id: userId, ListBEntries: wordsEnteredListA, time: date};
   }
   if (testListATrials === 7) {

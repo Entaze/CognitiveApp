@@ -166,7 +166,7 @@ function CognitiveTest1Recall () {
   const [countModal2, setCountModal2] = useState(0);
   const [wordsArr, setWordsArr] = useState(['Drum', 'Curtain', 'Bell', 'Coffee', 'School', 'Parent', 'Moon', 'Garden', 'Hat', 'Farmer', 'Nose', 'Turkey', 'Colour', 'House', 'River', '', '' ]);
 
-  const [wordsArr2, setWordsArr2] = useState(['Bell', 'Window', 'Hat', 'Bam', 'Ranger', 'Nose', 'Weather', 'School', 'Hand', 'Pencil', 'Home', 'Fish', 'Moon', 'Tree', 'Baloon', 'Bird', 'Mountain', 'Coffee', 'Mouse', 'River', 'Towel', 'Curtain', 'Flower', 'Colour', 'Desk', 'Gun', 'Crayon', 'Church', 'Turkey', 'Fountain', 'Boat', 'Hot', 'Parent', 'Water', 'Farmer', 'Rose', 'Cloud', 'House', 'Stranger', 'Garden', 'Glasses', 'Stocking', 'Shoe', 'Teacher', 'Stove', 'Nest', 'Children', 'Drum', 'Toffee', 'Lamb' ]) //
+  const [wordsArr2, setWordsArr2] = useState(['Bell', 'Window', 'Hat', 'Bam', 'Ranger', 'Nose', 'Weather', 'School', 'Hand', 'Pencil', 'Home', 'Fish', 'Moon', 'Tree', 'Balloon', 'Bird', 'Mountain', 'Coffee', 'Mouse', 'River', 'Towel', 'Curtain', 'Flower', 'Colour', 'Desk', 'Gun', 'Crayon', 'Church', 'Turkey', 'Fountain', 'Boat', 'Hot', 'Parent', 'Water', 'Farmer', 'Rose', 'Cloud', 'House', 'Stranger', 'Garden', 'Glasses', 'Stocking', 'Shoe', 'Teacher', 'Stove', 'Nest', 'Children', 'Drum', 'Toffee', 'Lamb' ]) //
   const [flashWords, setFlashWords] = useState(false);
   const [entry, setEntry] = useState(false);
   const wordCount = countModal + 1;

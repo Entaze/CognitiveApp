@@ -63,34 +63,25 @@ const Finish = () => {
 
     return (
       <>
-      {userAuth ?
-      <>
-        <NavigationBar />
-        <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', height: '100vh', maxWidth: '100vw', background: '#000', color: '#fff', top: 0, bottom: 0, }} >
-          {firstPage ?
-            <>
-            <div style={centerScreen} >
-              <h1 style={{ color: '#e67373', fontSize: 50, }} >TEST END</h1>
-              {/* <div style={{ fontSize: 35, fontWeight: 700, display: 'flex', padding: '110px 40px 120px 40px', lineHeight: '1.6', }} >
-              TEST TO BE CONTINUED..  <br />
-              </div>
-              <div>
-                <button >Start</button>
-              </div> */}
-            </div>
-            </>
-            :
-            null}
-
-        </div>
+        {userAuth ?
+        <>
+          <NavigationBar />
+          <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', height: '100vh', maxWidth: '100vw', background: '#000', color: '#fff', top: 0, bottom: 0, }} >
+            {firstPage ?
+              <>
+                <div style={centerScreen} >
+                  <h1 style={{ color: '#e67373', fontSize: 50, }} >TEST END - LOG OUT</h1>
+                </div>
+              </>
+              :
+              null}
+          </div>
         </>
-       :
-       null
-       }
+        :
+        null
+        }
       </>
     )
 }
 
 export default Finish
-
-

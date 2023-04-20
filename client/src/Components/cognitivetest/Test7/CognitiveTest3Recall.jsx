@@ -304,6 +304,7 @@ function CognitiveTest3Recall () {
     'https://res.cloudinary.com/entazesoftware/image/upload/v1680711025/WomanLyingChairSAAPS_2_vmfbz2.jpg',
     'https://res.cloudinary.com/entazesoftware/image/upload/v1680711025/WomanReadingOneSAAPS_nf2ak1.jpg',
     'https://res.cloudinary.com/entazesoftware/image/upload/v1680711025/WomanTwoSAAPS_2_yxmemy.jpg',
+    'https://res.cloudinary.com/entazesoftware/image/upload/v1671646970/CockpitSAAPS_gfrzog.jpg',
 
   ]
   );
@@ -641,10 +642,10 @@ const GetUnratedImagesRecall = () => {
                 <div style={{ fontSize: 34, lineHeight: 1.2, fontWeight: 700, display: 'flex', padding: '50px 0px 0px 0px',  }} >
                 Welcome back!<br /><br />
                Just like last time you will see some pictures appear on the screen, one after each other.
-               Again some picture will be positive, some will be neutral and some will be negative.
+               Again some pictures will be positive, some will be neutral and some will be negative.
                However, some pictures will be the same as last time, but some will be new.
               <br />
-               You will also need to rate how the picture made you feel.
+              You will need to decide if this picture is new or one you've seen before. You will also need to rate how the picture made you feel.
                 <br /><br /> [Press ENTER or click next to continue.]
                 </div>
                     <button style={{ margin: '75px'}} onClick={handleFirst} >

@@ -381,7 +381,7 @@ useEffect(() => {
     setFirstPage(false);
     navigate('/cognitivetest2');
   }
-}, [keyClicked, test1End, listAReEntry])
+}, [keyClicked, test1End, listAReEntry, firstPage, listBStart])
 
 const handleButtonClick = (e) => {
   e.preventDefault();
@@ -464,11 +464,9 @@ const handlePostWords = () => {
         const param2 = {_id: userProfile._id, Test1Tracker: cnt};
       axios.post('/api/user', param2)
       .then((res)=>{
-        console.log('testListATrials :', testListATrials)
-        if (testListATrials === 6) {
-          setListAReEntry(true);
-        }
-
+        // if (testListATrials === 6) {
+        //   setListAReEntry(true);
+        // }
       })
       .catch((err)=>{
 
@@ -577,6 +575,7 @@ useEffect(() => {
     if (testListATrials === 7) {
       setBeginSec1(false)
       setFirstPage(false)
+      setListBStart(false)
       setListAReEntry(true);
     }
     if (testListATrials === 8) {

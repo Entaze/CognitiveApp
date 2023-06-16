@@ -110,7 +110,6 @@ const Cognitivetest4v2 = () => {
   const [eightPage04, setEightPage04] = useState(false);
   const [eightPage05, setEightPage05] = useState(false);
 
-
   const [ninthPage, setNinthPage] = useState(false);
   const [tenthPage, setTenthPage] = useState(false);
   const [eleventhPage, setEleventhPage] = useState(false);
@@ -143,12 +142,13 @@ const Cognitivetest4v2 = () => {
   const [testBegin3, setTestBegin3] = useState(false);
   const [mainTestBegin1, setMainTestBegin1] = useState(false);
 
-  const [test1Letter, setTest1Letter] = useState(['J', 'S', 'B', 'T', ]); //'G', 'N', 'G', 'Q', 'Z', 'K', 'B', 'Z', 'K', 'T', 'Q', 'T', 'G', 'Z', 'Z', 'G'
-  const [test2Letter, setTest2Letter] = useState(['X', 'P', 'K', 'R', ]); // 'D', 'T', 'X', 'V', 'V', 'P', 'J', 'J', 'J', 'P', 'P', 'H', 'N', 'H', 'H', 'N',
-  const [test3Letter, setTest3Letter] = useState(['Q', 'N', 'S', 'V', ]); // 'B', 'H', 'B', 'H', 'P', 'X', 'P', 'C', 'X', 'C', 'M', 'K', 'M', 'K', 'M', 'K'
-  const [test01Letter, setTest01Letter] = useState(['J', 'S', 'B', 'T', ]); // 'G', 'N', 'G', 'Q', 'Z', 'K', 'B', 'Z', 'K', 'T', 'Q', 'T', 'G', 'Z', 'Z', 'G', 'Z', 'Z', 'B', 'Z', 'Z', 'S', 'Z', 'Z', 'Z', 'B', 'B', 'Z', 'N', 'J', 'Z', 'V', 'V',
-  const [test02Letter, setTest02Letter] = useState(['X', 'P', 'K', 'R', ]); // 'D', 'T', 'X', 'V', 'V', 'P', 'J', 'J', 'J', 'P', 'P', 'H', 'N', 'H', 'H', 'N', 'B', 'B', 'N', 'N', 'T', 'M', 'T', 'T', 'J', 'P', 'P', 'P', 'J', 'J', 'H', 'H',
-  const [test03Letter, setTest03Letter] = useState(['Q', 'N', 'S', 'V', ]); // 'B', 'H', 'B', 'H', 'P', 'X', 'P', 'C', 'X', 'C', 'M', 'K', 'M', 'K', 'M', 'K', 'V', 'S', 'F', 'V', 'V', 'S', 'F', 'V', 'V', 'S', 'F', 'F', 'N', 'C', 'N', 'C', 'M', 'J', 'M', 'J',
+  const [test1Letter, setTest1Letter] = useState(['J', 'S', 'B', 'T', 'G', 'N', 'G', 'Q', 'Z', 'K', 'B', 'Z', 'K', 'T', 'Q', 'T', 'G', 'Z', 'Z', 'G' ]); //
+  const [test2Letter, setTest2Letter] = useState(['X', 'P', 'K', 'R', 'D', 'T', 'X', 'V', 'V', 'P', 'J', 'J', 'J', 'P', 'P', 'H', 'N', 'H', 'H', 'N', ]); //
+  const [test3Letter, setTest3Letter] = useState(['Q', 'N', 'S', 'V', 'B', 'H', 'B', 'H', 'P', 'X', 'P', 'C', 'X', 'C', 'M', 'K', 'M', 'K', 'M', 'K' ]); //
+  const [test01Letter, setTest01Letter] = useState(['J', 'S', 'B', 'T', 'G', 'N', 'G', 'Q', 'Z', 'K', 'B', 'Z', 'K', 'T', 'Q', 'T', 'G', 'Z', 'Z', 'G', 'Z', 'Z', 'B', 'Z', 'Z', 'S', 'Z', 'Z', 'Z', 'B', 'B', 'Z', 'N', 'J', 'Z', 'V', 'V', ]); //
+  const [test02Letter, setTest02Letter] = useState(['X', 'P', 'K', 'R', 'D', 'T', 'X', 'V', 'V', 'P', 'J', 'J', 'J', 'P', 'P', 'H', 'N', 'H', 'H', 'N', 'B', 'B', 'N', 'N', 'T', 'M', 'T', 'T', 'J', 'P', 'P', 'P', 'J', 'J', 'H', 'H', ]); //
+  const [test03Letter, setTest03Letter] = useState(['Q', 'N', 'S', 'V', 'B', 'H', 'B', 'H', 'P', 'X', 'P', 'C', 'X', 'C', 'M', 'K', 'M', 'K', 'M', 'K', 'V', 'S', 'F', 'V', 'V', 'S', 'F', 'V', 'V', 'S', 'F', 'F', 'N', 'C', 'N', 'C', 'M', 'J', 'M', 'J', ]); //
+
 
 
   const [countLetter, setCountLetter] = useState(0);
@@ -326,8 +326,6 @@ const Cognitivetest4v2 = () => {
     }
 
  }, [keyClicked, count, plusSign, countLetter, testBegin1])
-
-
 
   //-------------------------------------------
 
@@ -948,35 +946,6 @@ const Cognitivetest4v2 = () => {
   }
 
 
-  // useEffect(()=>{
-  //   let keyC;
-  //   if (AxiosSend03 && !flash) {
-  //       keyC = keyClicked;
-  //       const key = 'Letter'+ count02;
-  //       const obj = {
-  //         [`${key}`]: {letter: letter, response: keyC}
-  //       }
-  //       const param = {_id: userProfile._id, obj};
-  //       // console.log('Param :', param)
-  //       // axios.post('/api/test4section5', param)
-  //       // .then((res)=>{
-  //       //   // console.log('Res data :', res.data.Test4Section1)
-  //       //   if (count01 === test02Letter.length) {
-  //       //     let complete = {_id: userProfile._id, test4CompletionSctn5: true};
-  //       //     axios.post('/api/user', complete)
-  //       //     .then((res) => {
-  //       //       // console.log('res :', res.data)
-  //       //       setTestBegin1(false)
-  //       //       setMainTestBegin1(true)
-  //       //       setFifteenthPage(true)
-  //       //     })
-  //       //   }
-  //       // })
-  //       setAxiosSend03(false)
-  //       SetKeyClicked('')
-  //   }
-  // },[AxiosSend03, plusSign, count02, flash])
-
     return (
       <>
       {userAuth ?
@@ -1100,18 +1069,12 @@ const Cognitivetest4v2 = () => {
                  : null}
                </>
               </div>
-              {/* <div  style={{ fontSize: 35, fontWeight: 700, display: 'flex', padding: '5px 40px 10px 40px', lineHeight: '1.6', }} >
-                [Press enter or click start to continue]
-              </div> */}
               {fifthPage01 ?
                 <div style={{ display: "flex", margin: "4px 4px 4px 5px", alignItems: 'center', }}>
                   <button onClick={zeroPrac1} >Next</button>
                 </div>
               : null}
                {fifthPage02 ?
-                // <div style={{ display: "flex", margin: "4px 4px 4px 5px", alignItems: 'center', }}>
-                //   <button onClick={zeroPrac2Prev} >Previous</button>
-                // </div>
                 <div style={{ display: "flex", margin: "4px 4px 4px 5px", alignItems: 'center', }}>
                   <button onClick={zeroPrac2Prev} style={{ margin: '0 55px'}} >Previous</button> <button onClick={zeroPrac2} >Next</button>
                 </div>
@@ -1148,8 +1111,6 @@ const Cognitivetest4v2 = () => {
 
         </div>
       :null}
-
-
       {testBegin1 ?
         <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', height: '100vh', maxWidth: '100vw', background: '#fff', color: '#fff', top: 0, bottom: 0, }} >
            {plusSign ?
@@ -1292,10 +1253,7 @@ const Cognitivetest4v2 = () => {
             </>
             :
           null}
-
-
          </div>
-
       :null}
 
       {testBegin3 ?
@@ -1319,8 +1277,7 @@ const Cognitivetest4v2 = () => {
             <>
             <div style={centerScreen} >
               <h1 style={{ color: '#e67373', fontSize: 50, }} >TEST 4 - TWO BACK PRACTICE</h1>
-
-                      <div style={{ width: '60%', display: 'flex', padding: '20px 40px 20px 40px', }} >
+                <div style={{ width: '60%', display: 'flex', padding: '20px 40px 20px 40px', }} >
                <>
                  {eleventhPage01 ?
                   <div>
@@ -1390,12 +1347,6 @@ const Cognitivetest4v2 = () => {
                  : null}
                </>
               </div>
-              {/* <div  style={{ fontSize: 35, fontWeight: 700, display: 'flex', padding: '5px 40px 10px 40px', lineHeight: '1.6', }} >
-                [Press enter or click start to continue]
-              </div>
-              <div>
-                <button onClick={startTest11} >Continue</button>
-              </div> */}
               {eleventhPage01 ?
                 <div style={{ display: "flex", margin: "4px 4px 4px 5px", alignItems: 'center', }}>
                   <button onClick={twoPrac1} >Next</button>

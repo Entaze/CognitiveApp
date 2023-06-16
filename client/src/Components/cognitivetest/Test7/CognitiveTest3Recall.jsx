@@ -578,7 +578,6 @@ const GetUnratedImagesRecall = () => {
       //Axios send
       axios.post('/api/test3recallimagerating', param)
       .then((res)=>{
-        console.log('res.data :', res.data.Test3ImagesRecall)
         SetKeyClicked('')
         setImageRating(null)
         setImageRating2(null)

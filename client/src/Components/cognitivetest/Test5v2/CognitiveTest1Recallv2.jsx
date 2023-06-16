@@ -138,7 +138,6 @@ function CognitiveTest1Recallv2 () {
   const [secondPage, setSecondPage] = useState(false);
   const [secondPageIntro, setSecondPageIntro] = useState(false);
 
-
   const [completionTime, setCompletionTime] = useState(null);
   const [countdownComplete, setCountdownComplete] = useState(false);
   const [hours, setHours] = useState(0);
@@ -164,9 +163,9 @@ function CognitiveTest1Recallv2 () {
   const [wordInput, setWordInput] = useState();
   const [countModal, setCountModal] = useState(0);
   const [countModal2, setCountModal2] = useState(0);
-  const [wordsArr, setWordsArr] = useState(['Drum', 'Curtain', 'Bell', 'Coffee', 'School', 'Parent', 'Moon', 'Garden', 'Hat', 'Farmer', 'Nose', 'Turkey', 'Colour', 'House', 'River', '', '' ]);
+  const [wordsArr, setWordsArr] = useState(['Pipe', 'Wall', 'Alarm', 'Sugar', 'Student', 'Mother', 'Star', 'Painting', 'Bag', 'Wheat', 'Mouth', 'Chicken', 'Sound', 'Door', 'Stream', '', '' ]);
 
-  const [wordsArr2, setWordsArr2] = useState(['Bell', 'Window', 'Hat', 'Bam', 'Ranger', 'Nose', 'Weather', 'School', 'Hand', 'Pencil', 'Home', 'Fish', 'Moon', 'Tree', 'Baloon', 'Bird', 'Mountain', 'Coffee', 'Mouse', 'River', 'Towel', 'Curtain', 'Flower', 'Colour', 'Desk', 'Gun', 'Crayon', 'Church', 'Turkey', 'Fountain', 'Boat', 'Hot', 'Parent', 'Water', 'Farmer', 'Rose', 'Cloud', 'House', 'Stranger', 'Garden', 'Glasses', 'Stocking', 'Shoe', 'Teacher', 'Stove', 'Nest', 'Children', 'Drum', 'Toffee', 'Lamb' ]) //
+  const [wordsArr2, setWordsArr2] = useState(['Alarm', 'Aunt', 'Bag', 'Creek', 'Officer', 'Mouth', 'Arrow', 'Student', 'Hail', 'Paper', 'Eye', 'Crab', 'Star', 'Rag', 'Bun', 'Cage', 'Cliff', 'Sugar', 'Cream', 'Stream', 'Soap', 'Wall', 'Clock', 'Sound', 'Bench', 'Bullet', 'Night', 'Chapel', 'Chicken', 'Coat', 'Ship', 'Car', 'Mother', 'Duck', 'Wheat', 'Floor', 'Sky', 'Door', 'Bridge', 'Painting', 'Bottle', 'Seat', 'Sock', 'Tone', 'Fridge', 'Rock', 'Bread', 'Pipe', 'Ball', 'Goat' ]) //
   const [flashWords, setFlashWords] = useState(false);
   const [entry, setEntry] = useState(false);
   const wordCount = countModal + 1;
@@ -270,14 +269,14 @@ useEffect(()=>{
     }
     // setAxiosSend(true)
     const param = {_id: userId, obj};
-    axios.post('/api/test5section2', param)
+    axios.post('/api/test5section2v2', param)
     .then((res)=>{
       if (countWrds < wordsArr2.length - 1) {
         setCountModal2(countWrds + 1)
         setFlashWords(true);
         setEntry(true)
       } else {
-        let complete = {_id: userId, test1CompletionRecallSctn2: true};
+        let complete = {_id: userId, test1CompletionRecallSctn2v2: true};
         axios.post('/api/user', complete)
         .then((res)=>{
           setFlashWords(false)
@@ -293,10 +292,10 @@ useEffect(()=>{
     })
   }
   if (keyClicked === 'Enter' && test5End) {
-    let complete = {_id: userId, test1CompletionRecall: true};
+    let complete = {_id: userId, test1CompletionRecallv2: true};
     axios.post('/api/user', complete)
     .then((res)=>{
-      navigate('/cognitivetest2recall')
+      navigate('/cognitivetest2recallv2')
     })
     .catch((err)=>{
       console.log(err)
@@ -320,8 +319,8 @@ useEffect(() => {
  useEffect(() => {
   if (completionTime) {
       const now = moment();
-      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(10, 'hours');
-      const expiryDate = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(14000, 'hours'); //14
+      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(6, 'hours'); //6
+      const expiryDate = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(14, 'hours'); //14
 
       let expired = moment.duration(expiryDate.diff(now));
       // console.log('expired :', expired.format(''))
@@ -405,12 +404,12 @@ const handlePostWords = () => {
   let countUp = testListATrials + 1;
   setTestListATrials(countUp);
   if (testListATrials === 1) {
-    param = {id: userId, ListAEntriesTest5_Recall: wordsEnteredListA, time: date};
+    param = {id: userId, ListAEntriesTest5_Recallv2: wordsEnteredListA, time: date};
   }
   //
   axios.post('/api/cognitivetest', param)
   .then((res) => {
-    console.log('Post wrds :', param)
+    // console.log('Post wrds :', param)
     // setEntry(false)
     setSecondPage(true)
     setSecondPageIntro(true)
@@ -419,10 +418,10 @@ const handlePostWords = () => {
 }
 
 const handleEndTest5 = () => {
-  let complete = {_id: userId, test1CompletionRecall: true};
+  let complete = {_id: userId, test1CompletionRecallv2: true};
   axios.post('/api/user', complete)
   .then((res)=>{
-    navigate('/cognitivetest2recall')
+    navigate('/cognitivetest2recallv2')
   })
   .catch((err)=>{
     console.log(err)

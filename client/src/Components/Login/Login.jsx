@@ -148,30 +148,26 @@ function Login() {
               navigate('/cognitivetest3recall')
             } else if (!user.test4CompletionRecall) {
               navigate('/cognitivetest4recall')
+            } else if (!user.test1Completionv2) {
+              navigate('/cognitivetest1v2')
+            } else if (!user.test2Completionv2) {
+              navigate('/cognitivetest2v2')
+            } else if (!user.test3Completionv2) {
+              navigate('/cognitivetest3v2')
+            } else if (!user.test4Completionv2) {
+              navigate('/cognitivetest4v2')
+            } else if (!user.test1CompletionRecallv2) {
+              navigate('/cognitivetest1recallv2')
+            } else if (!user.test2CompletionRecallv2) {
+              navigate('/cognitivetest2recallv2')
+            } else if (!user.test3CompletionRecallv2) {
+              navigate('/cognitivetest3recallv2')
+            } else if (!user.test4CompletionRecallv2) {
+              navigate('/cognitivetest4recallv2')
             } else {
               navigate('/test-end')
               // navigate('/countdown2')
             }
-            // else if (!user.test1Completionv2) {
-            //   navigate('/cognitivetest1v2')
-            // } else if (!user.test2Completionv2) {
-            //   navigate('/cognitivetest2v2')
-            // } else if (!user.test3Completionv2) {
-            //   navigate('/cognitivetest3v2')
-            // } else if (!user.test4Completionv2) {
-            //   navigate('/cognitivetest4v2')
-            // } else if (!user.test1CompletionRecallv2) {
-            //   navigate('/cognitivetest1recallv2')
-            // } else if (!user.test2CompletionRecallv2) {
-            //   navigate('/cognitivetest2recallv2')
-            // } else if (!user.test3CompletionRecallv2) {
-            //   navigate('/cognitivetest3recallv2')
-            // } else if (!user.test4CompletionRecallv2) {
-            //   navigate('/cognitivetest4recallv2')
-            // } else {
-            //   navigate('/test-end')
-            //   // navigate('/countdown2')
-            // }
           })
           .catch((err) => {
             console.log(err)
@@ -210,7 +206,6 @@ function Login() {
       setErrorMessage('')
     }, 2500)
   }
-
 
   const handleSignupSubmit = (event) => {
     event.preventDefault();

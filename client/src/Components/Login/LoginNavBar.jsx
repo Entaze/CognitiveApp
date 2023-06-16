@@ -151,7 +151,7 @@ const LoginNavBar = () => {
     } else if (loginPackage.email && loginPackage.password) {
       axios.post('/api/login', loginPackage)
       .then((res) => {
-        console.log("User loggin in :", res.data.user)
+        // console.log("User loggin in :", res.data.user)
         if (res.data.user.userConfirmed) {
           localStorage.setItem('token', JSON.stringify(res.data.token));
           localStorage.setItem('loggedIn', JSON.stringify(true));
@@ -175,9 +175,26 @@ const LoginNavBar = () => {
           navigate("/cognitivetest2recall")
         } else if (data.token && !data.user.test3CompletionRecall) {
           navigate("/cognitivetest3recall")
-        } else if (data.token && !data.user.test3CompletionRecall) {
+        } else if (data.token && !data.user.test4CompletionRecall) {
           navigate("/cognitivetest4recall")
-        } else if (data.token && data.user.test4CompletionRecall) {
+        } else if (data.token && !data.user.test1Completionv2) {
+          console.log('Hee :', data.user)
+          navigate("/cognitivetest1v2")
+        } else if (data.token && !data.user.test2Completionv2) {
+          navigate("/cognitivetest2v2")
+        } else if (data.token && !data.user.test3Completionv2) {
+          navigate("/cognitivetest3v2")
+        } else if (data.token && !data.user.test4Completionv2) {
+          navigate("/cognitivetest4v2")
+        } else if (data.token && !data.user.test1CompletionRecallv2) {
+          navigate("/cognitivetest1recallv2")
+        } else if (data.token && !data.user.test2CompletionRecallv2) {
+          navigate("/cognitivetest2recallv2")
+        } else if (data.token && !data.user.test3CompletionRecallv2) {
+          navigate("/cognitivetest3recallv2")
+        } else if (data.token && !data.user.test4CompletionRecallv2) {
+          navigate("/cognitivetest4recallv2")
+        } else if (data.token && data.user.test4CompletionRecallv2) {
           navigate("/test-end")
         }
       } else {
@@ -257,165 +274,9 @@ const LoginNavBar = () => {
             <ForgotPassword href="/forgotpassword" >
               Forgot password
             </ForgotPassword>
-
-          {/* <Toolbar>
-              <Stack sx={{
-                marginTop: 1,
-                direction: 'column',
-                alignItems: 'center',
-                // marginLeft: '51%'
-              }}
-              >
-                {errorMessage ?
-                  <Alert sx={{ height: '44px', whiteSpace: 'nowrap', marginLeft: '25%' }} severity="error" > {errorMessage} </Alert>
-                  :
-                null}
-              <form onSubmit={handleLogin} autoComplete="off" >
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
-                <DropColumn1 >
-                      <TextField
-                        id="email-input-with-icon-textfield"
-                        required
-                        autoFocus
-                        type={"email"}
-                        style={{ backgroundColor: '#fff', borderBottom: '1px solid #485a6b', width: '310px', }}
-                        className="form-inputEmail"
-                        placeholder="Email"
-                        value={ emailLogin }
-                        InputProps={{
-                          disableUnderline: true,
-                          startAdornment: (
-                            <InputAdornment position="start">
-                            <div></div>
-                              <EmailOutlinedIcon style={{width: '25px', height: '26px', marginLeft: '10px', marginRight: '10px'}}  />
-                            </InputAdornment>
-                          ),
-                        }}
-                        variant="standard"
-                        onChange={handleEmail}
-                      />
-                </DropColumn1>
-                <DropColumn2 >
-                      <TextField
-                        id="pword-input-with-icon-textfield"
-                        required
-                        type={"password"}
-                        style={{backgroundColor: '#fff', borderBottom: '1px solid #485a6b', width: '310px',  }}
-                        className="form-inputEmail"
-                        placeholder="Password"
-                        value={ passwordLogin }
-                        InputProps={{
-                          disableUnderline: true,
-                          startAdornment: (
-                            <InputAdornment position="start">
-                            <div></div>
-                              <KeyIcon style={{width: '25px', height: '26px', margin: '0px 10px', }}  />
-                            </InputAdornment>
-                          ),
-                        }}
-                        variant="standard"
-                        onChange={handlePassword}
-                      />
-                </DropColumn2>
-                <DropColumn3 >
-                  <LoadingButton variant="contained" sx={{backgroundColor:'#555555',  }}  onClick={handleLogin}> Login </LoadingButton>
-                </DropColumn3> */}
-                {/* <Grid container spacing={2} > */}
-                  {/* <Grid item xs={12} sm={4} justifyContent = {'center'} >
-                    <Box
-                      sx={{
-                        '& .MuiTextField-root': { m: 1, },
-                      }}
-                      noValidate
-                      autoComplete="off"
-                    >
-                      <TextField
-                        id="email-input-with-icon-textfield"
-                        required
-                        autoFocus
-                        type={"email"}
-                        style={{ backgroundColor: '#fff', borderBottom: '1px solid #485a6b', width: '310px', }}
-                        className="form-inputEmail"
-                        placeholder="Email"
-                        value={ emailLogin }
-                        InputProps={{
-                          disableUnderline: true,
-                          startAdornment: (
-                            <InputAdornment position="start">
-                            <div></div>
-                              <EmailOutlinedIcon style={{width: '25px', height: '26px', marginLeft: '10px', marginRight: '10px'}}  />
-                            </InputAdornment>
-                          ),
-                        }}
-                        variant="standard"
-                        onChange={handleEmail}
-                      />
-                    </Box>
-                  </Grid> */}
-                  {/* <Grid item xs={12} sm={4} justifyContent = {'center'} >
-                    <Box
-                      sx={{
-                        '& .MuiTextField-root': { m: 1, },
-                      }}
-                      noValidate
-                      autoComplete="off"
-                    >
-                      <TextField
-                        id="pword-input-with-icon-textfield"
-                        required
-                        type={"password"}
-                        style={{backgroundColor: '#fff', marginLeft: '190px', borderBottom: '1px solid #485a6b', width: '310px',  }}
-                        className="form-inputEmail"
-                        placeholder="Password"
-                        value={ passwordLogin }
-                        InputProps={{
-                          disableUnderline: true,
-                          startAdornment: (
-                            <InputAdornment position="start">
-                            <div></div>
-                              <KeyIcon style={{width: '25px', height: '26px', margin: '0px 10px', }}  />
-                            </InputAdornment>
-                          ),
-                        }}
-                        variant="standard"
-                        onChange={handlePassword}
-                      />
-                    </Box>
-                  </Grid> */}
-                  {/* <Grid item xs={12} sm={4} justifyContent = {'center'}>
-                  <Box
-                      sx={{
-                        '& .MuiTextField-root': { m: 1, },
-                        justifyContent: 'flex-end',
-                      }}
-                      noValidate
-                      autoComplete="off"
-                    >
-                      <LoadingButton variant="contained" sx={{backgroundColor:'#555555', margin: '6% 0 0 390px', }}  onClick={handleLogin}> Login </LoadingButton>
-                    </Box>
-                  </Grid> */}
-
-                  {/* <Grid container justifyContent="flex-end">
-                    <Grid item>
-                    <Link href="/forgotpassword" underline="always" fontStyle='italic' color='#fff' >
-                      {'Forgot password?'}
-                    </Link>
-                    </Grid>
-                  </Grid> */}
-
-                {/* </Grid> */}
-                {/* </div>
-                </form>
-              </Stack>
-              <div style={loginButton}>
-              </div>
-            </Toolbar> */}
       </RightDropContainer>
       </DropContainer>
-
       </AppBar>
-
-
     </>
   )
 }

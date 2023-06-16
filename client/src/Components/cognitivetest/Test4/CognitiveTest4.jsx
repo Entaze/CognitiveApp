@@ -148,7 +148,7 @@ const Cognitivetest4 = () => {
   const [test3Letter, setTest3Letter] = useState(['Q', 'N', 'S', 'V', 'B', 'H', 'B', 'H', 'P', 'X', 'P', 'C', 'X', 'C', 'M', 'K', 'M', 'K', 'M', 'K' ]); //
   const [test01Letter, setTest01Letter] = useState(['J', 'S', 'B', 'T', 'G', 'N', 'G', 'Q', 'Z', 'K', 'B', 'Z', 'K', 'T', 'Q', 'T', 'G', 'Z', 'Z', 'G', 'Z', 'Z', 'B', 'Z', 'Z', 'S', 'Z', 'Z', 'Z', 'B', 'B', 'Z', 'N', 'J', 'Z', 'V', 'V', ]); //
   const [test02Letter, setTest02Letter] = useState(['X', 'P', 'K', 'R', 'D', 'T', 'X', 'V', 'V', 'P', 'J', 'J', 'J', 'P', 'P', 'H', 'N', 'H', 'H', 'N', 'B', 'B', 'N', 'N', 'T', 'M', 'T', 'T', 'J', 'P', 'P', 'P', 'J', 'J', 'H', 'H', ]); //
-  const [test03Letter, setTest03Letter] = useState(['Q', 'N', 'S', 'V',  ]); //'B', 'H', 'B', 'H', 'P', 'X', 'P', 'C', 'X', 'C', 'M', 'K', 'M', 'K', 'M', 'K', 'V', 'S', 'F', 'V', 'V', 'S', 'F', 'V', 'V', 'S', 'F', 'F', 'N', 'C', 'N', 'C', 'M', 'J', 'M', 'J',
+  const [test03Letter, setTest03Letter] = useState(['Q', 'N', 'S', 'V', 'B', 'H', 'B', 'H', 'P', 'X', 'P', 'C', 'X', 'C', 'M', 'K', 'M', 'K', 'M', 'K', 'V', 'S', 'F', 'V', 'V', 'S', 'F', 'V', 'V', 'S', 'F', 'F', 'N', 'C', 'N', 'C', 'M', 'J', 'M', 'J', ]); //
 
 
   const [countLetter, setCountLetter] = useState(0);
@@ -820,10 +820,7 @@ const Cognitivetest4 = () => {
       let complete = {_id: userId, test4Completion: true, email: userProfile.email, name: userProfile.name };
       axios.post('/api/user', complete)
       .then((res) => {
-        //Do something
         navigate('/cognitivetest1recall')
-        //Maybe Send email to say when they can resume test
-
       })
       .catch((err)=>{
 
@@ -950,36 +947,6 @@ const Cognitivetest4 = () => {
     setEleventhPage06(false)
     setEleventhPage05(true)
   }
-
-
-  // useEffect(()=>{
-  //   let keyC;
-  //   if (AxiosSend03 && !flash) {
-  //       keyC = keyClicked;
-  //       const key = 'Letter'+ count02;
-  //       const obj = {
-  //         [`${key}`]: {letter: letter, response: keyC}
-  //       }
-  //       const param = {_id: userProfile._id, obj};
-  //       // console.log('Param :', param)
-  //       // axios.post('/api/test4section5', param)
-  //       // .then((res)=>{
-  //       //   // console.log('Res data :', res.data.Test4Section1)
-  //       //   if (count01 === test02Letter.length) {
-  //       //     let complete = {_id: userProfile._id, test4CompletionSctn5: true};
-  //       //     axios.post('/api/user', complete)
-  //       //     .then((res) => {
-  //       //       // console.log('res :', res.data)
-  //       //       setTestBegin1(false)
-  //       //       setMainTestBegin1(true)
-  //       //       setFifteenthPage(true)
-  //       //     })
-  //       //   }
-  //       // })
-  //       setAxiosSend03(false)
-  //       SetKeyClicked('')
-  //   }
-  // },[AxiosSend03, plusSign, count02, flash])
 
     return (
       <>

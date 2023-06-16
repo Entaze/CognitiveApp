@@ -39,7 +39,6 @@ const App = () => {
 
     const navigate = useNavigate();
 
-
     const handleLoggedIn = () => {
       setLoggedIn(true);
     }

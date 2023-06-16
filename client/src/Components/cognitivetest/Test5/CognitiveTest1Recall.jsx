@@ -166,7 +166,7 @@ function CognitiveTest1Recall () {
   const [countModal2, setCountModal2] = useState(0);
   const [wordsArr, setWordsArr] = useState(['Drum', 'Curtain', 'Bell', 'Coffee', 'School', 'Parent', 'Moon', 'Garden', 'Hat', 'Farmer', 'Nose', 'Turkey', 'Colour', 'House', 'River', '', '' ]);
 
-  const [wordsArr2, setWordsArr2] = useState(['Bell', 'Window', 'Hat', 'Bam', 'Ranger', 'Nose', 'Weather', 'School', 'Hand', 'Pencil', 'Home', 'Fish', 'Moon', 'Tree', 'Balloon', 'Bird', 'Mountain', 'Coffee', 'Mouse', 'River', 'Towel', 'Curtain', 'Flower', 'Colour', 'Desk', 'Gun', 'Crayon', 'Church', 'Turkey', 'Fountain', 'Boat', 'Hot', 'Parent', 'Water', 'Farmer', 'Rose', 'Cloud', 'House', 'Stranger', 'Garden', 'Glasses', 'Stocking', 'Shoe', 'Teacher', 'Stove', 'Nest', 'Children', 'Drum', 'Toffee', 'Lamb' ]) //
+  const [wordsArr2, setWordsArr2] = useState(['Bell', 'Window', 'Hat', 'Barn', 'Ranger', 'Nose', 'Weather', 'School', 'Hand', 'Pencil', 'Home', 'Fish', 'Moon', 'Tree', 'Balloon', 'Bird', 'Mountain', 'Coffee', 'Mouse', 'River', 'Towel', 'Curtain', 'Flower', 'Colour', 'Desk', 'Gun', 'Crayon', 'Church', 'Turkey', 'Fountain', 'Boat', 'Hot', 'Parent', 'Water', 'Farmer', 'Rose', 'Cloud', 'House', 'Stranger', 'Garden', 'Glasses', 'Stocking', 'Shoe', 'Teacher', 'Stove', 'Nest', 'Children', 'Drum', 'Toffee', 'Lamb' ]) //
   const [flashWords, setFlashWords] = useState(false);
   const [entry, setEntry] = useState(false);
   const wordCount = countModal + 1;
@@ -320,19 +320,15 @@ useEffect(() => {
  useEffect(() => {
   if (completionTime) {
       const now = moment();
-      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(1, 'hours');
-      const expiryDate = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(140, 'hours'); //14
+      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(6, 'hours');
+      const expiryDate = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(14, 'hours'); //14
 
       let expired = moment.duration(expiryDate.diff(now));
-      // console.log('expired :', expired.format(''))
       let duration = moment.duration(then.diff(now));
       let hours = duration.asHours();
       let hours2 = expired.asHours();
       let mins2 = expired.asMinutes();
       let secs2 = expired.asSeconds();
-
-      // console.log('Hrs :', hours)
-
       if (hours2 <= 0 && mins2 <= 0 && secs2 <= 0) {
         navigate('/expired-test')
       } else if (hours >= 0) {
@@ -409,14 +405,12 @@ const handlePostWords = () => {
   if (testListATrials === 1) {
     param = {id: userId, ListAEntriesTest5_Recall: wordsEnteredListA, time: date};
   }
-  //
   axios.post('/api/cognitivetest', param)
   .then((res) => {
-    console.log('Post wrds :', param)
+    // console.log('Post wrds :', param)
     // setEntry(false)
     setSecondPage(true)
     setSecondPageIntro(true)
-
   })
 }
 

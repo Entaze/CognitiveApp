@@ -309,6 +309,7 @@ function Cognitivetest () {
 
  useEffect(() => {
    if (startTest) {
+    setStartTest(false);
     for (let i = 0; i < wordsArr.length; i++) {
       (function(ind) {
           setTimeout(function(){
@@ -361,11 +362,11 @@ const handleStartTest = (e) => {
 }
 
 useEffect(() => {
-  if (keyClicked === 'Enter' && firstPage) {
-    SetKeyClicked('')
-    setFirstPage(false);
-    setStartTest(true);
-  }
+  // if (keyClicked === 'Enter' && firstPage) {
+  //   SetKeyClicked('')
+  //   setFirstPage(false);
+  //   setStartTest(true);
+  // }
   if (keyClicked === 'Enter' && listBStart) {
     SetKeyClicked('')
     handleStartListB()
@@ -394,7 +395,7 @@ const handleButtonClick = (e) => {
 }
 
 useEffect(()=>{
-  if (wordRecall) {
+  if (wordRecall && !listAReEntry) {
     setwrdRecall(true)
   } else {
     setwrdRecall(false)
@@ -425,7 +426,6 @@ useEffect(()=> {
 }, [data])
 
 const handlePostWords = () => {
-  // console.log('testListATrials :', testListATrials)
   setFormState(false);
   const date = new Date();
   let param;
@@ -449,11 +449,14 @@ const handlePostWords = () => {
     param = {id: userId, ListAEntries_Trial4: wordsEnteredListA, time: date };
   }
   if (testListATrials === 5) {
-    setRepeatListA(false);
+    setwrdRecall(false);
+    setRepeatListA(true);
+    setListBStart(true);
     param = {id: userId, ListAEntries_Trial5: wordsEnteredListA, time: date };
   }
   if (testListATrials === 6) {
-    // setRepeatListA(true);
+    setwrdRecall(false);
+    setRepeatListA(true);
     param = {id: userId, ListBEntries: wordsEnteredListA, time: date};
   }
   if (testListATrials === 7) {
@@ -469,9 +472,9 @@ const handlePostWords = () => {
         const param2 = {_id: userProfile._id, Test1Tracker: cnt};
       axios.post('/api/user', param2)
       .then((res)=>{
-        // if (testListATrials === 6) {
-        //   setListAReEntry(true);
-        // }
+        if (testListATrials === 6) {
+          setListAReEntry(true);
+        }
       })
       .catch((err)=>{
 
@@ -608,7 +611,7 @@ useEffect(() => {
                <h1 style={{ color: '#e67373', fontSize: 50, }} >TEST 1</h1>
                <div style={{ fontSize: 35, fontWeight: 700, display: 'flex', padding: '110px 40px 120px 40px', lineHeight: '1.6', }} >
                You will be shown a list of 15 words. This same list will be shown to you {times} times. Each time after you see the list you will be asked to type all the words you remember from the list.
-               <br /><br /> [Press ENTER or click start to continue.]
+               <br /><br /> [Click start to continue.]
               </div>
               <div>
                 <button onClick={handleStartTest} >Start</button>
@@ -620,7 +623,7 @@ useEffect(() => {
         {!listAReEntry ?
           <Typography style={{ fontSize: 60, fontWeight: 700, textAlign: 'center', fontFamily:'Arial' }} >{word}</Typography>
           : null}
-        {wrdRecall ?
+        {wrdRecall && !listAReEntry ?
         <>
           <div style={centerScreen} >
             <div style={{  fontSize: 35, fontWeight: 700, display: 'flex', padding: '100px 40px 190px 100px', }} >Click on button to enter as many words as you can remember...</div>

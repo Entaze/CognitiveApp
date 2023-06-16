@@ -137,7 +137,7 @@ const formTitle = {
 }
 
 
-function CognitiveTest2Recall () {
+function CognitiveTest2Recallv2 () {
   const token = window.localStorage.getItem('token');
   const { userProfile, cognitiveTest, setCognitiveTest } = useMainContext();
   const [user, setUser] = useState(false);
@@ -154,39 +154,14 @@ function CognitiveTest2Recall () {
   const [displayCross, setDisplayCross] = useState(false)
   const [entry, setEntry] = useState('')
 
-  // const [wordErr, setWordErr] = useState({});
-  // const [data, setData] = useState([]);
-  // const handleRegistration = (data) => { setData(data); handleModalAppear(); reset();  }
-  // const { register, handleSubmit, reset } = useForm({
-  //   mode: 'onSubmit',
-  //   reValidateMode: 'onChange',
-  //   defaultValues: {},
-  //   resolver: undefined,
-  //   context: undefined,
-  //   criteriaMode: "firstError",
-  //   shouldFocusError: true,
-  //   shouldUnregister: false,
-  //   shouldUseNativeValidation: false,
-  //   delayError: undefined
-  // });
-
-  // const [word, setWord] = useState('');
-  // const [wordInput, setWordInput] = useState();
   const [countModal, setCountModal] = useState(0);
   const [countModal2, setCountModal2] = useState(0);
 
-  // const wordCount = countModal + 1;
-  // const buttonEntry = countModal < wordsArr.length - 2 ? 'Enter' : 'Submit Test';
-  // const [val, setVal] = useState();
-  // const [repeatListA, setRepeatListA] = useState(false);
-  // const [testListATrials, setTestListATrials] = useState(1);
-  // const [wordsEnteredListA, SetWordsEnteredListA] = useState([]);
-  // const [userResponse, setUserResponse] = useState(false);
   const [test6End, setTest6End] = useState(false);
   const [displayNum, setDisplayNum] = useState(true)
 
   const [userId, setUserId] = useState(null);
-  // const [nav, setNav] = useState(false);
+
   const classes = useStyles();
   const navigate = useNavigate();
   const [keyClicked, SetKeyClicked] = useState('');
@@ -275,35 +250,51 @@ useEffect(() => {
   }
 }, [TestIntro, loaded])
 
+
 const TestStart = () => {
-  setTestIntro(false)
-  setStartTest2(true)
+  if (trialCount > 1) {
+    setTestIntro(false);
+    setStartTest2(true);
 
-  setTimeout(() => {
-    setDisplayNum(false)
-    setDisplayCross(true)
-    setTrial(true)
-  }, 30000)
+    setTimeout(()=>{
+      setDisplayNum(false)
+      setDisplayCross(true)
+      setTrial(true)
+    }, 30000)
 
-  setTimeout(() => {
-    if (trialCount > 1) {
+    setTimeout(()=>{
       setDisplayCross(false)
       setStartTest2(false);
       setDisplayNum(true)
       trialCount--;
       TestStart()
-    } else {
-      let complete = {_id: userProfile._id, test2CompletionRecall: true};
-      // console.log('complete :', complete)
-      axios.post('/api/user', complete)
-      .then((result) => {
-        // console.log('success post test 2 recall completion', result)
-        setStartTest2(false)
-        // navigate('/cognitivetest3')
-        setTest6End(true)
-      })
-    }
-  }, 60000)
+    }, 60000)
+  } else if (trialCount === 1) {
+      setTestIntro(false)
+      setStartTest2(true)
+
+      setTimeout(()=>{
+        setDisplayNum(false)
+        setDisplayCross(true)
+        setTrial(true)
+      }, 30000)
+
+      setTimeout(()=>{
+        setDisplayCross(false)
+        setStartTest2(false);
+
+        trialCount--;
+        setTestIntro(false);
+        let complete = {_id: userProfile._id, test2CompletionRecall: true};
+        axios.post('/api/user', complete)
+        .then((result)=>{
+          setDisplayNum(false)
+          setDisplayCross(false)
+          // setStartTest2(false)
+          setTest6End(true)
+        })
+    }, 60000)
+   }
 }
 
 useEffect(()=> {
@@ -427,7 +418,7 @@ const handleStartTest7 = () => {
   )
 }
 
-export default CognitiveTest2Recall
+export default CognitiveTest2Recallv2
 
 
 

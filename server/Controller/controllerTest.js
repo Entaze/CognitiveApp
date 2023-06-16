@@ -79,6 +79,16 @@ module.exports = {
       }
     });
   },
+  postRating3v2: (req, res) => {
+    // console.log('Contr :', req.body);
+    models.postRating3v2(req.body, (err, result) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(200).send(result);
+      }
+    });
+  },
   postTest4Section1: (req, res) => {
     models.postTest4Sect1(req.body, (err, result) => {
       if (err) {
@@ -100,6 +110,16 @@ module.exports = {
   postTest4RecallSection1: (req, res) => {
     // console.log('Contr :', req.body);
     models.postTest4RecallSect1(req.body, (err, result) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(200).send(result);
+      }
+    });
+  },
+  postTest4RecallSection1v2: (req, res) => {
+    // console.log('Contr :', req.body);
+    models.postTest4RecallSect1v2(req.body, (err, result) => {
       if (err) {
         res.status(500).send(err);
       } else {
@@ -134,6 +154,15 @@ module.exports = {
       }
     });
   },
+  postTest4RecallSection2v2: (req, res) => {
+    models.postTest4RecallSect2v2(req.body, (err, result) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(200).send(result);
+      }
+    });
+  },
   postTest4Section3: (req, res) => {
     models.postTest4Sect3(req.body, (err, result) => {
       if (err) {
@@ -154,6 +183,15 @@ module.exports = {
   },
   postTest4RecallSection3: (req, res) => {
     models.postTest4RecallSect3(req.body, (err, result) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(200).send(result);
+      }
+    });
+  },
+  postTest4RecallSection3v2: (req, res) => {
+    models.postTest4RecallSect3v2(req.body, (err, result) => {
       if (err) {
         res.status(500).send(err);
       } else {
@@ -217,6 +255,15 @@ module.exports = {
   },
   postTest5Section2: (req, res) => {
     models.postTest5Sect2(req.body, (err, result) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(200).send(result);
+      }
+    });
+  },
+  postTest5Section2v2: (req, res) => {
+    models.postTest5Sect2v2(req.body, (err, result) => {
       if (err) {
         res.status(500).send(err);
       } else {

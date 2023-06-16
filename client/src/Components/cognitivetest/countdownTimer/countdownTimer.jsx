@@ -125,12 +125,11 @@ useEffect(() => {
   if (completionTime) {
     setInterval(() => {
       const now = moment();
-      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(1, 'hours');
+      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(6, 'hours');
 
 
       let duration = moment.duration(then.diff(now));
       let hours = duration.asHours();
-      console.log('Hours :', hours)
       const countdown = moment(then - now);
       const hr = countdown.format('HH');
       const min = countdown.format('mm');

@@ -16,6 +16,7 @@ import { useMainContext } from '../../Providers/MainProvider.jsx';
 import { Dialog, DialogContent } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import NavigationBar from '../../Layout/WithNavigation.jsx';
+import moment from 'moment';
 import '../../Styles.scss'
 
 
@@ -203,6 +204,7 @@ function Cognitivetestv2 () {
   const [userAuth, setUserAuth] = useState(false);
 
   const userloggedIn = JSON.parse(window.localStorage.getItem('userLoggedIn'));
+  const [countdownComplete, setCountdownComplete] = useState(false);
   const [userId, setUserId] = useState(null);
   const [testListATrials, setTestListATrials] = useState(null);
   const [testListBTrials, setTestListBTrials] = useState(1);
@@ -211,8 +213,8 @@ function Cognitivetestv2 () {
   const [startTestListB, setStartTestListB] = useState(false);
   const [startTestListARecall, setStartTestListARecall] = useState(false);
   const [tests, setTests] = useState({});
-  const [wordsArr, setWordsArr] = useState(['Drumv2', 'Curtain', 'Bell', 'Coffee', 'School', 'Parent', 'Moon', 'Garden', 'Hat', 'Farmer', 'Nose', 'Turkey', 'Colour', 'House', 'River', '', '' ]);
-  const [listB, setListB] = useState(['Desk', 'Ranger', 'Bird', 'Show', 'Stove', 'Mountain', 'Glasses', 'Towel', 'Cloud', 'Boat', 'Lamb', 'Gun', 'Pencil', 'Church', 'Fish', '', '' ]);
+  const [wordsArr, setWordsArr] = useState(['Pipe', 'Wall', 'Alarm', 'Sugar', 'Student', 'Mother', 'Star', 'Painting', 'Bag', 'Wheat', 'Mouth', 'Chicken', 'Sound', 'Door', 'Stream', '', '' ]);
+  const [listB, setListB] = useState(['Bench', 'Officer', 'Cage', 'Sock', 'Fridge', 'Cliff', 'Bottle', 'Soap', 'Sky', 'Ship', 'Goat', 'Bullet', 'Paper', 'Chapel', 'Crab', '', '' ]);
   const [wordsArrRe, setWordsArrRe] = useState(['', '' ]);
 
   const [listBStart, setListBStart] = useState(false);
@@ -226,6 +228,7 @@ function Cognitivetestv2 () {
   const [beginSec1, setBeginSec1] = useState(false);
   const [IntroStep, setIntroStep] = useState(false);
   const [times, setTimes] = useState(0)
+  const [completionTime, setCompletionTime] = useState(null);
 
   const [wordRecall, setWordRecall] = useState(false);
   const [wrdRecall, setwrdRecall] = useState(false);
@@ -289,7 +292,7 @@ function Cognitivetestv2 () {
     axios.get('/api/user', {params: {_id: userId}})
     .then((res)=>{
       setTestListATrials(res.data.user.Test1Trackerv2)
-      console.log('Test1Trackerv2 :', res.data.user.Test1Trackerv2)
+      // console.log('Test1Trackerv2 :', res.data.user.Test1Trackerv2)
       if (res.data.user.Test1Trackerv2 < 6) {
         setBeginSec1(true)
         setFirstPage(true)
@@ -359,11 +362,11 @@ const handleStartTest = (e) => {
 }
 
 useEffect(() => {
-  if (keyClicked === 'Enter' && firstPage) {
-    SetKeyClicked('')
-    setFirstPage(false);
-    setStartTest(true);
-  }
+  // if (keyClicked === 'Enter' && firstPage) {
+  //   SetKeyClicked('')
+  //   setFirstPage(false);
+  //   setStartTest(true);
+  // }
   if (keyClicked === 'Enter' && listBStart) {
     SetKeyClicked('')
     handleStartListB()
@@ -379,7 +382,7 @@ useEffect(() => {
     setFirstPage(false);
     navigate('/cognitivetest2v2');
   }
-}, [keyClicked, test1End, listAReEntry])
+}, [keyClicked, test1End, listAReEntry, firstPage, listBStart])
 
 const handleButtonClick = (e) => {
   e.preventDefault();
@@ -464,7 +467,6 @@ const handlePostWords = () => {
         if (testListATrials === 6) {
           setListAReEntry(true);
         }
-
       })
       .catch((err)=>{
 
@@ -564,6 +566,40 @@ const handleInput = (e) => {
 }
 
 useEffect(() => {
+  if (userId) {
+    axios.get('/api/user', {params: {_id: userId}})
+    .then((res)=>{
+      setCompletionTime(res.data.user.Test4RecallCompletionTime)
+    })
+    .catch((err)=>{
+     console.log(err)
+    })
+  }
+ }, [userId])
+
+useEffect(() => {
+  if (completionTime) {
+      const now = moment();
+      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(144, 'hours');
+      const expiryDate = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(720, 'hours');
+
+      let expired = moment.duration(expiryDate.diff(now))
+      let duration = moment.duration(then.diff(now))
+      let hours = duration.asHours()
+      let hours2 = expired.asHours()
+      let mins2 = expired.asMinutes()
+      let secs2 = expired.asSeconds()
+      if (hours2 <= 0 && mins2 <= 0 && secs2 <= 0) {
+        navigate('/expired-test')
+      } else if (hours >= 0) {
+        navigate('/countdown2')
+      } else {
+        setCountdownComplete(true);
+      }
+  }
+}, [completionTime]);
+
+useEffect(() => {
   if (testListATrials !== null) {
     if(testListATrials === 6) {
       setBeginSec1(false)
@@ -584,7 +620,7 @@ useEffect(() => {
   }
  }, [testListATrials])
 
-  return (
+ return (
     <>
     {userAuth ?
     <>
@@ -595,12 +631,12 @@ useEffect(() => {
       {beginSec1 ?
       <>
         {firstPage && testListATrials ?
-         <>
+        <>
             <div style={centerScreen} >
-               <h1 style={{ color: '#e67373', fontSize: 50, }} >TEST 1</h1>
-               <div style={{ fontSize: 35, fontWeight: 700, display: 'flex', padding: '110px 40px 120px 40px', lineHeight: '1.6', }} >
-               You will be shown a list of 15 words. This same list will be shown to you {times} times. Each time after you see the list you will be asked to type all the words you remember from the list.
-               <br /><br /> [Press ENTER or click start to continue.]
+              <h1 style={{ color: '#e67373', fontSize: 50, }} >TEST 1</h1>
+              <div style={{ fontSize: 35, fontWeight: 700, display: 'flex', padding: '110px 40px 120px 40px', lineHeight: '1.6', }} >
+              You will be shown a list of 15 words. This same list will be shown to you {times} times. Each time after you see the list you will be asked to type all the words you remember from the list.
+              <br /><br /> [Click start to continue.]
               </div>
               <div>
                 <button onClick={handleStartTest} >Start</button>
@@ -612,7 +648,7 @@ useEffect(() => {
         {!listAReEntry ?
           <Typography style={{ fontSize: 60, fontWeight: 700, textAlign: 'center', fontFamily:'Arial' }} >{word}</Typography>
           : null}
-        {wrdRecall ?
+        {wrdRecall && !listAReEntry ?
         <>
           <div style={centerScreen} >
             <div style={{  fontSize: 35, fontWeight: 700, display: 'flex', padding: '100px 40px 190px 100px', }} >Click on button to enter as many words as you can remember...</div>
@@ -697,20 +733,20 @@ useEffect(() => {
         :
       null}
 
-           {listAReEntry && !test1End ?
+          {listAReEntry && !test1End ?
             <>
             <div style={centerScreen} >
-             <div style={{ fontSize: 35, fontWeight: 700, display: 'flex', padding: '0px 40px 120px 40px', lineHeight: '1.6', }} >
-             Now, please enter all the words you remember from the original list you saw 5 times.  <br /><br /> [Click start or press ENTER to continue.]
-             </div>
+            <div style={{ fontSize: 35, fontWeight: 700, display: 'flex', padding: '0px 40px 120px 40px', lineHeight: '1.6', }} >
+            Now, please enter all the words you remember from the original list you saw 5 times.  <br /><br /> [Click start or press ENTER to continue.]
+            </div>
             <div>
               <button onClick={handleListAReentry}>Start</button>
             </div>
             </div>
             </>
-           : null}
+          : null}
 
-           {test1End ?
+          {test1End ?
           <>
             <div style={centerScreen} >
             <div style={{ fontSize: 35, fontWeight: 700, display: 'flex', padding: '0px 40px 120px 40px', lineHeight: '1.6', }} >
@@ -725,11 +761,11 @@ useEffect(() => {
           null}
       </div>
       </>
-     :
-     null
-     }
-    </>
-  )
+    :
+    null
+    }
+  </>
+)
 }
 
 export default Cognitivetestv2

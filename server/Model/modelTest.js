@@ -81,7 +81,7 @@ module.exports = {
       data = {Test2_Entry_10v2: body.Test2_Entry_10v2}
     } else if (body.Test2_Entry_11v2) {
       data = {Test2_Entry_11v2: body.Test2_Entry_11v2}
-    } else if (body.Test2_Entry_12v2v2) {
+    } else if (body.Test2_Entry_12v2) {
       data = {Test2_Entry_12v2: body.Test2_Entry_12v2}
     } else if (body.Test2Recall_Entry_1) {
       data = {Test2Recall_Entry_1: body.Test2Recall_Entry_1}
@@ -89,6 +89,12 @@ module.exports = {
       data = {Test2Recall_Entry_2: body.Test2Recall_Entry_2}
     } else if (body.Test2Recall_Entry_3) {
       data = {Test2Recall_Entry_3: body.Test2Recall_Entry_3}
+    } else if (body.Test2Recall_Entry_1v2) {
+      data = {Test2Recall_Entry_1v2: body.Test2Recall_Entry_1v2}
+    } else if (body.Test2Recall_Entry_2v2) {
+      data = {Test2Recall_Entry_2v2: body.Test2Recall_Entry_2v2}
+    } else if (body.Test2Recall_Entry_3v2) {
+      data = {Test2Recall_Entry_3v2: body.Test2Recall_Entry_3v2}
     }
     let options = { upsert: true, new: true, setDefaultsOnInsert: true };
     db.CognitiveTest.findOneAndUpdate({_id: body.id}, data, options)
@@ -183,6 +189,19 @@ module.exports = {
       cb(err);
     })
   },
+  postRating3v2: (body, cb) => {
+    let data = body.obj;
+    db.CognitiveTest.findOneAndUpdate(
+      { _id : body._id },
+      { $push : {Test3ImagesRecallv2: data}}
+   )
+    .then((result) => {
+      cb(null, result);
+    })
+    .catch((err) => {
+      cb(err);
+    })
+  },
   postTest4Sect1: (body, cb) => {
     // let data = {letter: body.letter, response: body.response };
     let data = body.obj;
@@ -220,6 +239,21 @@ module.exports = {
     db.CognitiveTest.findOneAndUpdate(
       { _id : body._id },
       { $push : {Test4RecallSection1: data}}
+   )
+    .then((result) => {
+      cb(null, result);
+    })
+    .catch((err) => {
+      cb(err);
+    })
+  },
+  postTest4RecallSect1v2: (body, cb) => {
+    // let data = {letter: body.letter, response: body.response };
+    let data = body.obj;
+    // console.log('data :', data)
+    db.CognitiveTest.findOneAndUpdate(
+      { _id : body._id },
+      { $push : {Test4RecallSection1v2: data}}
    )
     .then((result) => {
       cb(null, result);
@@ -269,6 +303,21 @@ module.exports = {
       cb(err);
     })
   },
+  postTest4RecallSect2v2: (body, cb) => {
+    // let data = {letter: body.letter, response: body.response };
+    let data = body.obj;
+    // console.log('data :', data)
+    db.CognitiveTest.findOneAndUpdate(
+      { _id : body._id },
+      { $push : {Test4RecallSection2v2: data}}
+   )
+    .then((result) => {
+      cb(null, result);
+    })
+    .catch((err) => {
+      cb(err);
+    })
+  },
   postTest4Sect3: (body, cb) => {
     let data = body.obj;
     db.CognitiveTest.findOneAndUpdate(
@@ -302,6 +351,21 @@ module.exports = {
     db.CognitiveTest.findOneAndUpdate(
       { _id : body._id },
       { $push : {Test4RecallSection3: data}}
+   )
+    .then((result) => {
+      cb(null, result);
+    })
+    .catch((err) => {
+      cb(err);
+    })
+  },
+  postTest4RecallSect3v2: (body, cb) => {
+    // let data = {letter: body.letter, response: body.response };
+    let data = body.obj;
+    // console.log('data :', data)
+    db.CognitiveTest.findOneAndUpdate(
+      { _id : body._id },
+      { $push : {Test4RecallSection3v2: data}}
    )
     .then((result) => {
       cb(null, result);
@@ -401,18 +465,18 @@ module.exports = {
       cb(err);
     })
   },
-  // postTest1Tracker: (body, cb) => {
-  //   let data = body.obj;
-  //   db.CognitiveTest.findOneAndUpdate(
-  //     { _id : body._id },
-  //     { $push : {Test1Tracker: data}}
-  //  )
-  //   .then((result) => {
-  //     cb(null, result);
-  //   })
-  //   .catch((err) => {
-  //     cb(err);
-  //   })
-  // },
+  postTest5Sect2v2: (body, cb) => {
+    let data = body.obj;
+    db.CognitiveTest.findOneAndUpdate(
+      { _id : body._id },
+      { $push : {Test5Section2v2: data}}
+   )
+    .then((result) => {
+      cb(null, result);
+    })
+    .catch((err) => {
+      cb(err);
+    })
+  },
 
 }

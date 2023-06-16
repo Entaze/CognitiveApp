@@ -25,13 +25,13 @@ const CognitiveTest1Recall = lazy(() => import('./Components/cognitivetest/Test5
 const CognitiveTest1Recallv2 = lazy(() => import('./Components/cognitivetest/Test5v2/CognitiveTest1Recallv2.jsx'));
 
 const CognitiveTest2Recall = lazy(() => import('./Components/cognitivetest/Test6/CognitiveTest2Recall.jsx'));
-// const CognitiveTest2Recallv2 = lazy(() => import('./Components/cognitivetest/Test6v2/CognitiveTest2Recallv2.jsx'));
+const CognitiveTest2Recallv2 = lazy(() => import('./Components/cognitivetest/Test6v2/CognitiveTest2Recallv2.jsx'));
 
 const CognitiveTest3Recall = lazy(() => import('./Components/cognitivetest/Test7/CognitiveTest3Recall.jsx'));
-// const CognitiveTest3Recallv2 = lazy(() => import('./Components/cognitivetest/Test7v2/CognitiveTest3Recallv2.jsx'));
+const CognitiveTest3Recallv2 = lazy(() => import('./Components/cognitivetest/Test7v2/CognitiveTest3Recallv2.jsx'));
 
 const CognitiveTest4Recall = lazy(() => import('./Components/cognitivetest/Test8/CognitiveTest4Recall.jsx'));
-// const CognitiveTest4Recallv2 = lazy(() => import('./Components/cognitivetest/Test8v2/CognitiveTest4Recallv2.jsx'));
+const CognitiveTest4Recallv2 = lazy(() => import('./Components/cognitivetest/Test8v2/CognitiveTest4Recallv2.jsx'));
 
 
 const CountdownTimer = lazy(() => import('./Components/cognitivetest/countdownTimer/countdownTimer.jsx'));
@@ -82,13 +82,13 @@ ReactDOM.render(
       <Route path="/cognitivetest1recallv2" element={<CognitiveTest1Recallv2 />} />
 
       <Route path="/cognitivetest2recall" element={<CognitiveTest2Recall />} />
-      {/* <Route path="/cognitivetest2recallv2" element={<CognitiveTest2Recallv2 />} /> */}
+      <Route path="/cognitivetest2recallv2" element={<CognitiveTest2Recallv2 />} />
 
       <Route path="/cognitivetest3recall" element={<CognitiveTest3Recall />} />
-      {/* <Route path="/cognitivetest3recallv2" element={<CognitiveTest3Recallv2 />} /> */}
+      <Route path="/cognitivetest3recallv2" element={<CognitiveTest3Recallv2 />} />
 
       <Route path="/cognitivetest4recall" element={<CognitiveTest4Recall />} />
-      {/* <Route path="/cognitivetest4recallv2" element={<CognitiveTest4Recallv2 />} /> */}
+      <Route path="/cognitivetest4recallv2" element={<CognitiveTest4Recallv2 />} />
 
 
       <Route path="/test-begin" element={<Welcome />} />

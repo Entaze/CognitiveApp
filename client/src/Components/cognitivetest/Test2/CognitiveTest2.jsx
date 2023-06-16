@@ -80,6 +80,7 @@ const Cognitivetest2 = () => {
   const [pages, setPages] = useState( null )
 
   const [TestIntro, setTestIntro] = useState(false)
+  const [TestIntroBefore, setTestIntroBefore] = useState(true)
   const [startTest2, setStartTest2] = useState(false)
   const [displayNum, setDisplayNum] = useState(true)
   const [entry, setEntry] = useState('')
@@ -109,10 +110,7 @@ const Cognitivetest2 = () => {
   useEffect(() => {
     if (TestIntro) {
       setImgLoaded(true)
-      // setTimeout(() => {
-      //   setImgLoaded(true)
-      // }, 3000)
-      }
+    }
   }, [TestIntro, loaded])
 
   useEffect(() => {
@@ -138,7 +136,7 @@ const Cognitivetest2 = () => {
     if (userId) {
      axios.get('/api/user', {params: {_id: userId}})
      .then((res)=>{
-       const trialEn = res.data.user.Test2Tracker  - 1;
+       const trialEn = res.data.user.Test2Tracker;
        setTrialEntry(trialEn)
      })
      .catch((err)=>{
@@ -170,63 +168,69 @@ const Cognitivetest2 = () => {
     setPages( document.querySelectorAll(".page") );
   }, [])
 
-    let translateAmount = 100;
-    let translate = 0;
 
-    const slideNext = () => {
-      setTestIntro(true)
-      translate -= translateAmount ;
-      pages.forEach(
-        pages => (
-          pages.style.transform = `translateX(${translate}%)`)
-      );
-    }
+  const slideNext = () => {
+    setTestIntroBefore(false)
+    setTestIntro(true)
+  }
 
-    const slidePrev = () => {
-      translate += translateAmount;
-      pages.forEach(
-        pages => (pages.style.transform = `translateX(${translate}%)`)
-      );
-    }
 
-    const TestStart = () => {
-      setTestIntro(false);
-      setStartTest2(true);
+ const TestStart = () => {
+     if (trialCount > 1) {
+       setTestIntro(false);
+       setStartTest2(true);
 
-      setTimeout(() => {
+       setTimeout(()=>{
+        setDisplayNum(false)
+        setDisplayCross(true)
+        setTrial(true)
+       }, 30000)
+
+       setTimeout(()=>{
+        setDisplayCross(false)
+        setStartTest2(false);
+        setDisplayNum(true)
+        const cnt = trialCount--;
+        const param2 = {_id: userProfile._id, Test2Tracker: cnt};
+        axios.post('/api/user', param2)
+        .then((res)=>{
+          TestStart()
+        })
+      }, 60000)
+
+     } else if (trialCount === 1) {
+      setTestIntro(false)
+      setStartTest2(true)
+
+      setTimeout(()=>{
         setDisplayNum(false)
         setDisplayCross(true)
         setTrial(true)
       }, 30000)
 
-      setTimeout(() => {
-        console.log('trialCount :', trialCount)
-        if (trialCount > 1) {
-          setDisplayCross(false)
-          setStartTest2(false);
-          setDisplayNum(true)
-          // timeInterval += 10000;
-          const cnt = trialCount--;
-          const param2 = {_id: userProfile._id, Test2Tracker: cnt};
-          axios.post('/api/user', param2)
-          .then((res)=>{
-            TestStart()
-          })
-          .catch((err)=>{
+      setTimeout(()=>{
+        setDisplayCross(false)
+        setStartTest2(false);
 
-          })
-        } else {
+        const cnt = trialCount--;
+        const param2 = {_id: userProfile._id, Test2Tracker: cnt};
+        axios.post('/api/user', param2)
+        .then((res)=>{
+          setTestIntro(false);
           let complete = {_id: userProfile._id, test2Completion: true};
           axios.post('/api/user', complete)
-          .then((result) => {
-            // console.log('success post test 2 completion', result)
-            setStartTest2(false)
-            // navigate('/cognitivetest3')
+          .then((result)=>{
+            setDisplayNum(false)
+            setDisplayCross(false)
+            setStartTest2(true)
             setTest2End(true)
+            // console.log('success post test 2 completion', result)
           })
-        }
-      }, 60000)
-    }
+      })
+    }, 60000)
+
+  }
+ }
 
     useEffect(()=> {
       let param;
@@ -259,11 +263,12 @@ const Cognitivetest2 = () => {
           param = {id: userProfile._id,  Test2_Entry_12: entryVal, };
         }
         setTrialEntry(trialEntry - 1);
-        axios.post('/api/cognitivetest', param )
-        .then((res) => {
-          // console.log(res.data)
-          setEntry('')
-        })
+        if (param) {
+          axios.post('/api/cognitivetest', param )
+          .then((res) => {
+            setEntry('')
+          })
+        }
       }
     }, [displayCross])
 
@@ -279,16 +284,17 @@ const Cognitivetest2 = () => {
 
   return (
     <>
+    {userAuth ?
     <div className="container">
-      <div className="pages">
+      <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', height: '100vh', maxWidth: '100vw', background: '#000', color: '#fff', top: 0, bottom: 0, }}>
         <>
-        {userAuth && trialEntry ?
-        <div id="page" className="page one">
         <NavigationBar />
+        {TestIntroBefore && trialEntry ?
+        <div >
           <div style={centerScreen} >
             <h1 style={{ color: '#e67373', fontSize: 50, }} >TEST 2</h1>
             <div style={{ fontSize: 32, margin: '4% 0', fontWeight: 700, lineHeight: '1.6' }}>
-            You will be shown a sequence of numbers on the screen. Using your dominant hand (i.e., the hand you use to write with), type the sequence as fast and accurately as possible. Keep typing the sequence over and over until you see an X on the screen. The numbers will reappear after 30 secs at which point you will start typing the sequence over and over again until you see the next X. This will happen {trialEntry} times.
+            You will be shown a sequence of numbers on the screen. Using your dominant hand (i.e., the hand you use to write with), type the sequence as fast and accurately as possible. Keep typing the sequence over and over until you see an X on the screen. The numbers will reappear after 30 secs at which point you will start typing the sequence over and over again until you see the next X. This will happen {trialEntry - 1} times.
             <br /><br /> [Click next to continue.]
             </div>
             <div>
@@ -298,8 +304,9 @@ const Cognitivetest2 = () => {
         </div>
         : null}
 
-        <div id="page" className="page two">
-          <NavigationBar />
+        <div  >
+          {/* <NavigationBar /> */}
+
           {TestIntro && !imgLoaded ?
           <>
               {/* <div className="loader" id="loader"></div> */}
@@ -320,13 +327,12 @@ const Cognitivetest2 = () => {
               Click previous to re-read instructions or click start to begin test.
             </div>
             <div style={{ display: "inline-block", margin: "4px" }} >
-              <button style={{ margin: "8px", background: "#000" }} onClick={slidePrev} >Previous</button>
+              {/* <button style={{ margin: "8px", background: "#000" }} onClick={slidePrev} >Previous</button> */}
               <button style={{ margin: "8px", background: "#7e1515" }} onClick={TestStart} >Start</button>
             </div>
           </div>
           :
-          null
-          }
+          null}
           {startTest2 ?
           <div style={centerScreen} >
             <div style={exCenter} >
@@ -347,26 +353,28 @@ const Cognitivetest2 = () => {
               {displayCross ?
                 <img style={ {width:'190px', height: '140px' } } src="https://res.cloudinary.com/entazesoftware/image/upload/v1662136021/CognitiveApp/X-logo_mnf03d.jpg" />
               : null}
+
+              {test2End ?
+                <>
+                  <div style={centerScreen} >
+                    <div style={{ color: '#f5f5f5', fontSize: 35, fontWeight: 700, display: 'flex', padding: '0px 40px 120px 40px', lineHeight: '1.6', }} >
+                      Test 2 - Finger Tapping Task Completed.  <br /><br /> [Click start or press ENTER to begin Test 3.]
+                    </div>
+                    <div>
+                      <button onClick={handleStartTest3}>Start</button>
+                    </div>
+                  </div>
+                </>
+              : null}
             </div>
           </div>
           : null}
-          {test2End ?
-          <>
-            <div style={centerScreen} >
-            <div style={{ fontSize: 35, fontWeight: 700, display: 'flex', padding: '0px 40px 120px 40px', lineHeight: '1.6', }} >
-              Test 2 - Finger Tapping Task Completed.  <br /><br /> [Click start or press ENTER to begin Test 3.]
-            </div>
-            <div>
-              <button onClick={handleStartTest3}>Start</button>
-            </div>
-            </div>
-          </>
-          :
-          null}
         </div>
         </>
       </div>
     </div>
+    : null}
+
     </>
   )
 }

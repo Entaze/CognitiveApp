@@ -65,9 +65,7 @@ ReactDOM.render(
 
       <Route path="/countdown" element={<CountdownTimer />} />
       <Route path="/countdownv2" element={<CountdownTimerv2 />} />
-
       <Route path="/countdown2" element={<CountdownTimer2 />} />
-      {/* <Route path="/countdown2v2" element={<CountdownTimer2v2 />} /> */}
 
 
       <Route path="/cognitivetest4" element={<CognitiveTest4 />} />

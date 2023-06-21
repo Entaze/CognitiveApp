@@ -33,39 +33,70 @@ import './Styles.scss'
 
 
 const App = () => {
-    const [value, setValue] = React.useState("/");
-    const [loading, setLoading] = useState(false);
-    const [loggedOut, setLoggedOut] = useState(false);
+  const [value, setValue] = React.useState("/");
+  const [loading, setLoading] = useState(false);
+  const [loggedOut, setLoggedOut] = useState(false);
+  //isMounted declaration and 2 useEffect's below ensure no memory leak in component
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
-    const navigate = useNavigate();
-
-    const handleLoggedIn = () => {
-      setLoggedIn(true);
+  useEffect(() => {
+    return () => {
+      setIsMounted(false);
     }
+  }, []);
 
-    const handleChange = (event, newValue) => {
-      setValue(newValue);
-    };
+  const navigate = useNavigate();
 
-    const theme = createTheme({
-      typography: {
-        fontFamily: 'Roboto'
-      },
-    });
+  const handleLoggedIn = () => {
+    setLoggedIn(true);
+  }
 
-    function handleLogOut() {
-      setLoading(true);
-      window.localStorage.removeItem('token');
-      window.localStorage.removeItem('loggedIn');
-      axios.get('/api/logout')
-      .then((res) => {
-        navigate("/login");
-      })
-      .catch((err) => {
-        console.log('Logout error', err)
-      })
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  const theme = createTheme({
+    typography: {
+      fontFamily: 'Roboto'
+    },
+  });
+
+  function handleLogOut() {
+    setLoading(true);
+    window.localStorage.removeItem('token');
+    window.localStorage.removeItem('loggedIn');
+    axios.get('/api/logout')
+    .then((res) => {
+      navigate("/login");
+    })
+    .catch((err) => {
+      console.log('Logout error', err)
+    })
+  }
+
+  document.addEventListener("mousemove", () =>{
+    localStorage.setItem('lastActvity', new Date())
+  });
+  document.addEventListener("click", () =>{
+    localStorage.setItem('lastActvity', new Date())
+  });
+
+  let timeInterval = setInterval(() => {
+    let lastAcivity = localStorage.getItem('lastActvity')
+    var diffMs = Math.abs(new Date(lastAcivity) - new Date()); // milliseconds between now & last activity
+    var seconds = Math.floor((diffMs/1000));
+    var minute = Math.floor((seconds/60));
+    // console.log(seconds +' sec and '+minute+' min since last activity')
+    if(minute == 10){
+      // console.log('No activity from last 10 minutes... Logging Out')
+      //code for logout or anything...
+      handleLogOut();
+      clearInterval(timeInterval)
     }
-
+  },1000)
 
   return (
     <>

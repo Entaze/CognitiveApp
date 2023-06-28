@@ -306,10 +306,9 @@ function Cognitivetest () {
    }
  }, [userAuth, userId])
 
-
- useEffect(() => {
-   if (startTest) {
-    setStartTest(false);
+//LOOPING THROUGH LIST A
+useEffect(() => {
+  if (startTest) {
     for (let i = 0; i < wordsArr.length; i++) {
       (function(ind) {
           setTimeout(function(){
@@ -317,29 +316,33 @@ function Cognitivetest () {
           }, 1000 + (1000 * ind));
       })(i);
     }
-   }
- }, [startTest])
+  }
+  setStartTest(false);
+}, [startTest])
 
-   useEffect(() => {
-    if (startTestListB) {
-     for (let i = 0; i < listB.length; i++) {
-       (function(ind) {
-           setTimeout(function(){
-               setWord(listB[ind]);
-           }, 1000 + (1000 * ind));
-       })(i);
-     }
+//LOOPING THROUGH LIST B
+useEffect(() => {
+  setWord();
+
+  if (startTestListB && !startTest) {
+    for (let j = 0; j < listB.length; j++) {
+      (function(ind2) {
+          setTimeout(function(){
+              setWord(listB[ind2]);
+          }, 1000 + (1000 * ind2));
+      })(j);
     }
-  }, [startTestListB])
+  }
+}, [startTestListB, startTest])
 
   useEffect(() => {
     if (startTestListARecall) {
-      for (let i = 0; i < wordsArrRe.length; i++) {
-        (function(ind) {
+      for (let k = 0; k < wordsArrRe.length; k++) {
+        (function(ind3) {
             setTimeout(function(){
-                setWord(wordsArrRe[ind]);
-            }, 5 + (5 * ind));
-        })(i);
+                setWord(wordsArrRe[ind3]);
+            }, 5 + (5 * ind3));
+        })(k);
       }
     }
   }, [startTestListARecall])
@@ -357,7 +360,7 @@ useEffect(()=> {
 const handleStartTest = (e) => {
   e.preventDefault();
   setFirstPage(false);
-  setStartTest(false);
+  // setStartTest(false);
   setStartTest(true);
 }
 
@@ -406,6 +409,7 @@ const toggleFormState = () => {
   setFormState(true);
 }
 
+//Modal re-appear for both word arrays
 const handleModalAppear = (e) => {
   setVal();
   const count = (countModal + 1);
@@ -524,7 +528,7 @@ const handleRepeatListA = (e) => {
 
 const handleStartListB = (e) => {
   setListBStart(false);
-  setStartTestListB(false);
+  // setStartTestListB(false);
   setWordRecall(false);
   setBeginSec1(true)
   setStartTestListB(true);
@@ -609,7 +613,7 @@ useEffect(() => {
          <>
             <div style={centerScreen} >
                <h1 style={{ color: '#e67373', fontSize: 50, }} >TEST 1</h1>
-               <div style={{ fontSize: 35, fontWeight: 700, display: 'flex', padding: '110px 40px 120px 40px', lineHeight: '1.6', }} >
+               <div style={{ fontSize: 35, fontWeight: 700, display: 'flex', padding: '80px 40px 120px 40px', lineHeight: '1.6', }} >
                You will be shown a list of 15 words. This same list will be shown to you {times} times. Each time after you see the list you will be asked to type all the words you remember from the list.
                <br /><br /> [Click start to continue.]
               </div>
@@ -620,6 +624,8 @@ useEffect(() => {
           </>
         :
         null}
+
+
         {!listAReEntry ?
           <Typography style={{ fontSize: 60, fontWeight: 700, textAlign: 'center', fontFamily:'Arial' }} >{word}</Typography>
           : null}
@@ -633,7 +639,7 @@ useEffect(() => {
           </div>
         </>
         :
-        null }
+        null}
         {formState ?
         <>
           <div style={centerScreen} >

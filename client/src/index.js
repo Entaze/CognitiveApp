@@ -13,7 +13,7 @@ const Login = lazy(() => import('./Components/Login/Login.jsx'));
 const ForgotPassword = lazy(() => import('./Components/Login/ForgotPassword.jsx'));
 const ConfirmAccount = lazy(() => import('./Components/Login/ConfirmAccount.jsx'));
 const ResetPassword = lazy(() => import('./Components/Login/ResetPassword.jsx'));
-const CognitiveTest1 = lazy(() => import('./Components/cognitivetest/Test1/CognitiveTest1.jsx'));
+const CognitiveTest1 = lazy(() => import('./Components/cognitivetest/Test1/CognitiveTest10.jsx'));
 const CognitiveTest1v2 = lazy(() => import('./Components/cognitivetest/Test1v2/CognitiveTest1v2.jsx'));
 const CognitiveTest2 = lazy(() => import('./Components/cognitivetest/Test2/CognitiveTest2.jsx'));
 const CognitiveTest2v2 = lazy(() => import('./Components/cognitivetest/Test2v2/CognitiveTest2v2.jsx'));

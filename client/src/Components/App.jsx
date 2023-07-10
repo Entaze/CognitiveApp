@@ -90,7 +90,7 @@ const App = () => {
     var seconds = Math.floor((diffMs/1000));
     var minute = Math.floor((seconds/60));
     // console.log(seconds +' sec and '+minute+' min since last activity')
-    if(minute == 10){
+    if(minute == 100){
       // console.log('No activity from last 10 minutes... Logging Out')
       //code for logout or anything...
       handleLogOut();

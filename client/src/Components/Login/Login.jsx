@@ -131,8 +131,7 @@ function Login() {
             console.log('User logged in :', user)
             if (!user.userConfirmed) {
               navigate('/login')
-            }
-             else if (!user.test1Completion) {
+            } else if (!user.test1Completion) {
               navigate('/cognitivetest1')
             } else if (!user.test2Completion) {
               navigate('/cognitivetest2')

@@ -180,9 +180,9 @@ function Login() {
   }, [checkUserLogin])
 
   useEffect(() => {
-  if (!token) {
-    setCheckUserLogin(true)
-  }
+    if (!token) {
+      setCheckUserLogin(true)
+    }
   }, [])
 
   function Copyright(props) {

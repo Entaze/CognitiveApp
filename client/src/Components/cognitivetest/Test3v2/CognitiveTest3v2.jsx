@@ -357,6 +357,7 @@ const CognitiveTest3v2 = () => {
       'https://res.cloudinary.com/entazesoftware/image/upload/v1686738895/AssaultTortureSAAPS_tfjggw.jpg',
       'https://res.cloudinary.com/entazesoftware/image/upload/v1686738894/AntelopeSAAPS_1_ueiph1.jpg',
       'https://res.cloudinary.com/entazesoftware/image/upload/v1686738894/AttackTwoSAAPS_tdfjb4.jpg',
+      'https://res.cloudinary.com/entazesoftware/image/upload/v1671644975/RowerSAAPS_spdt1n.jpg',
 
     ]
     );
@@ -991,7 +992,7 @@ const CognitiveTest3v2 = () => {
             <>
             <div style={centerScreen} >
               <h1 style={{ color: '#e67373', fontSize: 50, }} >TEST 3</h1>
-              <div style={{ fontSize: 30, fontWeight: 400, display: 'flex', flexDirection: 'column', padding: '40px 40px 60px 40px', lineHeight: '1.6', }} >
+              <div style={{ fontSize: 30, fontWeight: 400, display: 'flex', flexDirection: 'column', padding: '40px 40px 60px 40px', lineHeight: '1.2', }} >
               You will see some pictures appear on the screen, one after each other. Some pictures will be positive, some will be neutral, and some will be negative. Please note that some pictures may be offensive to sensitive viewers.
               Please look at each picture carefully and try to remember it. <br />
               {Text2 ?

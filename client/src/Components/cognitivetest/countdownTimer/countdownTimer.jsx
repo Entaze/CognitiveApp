@@ -125,8 +125,7 @@ useEffect(() => {
   if (completionTime) {
     setInterval(() => {
       const now = moment();
-      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(6, 'hours');
-
+      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(10, 'hours'); //10
 
       let duration = moment.duration(then.diff(now));
       let hours = duration.asHours();

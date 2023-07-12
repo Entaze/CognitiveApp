@@ -205,7 +205,6 @@ function Cognitivetest () {
   const userloggedIn = JSON.parse(window.localStorage.getItem('userLoggedIn'));
   const [userId, setUserId] = useState(null);
   const [testListATrials, setTestListATrials] = useState(null);
-
   const [testListBTrials, setTestListBTrials] = useState(1);
   const [firstPage, setFirstPage] = useState(false);
   const [startTest, setStartTest] = useState(false);
@@ -213,9 +212,7 @@ function Cognitivetest () {
   const [startTestListARecall, setStartTestListARecall] = useState(false);
   const [tests, setTests] = useState({});
   const [wordsArr, setWordsArr] = useState(['Drum', 'Curtain', 'Bell', 'Coffee', 'School', 'Parent', 'Moon', 'Garden', 'Hat', 'Farmer', 'Nose', 'Turkey', 'Colour', 'House', 'River', '' ]);
-
   const [listB, setListB] = useState(['Desk', 'Ranger', 'Bird', 'Shoe', 'Stove', 'Mountain', 'Glasses', 'Towel', 'Cloud', 'Boat', 'Lamb', 'Gun', 'Pencil', 'Church', 'Fish', ]);
-
   const [listBStart, setListBStart] = useState(false);
   const [listAReEntry, setListAReEntry] = useState(false);
   const [test1End, setTest1End] = useState(false);
@@ -246,14 +243,10 @@ function Cognitivetest () {
     shouldUseNativeValidation: false,
     delayError: undefined
   });
-
   /* -------------------- */
   const [secondStep, setSecondStep] = useState(false);
   const [WordFlash, setWordFlash] = useState(false);
-
   /* -------------------- */
-
-
   const [data, setData] = useState([]);
   const [val, setVal] = useState();
   const [countModal, setCountModal] = useState(0);
@@ -262,7 +255,6 @@ function Cognitivetest () {
   const handleRegistration = (data) => { setData(data); handleModalAppear(); reset();  }
   const buttonEntry = countModal < wordsArr.length ? 'Enter' : 'Submit Test';
   const wordCount = countModal + 1;
-
 
  //isMounted declaration and 2 useEffect's below ensure no memory leak in component
   const [isMounted, setIsMounted] = useState(false);
@@ -294,7 +286,6 @@ function Cognitivetest () {
   }
  }, [userProfile])
 
-
  useEffect(()=>{
    if (userId) {
     axios.get('/api/user', {params: {_id: userId}})
@@ -315,7 +306,6 @@ function Cognitivetest () {
    }
  }, [userAuth, userId])
 
-
 //LOOPING THROUGH LIST A
 useEffect(() => {
   if (startTest) {
@@ -325,8 +315,6 @@ useEffect(() => {
       (function(ind) {
           setTimeout(function(){
               setWord(wordsArr[ind]);
-              // console.log('word :', wordsArr[ind])
-
               if (ind === wordsArr.length - 1) {
                 setTimeout(()=>{
                   setWord();
@@ -343,14 +331,12 @@ useEffect(() => {
 
 //LOOPING THROUGH LIST B
 useEffect(() => {
-  // setWord();
   if (startTestListB && !startTest) {
     setWordFlash(true);
     for (let j = 0; j < listB.length; j++) {
       (function(ind2) {
           setTimeout(function(){
               setWord(listB[ind2]);
-              // console.log('word :', listB[ind2])
               if (ind2 === listB.length - 1) {
                 setTimeout(()=>{
                   setWord();
@@ -373,26 +359,15 @@ useEffect(() => {
 }, [startTestListARecall])
 
 
-// useEffect(()=> {
-//   if (word === wordsArr[wordsArr.length - 1]) {
-//     setFirstPage(false);
-//     setWordRecall(true);
-//     setStartTest(false);
-//     setWord();
-//   }
-// }, [word])
-
 const handleStartTest = (e) => {
   e.preventDefault();
   setFirstPage(false);
-  // setStartTest(false);
   setStartTest(true);
 }
 
 const handleStartListB = (e) => {
   e.preventDefault();
   setListBStart(false);
-  // setStartTestListB(false);
   setWordRecall(false);
   setBeginSec1(true)
   setStartTestListB(true);
@@ -449,7 +424,6 @@ const handlePostWords = () => {
   const date = new Date();
   let param;
   let countUp = testListATrials + 1;
-
   setTestListATrials(countUp);
   if (testListATrials === 1) {
     setRepeatListA(true);
@@ -506,7 +480,6 @@ const handlePostWords = () => {
       let complete = {_id: userId, test1Completion: true};
       axios.post('/api/user', complete)
       .then((result) => {
-        // console.log('success post test 1 completion', result)
         setTest1End(true)
       })
     })

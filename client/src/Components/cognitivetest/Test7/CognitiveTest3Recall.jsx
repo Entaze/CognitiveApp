@@ -304,7 +304,7 @@ function CognitiveTest3Recall () {
     'https://res.cloudinary.com/entazesoftware/image/upload/v1680711025/WomanLyingChairSAAPS_2_vmfbz2.jpg',
     'https://res.cloudinary.com/entazesoftware/image/upload/v1680711025/WomanReadingOneSAAPS_nf2ak1.jpg',
     'https://res.cloudinary.com/entazesoftware/image/upload/v1680711025/WomanTwoSAAPS_2_yxmemy.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1671646970/CockpitSAAPS_gfrzog.jpg',
+    'https://res.cloudinary.com/entazesoftware/image/upload/v1680710994/CarRacerSAAPS_oh39p3.jpg',
 
   ]
   );

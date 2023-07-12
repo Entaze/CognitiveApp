@@ -124,7 +124,7 @@ useEffect(() => {
   if (completionTime) {
     setInterval(() => {
       const now = moment();
-      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(6, 'days');
+      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(2, 'hours');  //6, 'days'
 
       let duration = moment.duration(then.diff(now));
       let hours = duration.asHours();
@@ -148,7 +148,7 @@ useEffect(() => {
 }, [completionTime]);
 
 const handle2WeeksLtr = () => {
-  // navigate('/cognitivetest1recall')
+  navigate('/cognitivetest1v2')
 }
 
   return (

@@ -357,6 +357,7 @@ const CognitiveTest3 = () => {
       'https://res.cloudinary.com/entazesoftware/image/upload/v1680705908/WatermelonSAAPS_2_cjlucp.jpg',
       'https://res.cloudinary.com/entazesoftware/image/upload/v1680705908/WingWalkerPlaneCarnivalSAAPS_2_siq5xh.jpg',
       'https://res.cloudinary.com/entazesoftware/image/upload/v1680705908/SpiderSAAPS_2_vt7owj.jpg',
+      'https://res.cloudinary.com/entazesoftware/image/upload/v1671644975/RowerSAAPS_spdt1n.jpg',
 
     ]
     );
@@ -376,7 +377,6 @@ const CognitiveTest3 = () => {
   const [srcIm, SetSrcIm] = useState();
   const [srcIm2, SetSrcIm2] = useState(null);
   const [srcIm22, SetSrcIm22] = useState(null);
-
 
   const [countModal, setCountModal] = useState(0);
   const [countModal2, setCountModal2] = useState(0);
@@ -991,7 +991,7 @@ const CognitiveTest3 = () => {
             <>
             <div style={centerScreen} >
               <h1 style={{ color: '#e67373', fontSize: 50, }} >TEST 3</h1>
-              <div style={{ fontSize: 30, fontWeight: 400, display: 'flex', flexDirection: 'column', padding: '40px 40px 60px 40px', lineHeight: '1.6', }} >
+              <div style={{ fontSize: 30, fontWeight: 400, display: 'flex', flexDirection: 'column', padding: '40px 40px 60px 40px', lineHeight: '1.2', }} >
               You will see some pictures appear on the screen, one after each other. Some pictures will be positive, some will be neutral, and some will be negative. Please note that some pictures may be offensive to sensitive viewers.
               Please look at each picture carefully and try to remember it. <br />
               {Text2 ?

@@ -343,7 +343,6 @@ function CognitiveTest3Recall () {
   }
  }, [userProfile])
 
-
 //Listen to keyboard events
 useEffect(() => {
   document.addEventListener('keydown', detectSpaceBar, true)
@@ -370,7 +369,6 @@ useEffect(()=>{
   }
 }, [keyClicked, confirmPage])
 
-
 const handleFirst = () => {
   setFirstPage(false)
   setSecondPage(true);
@@ -386,7 +384,6 @@ useEffect(()=>{
     setStartT(true)
   }
 }, [testingStart])
-
 
 const handleStartTest8 = () => {
   navigate('/cognitivetest4recall')
@@ -789,8 +786,3 @@ const GetUnratedImagesRecall = () => {
 }
 
 export default CognitiveTest3Recall
-
-
-
-
-

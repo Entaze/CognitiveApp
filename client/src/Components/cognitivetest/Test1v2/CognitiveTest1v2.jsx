@@ -547,39 +547,39 @@ const handleInput = (e) => {
   setWordInput(e.target.value);
 }
 
-useEffect(() => {
-  if (userId) {
-    axios.get('/api/user', {params: {_id: userId}})
-    .then((res)=>{
-      setCompletionTime(res.data.user.Test4RecallCompletionTime)
-    })
-    .catch((err)=>{
-     console.log(err)
-    })
-  }
- }, [userId])
+// useEffect(() => {
+//   if (userId) {
+//     axios.get('/api/user', {params: {_id: userId}})
+//     .then((res)=>{
+//       setCompletionTime(res.data.user.Test4RecallCompletionTime)
+//     })
+//     .catch((err)=>{
+//      console.log(err)
+//     })
+//   }
+//  }, [userId])
 
-useEffect(() => {
-  if (completionTime) {
-      const now = moment();
-      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(2, 'hours');  //144
-      const expiryDate = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(120, 'hours'); //720
+// useEffect(() => {
+//   if (completionTime) {
+//       const now = moment();
+//       const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(2, 'hours');  //144
+//       const expiryDate = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(120, 'hours'); //720
 
-      let expired = moment.duration(expiryDate.diff(now))
-      let duration = moment.duration(then.diff(now))
-      let hours = duration.asHours()
-      let hours2 = expired.asHours()
-      let mins2 = expired.asMinutes()
-      let secs2 = expired.asSeconds()
-      if (hours2 <= 0 && mins2 <= 0 && secs2 <= 0) {
-        navigate('/expired-test')
-      } else if (hours >= 0) {
-        navigate('/countdown2')
-      } else {
-        setCountdownComplete(true);
-      }
-  }
-}, [completionTime]);
+//       let expired = moment.duration(expiryDate.diff(now))
+//       let duration = moment.duration(then.diff(now))
+//       let hours = duration.asHours()
+//       let hours2 = expired.asHours()
+//       let mins2 = expired.asMinutes()
+//       let secs2 = expired.asSeconds()
+//       if (hours2 <= 0 && mins2 <= 0 && secs2 <= 0) {
+//         navigate('/expired-test')
+//       } else if (hours >= 0) {
+//         navigate('/countdown2')
+//       } else {
+//         setCountdownComplete(true);
+//       }
+//   }
+// }, [completionTime]);
 
 useEffect(() => {
   if (testListATrials !== null) {
@@ -604,7 +604,7 @@ useEffect(() => {
 
  return (
   <>
-  {userAuth && countdownComplete ?
+  {userAuth ?  //&& countdownComplete
   <>
     <NavigationBar />
     <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', height: '100vh', maxWidth: '100vw', background: '#000', color: '#fff', top: 0, bottom: 0, }} >

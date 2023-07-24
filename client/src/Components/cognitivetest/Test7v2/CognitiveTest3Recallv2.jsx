@@ -387,7 +387,7 @@ useEffect(()=>{
 
 
 const handleStartTest8 = () => {
-  testFinish()
+  navigate('/cognitivetest4recallv2')
 }
 
 useEffect(() => {
@@ -601,7 +601,15 @@ const GetUnratedImagesRecall = () => {
           setTestingStart(false)
           setTest7End(true)
 
-         testFinish();
+          let complete = {_id: userId, test3CompletionRecallv2: true};
+          axios.post('/api/user', complete)
+          .then((res) => {
+            // console.log('completion res :', res);
+            // navigate('/cognitivetest4recallv2')
+          })
+          .catch (()=>{
+
+          })
         }
       })
       .catch((err)=>{
@@ -791,8 +799,3 @@ const GetUnratedImagesRecall = () => {
 }
 
 export default CognitiveTest3Recallv2
-
-
-
-
-

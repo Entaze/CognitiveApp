@@ -71,7 +71,7 @@ const Welcome = () => {
    }, [name, userAuth])
 
    const StartTest = () => {
-    navigate('/cognitivetest1')
+    navigate('/cognitivetest1v1') //cognitivetest1
    }
 
     return (

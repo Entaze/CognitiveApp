@@ -319,8 +319,8 @@ useEffect(() => {
  useEffect(() => {
   if (completionTime) {
       const now = moment();
-      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(6, 'hours'); //6
-      const expiryDate = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(14, 'hours'); //14
+      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(2, 'hours'); //6
+      const expiryDate = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(61, 'hours'); //14
 
       let expired = moment.duration(expiryDate.diff(now));
       // console.log('expired :', expired.format(''))
@@ -329,6 +329,9 @@ useEffect(() => {
       let hours2 = expired.asHours();
       let mins2 = expired.asMinutes();
       let secs2 = expired.asSeconds();
+
+      // console.log('hours :', hours)
+      // console.log('hours2 :', hours2)
 
       if (hours2 <= 0 && mins2 <= 0 && secs2 <= 0) {
         navigate('/expired-test')

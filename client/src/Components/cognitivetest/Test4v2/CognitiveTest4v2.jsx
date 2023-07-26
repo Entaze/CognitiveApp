@@ -142,12 +142,12 @@ const Cognitivetest4v2 = () => {
   const [testBegin3, setTestBegin3] = useState(false);
   const [mainTestBegin1, setMainTestBegin1] = useState(false);
 
-  const [test1Letter, setTest1Letter] = useState(['J', 'S', 'B', 'T', 'G', 'N', 'G', 'Q', 'Z', 'K', 'B', 'Z', 'K', 'T', 'Q', 'T', 'G', 'Z', 'Z', 'G' ]); //
-  const [test2Letter, setTest2Letter] = useState(['X', 'P', 'K', 'R', 'D', 'T', 'X', 'V', 'V', 'P', 'J', 'J', 'J', 'P', 'P', 'H', 'N', 'H', 'H', 'N', ]); //
-  const [test3Letter, setTest3Letter] = useState(['Q', 'N', 'S', 'V', 'B', 'H', 'B', 'H', 'P', 'X', 'P', 'C', 'X', 'C', 'M', 'K', 'M', 'K', 'M', 'K' ]); //
-  const [test01Letter, setTest01Letter] = useState(['J', 'S', 'B', 'T', 'G', 'N', 'G', 'Q', 'Z', 'K', 'B', 'Z', 'K', 'T', 'Q', 'T', 'G', 'Z', 'Z', 'G', 'Z', 'Z', 'B', 'Z', 'Z', 'S', 'Z', 'Z', 'Z', 'B', 'B', 'Z', 'N', 'J', 'Z', 'V', 'V', ]); //
-  const [test02Letter, setTest02Letter] = useState(['X', 'P', 'K', 'R', 'D', 'T', 'X', 'V', 'V', 'P', 'J', 'J', 'J', 'P', 'P', 'H', 'N', 'H', 'H', 'N', 'B', 'B', 'N', 'N', 'T', 'M', 'T', 'T', 'J', 'P', 'P', 'P', 'J', 'J', 'H', 'H', ]); //
-  const [test03Letter, setTest03Letter] = useState(['Q', 'N', 'S', 'V', 'B', 'H', 'B', 'H', 'P', 'X', 'P', 'C', 'X', 'C', 'M', 'K', 'M', 'K', 'M', 'K', 'V', 'S', 'F', 'V', 'V', 'S', 'F', 'F', 'N', 'C', 'N', 'C', 'M', 'J', 'M', 'J', ]); //
+  const [test1Letter, setTest1Letter] = useState(['S', 'J', 'Q', 'G', 'N', 'Z', 'K', 'B', 'T', 'Z', 'Q', 'Z', 'T', 'Q', 'T', 'Z', 'Z', 'G', 'B', 'K', 'T' ]); //
+  const [test2Letter, setTest2Letter] = useState(['P', 'X', 'D', 'R', 'T', 'J', 'J', 'V', 'P', 'V', 'V', 'V', 'H', 'P', 'P', 'X', 'H', 'H', 'N', 'J', ]); //
+  const [test3Letter, setTest3Letter] = useState(['N', 'V', 'B', 'H', 'B', 'H', 'M', 'C', 'X', 'C', 'M', 'K', 'M', 'N', 'S', 'K', 'S', 'K', 'S', 'K' ]); //
+  const [test01Letter, setTest01Letter] = useState(['S', 'T', 'Q', 'G', 'N', 'J', 'G', 'Z', 'K', 'B', 'Z', 'Q', 'G', 'T', 'G', 'Z', 'Z', 'T', 'G', 'B', 'Z', 'Z', 'N', 'S', 'Z', 'Z', 'Z', 'H', 'H', 'Z', 'N', 'Z', 'V', 'Z', 'J', 'V', ]); //
+  const [test02Letter, setTest02Letter] = useState(['P', 'K', 'X', 'D', 'R', 'V', 'T', 'T', 'P', 'J', 'J', 'J', 'X', 'X', 'B', 'N', 'B', 'B', 'N', 'J', 'T', 'T', 'N', 'N', 'M', 'T', 'M', 'M', 'V', 'P', 'P', 'P', 'J', 'J', 'H', 'H', ]); //
+  const [test03Letter, setTest03Letter] = useState(['N', 'S', 'Q', 'B', 'H', 'B', 'H', 'S', 'X', 'P', 'X', 'S', 'C', 'X', 'C', 'K', 'M', 'K', 'M', 'K', 'S', 'F', 'V', 'V', 'S', 'F', 'F', 'V', 'C', 'N', 'C', 'N', 'D', 'J', 'D', 'J', ]); //
 
 
 

@@ -228,7 +228,7 @@ const CognitiveTest3v2 = () => {
       'https://res.cloudinary.com/entazesoftware/image/upload/v1686735820/RepeatMutilationNine_os3xxc.jpg',
       'https://res.cloudinary.com/entazesoftware/image/upload/v1686735820/RepeatNativeBoy_ywlo7h.jpg',
 
-      // 'https://res.cloudinary.com/entazesoftware/image/upload/v1686735820/RepeatMutilationNine_os3xxc.jpg',
+      'https://res.cloudinary.com/entazesoftware/image/upload/v1686738897/EroticCoupleFacingSAAPS_r6lkmf.jpg',
       'https://res.cloudinary.com/entazesoftware/image/upload/v1686735821/RepeatShadow_jb1rut.jpg',
       'https://res.cloudinary.com/entazesoftware/image/upload/v1686735821/RepeatPollution_wgcqgw.jpg',
       'https://res.cloudinary.com/entazesoftware/image/upload/v1686735821/RepeatShark_fb93jm.jpg',

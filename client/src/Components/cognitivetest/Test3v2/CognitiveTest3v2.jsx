@@ -357,7 +357,7 @@ const CognitiveTest3v2 = () => {
       'https://res.cloudinary.com/entazesoftware/image/upload/v1686738895/AssaultTortureSAAPS_tfjggw.jpg',
       'https://res.cloudinary.com/entazesoftware/image/upload/v1686738894/AntelopeSAAPS_1_ueiph1.jpg',
       'https://res.cloudinary.com/entazesoftware/image/upload/v1686738894/AttackTwoSAAPS_tdfjb4.jpg',
-      'https://res.cloudinary.com/entazesoftware/image/upload/v1671644975/RowerSAAPS_spdt1n.jpg',
+      'https://res.cloudinary.com/entazesoftware/image/upload/v1686735809/AimedGunFourIAPS_g3orqm.jpg',
 
     ]
     );

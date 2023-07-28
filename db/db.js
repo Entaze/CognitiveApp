@@ -30,11 +30,11 @@ Test1Trackerv2: {
 },
 Test2Tracker: {
   type: Number,
-  default: 13
+  default: 12
 },
 Test2Trackerv2: {
   type: Number,
-  default: 13
+  default: 12
 },
 test1Completion: {
   type: Boolean,

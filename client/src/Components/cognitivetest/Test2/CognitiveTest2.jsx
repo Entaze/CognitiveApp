@@ -33,7 +33,7 @@ const centerScreen = {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  marginLeft: '10%',
+  // marginLeft: '10%',
   marginRight: '10%',
   paddingTop: '15%',
   paddingBottom: '5%',

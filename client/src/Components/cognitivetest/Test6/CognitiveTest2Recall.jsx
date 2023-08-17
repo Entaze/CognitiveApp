@@ -238,7 +238,6 @@ useEffect(()=>{
   }
 }, [keyClicked, entry, TestIntro, firstPage])
 
-
 const handleStart = () => {
   setFirstPage(false)
   setTestIntro(true);
@@ -249,7 +248,6 @@ useEffect(() => {
     setImgLoaded(true)
   }
 }, [TestIntro, loaded])
-
 
 const TestStart = () => {
   if (trialCount > 1) {
@@ -299,15 +297,26 @@ const TestStart = () => {
 
 useEffect(()=> {
   let param;
-  let entryVal;
   if (displayCross) {
-    entry === '' ? (entryVal = {}) : entryVal = entry;
+    let response = '';
+    if (entry === '') {
+      response = {};
+    } else {
+      for (let i = 0; i < entry.length; i++) {
+        if (i !== (entry.length - 1)) {
+          response = response + entry[i] + ',';
+        } else {
+          response = response + entry[i];
+        }
+      }
+    }
+
     if (trialEntry === 3) {
-      param = {id: userId,  Test2Recall_Entry_1: entryVal, };
+      param = {id: userId, _30Test2Recall_Entry_1: response, };
     } else if (trialEntry === 2) {
-      param = {id: userId,  Test2Recall_Entry_2: entryVal, };
+      param = {id: userId, _31Test2Recall_Entry_2: response, };
     } else if (trialEntry === 1) {
-      param = {id: userId,  Test2Recall_Entry_3: entryVal, };
+      param = {id: userId, _32Test2Recall_Entry_3: response, };
     }
     setTrialEntry(trialEntry - 1);
     axios.post('/api/cognitivetest', param )

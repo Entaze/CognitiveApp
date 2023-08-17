@@ -169,7 +169,7 @@ function CognitiveTest4Recallv2 () {
   const [start1BackTest, setStart1BackTest] = useState(false);
   const [start2BackTest, setStart2BackTest] = useState(false);
   const [test01Letter, setTest01Letter] = useState(['S', 'T', 'Q', 'G', 'N', 'J', 'G', 'Z', 'K', 'B', 'Z', 'Q', 'G', 'T', 'G', 'Z', 'Z', 'T', 'G', 'B', 'Z', 'Z', 'N', 'S', 'Z', 'Z', 'Z', 'H', 'H', 'Z', 'N', 'Z', 'V', 'Z', 'J', 'V',  ]); //
-  const [test02Letter, setTest02Letter] = useState(['X', 'P', 'K', 'P', 'K', 'X', 'D', 'R', 'V', 'T', 'T', 'P', 'J', 'J', 'J', 'X', 'X', 'B', 'N', 'B', 'B', 'N', 'J', 'T', 'T', 'N', 'N', 'M', 'T', 'M', 'M', 'V', 'P', 'P', 'P', 'J', 'J', 'H', 'H',  ]); //
+  const [test02Letter, setTest02Letter] = useState(['P', 'K', 'X', 'D', 'R', 'V', 'T', 'T', 'P', 'J', 'J', 'J', 'X', 'X', 'B', 'N', 'B', 'B', 'N', 'J', 'T', 'T', 'N', 'N', 'M', 'T', 'M', 'M', 'V', 'P', 'P', 'P', 'J', 'J', 'H', 'H',  ]); //
   const [test03Letter, setTest03Letter] = useState(['N', 'S', 'Q', 'B', 'H', 'B', 'H', 'S', 'X', 'P', 'X', 'S', 'C', 'X', 'C', 'K', 'M', 'K', 'M', 'K', 'S', 'F', 'V', 'V', 'S', 'F', 'F', 'V', 'C', 'N', 'C', 'N', 'D', 'J', 'D', 'J', ]); //
   const [flashLetter, setFlashLetter] = useState(false);
   const [flash, setFlash] = useState(false);

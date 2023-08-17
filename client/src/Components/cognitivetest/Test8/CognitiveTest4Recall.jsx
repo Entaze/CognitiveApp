@@ -21,7 +21,6 @@ import moment from 'moment';
 import '../../Styles.scss'
 
 
-
 const centerScreen = {
   width: '70vw',
   height: '50vh',
@@ -151,7 +150,6 @@ const formTitle = {
   paddingBottom: '40px',
 }
 
-
 function CognitiveTest4Recall () {
   const token = window.localStorage.getItem('token');
   const { userProfile, cognitiveTest, setCognitiveTest } = useMainContext();
@@ -207,7 +205,6 @@ function CognitiveTest4Recall () {
   let count02 = countLetter02;
 
 
-
  //isMounted declaration and 2 useEffect's below ensure no memory leak in component
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
@@ -239,7 +236,6 @@ function CognitiveTest4Recall () {
   }
  }, [userProfile])
 
-
 //Listen to keyboard events
 useEffect(() => {
   document.addEventListener('keydown', detectSpaceBar, true)
@@ -267,7 +263,6 @@ useEffect(()=>{
     }
   }
  },[userAuth ])
-
 
 useEffect(()=>{
   setLetter(letters)
@@ -323,7 +318,6 @@ useEffect(()=>{
   //   setResponse('')
   // }
 }, [keyClicked])
-
 
 // 0-Back Test
 useEffect(()=>{
@@ -552,7 +546,7 @@ const handleSecondSessionEnd = () => {
   let complete = { _id: userId, test4CompletionRecall: true, email: userProfile.email, name: userProfile.name }
   axios.post('/api/user', complete)
   .then((res)=>{
-    navigate('/test-end')
+    navigate('/cognitivetest1v2')
   })
   .catch((err)=>{
     console.log({err})
@@ -591,7 +585,7 @@ const startFourteen2 = () => {
           <>
           <div style={centerScreen2} >
             <h1 style={{ color: '#e67373', fontSize: 50, }} >TEST 4</h1>
-            <div style={{ fontSize: 35, fontWeight: 600, display: 'flex', padding: '80px 40px 60px 40px', lineHeight: '1.2', }} >
+            <div style={{ fontSize: 35, fontWeight: 300, display: 'flex', padding: '80px 40px 60px 40px', lineHeight: '1.4', }} >
                   This task involves viewing single letters presented one at a time. <br />
                   Your job is to determine whether or not the letter currently on the screen is a target or a non-target. <br />
                   If the letter on the screen is a target you should press 1.<br />
@@ -611,7 +605,7 @@ const startFourteen2 = () => {
           <>
           <div style={centerScreen2} >
             <h1 style={{ color: '#e67373', fontSize: 50, }} >TEST 4 - ZERO BACK RECALL</h1>
-            <div style={{ fontSize: 35, fontWeight: 700, display: 'flex', padding: '80px 40px 60px 40px', lineHeight: '1.2', }} >
+            <div style={{ fontSize: 35, fontWeight: 300, display: 'flex', padding: '80px 40px 60px 40px', lineHeight: '1.4', }} >
 
                   In this first condition the letter 'Z' is the target and all other letters are non-targets. So if you see a Z on the screen you should press 1 (target), and if you see any other letter you should press 2 (non-target).<br /> <br />
                   [Press ENTER or click start to begin test.]
@@ -628,7 +622,7 @@ const startFourteen2 = () => {
           <>
           <div style={centerScreen} >
             <h1 style={{ color: '#e67373', fontSize: 50, }} >TEST 4 - ONE BACK RECALL</h1>
-            <div style={{ fontSize: 35, fontWeight: 700, display: 'flex', padding: '110px 40px 120px 40px', lineHeight: '1.6', }} >
+            <div style={{ fontSize: 35, fontWeight: 300, display: 'flex', padding: '110px 40px 120px 40px', lineHeight: '1.6', }} >
             In this next condition a letter is a target if it is the same as the letter that came one before it. Remember to press 1 if the letter is a target and 2 if the letter is not a target.<br /><br />
             [Press ENTER or click start to begin test.]
             </div>
@@ -643,7 +637,7 @@ const startFourteen2 = () => {
           <>
           <div style={centerScreen} >
             <h1 style={{ color: '#e67373', fontSize: 50, }} >TEST 4 - TWO BACK RECALL</h1>
-            <div style={{ fontSize: 35, fontWeight: 700, display: 'flex', padding: '110px 40px 120px 40px', lineHeight: '1.6', }} >
+            <div style={{ fontSize: 35, fontWeight: 300, display: 'flex', padding: '110px 40px 120px 40px', lineHeight: '1.6', }} >
             In this last condition a letter is a target if it is the same as the letter that came two before it. Remember to press 1 if the letter is a target and 2 if the letter is not a target.<br /><br />
             [Press ENTER or click start to begin test.]
             </div>

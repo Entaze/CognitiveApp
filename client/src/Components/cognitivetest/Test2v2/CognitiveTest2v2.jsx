@@ -168,12 +168,10 @@ const Cognitivetest2v2 = () => {
     setPages( document.querySelectorAll(".page") );
   }, [])
 
-
   const slideNext = () => {
     setTestIntroBefore(false)
     setTestIntro(true)
   }
-
 
   const TestStart = () => {
     if (trialCount > 1) {
@@ -234,31 +232,44 @@ const Cognitivetest2v2 = () => {
       let param;
       let entryVal;
       if (displayCross) {
-        entry === '' ? (entryVal = {}) : entryVal = entry;
+        let response = '';
+        if (entry === '') {
+          response = {};
+        } else {
+          for (let i = 0; i < entry.length; i++) {
+            if (i !== (entry.length - 1)) {
+              response = response + entry[i] + ',';
+            } else {
+              response = response + entry[i];
+            }
+          }
+        }
+        // console.log('Resp :', response)
+
         if (trialEntry === 12) {
-          param = {id: userProfile._id, Test2_Entry_1v2: entryVal, };
+          param = {id: userProfile._id, _44Test2_Entry_1v2: response, };
         } else if (trialEntry === 11) {
-          param = {id: userProfile._id, Test2_Entry_2v2: entryVal, };
+          param = {id: userProfile._id, _45Test2_Entry_2v2: response, };
         } else if (trialEntry === 10) {
-          param = {id: userProfile._id, Test2_Entry_3v2: entryVal, };
+          param = {id: userProfile._id, _46Test2_Entry_3v2: response, };
         } else if (trialEntry === 9) {
-          param = {id: userProfile._id, Test2_Entry_4v2: entryVal, };
+          param = {id: userProfile._id, _47Test2_Entry_4v2: response, };
         } else if (trialEntry === 8) {
-          param = {id: userProfile._id, Test2_Entry_5v2: entryVal, };
+          param = {id: userProfile._id, _48Test2_Entry_5v2: response, };
         } else if (trialEntry === 7) {
-          param = {id: userProfile._id, Test2_Entry_6v2: entryVal, };
+          param = {id: userProfile._id, _49Test2_Entry_6v2: response, };
         } else if (trialEntry === 6) {
-          param = {id: userProfile._id, Test2_Entry_7v2: entryVal, };
+          param = {id: userProfile._id, _50Test2_Entry_7v2: response, };
         } else if (trialEntry === 5) {
-          param = {id: userProfile._id, Test2_Entry_8v2: entryVal, };
+          param = {id: userProfile._id, _51Test2_Entry_8v2: response, };
         } else if (trialEntry === 4) {
-          param = {id: userProfile._id, Test2_Entry_9v2: entryVal, };
+          param = {id: userProfile._id, _52Test2_Entry_9v2: response, };
         } else if (trialEntry === 3) {
-          param = {id: userProfile._id, Test2_Entry_10v2: entryVal, };
+          param = {id: userProfile._id, _53Test2_Entry_10v2: response, };
         } else if (trialEntry === 2) {
-          param = {id: userProfile._id, Test2_Entry_11v2: entryVal, };
+          param = {id: userProfile._id, _54Test2_Entry_11v2: response, };
         } else if (trialEntry === 1) {
-          param = {id: userProfile._id, Test2_Entry_12v2: entryVal, };
+          param = {id: userProfile._id, _55Test2_Entry_12v2: response, };
         }
         setTrialEntry(trialEntry - 1);
         if (param) {

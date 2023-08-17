@@ -166,7 +166,8 @@ function CognitiveTest3Recall () {
 
   const userloggedIn = JSON.parse(window.localStorage.getItem('userLoggedIn'));
 
-  const [firstPage, setFirstPage] = useState(false);
+  const [firstPage, setFirstPage] = useState(true);
+  const [firstPageCheck, setFirstPageCheck] = useState(false);
   const [secondPage, setSecondPage] = useState(false);
   const [UnratedImages, SetUnratedImages] = useState(null);
   const [imgLoaded, setImgLoaded] = useState(false);
@@ -222,89 +223,89 @@ function CognitiveTest3Recall () {
     'https://res.cloudinary.com/entazesoftware/image/upload/v1680710998/FliesOnPieSAAPS_2_n8aayy.jpg',
     'https://res.cloudinary.com/entazesoftware/image/upload/v1680710998/CemeterySAAPS_2_ttk6os.jpg',
 
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680710997/DimLitRoomNeutralWomanSAAPS_2_atuikh.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680710998/EroticCoupleInBedSAPS_2_s40yww.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680710997/BoyThreeSAAPS_dokdue.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680710998/DiverOneSAAPS_2_cvfc1j.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680710997/CryingBoySAAPS_yyd2bf.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680710997/ConcertFansSAAPS_2_n9g998.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680710996/CoupleOpenShirtSAAPS_uirm97.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680710996/CoupleKissCloseUpSAAPS_gep8fm.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680710994/CarRacerSAAPS_oh39p3.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680710994/CarTheftSAAPS_dfijss.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680710997/DimLitRoomNeutralWomanSAAPS_2_atuikh.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680710998/EroticCoupleInBedSAPS_2_s40yww.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680710997/BoyThreeSAAPS_dokdue.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680710998/DiverOneSAAPS_2_cvfc1j.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680710997/CryingBoySAAPS_yyd2bf.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680710997/ConcertFansSAAPS_2_n9g998.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680710996/CoupleOpenShirtSAAPS_uirm97.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680710996/CoupleKissCloseUpSAAPS_gep8fm.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680710994/CarRacerSAAPS_oh39p3.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680710994/CarTheftSAAPS_dfijss.jpg',
 
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680710995/CockpitSAAPS_2_lhmdmh.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680710993/CakeSAAPS_nf1co1.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680710993/BusSAAPS_n88gsr.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680710993/BrideSAAPS_2_smmrh0.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680710993/BoysWGunsSAAPS_nc0fc7.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680710993/BatteredFemaleLyingDownSAAPS_2_asjkab.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680710992/BatteredFemaleSAAPS_qn6dry.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680710992/BabyOneSAAPS_vx2oe4.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680710992/AttackOneSAAPS_ilfcdc.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680710992/AngryFaceThreeSAAPS_2_hj0oqq.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680710995/CockpitSAAPS_2_lhmdmh.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680710993/CakeSAAPS_nf1co1.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680710993/BusSAAPS_n88gsr.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680710993/BrideSAAPS_2_smmrh0.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680710993/BoysWGunsSAAPS_nc0fc7.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680710993/BatteredFemaleLyingDownSAAPS_2_asjkab.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680710992/BatteredFemaleSAAPS_qn6dry.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680710992/BabyOneSAAPS_vx2oe4.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680710992/AttackOneSAAPS_ilfcdc.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680710992/AngryFaceThreeSAAPS_2_hj0oqq.jpg',
 
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680710991/AngryFaceOneSAAPS_giuvah.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680710991/AlcoholicSAAPS_2_l2tov8.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680710991/AttractiveTwoSAAPS_2_frovus.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680710991/AttackThreeSAAPS_2_cy5owf.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711003/IceCreamOneSAAPS_2_qz9ilo.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711004/InjectionOneSAAPS_frveuc.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711004/MaleSAAPS_2_en2on0.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711005/ManInPoolSAAPS_2_gnbuwn.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711005/IceCreamTwoSAAPS_bdetap.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711005/MnMsSAAPS_2_jdn1qo.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680710991/AngryFaceOneSAAPS_giuvah.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680710991/AlcoholicSAAPS_2_l2tov8.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680710991/AttractiveTwoSAAPS_2_frovus.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680710991/AttackThreeSAAPS_2_cy5owf.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711003/IceCreamOneSAAPS_2_qz9ilo.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711004/InjectionOneSAAPS_frveuc.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711004/MaleSAAPS_2_en2on0.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711005/ManInPoolSAAPS_2_gnbuwn.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711005/IceCreamTwoSAAPS_bdetap.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711005/MnMsSAAPS_2_jdn1qo.jpg',
 
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711007/MountainTwoSAAPS_dts6wf.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711007/MotorCycleSAAPS_2_x4s9dj.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711008/MountainOneSAAPS_rtppzh.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711008/NatureSAAPS_2_sgvarr.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711008/OilFiresSAAPS_2_cn6p1o.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711009/PaintbrushSAAPS_2_qycq6s.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711010/PicnicTableSAAPS_2_tl7tqj.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711010/PoleVaulterSAAPS_2_nx0sr2.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711010/RepeatAbstractArtOne_2_g5i1jd.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711004/ManChillingSAAPS_ufnfbd.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711007/MountainTwoSAAPS_dts6wf.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711007/MotorCycleSAAPS_2_x4s9dj.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711008/MountainOneSAAPS_rtppzh.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711008/NatureSAAPS_2_sgvarr.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711008/OilFiresSAAPS_2_cn6p1o.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711009/PaintbrushSAAPS_2_qycq6s.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711010/PicnicTableSAAPS_2_tl7tqj.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711010/PoleVaulterSAAPS_2_nx0sr2.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711010/RepeatAbstractArtOne_2_g5i1jd.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711004/ManChillingSAAPS_ufnfbd.jpg',
 
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711011/MountainThreeSAAPS_2_tncl95.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711011/RepeatAbstractArtThree_brftjr.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711011/RepeatBloodyKiss_2_eqhb1x.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711013/RepeatBurnVictimThree_2_p0ezvi.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711013/RepeatBook_2_lnqxam.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711014/RepeatGasCan_hqi1gn.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711014/RepeatHIVTattooOne_2_g4fbl8.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711015/RepeatCarAccidentThree_gxd22m.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711015/RepeatMutilationCadaver_2_cfmw7g.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711015/RepeatMutilationTwo_pgwcxq.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711011/MountainThreeSAAPS_2_tncl95.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711011/RepeatAbstractArtThree_brftjr.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711011/RepeatBloodyKiss_2_eqhb1x.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711013/RepeatBurnVictimThree_2_p0ezvi.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711013/RepeatBook_2_lnqxam.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711014/RepeatGasCan_hqi1gn.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711014/RepeatHIVTattooOne_2_g4fbl8.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711015/RepeatCarAccidentThree_gxd22m.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711015/RepeatMutilationCadaver_2_cfmw7g.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711015/RepeatMutilationTwo_pgwcxq.jpg',
 
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711016/RepeatMushroomTwo_h4httl.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711016/RepeatNudeFemaleI_2_hzvfde.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711016/RepeatRoach_2_cbnqve.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711017/RepeatRochesTwo_ctkswr.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711018/RepeatShoes_bwk9ux.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711019/SadGirlsSAAPS_2_mea9nn.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711020/SeaMuizenbergHomesSAAPS_2_sxbxzx.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711019/RomanceTwoSAAPS_2_ihv13i.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711018/RepeatSoldierThree_2_yhb2op.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711019/RomanceOneSAAPS_2_meju8p.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711016/RepeatMushroomTwo_h4httl.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711016/RepeatNudeFemaleI_2_hzvfde.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711016/RepeatRoach_2_cbnqve.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711017/RepeatRochesTwo_ctkswr.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711018/RepeatShoes_bwk9ux.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711019/SadGirlsSAAPS_2_mea9nn.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711020/SeaMuizenbergHomesSAAPS_2_sxbxzx.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711019/RomanceTwoSAAPS_2_ihv13i.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711018/RepeatSoldierThree_2_yhb2op.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711019/RomanceOneSAAPS_2_meju8p.jpg',
 
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711021/SkullsSAAPS_2_sfc3oo.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711021/SnakeFourSAAPS_2_wcz1ts.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711021/SoldierTwoSAAPS_2_g1wkd6.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711022/TicketSAAPS_wowyxw.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711023/SealSAAPSNew_ljjgkc.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711023/TornadoFourSAAPS_2_lnvvtr.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711024/TornadoThreeSAAPS_2_cwzrz3.png',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711024/ToxicWasteSAAPS_dme6jd.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711024/TornadoTwoSAAPS_pzv4yr.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711024/VeiledWomanSAAPS_2_ohi2dt.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711021/SkullsSAAPS_2_sfc3oo.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711021/SnakeFourSAAPS_2_wcz1ts.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711021/SoldierTwoSAAPS_2_g1wkd6.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711022/TicketSAAPS_wowyxw.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711023/SealSAAPSNew_ljjgkc.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711023/TornadoFourSAAPS_2_lnvvtr.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711024/TornadoThreeSAAPS_2_cwzrz3.png',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711024/ToxicWasteSAAPS_dme6jd.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711024/TornadoTwoSAAPS_pzv4yr.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711024/VeiledWomanSAAPS_2_ohi2dt.jpg',
 
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711024/VideoTapeSAAPS_oukhxg.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711024/WaterSkiingSAAPS_2_cdh1fu.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711025/WomanLyingChairSAAPS_2_vmfbz2.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711025/WomanReadingOneSAAPS_nf2ak1.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680711025/WomanTwoSAAPS_2_yxmemy.jpg',
-    'https://res.cloudinary.com/entazesoftware/image/upload/v1680710994/CarRacerSAAPS_oh39p3.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711024/VideoTapeSAAPS_oukhxg.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711024/WaterSkiingSAAPS_2_cdh1fu.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711025/WomanLyingChairSAAPS_2_vmfbz2.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711025/WomanReadingOneSAAPS_nf2ak1.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680711025/WomanTwoSAAPS_2_yxmemy.jpg',
+    // 'https://res.cloudinary.com/entazesoftware/image/upload/v1680710994/CarRacerSAAPS_oh39p3.jpg',
 
   ]
   );
@@ -353,21 +354,21 @@ const detectSpaceBar = (e) => {
 }
 
 // Detect page navigations with 'enter' key
-useEffect(()=>{
-  if (keyClicked === 'Enter' && firstPage) {
-    setFirstPage(false)
-    setSecondPage(true)
-    SetKeyClicked('')
-  }
-  if (keyClicked === 'Enter' && secondPage) {
-    setSecondPage(false)
-    setTestingStart(true)
-    SetKeyClicked('')
-  }
-  if (keyClicked === 'Enter' && test7End) {
-    navigate('/cognitivetest4recall')
-  }
-}, [keyClicked, confirmPage])
+// useEffect(()=>{
+//   if (keyClicked === 'Enter' && firstPage) {
+//     setFirstPage(false)
+//     setSecondPage(true)
+//     SetKeyClicked('')
+//   }
+//   if (keyClicked === 'Enter' && secondPage) {
+//     setSecondPage(false)
+//     setTestingStart(true)
+//     SetKeyClicked('')
+//   }
+//   if (keyClicked === 'Enter' && test7End) {
+//     navigate('/cognitivetest4recall')
+//   }
+// }, [keyClicked, confirmPage])
 
 const handleFirst = () => {
   setFirstPage(false)
@@ -408,7 +409,7 @@ useEffect(()=> {
     setImageNum(interr)
     //If not all images are rated
     if (UnratedImages.length !== 0) {
-      setFirstPage(true)
+      setFirstPageCheck(true)
     } else {
       setTest7End(true)
     }
@@ -421,9 +422,9 @@ const GetUnratedImagesRecall = () => {
     const param = {_id: userProfile._id };
     axios.get('/api/test3Images', {params: param})
     .then((res) => {
-      // console.log('res.data:', res.data.Test3ImagesRecall )
-      if (res.data.Test3ImagesRecall) {
-        num = (Images.length - (res.data.Test3ImagesRecall.length));
+      // console.log('res.data:', res.data._33Test3ImagesRecall )
+      if (res.data._33Test3ImagesRecall) {
+        num = (Images.length - (res.data._33Test3ImagesRecall.length));
       } else {
         num = 0;
       }
@@ -631,18 +632,19 @@ const GetUnratedImagesRecall = () => {
     <>
       <NavigationBar />
       <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', height: '100vh', maxWidth: '100vw', background: '#000', color: '#fff', top: 0, bottom: 0, }} >
-            {firstPage ?
+            {firstPage && firstPageCheck ?
               <>
               <div style={centerScreen} >
-                <h1 style={{ color: '#e67373', fontSize: 50, }} >SESSION B - TEST 3 RECALL</h1>
-                <div style={{ fontSize: 34, lineHeight: 1.2, fontWeight: 700, display: 'flex', padding: '50px 0px 0px 0px',  }} >
+                <h1 style={{ color: '#e67373', fontSize: 50, marginTop: 50, }} >SESSION B - TEST 3 RECALL</h1>
+                <div style={{ fontSize: 34, lineHeight: 1.2, fontWeight: 300, display: 'flex', padding: '50px 0px 0px 0px', lineHeight: '1.3',  }} >
+                {/* <div style={{ fontSize: 40, fontWeight: 300, display: 'flex', flexDirection: 'column', padding: '60px 40px 2px 40px', lineHeight: '1.6', alignItems: 'center', justifyContent: 'center', }} > */}
                 Welcome back!<br /><br />
                Just like last time you will see some pictures appear on the screen, one after each other.
                Again some pictures will be positive, some will be neutral and some will be negative.
                However, some pictures will be the same as last time, but some will be new.
               <br />
               You will need to decide if this picture is new or one you've seen before. You will also need to rate how the picture made you feel.
-                <br /><br /> [Press ENTER or click next to continue.]
+                <br /><br /> [Click next to continue.]
                 </div>
                     <button style={{ margin: '75px'}} onClick={handleFirst} >
                       Next
@@ -655,7 +657,7 @@ const GetUnratedImagesRecall = () => {
               <>
               <div style={centerScreen} >
                 <h1 style={{ color: '#e67373', fontSize: 50, }} >SESSION B - TEST 3 RECALL</h1>
-                <div style={{ fontSize: 35, lineHeight: 1.5, fontWeight: 700, display: 'flex', padding: '60px 0px 0px 0px',  }} >
+                <div style={{ fontSize: 35, lineHeight: 1.5, fontWeight: 300, display: 'flex', padding: '60px 0px 0px 0px',  }} >
 
                 REMINDERS:
 
@@ -669,7 +671,7 @@ const GetUnratedImagesRecall = () => {
 
                So now we will begin.
 
-                <br /><br /> [Click start or press ENTER to begin.]
+                <br /><br /> [Click start to begin.]
                 </div>
                     <button style={{ margin: '75px'}} onClick={handleSecond} >
                       Start
@@ -767,7 +769,7 @@ const GetUnratedImagesRecall = () => {
           <>
             <div style={centerScreen} >
             <div style={{ fontSize: 35, fontWeight: 700, display: 'flex', padding: '0px 40px 120px 40px', lineHeight: '1.6', }} >
-              Test 3 Recall - Completed.  <br /> [Click start or press ENTER to begin Test 4 Recall]
+              Test 3 Recall - Completed.  <br /> [Click start to begin Test 4 Recall]
             </div>
             <div>
               <button onClick={handleStartTest8}>Start</button>

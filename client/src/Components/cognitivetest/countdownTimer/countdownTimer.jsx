@@ -19,8 +19,6 @@ import NavigationBar from '../../Layout/WithNavigation.jsx';
 import moment from 'moment';
 import '../../Styles.scss'
 
-
-
 const centerScreen = {
   width: '70vw',
   height: '50vh',
@@ -35,7 +33,6 @@ const centerScreen = {
   paddingBottom: '10%',
   flexDirection: 'column',
 }
-
 
 const useStyles = makeStyles({
   root: {

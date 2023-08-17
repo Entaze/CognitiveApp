@@ -131,6 +131,22 @@ function Login() {
             console.log('User logged in :', user)
             if (!user.userConfirmed) {
               navigate('/login')
+            } else if (!user.test1Completion) {
+              navigate('/cognitivetest1')
+            } else if (!user.test2Completion) {
+              navigate('/cognitivetest2')
+            } else if (!user.test3Completion) {
+              navigate('/cognitivetest3')
+            } else if (!user.test4Completion) {
+              navigate('/cognitivetest4')
+            } else if (!user.test1CompletionRecall) {
+              navigate('/cognitivetest1recall')
+            } else if (!user.test2CompletionRecall) {
+              navigate('/cognitivetest2recall')
+            } else if (!user.test3CompletionRecall) {
+              navigate('/cognitivetest3recall')
+            } else if (!user.test4CompletionRecall) {
+              navigate('/cognitivetest4recall')
             } else if (!user.test1Completionv2) {
               navigate('/cognitivetest1v2')
             } else if (!user.test2Completionv2) {
@@ -148,26 +164,8 @@ function Login() {
             } else if (!user.test4CompletionRecallv2) {
               navigate('/cognitivetest4recallv2')
             }
-            // else if (!user.test1Completionv2) {
-            //   navigate('/cognitivetest1v2')
-            // } else if (!user.test2Completionv2) {
-            //   navigate('/cognitivetest2v2')
-            // } else if (!user.test3Completionv2) {
-            //   navigate('/cognitivetest3v2')
-            // } else if (!user.test4Completionv2) {
-            //   navigate('/cognitivetest4v2')
-            // } else if (!user.test1CompletionRecallv2) {
-            //   navigate('/cognitivetest1recallv2')
-            // } else if (!user.test2CompletionRecallv2) {
-            //   navigate('/cognitivetest2recallv2')
-            // } else if (!user.test3CompletionRecallv2) {
-            //   navigate('/cognitivetest3recallv2')
-            // } else if (!user.test4CompletionRecallv2) {
-            //   navigate('/cognitivetest4recallv2')
-            // }
             else {
               navigate('/test-end')
-              // navigate('/countdown2')
             }
           })
           .catch((err) => {

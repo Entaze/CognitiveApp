@@ -2,99 +2,100 @@ const db = require('../../db/db.js');
 
 module.exports = {
   postTest: (body, cb) => {
+    // console.log('Body :', body)
     let data;
-    if (body.ListAEntries_Trial1) {
-      data = {ListAEntries_Trial1: body.ListAEntries_Trial1};
-    } else if (body.ListAEntries_Trial2) {
-      data = {ListAEntries_Trial2: body.ListAEntries_Trial2}
-    } else if (body.ListAEntries_Trial3) {
-      data = {ListAEntries_Trial3: body.ListAEntries_Trial3}
-    } else if (body.ListAEntries_Trial4) {
-      data = {ListAEntries_Trial4: body.ListAEntries_Trial4}
-    } else if (body.ListAEntries_Trial5) {
-      data = {ListAEntries_Trial5: body.ListAEntries_Trial5}
-    } else if (body.ListBEntries) {
-      data = {ListBEntries: body.ListBEntries}
-    } else if (body.ListAEntriesRecall) {
-      data = {ListAEntriesRecall: body.ListAEntriesRecall}
-    } else if (body.ListAEntriesTest5_Recall) {
-      data = {ListAEntriesTest5_Recall: body.ListAEntriesTest5_Recall}
-    } else if (body.ListAEntries_Trial1v2) {
-      data = {ListAEntries_Trial1v2: body.ListAEntries_Trial1v2};
-    } else if (body.ListAEntries_Trial2v2) {
-      data = {ListAEntries_Trial2v2: body.ListAEntries_Trial2v2}
-    } else if (body.ListAEntries_Trial3v2) {
-      data = {ListAEntries_Trial3v2: body.ListAEntries_Trial3v2}
-    } else if (body.ListAEntries_Trial4v2) {
-      data = {ListAEntries_Trial4v2: body.ListAEntries_Trial4v2}
-    } else if (body.ListAEntries_Trial5v2) {
-      data = {ListAEntries_Trial5v2: body.ListAEntries_Trial5v2}
-    } else if (body.ListBEntriesv2) {
-      data = {ListBEntriesv2: body.ListBEntriesv2}
-    } else if (body.ListAEntriesRecallv2) {
-      data = {ListAEntriesRecallv2: body.ListAEntriesRecallv2}
-    } else if (body.ListAEntriesTest5_Recallv2) {
-      data = {ListAEntriesTest5_Recallv2: body.ListAEntriesTest5_Recallv2}
-    } else if (body.Test2_Entry_1) {
-      data = {Test2_Entry_1: body.Test2_Entry_1}
-    } else if (body.Test2_Entry_2) {
-      data = {Test2_Entry_2: body.Test2_Entry_2}
-    } else if (body.Test2_Entry_3) {
-      data = {Test2_Entry_3: body.Test2_Entry_3}
-    } else if (body.Test2_Entry_4) {
-      data = {Test2_Entry_4: body.Test2_Entry_4}
-    } else if (body.Test2_Entry_5) {
-      data = {Test2_Entry_5: body.Test2_Entry_5}
-    } else if (body.Test2_Entry_6) {
-      data = {Test2_Entry_6: body.Test2_Entry_6}
-    } else if (body.Test2_Entry_7) {
-      data = {Test2_Entry_7: body.Test2_Entry_7}
-    } else if (body.Test2_Entry_8) {
-      data = {Test2_Entry_8: body.Test2_Entry_8}
-    } else if (body.Test2_Entry_9) {
-      data = {Test2_Entry_9: body.Test2_Entry_9}
-    } else if (body.Test2_Entry_10) {
-      data = {Test2_Entry_10: body.Test2_Entry_10}
-    } else if (body.Test2_Entry_11) {
-      data = {Test2_Entry_11: body.Test2_Entry_11}
-    } else if (body.Test2_Entry_12) {
-      data = {Test2_Entry_12: body.Test2_Entry_12}
-    } else if (body.Test2_Entry_1v2) {
-      data = {Test2_Entry_1v2: body.Test2_Entry_1v2}
-    } else if (body.Test2_Entry_2v2) {
-      data = {Test2_Entry_2v2: body.Test2_Entry_2v2}
-    } else if (body.Test2_Entry_3v2) {
-      data = {Test2_Entry_3v2: body.Test2_Entry_3v2}
-    } else if (body.Test2_Entry_4v2) {
-      data = {Test2_Entry_4v2: body.Test2_Entry_4v2}
-    } else if (body.Test2_Entry_5v2) {
-      data = {Test2_Entry_5v2: body.Test2_Entry_5v2}
-    } else if (body.Test2_Entry_6v2) {
-      data = {Test2_Entry_6v2: body.Test2_Entry_6v2}
-    } else if (body.Test2_Entry_7v2) {
-      data = {Test2_Entry_7v2: body.Test2_Entry_7v2}
-    } else if (body.Test2_Entry_8v2) {
-      data = {Test2_Entry_8v2: body.Test2_Entry_8v2}
-    } else if (body.Test2_Entry_9v2) {
-      data = {Test2_Entry_9v2: body.Test2_Entry_9v2}
-    } else if (body.Test2_Entry_10v2) {
-      data = {Test2_Entry_10v2: body.Test2_Entry_10v2}
-    } else if (body.Test2_Entry_11v2) {
-      data = {Test2_Entry_11v2: body.Test2_Entry_11v2}
-    } else if (body.Test2_Entry_12v2) {
-      data = {Test2_Entry_12v2: body.Test2_Entry_12v2}
-    } else if (body.Test2Recall_Entry_1) {
-      data = {Test2Recall_Entry_1: body.Test2Recall_Entry_1}
-    } else if (body.Test2Recall_Entry_2) {
-      data = {Test2Recall_Entry_2: body.Test2Recall_Entry_2}
-    } else if (body.Test2Recall_Entry_3) {
-      data = {Test2Recall_Entry_3: body.Test2Recall_Entry_3}
-    } else if (body.Test2Recall_Entry_1v2) {
-      data = {Test2Recall_Entry_1v2: body.Test2Recall_Entry_1v2}
-    } else if (body.Test2Recall_Entry_2v2) {
-      data = {Test2Recall_Entry_2v2: body.Test2Recall_Entry_2v2}
-    } else if (body.Test2Recall_Entry_3v2) {
-      data = {Test2Recall_Entry_3v2: body.Test2Recall_Entry_3v2}
+    if (body._01ListAEntries_Trial1) {
+      data = {_01ListAEntries_Trial1: body._01ListAEntries_Trial1};
+    } else if (body._02ListAEntries_Trial2) {
+      data = {_02ListAEntries_Trial2: body._02ListAEntries_Trial2}
+    } else if (body._03ListAEntries_Trial3) {
+      data = {_03ListAEntries_Trial3: body._03ListAEntries_Trial3}
+    } else if (body._04ListAEntries_Trial4) {
+      data = {_04ListAEntries_Trial4: body._04ListAEntries_Trial4}
+    } else if (body._05ListAEntries_Trial5) {
+      data = {_05ListAEntries_Trial5: body._05ListAEntries_Trial5}
+    } else if (body._06ListBEntries) {
+      data = {_06ListBEntries: body._06ListBEntries}
+    } else if (body._07ListAEntriesRecall) {
+      data = {_07ListAEntriesRecall: body._07ListAEntriesRecall}
+    } else if (body._28ListAEntriesTest5_Recall) {
+      data = {_28ListAEntriesTest5_Recall: body._28ListAEntriesTest5_Recall}
+    } else if (body._37ListAEntries_Trial1v2) {
+      data = {_37ListAEntries_Trial1v2: body._37ListAEntries_Trial1v2};
+    } else if (body._38ListAEntries_Trial2v2) {
+      data = {_38ListAEntries_Trial2v2: body._38ListAEntries_Trial2v2}
+    } else if (body._39ListAEntries_Trial3v2) {
+      data = {_39ListAEntries_Trial3v2: body._39ListAEntries_Trial3v2}
+    } else if (body._40ListAEntries_Trial4v2) {
+      data = {_40ListAEntries_Trial4v2: body._40ListAEntries_Trial4v2}
+    } else if (body._41ListAEntries_Trial5v2) {
+      data = {_41ListAEntries_Trial5v2: body._41ListAEntries_Trial5v2}
+    } else if (body._42ListBEntriesv2) {
+      data = {_42ListBEntriesv2: body._42ListBEntriesv2}
+    } else if (body._43ListAEntriesRecallv2) {
+      data = {_43ListAEntriesRecallv2: body._43ListAEntriesRecallv2}
+    } else if (body._64ListAEntriesTest5_Recallv2) {
+      data = {_64ListAEntriesTest5_Recallv2: body._64ListAEntriesTest5_Recallv2}
+    } else if (body._08Test2_Entry_1) {
+      data = {_08Test2_Entry_1: body._08Test2_Entry_1}
+    } else if (body._09Test2_Entry_2) {
+      data = {_09Test2_Entry_2: body._09Test2_Entry_2}
+    } else if (body._10Test2_Entry_3) {
+      data = {_10Test2_Entry_3: body._10Test2_Entry_3}
+    } else if (body._11Test2_Entry_4) {
+      data = {_11Test2_Entry_4: body._11Test2_Entry_4}
+    } else if (body._12Test2_Entry_5) {
+      data = {_12Test2_Entry_5: body._12Test2_Entry_5}
+    } else if (body._13Test2_Entry_6) {
+      data = {_13Test2_Entry_6: body._13Test2_Entry_6}
+    } else if (body._14Test2_Entry_7) {
+      data = {_14Test2_Entry_7: body._14Test2_Entry_7}
+    } else if (body._15Test2_Entry_8) {
+      data = {_15Test2_Entry_8: body._15Test2_Entry_8}
+    } else if (body._16Test2_Entry_9) {
+      data = {_16Test2_Entry_9: body._16Test2_Entry_9}
+    } else if (body._17Test2_Entry_10) {
+      data = {_17Test2_Entry_10: body._17Test2_Entry_10}
+    } else if (body._18Test2_Entry_11) {
+      data = {_18Test2_Entry_11: body._18Test2_Entry_11}
+    } else if (body._19Test2_Entry_12) {
+      data = {_19Test2_Entry_12: body._19Test2_Entry_12}
+    } else if (body._44Test2_Entry_1v2) {
+      data = {_44Test2_Entry_1v2: body._44Test2_Entry_1v2}
+    } else if (body._45Test2_Entry_2v2) {
+      data = {_45Test2_Entry_2v2: body._45Test2_Entry_2v2}
+    } else if (body._46Test2_Entry_3v2) {
+      data = {_46Test2_Entry_3v2: body._46Test2_Entry_3v2}
+    } else if (body._47Test2_Entry_4v2) {
+      data = {_47Test2_Entry_4v2: body._47Test2_Entry_4v2}
+    } else if (body._48Test2_Entry_5v2) {
+      data = {_48Test2_Entry_5v2: body._48Test2_Entry_5v2}
+    } else if (body._49Test2_Entry_6v2) {
+      data = {_49Test2_Entry_6v2: body._49Test2_Entry_6v2}
+    } else if (body._50Test2_Entry_7v2) {
+      data = {_50Test2_Entry_7v2: body._50Test2_Entry_7v2}
+    } else if (body._51Test2_Entry_8v2) {
+      data = {_51Test2_Entry_8v2: body._51Test2_Entry_8v2}
+    } else if (body._52Test2_Entry_9v2) {
+      data = {_52Test2_Entry_9v2: body._52Test2_Entry_9v2}
+    } else if (body._53Test2_Entry_10v2) {
+      data = {_53Test2_Entry_10v2: body._53Test2_Entry_10v2}
+    } else if (body._54Test2_Entry_11v2) {
+      data = {_54Test2_Entry_11v2: body._54Test2_Entry_11v2}
+    } else if (body._55Test2_Entry_12v2) {
+      data = {_55Test2_Entry_12v2: body._55Test2_Entry_12v2}
+    } else if (body._30Test2Recall_Entry_1) {
+      data = {_30Test2Recall_Entry_1: body._30Test2Recall_Entry_1}
+    } else if (body._31Test2Recall_Entry_2) {
+      data = {_31Test2Recall_Entry_2: body._31Test2Recall_Entry_2}
+    } else if (body._32Test2Recall_Entry_3) {
+      data = {_32Test2Recall_Entry_3: body._32Test2Recall_Entry_3}
+    } else if (body._66Test2Recall_Entry_1v2) {
+      data = {_66Test2Recall_Entry_1v2: body._66Test2Recall_Entry_1v2}
+    } else if (body._67Test2Recall_Entry_2v2) {
+      data = {_67Test2Recall_Entry_2v2: body._67Test2Recall_Entry_2v2}
+    } else if (body._68Test2Recall_Entry_3v2) {
+      data = {_68Test2Recall_Entry_3v2: body._68Test2Recall_Entry_3v2}
     }
     let options = { upsert: true, new: true, setDefaultsOnInsert: true };
     db.CognitiveTest.findOneAndUpdate({_id: body.id}, data, options)
@@ -128,7 +129,7 @@ module.exports = {
     let data = body.obj;
     db.CognitiveTest.findOneAndUpdate(
       { _id : body._id },
-      { $push : {Test3Images: data}}
+      { $push : {_20Test3Images: data}}
    )
     .then((result) => {
       cb(null, result);
@@ -138,10 +139,11 @@ module.exports = {
     })
   },
   postRatingv2: (body, cb) => {
+    console.log('Data :', body.obj)
     let data = body.obj;
     db.CognitiveTest.findOneAndUpdate(
       { _id : body._id },
-      { $push : {Test3v2Images: data}}
+      { $push : {_56Test3v2Images: data}}
    )
     .then((result) => {
       cb(null, result);
@@ -154,7 +156,7 @@ module.exports = {
     let data = body.obj;
     db.CognitiveTest.findOneAndUpdate(
       { _id : body._id },
-      { $push : {Test3Images2: data}}
+      { $push : {_21Test3Images2: data}}
    )
     .then((result) => {
       cb(null, result);
@@ -167,7 +169,7 @@ module.exports = {
     let data = body.obj;
     db.CognitiveTest.findOneAndUpdate(
       { _id : body._id },
-      { $push : {Test3v2Images2: data}}
+      { $push : {_57Test3v2Images2: data}}
    )
     .then((result) => {
       cb(null, result);
@@ -180,7 +182,7 @@ module.exports = {
     let data = body.obj;
     db.CognitiveTest.findOneAndUpdate(
       { _id : body._id },
-      { $push : {Test3ImagesRecall: data}}
+      { $push : {_33Test3ImagesRecall: data}}
    )
     .then((result) => {
       cb(null, result);
@@ -193,7 +195,7 @@ module.exports = {
     let data = body.obj;
     db.CognitiveTest.findOneAndUpdate(
       { _id : body._id },
-      { $push : {Test3ImagesRecallv2: data}}
+      { $push : {_69Test3ImagesRecallv2: data}}
    )
     .then((result) => {
       cb(null, result);
@@ -208,7 +210,7 @@ module.exports = {
     // console.log('data :', data)
     db.CognitiveTest.findOneAndUpdate(
       { _id : body._id },
-      { $push : {Test4Section1: data}}
+      { $push : {_22Test4Section1: data}}
    )
     .then((result) => {
       cb(null, result);
@@ -223,7 +225,7 @@ module.exports = {
     // console.log('data :', data)
     db.CognitiveTest.findOneAndUpdate(
       { _id : body._id },
-      { $push : {Test4Section1v2: data}}
+      { $push : {_58Test4Section1v2: data}}
    )
     .then((result) => {
       cb(null, result);
@@ -238,7 +240,7 @@ module.exports = {
     // console.log('data :', data)
     db.CognitiveTest.findOneAndUpdate(
       { _id : body._id },
-      { $push : {Test4RecallSection1: data}}
+      { $push : {_34Test4RecallSection1: data}}
    )
     .then((result) => {
       cb(null, result);
@@ -253,7 +255,7 @@ module.exports = {
     // console.log('data :', data)
     db.CognitiveTest.findOneAndUpdate(
       { _id : body._id },
-      { $push : {Test4RecallSection1v2: data}}
+      { $push : {_70Test4RecallSection1v2: data}}
    )
     .then((result) => {
       cb(null, result);
@@ -266,7 +268,7 @@ module.exports = {
     let data = body.obj;
     db.CognitiveTest.findOneAndUpdate(
       { _id : body._id },
-      { $push : {Test4Section2: data}}
+      { $push : {_23Test4Section2: data}}
    )
     .then((result) => {
       cb(null, result);
@@ -279,7 +281,7 @@ module.exports = {
     let data = body.obj;
     db.CognitiveTest.findOneAndUpdate(
       { _id : body._id },
-      { $push : {Test4Section2v2: data}}
+      { $push : {_59Test4Section2v2: data}}
    )
     .then((result) => {
       cb(null, result);
@@ -294,7 +296,7 @@ module.exports = {
     // console.log('data :', data)
     db.CognitiveTest.findOneAndUpdate(
       { _id : body._id },
-      { $push : {Test4RecallSection2: data}}
+      { $push : {_35Test4RecallSection2: data}}
    )
     .then((result) => {
       cb(null, result);
@@ -309,7 +311,7 @@ module.exports = {
     // console.log('data :', data)
     db.CognitiveTest.findOneAndUpdate(
       { _id : body._id },
-      { $push : {Test4RecallSection2v2: data}}
+      { $push : {_71Test4RecallSection2v2: data}}
    )
     .then((result) => {
       cb(null, result);
@@ -322,7 +324,7 @@ module.exports = {
     let data = body.obj;
     db.CognitiveTest.findOneAndUpdate(
       { _id : body._id },
-      { $push : {Test4Section3: data}}
+      { $push : {_24Test4Section3: data}}
    )
     .then((result) => {
       cb(null, result);
@@ -335,7 +337,7 @@ module.exports = {
     let data = body.obj;
     db.CognitiveTest.findOneAndUpdate(
       { _id : body._id },
-      { $push : {Test4Section3v2: data}}
+      { $push : {_60Test4Section3v2: data}}
    )
     .then((result) => {
       cb(null, result);
@@ -350,7 +352,7 @@ module.exports = {
     // console.log('data :', data)
     db.CognitiveTest.findOneAndUpdate(
       { _id : body._id },
-      { $push : {Test4RecallSection3: data}}
+      { $push : {_36Test4RecallSection3: data}}
    )
     .then((result) => {
       cb(null, result);
@@ -365,7 +367,7 @@ module.exports = {
     // console.log('data :', data)
     db.CognitiveTest.findOneAndUpdate(
       { _id : body._id },
-      { $push : {Test4RecallSection3v2: data}}
+      { $push : {_72Test4RecallSection3v2: data}}
    )
     .then((result) => {
       cb(null, result);
@@ -378,7 +380,7 @@ module.exports = {
     let data = body.obj;
     db.CognitiveTest.findOneAndUpdate(
       { _id : body._id },
-      { $push : {Test4Section4: data}}
+      { $push : {_25Test4Section4: data}}
    )
     .then((result) => {
       cb(null, result);
@@ -391,7 +393,7 @@ module.exports = {
     let data = body.obj;
     db.CognitiveTest.findOneAndUpdate(
       { _id : body._id },
-      { $push : {Test4Section4v2: data}}
+      { $push : {_61Test4Section4v2: data}}
    )
     .then((result) => {
       cb(null, result);
@@ -404,7 +406,7 @@ module.exports = {
     let data = body.obj;
     db.CognitiveTest.findOneAndUpdate(
       { _id : body._id },
-      { $push : {Test4Section5: data}}
+      { $push : {_26Test4Section5: data}}
    )
     .then((result) => {
       cb(null, result);
@@ -417,7 +419,7 @@ module.exports = {
     let data = body.obj;
     db.CognitiveTest.findOneAndUpdate(
       { _id : body._id },
-      { $push : {Test4Section5v2: data}}
+      { $push : {_62Test4Section5v2: data}}
    )
     .then((result) => {
       cb(null, result);
@@ -430,7 +432,7 @@ module.exports = {
     let data = body.obj;
     db.CognitiveTest.findOneAndUpdate(
       { _id : body._id },
-      { $push : {Test4Section6: data}}
+      { $push : {_27Test4Section6: data}}
    )
     .then((result) => {
       cb(null, result);
@@ -443,7 +445,7 @@ module.exports = {
     let data = body.obj;
     db.CognitiveTest.findOneAndUpdate(
       { _id : body._id },
-      { $push : {Test4Section6v2: data}}
+      { $push : {_63Test4Section6v2: data}}
    )
     .then((result) => {
       cb(null, result);
@@ -456,7 +458,7 @@ module.exports = {
     let data = body.obj;
     db.CognitiveTest.findOneAndUpdate(
       { _id : body._id },
-      { $push : {Test5Section2: data}}
+      { $push : {_29Test5Section2: data}}
    )
     .then((result) => {
       cb(null, result);
@@ -469,7 +471,7 @@ module.exports = {
     let data = body.obj;
     db.CognitiveTest.findOneAndUpdate(
       { _id : body._id },
-      { $push : {Test5Section2v2: data}}
+      { $push : {_65Test5Section2v2: data}}
    )
     .then((result) => {
       cb(null, result);
@@ -478,5 +480,4 @@ module.exports = {
       cb(err);
     })
   },
-
 }

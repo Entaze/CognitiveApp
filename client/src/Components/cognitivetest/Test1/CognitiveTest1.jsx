@@ -253,7 +253,7 @@ function Cognitivetest () {
   const navigate = useNavigate();
   const [keyClicked, SetKeyClicked] = useState('');
   const handleRegistration = (data) => { setData(data); handleModalAppear(); reset();  }
-  const buttonEntry = countModal < wordsArr.length ? 'Enter' : 'Submit Test';
+  const buttonEntry = countModal < wordsArr.length + 15 ? 'Enter' : 'Submit Test';
   const wordCount = countModal + 1;
 
  //isMounted declaration and 2 useEffect's below ensure no memory leak in component
@@ -406,7 +406,7 @@ const handleModalAppear = (e) => {
   const count = (countModal + 1);
   setCountModal(count);
   setFormState(false);
-  if (count < wordsArr.length ) {
+  if (count < (wordsArr.length + 15 ) ) {
     setTimeout(toggleFormState, 300);
   }
 };
@@ -427,35 +427,35 @@ const handlePostWords = () => {
   setTestListATrials(countUp);
   if (testListATrials === 1) {
     setRepeatListA(true);
-    param = {id: userId, ListAEntries_Trial1: wordsEnteredListA, time: date };
+    param = {id: userId, _01ListAEntries_Trial1: wordsEnteredListA, time: date };
   }
   if (testListATrials === 2) {
     setRepeatListA(true);
-    param = {id: userId, ListAEntries_Trial2: wordsEnteredListA, time: date };
+    param = {id: userId, _02ListAEntries_Trial2: wordsEnteredListA, time: date };
   }
   if (testListATrials === 3) {
     setRepeatListA(true);
-    param = {id: userId, ListAEntries_Trial3: wordsEnteredListA, time: date };
+    param = {id: userId, _03ListAEntries_Trial3: wordsEnteredListA, time: date };
   }
   if (testListATrials === 4) {
     setRepeatListA(true);
-    param = {id: userId, ListAEntries_Trial4: wordsEnteredListA, time: date };
+    param = {id: userId, _04ListAEntries_Trial4: wordsEnteredListA, time: date };
   }
   if (testListATrials === 5) {
     setwrdRecall(false);
     setRepeatListA(true);
     setListBStart(true);
-    param = {id: userId, ListAEntries_Trial5: wordsEnteredListA, time: date };
+    param = {id: userId, _05ListAEntries_Trial5: wordsEnteredListA, time: date };
     setCountModal(0);
   }
   if (testListATrials === 6) {
     setwrdRecall(false);
     setRepeatListA(true);
-    param = {id: userId, ListBEntries: wordsEnteredListA, time: date};
+    param = {id: userId, _06ListBEntries: wordsEnteredListA, time: date};
     setCountModal(0);
   }
   if (testListATrials === 7) {
-    param = {id: userId, ListAEntriesRecall: wordsEnteredListA, time: date};
+    param = {id: userId, _07ListAEntriesRecall: wordsEnteredListA, time: date};
     setCountModal(0);
   }
 
@@ -488,7 +488,7 @@ const handlePostWords = () => {
 
 //Handle next trial when all modal entries entered
 useEffect(()=> {
-  if (countModal === wordsArr.length - 1) {
+  if (countModal === wordsArr.length + 15 - 1) {
     const modalCountdown = testListATrials;
     modalCountdown > 0 ? setTestListATrials(modalCountdown) : null;
   }
@@ -508,7 +508,6 @@ const handleRepeatListA = (e) => {
   setRepeatListA(false);
   setStartTest(true);
 }
-
 
 const handleStartTest2 = (e) => {
   e.preventDefault();
@@ -620,7 +619,7 @@ useEffect(() => {
             <DialogContent >
               <div>
                 <form onSubmit={handleSubmit(onSubmitWord)} autoComplete='off' >
-                  {countModal < wordsArr.length - 1 ?
+                  {countModal < wordsArr.length + 15 - 1 ?
                     <>
                       <div style={formTitle}>ENTER WORD {wordCount}</div>
                       <div style={{ position: 'relative', display: 'inline-block', paddingBottom: '85px' }}>

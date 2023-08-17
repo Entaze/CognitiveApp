@@ -20,7 +20,6 @@ import moment from 'moment';
 import '../../Styles.scss'
 
 
-
 const centerScreen = {
   width: '70vw',
   height: '50vh',
@@ -35,7 +34,6 @@ const centerScreen = {
   paddingBottom: '10%',
   flexDirection: 'column',
 }
-
 
 const useStyles = makeStyles({
   root: {
@@ -65,7 +63,6 @@ function countdownTimerv2 () {
   const classes = useStyles();
   const navigate = useNavigate();
   const [keyClicked, SetKeyClicked] = useState('');
-
 
 
  //isMounted declaration and 2 useEffect's below ensure no memory leak in component
@@ -111,7 +108,6 @@ function countdownTimerv2 () {
   }
  }, [userId])
 
-
 //Listen to keyboard events
 useEffect(() => {
   document.addEventListener('keydown', detectSpaceBar, true)
@@ -125,7 +121,7 @@ useEffect(() => {
   if (completionTime) {
     setInterval(() => {
       const now = moment();
-      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(2, 'hours'); //6
+      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(10, 'hours'); //6
 
       let duration = moment.duration(then.diff(now));
       let hours = duration.asHours();

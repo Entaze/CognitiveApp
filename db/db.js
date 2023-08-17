@@ -355,9 +355,7 @@ const test3SchemaSect1 = new mongoose.Schema({
   Image99: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
   Image100: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
 
-},
-{timestamps: true}
-);
+});
 
 const test3v2SchemaSect1 = new mongoose.Schema({
   Image1: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
@@ -461,8 +459,7 @@ const test3v2SchemaSect1 = new mongoose.Schema({
   Image99: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
   Image100: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0},
 
-},
-{timestamps: true}
+}
 );
 
 const test3SchemaSect1Recall = new mongoose.Schema({
@@ -567,8 +564,7 @@ const test3SchemaSect1Recall = new mongoose.Schema({
   Image99: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0, confirmResponse: Boolean },
   Image100: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0, confirmResponse: Boolean },
 
-},
-{timestamps: true}
+}
 );
 
 const test3SchemaSect1Recallv2 = new mongoose.Schema({
@@ -673,8 +669,7 @@ const test3SchemaSect1Recallv2 = new mongoose.Schema({
   Image99: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0, confirmResponse: Boolean },
   Image100: {src: String, NegativePositiveRating: 0, CalmExcitedRating: 0, confirmResponse: Boolean },
 
-},
-{timestamps: true}
+}
 );
 
 const test3SchemaSect2 = new mongoose.Schema({
@@ -778,8 +773,7 @@ const test3SchemaSect2 = new mongoose.Schema({
   Image98: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
   Image99: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
   Image100: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
-},
-{timestamps: true}
+}
 );
 
 const test3v2SchemaSect2 = new mongoose.Schema({
@@ -883,8 +877,7 @@ const test3v2SchemaSect2 = new mongoose.Schema({
   Image98: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
   Image99: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
   Image100: {src: String, YesNo: Boolean, NegativePositiveRating: 0, CalmExcitedRating: 0},
-},
-{timestamps: true}
+}
 );
 
 const test4SchemaSect1 = new mongoose.Schema({
@@ -909,8 +902,7 @@ const test4SchemaSect1 = new mongoose.Schema({
   Letter19: {letter: String, response: String, },
   Letter20: {letter: String, response: String, },
 
-},
-{timestamps: true}
+}
 );
 
 const test4SchemaSect1v2 = new mongoose.Schema({
@@ -935,8 +927,7 @@ const test4SchemaSect1v2 = new mongoose.Schema({
   Letter19: {letter: String, response: String, },
   Letter20: {letter: String, response: String, },
 
-},
-{timestamps: true}
+}
 );
 
 const test4SchemaSect1Recall = new mongoose.Schema({
@@ -981,8 +972,7 @@ const test4SchemaSect1Recall = new mongoose.Schema({
   Letter39: {letter: String, response: String, },
   Letter40: {letter: String, response: String, },
 
-},
-{timestamps: true}
+}
 );
 
 const test4SchemaSect1Recallv2 = new mongoose.Schema({
@@ -1027,8 +1017,7 @@ const test4SchemaSect1Recallv2 = new mongoose.Schema({
   Letter39: {letter: String, response: String, },
   Letter40: {letter: String, response: String, },
 
-},
-{timestamps: true}
+}
 );
 
 const test4SchemaSect2 = new mongoose.Schema({
@@ -1053,8 +1042,7 @@ const test4SchemaSect2 = new mongoose.Schema({
   Letter19: {letter: String, response: String, },
   Letter20: {letter: String, response: String, },
 
-},
-{timestamps: true}
+}
 );
 
 const test4SchemaSect2v2 = new mongoose.Schema({
@@ -1079,8 +1067,7 @@ const test4SchemaSect2v2 = new mongoose.Schema({
   Letter19: {letter: String, response: String, },
   Letter20: {letter: String, response: String, },
 
-},
-{timestamps: true}
+}
 );
 
 const test4SchemaSect2Recall = new mongoose.Schema({
@@ -1125,8 +1112,7 @@ const test4SchemaSect2Recall = new mongoose.Schema({
   Letter39: {letter: String, response: String, },
   Letter40: {letter: String, response: String, },
 
-},
-{timestamps: true}
+}
 );
 
 const test4SchemaSect2Recallv2 = new mongoose.Schema({
@@ -1171,8 +1157,7 @@ const test4SchemaSect2Recallv2 = new mongoose.Schema({
   Letter39: {letter: String, response: String, },
   Letter40: {letter: String, response: String, },
 
-},
-{timestamps: true}
+}
 );
 
 const test4SchemaSect3 = new mongoose.Schema({
@@ -1217,8 +1202,7 @@ const test4SchemaSect3 = new mongoose.Schema({
   Letter39: {letter: String, response: String, },
   Letter40: {letter: String, response: String, },
 
-},
-{timestamps: true}
+}
 );
 
 const test4SchemaSect3v2 = new mongoose.Schema({
@@ -1263,8 +1247,7 @@ const test4SchemaSect3v2 = new mongoose.Schema({
   Letter39: {letter: String, response: String, },
   Letter40: {letter: String, response: String, },
 
-},
-{timestamps: true}
+}
 );
 
 const test4SchemaSect3Recall = new mongoose.Schema({
@@ -1310,8 +1293,7 @@ const test4SchemaSect3Recall = new mongoose.Schema({
   Letter40: {letter: String, response: String, },
   Letter41: {letter: String, response: String, },
 
-},
-{timestamps: true}
+}
 );
 
 const test4SchemaSect3Recallv2 = new mongoose.Schema({
@@ -1357,8 +1339,7 @@ const test4SchemaSect3Recallv2 = new mongoose.Schema({
   Letter40: {letter: String, response: String, },
   Letter41: {letter: String, response: String, },
 
-},
-{timestamps: true}
+}
 );
 
 const test4SchemaSect4 = new mongoose.Schema({
@@ -1402,8 +1383,7 @@ const test4SchemaSect4 = new mongoose.Schema({
   Letter38: {letter: String, response: String, },
   Letter39: {letter: String, response: String, },
   Letter40: {letter: String, response: String, },
-},
-{timestamps: true}
+}
 );
 
 const test4SchemaSect4v2 = new mongoose.Schema({
@@ -1447,8 +1427,7 @@ const test4SchemaSect4v2 = new mongoose.Schema({
   Letter38: {letter: String, response: String, },
   Letter39: {letter: String, response: String, },
   Letter40: {letter: String, response: String, },
-},
-{timestamps: true}
+}
 );
 
 const test4SchemaSect5 = new mongoose.Schema({
@@ -1492,8 +1471,7 @@ const test4SchemaSect5 = new mongoose.Schema({
   Letter38: {letter: String, response: String, },
   Letter39: {letter: String, response: String, },
   Letter40: {letter: String, response: String, },
-},
-{timestamps: true}
+}
 );
 
 const test4SchemaSect5v2 = new mongoose.Schema({
@@ -1537,8 +1515,7 @@ const test4SchemaSect5v2 = new mongoose.Schema({
   Letter38: {letter: String, response: String, },
   Letter39: {letter: String, response: String, },
   Letter40: {letter: String, response: String, },
-},
-{timestamps: true}
+}
 );
 
 const test4SchemaSect6 = new mongoose.Schema({
@@ -1582,8 +1559,7 @@ const test4SchemaSect6 = new mongoose.Schema({
   Letter38: {letter: String, response: String, },
   Letter39: {letter: String, response: String, },
   Letter40: {letter: String, response: String, },
-},
-{timestamps: true}
+}
 );
 
 const test4SchemaSect6v2 = new mongoose.Schema({
@@ -1627,8 +1603,7 @@ const test4SchemaSect6v2 = new mongoose.Schema({
   Letter38: {letter: String, response: String, },
   Letter39: {letter: String, response: String, },
   Letter40: {letter: String, response: String, },
-},
-{timestamps: true}
+}
 );
 
 const test5SchemaSect2 = new mongoose.Schema({
@@ -1682,8 +1657,7 @@ const test5SchemaSect2 = new mongoose.Schema({
   Word48: {Word: String, response: String, },
   Word49: {Word: String, response: String, },
   Word50: {Word: String, response: String, },
-},
-{timestamps: true}
+}
 );
 
 const test5SchemaSect2v2 = new mongoose.Schema({
@@ -1737,8 +1711,7 @@ const test5SchemaSect2v2 = new mongoose.Schema({
   Word48: {Word: String, response: String, },
   Word49: {Word: String, response: String, },
   Word50: {Word: String, response: String, },
-},
-{timestamps: true}
+}
 );
 
 const testSchema = new mongoose.Schema({
@@ -1768,92 +1741,89 @@ const testSchema = new mongoose.Schema({
   Test1Tracker: Number,
   Test2Tracker: Number,
 
+  _01ListAEntries_Trial1: [],
+  _02ListAEntries_Trial2: [],
+  _03ListAEntries_Trial3: [],
+  _04ListAEntries_Trial4: [],
+  _05ListAEntries_Trial5: [],
+  _06ListBEntries: [],
+  _07ListAEntriesRecall: [],
+  _43ListAEntriesRecallv2: [],
+  _37ListAEntries_Trial1v2: [],
+  _38ListAEntries_Trial2v2: [],
+  _39ListAEntries_Trial3v2: [],
+  _40ListAEntries_Trial4v2: [],
+  _41ListAEntries_Trial5v2: [],
+  _42ListBEntriesv2: [],
+  _08Test2_Entry_1: [],
+  _09Test2_Entry_2: [],
+  _10Test2_Entry_3: [],
+  _11Test2_Entry_4: [],
+  _12Test2_Entry_5: [],
+  _13Test2_Entry_6: [],
+  _14Test2_Entry_7: [],
+  _15Test2_Entry_8: [],
+  _16Test2_Entry_9: [],
+  _17Test2_Entry_10: [],
+  _18Test2_Entry_11: [],
+  _19Test2_Entry_12: [],
+  _44Test2_Entry_1v2: [],
+  _45Test2_Entry_2v2: [],
+  _46Test2_Entry_3v2: [],
+  _47Test2_Entry_4v2: [],
+  _48Test2_Entry_5v2: [],
+  _49Test2_Entry_6v2: [],
+  _50Test2_Entry_7v2: [],
+  _51Test2_Entry_8v2: [],
+  _52Test2_Entry_9v2: [],
+  _53Test2_Entry_10v2: [],
+  _54Test2_Entry_11v2: [],
+  _55Test2_Entry_12v2: [],
+  _30Test2Recall_Entry_1: [],
+  _31Test2Recall_Entry_2: [],
+  _32Test2Recall_Entry_3: [],
+  _28ListAEntriesTest5_Recall: [],
+  _66Test2Recall_Entry_1v2: [],
+  _67Test2Recall_Entry_2v2: [],
+  _68Test2Recall_Entry_3v2: [],
+  _64ListAEntriesTest5_Recallv2: [],
+  _20Test3Images: [test3SchemaSect1],
+  _56Test3v2Images: [test3v2SchemaSect1],
+  _33Test3ImagesRecall: [test3SchemaSect1Recall],
+  _69Test3ImagesRecallv2: [test3SchemaSect1Recallv2],
 
+  _21Test3Images2: [test3SchemaSect2],
+  _57Test3v2Images2: [test3v2SchemaSect2],
 
-  ListAEntriesRecall: [],
-  ListAEntries_Trial1: [],
-  ListAEntries_Trial2: [],
-  ListAEntries_Trial3: [],
-  ListAEntries_Trial4: [],
-  ListAEntries_Trial5: [],
-  ListBEntries: [],
-  ListAEntriesRecallv2: [],
-  ListAEntries_Trial1v2: [],
-  ListAEntries_Trial2v2: [],
-  ListAEntries_Trial3v2: [],
-  ListAEntries_Trial4v2: [],
-  ListAEntries_Trial5v2: [],
-  ListBEntriesv2: [],
-  Test2_Entry_1: [],
-  Test2_Entry_2: [],
-  Test2_Entry_3: [],
-  Test2_Entry_4: [],
-  Test2_Entry_5: [],
-  Test2_Entry_6: [],
-  Test2_Entry_7: [],
-  Test2_Entry_8: [],
-  Test2_Entry_9: [],
-  Test2_Entry_10: [],
-  Test2_Entry_11: [],
-  Test2_Entry_12: [],
-  Test2_Entry_1v2: [],
-  Test2_Entry_2v2: [],
-  Test2_Entry_3v2: [],
-  Test2_Entry_4v2: [],
-  Test2_Entry_5v2: [],
-  Test2_Entry_6v2: [],
-  Test2_Entry_7v2: [],
-  Test2_Entry_8v2: [],
-  Test2_Entry_9v2: [],
-  Test2_Entry_10v2: [],
-  Test2_Entry_11v2: [],
-  Test2_Entry_12v2: [],
-  Test2Recall_Entry_1: [],
-  Test2Recall_Entry_2: [],
-  Test2Recall_Entry_3: [],
-  ListAEntriesTest5_Recall: [],
-  Test2Recall_Entry_1v2: [],
-  Test2Recall_Entry_2v2: [],
-  Test2Recall_Entry_3v2: [],
-  ListAEntriesTest5_Recallv2: [],
-  Test3Images: [test3SchemaSect1],
-  Test3v2Images: [test3v2SchemaSect1],
-  Test3ImagesRecall: [test3SchemaSect1Recall],
-  Test3ImagesRecallv2: [test3SchemaSect1Recallv2],
+  _22Test4Section1: [test4SchemaSect1],
+  _58Test4Section1v2: [test4SchemaSect1v2],
 
-  Test3Images2: [test3SchemaSect2],
-  Test3v2Images2: [test3v2SchemaSect2],
+  _34Test4RecallSection1: [test4SchemaSect1Recall],
+  _70Test4RecallSection1v2: [test4SchemaSect1Recallv2],
 
-  Test4Section1: [test4SchemaSect1],
-  Test4Section1v2: [test4SchemaSect1v2],
+  _23Test4Section2: [test4SchemaSect2],
+  _59Test4Section2v2: [test4SchemaSect2v2],
 
-  Test4RecallSection1: [test4SchemaSect1Recall],
-  Test4RecallSection1v2: [test4SchemaSect1Recallv2],
+  _35Test4RecallSection2: [test4SchemaSect2Recall],
+  _71Test4RecallSection2v2: [test4SchemaSect2Recallv2],
 
-  Test4Section2: [test4SchemaSect2],
-  Test4Section2v2: [test4SchemaSect2v2],
+  _24Test4Section3: [test4SchemaSect3],
+  _60Test4Section3v2: [test4SchemaSect3v2],
 
-  Test4RecallSection2: [test4SchemaSect2Recall],
-  Test4RecallSection2v2: [test4SchemaSect2Recallv2],
+  _36Test4RecallSection3: [test4SchemaSect3Recall],
+  _72Test4RecallSection3v2: [test4SchemaSect3Recallv2],
 
-  Test4Section3: [test4SchemaSect3],
-  Test4Section3v2: [test4SchemaSect3v2],
+  _25Test4Section4: [test4SchemaSect4],
+  _61Test4Section4v2: [test4SchemaSect4v2],
 
-  Test4RecallSection3: [test4SchemaSect3Recall],
-  Test4RecallSection3v2: [test4SchemaSect3Recallv2],
+  _26Test4Section5: [test4SchemaSect5],
+  _62Test4Section5v2: [test4SchemaSect5v2],
 
-  Test4Section4: [test4SchemaSect4],
-  Test4Section4v2: [test4SchemaSect4v2],
+  _27Test4Section6: [test4SchemaSect6],
+  _63Test4Section6v2: [test4SchemaSect6v2],
 
-  Test4Section5: [test4SchemaSect5],
-  Test4Section5v2: [test4SchemaSect5v2],
-
-  Test4Section6: [test4SchemaSect6],
-  Test4Section6v2: [test4SchemaSect6v2],
-
-  Test5Section2: [test5SchemaSect2],
-  Test5Section2v2: [test5SchemaSect2v2]
-
+  _29Test5Section2: [test5SchemaSect2],
+  _65Test5Section2v2: [test5SchemaSect2v2]
 
 });
 

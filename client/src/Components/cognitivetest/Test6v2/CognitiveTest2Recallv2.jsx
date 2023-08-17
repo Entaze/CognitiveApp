@@ -286,15 +286,26 @@ const TestStart = () => {
 
 useEffect(()=> {
   let param;
-  let entryVal;
   if (displayCross) {
-    entry === '' ? (entryVal = {}) : entryVal = entry;
+    let response = '';
+    if (entry === '') {
+      response = {};
+    } else {
+      for (let i = 0; i < entry.length; i++) {
+        if (i !== (entry.length - 1)) {
+          response = response + entry[i] + ',';
+        } else {
+          response = response + entry[i];
+        }
+      }
+    }
+
     if (trialEntry === 3) {
-      param = {id: userId,  Test2Recall_Entry_1v2: entryVal, };
+      param = {id: userId, _66Test2Recall_Entry_1v2: response, };
     } else if (trialEntry === 2) {
-      param = {id: userId,  Test2Recall_Entry_2v2: entryVal, };
+      param = {id: userId, _67Test2Recall_Entry_2v2: response, };
     } else if (trialEntry === 1) {
-      param = {id: userId,  Test2Recall_Entry_3v2: entryVal, };
+      param = {id: userId, _68Test2Recall_Entry_3v2: response, };
     }
     setTrialEntry(trialEntry - 1);
     axios.post('/api/cognitivetest', param )
@@ -365,7 +376,7 @@ const handleStartTest7 = () => {
               {displayNum ?
                 <div style={{ display: 'flex', flexDirection: 'column', width: '100%', justifyContent: 'center', alignItems: 'center', height: '100%', }} >
                   <h1 style={{ fontSize: 45, color: '#fff', paddingBottom: '90px', }} >
-                    4 1 3 2 4
+                    2 3 1 4 2
                   </h1>
                   <form autoComplete='off' onSubmit={ (e) => { e.preventDefault() } } >
 

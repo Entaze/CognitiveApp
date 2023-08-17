@@ -234,33 +234,44 @@ const Cognitivetest2 = () => {
 
     useEffect(()=> {
       let param;
-      let entryVal;
       if (displayCross) {
-        entry === '' ? (entryVal = {}) : entryVal = entry;
+        let response = '';
+        if (entry === '') {
+          response = {};
+        } else {
+          for (let i = 0; i < entry.length; i++) {
+            if (i !== (entry.length - 1)) {
+              response = response + entry[i] + ',';
+            } else {
+              response = response + entry[i];
+            }
+          }
+        }
+
         if (trialEntry === 12) {
-          param = {id: userProfile._id, Test2_Entry_1: entryVal, };
+          param = {id: userProfile._id, _08Test2_Entry_1: response, };
         } else if (trialEntry === 11) {
-          param = {id: userProfile._id, Test2_Entry_2: entryVal, };
+          param = {id: userProfile._id, _09Test2_Entry_2: response, };
         } else if (trialEntry === 10) {
-          param = {id: userProfile._id,  Test2_Entry_3: entryVal, };
+          param = {id: userProfile._id, _10Test2_Entry_3: response, };
         } else if (trialEntry === 9) {
-          param = {id: userProfile._id,  Test2_Entry_4: entryVal, };
+          param = {id: userProfile._id, _11Test2_Entry_4: response, };
         } else if (trialEntry === 8) {
-          param = {id: userProfile._id,  Test2_Entry_5: entryVal, };
+          param = {id: userProfile._id, _12Test2_Entry_5: response, };
         } else if (trialEntry === 7) {
-          param = {id: userProfile._id, Test2_Entry_6: entryVal, };
+          param = {id: userProfile._id, _13Test2_Entry_6: response, };
         } else if (trialEntry === 6) {
-          param = {id: userProfile._id,  Test2_Entry_7: entryVal, };
+          param = {id: userProfile._id, _14Test2_Entry_7: response, };
         } else if (trialEntry === 5) {
-          param = {id: userProfile._id,  Test2_Entry_8: entryVal, };
+          param = {id: userProfile._id, _15Test2_Entry_8: response, };
         } else if (trialEntry === 4) {
-          param = {id: userProfile._id, Test2_Entry_9: entryVal, };
+          param = {id: userProfile._id, _16Test2_Entry_9: response, };
         } else if (trialEntry === 3) {
-          param = {id: userProfile._id,  Test2_Entry_10: entryVal, };
+          param = {id: userProfile._id, _17Test2_Entry_10: response, };
         } else if (trialEntry === 2) {
-          param = {id: userProfile._id,  Test2_Entry_11: entryVal, };
+          param = {id: userProfile._id, _18Test2_Entry_11: response, };
         } else if (trialEntry === 1) {
-          param = {id: userProfile._id,  Test2_Entry_12: entryVal, };
+          param = {id: userProfile._id, _19Test2_Entry_12: response, };
         }
         setTrialEntry(trialEntry - 1);
         if (param) {
@@ -294,7 +305,7 @@ const Cognitivetest2 = () => {
           <div style={centerScreen} >
             <h1 style={{ color: '#e67373', fontSize: 50, }} >TEST 2</h1>
             <div style={{ fontSize: 32, margin: '4% 0', fontWeight: 700, lineHeight: '1.6' }}>
-            You will be shown a sequence of numbers on the screen. Using your dominant hand (i.e., the hand you use to write with), type the sequence as fast and accurately as possible. Keep typing the sequence over and over until you see an X on the screen. The numbers will reappear after 30 secs at which point you will start typing the sequence over and over again until you see the next X. This will happen {trialEntry - 1} times.
+            You will be shown a sequence of numbers on the screen. Using your dominant hand (i.e., the hand you use to write with), type the sequence as fast and accurately as possible. Keep typing the sequence over and over until you see an X on the screen. The numbers will reappear after 30 secs at which point you will start typing the sequence over and over again until you see the next X. This will happen {trialEntry} times.
             <br /><br /> [Click next to continue.]
             </div>
             <div>

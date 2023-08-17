@@ -142,7 +142,7 @@ const Cognitivetest4v2 = () => {
   const [testBegin3, setTestBegin3] = useState(false);
   const [mainTestBegin1, setMainTestBegin1] = useState(false);
 
-  const [test1Letter, setTest1Letter] = useState(['S', 'J', 'Q', 'G', 'N', 'Z', 'K', 'B', 'T', 'Z', 'Q', 'Z', 'T', 'Q', 'T', 'Z', 'Z', 'G', 'B', 'K', 'T' ]); //
+  const [test1Letter, setTest1Letter] = useState(['S', 'J', 'Q', 'G', 'N', 'Z', 'K', 'B', 'T', 'Z', 'Q', 'T', 'Q', 'T', 'Z', 'Z', 'G', 'B', 'K', 'T' ]); //
   const [test2Letter, setTest2Letter] = useState(['P', 'X', 'D', 'R', 'T', 'J', 'J', 'V', 'P', 'V', 'V', 'V', 'H', 'P', 'P', 'X', 'H', 'H', 'N', 'J', ]); //
   const [test3Letter, setTest3Letter] = useState(['N', 'V', 'B', 'H', 'B', 'H', 'M', 'C', 'X', 'C', 'M', 'K', 'M', 'N', 'S', 'K', 'S', 'K', 'S', 'K' ]); //
   const [test01Letter, setTest01Letter] = useState(['S', 'T', 'Q', 'G', 'N', 'J', 'G', 'Z', 'K', 'B', 'Z', 'Q', 'G', 'T', 'G', 'Z', 'Z', 'T', 'G', 'B', 'Z', 'Z', 'N', 'S', 'Z', 'Z', 'Z', 'H', 'H', 'Z', 'N', 'Z', 'V', 'Z', 'J', 'V', ]); //

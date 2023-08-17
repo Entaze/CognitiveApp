@@ -170,7 +170,7 @@ function CognitiveTest1Recall () {
   const [flashWords, setFlashWords] = useState(false);
   const [entry, setEntry] = useState(false);
   const wordCount = countModal + 1;
-  const buttonEntry = countModal < wordsArr.length - 2 ? 'Enter' : 'Submit Test';
+  const buttonEntry = countModal < wordsArr.length + 15 - 2 ? 'Enter' : 'Submit Test';
   const [val, setVal] = useState();
   const [repeatListA, setRepeatListA] = useState(false);
   const [testListATrials, setTestListATrials] = useState(1);
@@ -253,7 +253,7 @@ useEffect(()=> {
   }
 }, [flashWords])
 
-// Detect page navigations with 'enter' key
+// Yes No responses to words from learning session
 useEffect(()=>{
   if (keyClicked === 'Enter' && firstPage) {
     setFirstPage(false);
@@ -320,7 +320,7 @@ useEffect(() => {
  useEffect(() => {
   if (completionTime) {
       const now = moment();
-      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(10, 'hours'); //10
+      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(10, 'hours'); //2
       const expiryDate = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(14, 'hours'); //14
 
       let expired = moment.duration(expiryDate.diff(now));
@@ -354,7 +354,7 @@ const handleModalAppear = (e) => {
   setCountModal(count);
   setFormState(false);
 
-  if (count < wordsArr.length - 1) {
+  if (count < wordsArr.length + 15 - 1) {
     setTimeout(toggleFormState, 300);
   }
 };
@@ -403,8 +403,9 @@ const handlePostWords = () => {
   let countUp = testListATrials + 1;
   setTestListATrials(countUp);
   if (testListATrials === 1) {
-    param = {id: userId, ListAEntriesTest5_Recall: wordsEnteredListA, time: date};
+    param = {id: userId, _28ListAEntriesTest5_Recall: wordsEnteredListA };
   }
+  // console.log('Param :', param)
   axios.post('/api/cognitivetest', param)
   .then((res) => {
     // console.log('Post wrds :', param)
@@ -454,7 +455,7 @@ const handleEndTest5 = () => {
                 <DialogContent >
                   <div>
                     <form onSubmit={handleSubmit(onSubmitWord)} autoComplete='off' >
-                      {countModal < wordsArr.length - 2 ?
+                      {countModal < wordsArr.length + 15 - 2 ?
                         <>
                          <div style={formTitle}>ENTER WORD {wordCount}</div>
                           <div style={{ position: 'relative', display: 'inline-block', paddingBottom: '85px' }}>

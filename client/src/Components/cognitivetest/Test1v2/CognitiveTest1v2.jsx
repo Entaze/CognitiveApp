@@ -19,7 +19,6 @@ import NavigationBar from '../../Layout/WithNavigation.jsx';
 import moment from 'moment';
 import '../../Styles.scss'
 
-
 const swipeStyle = {
   position: "absolute",
   display: "inline-block",
@@ -256,7 +255,7 @@ function Cognitivetestv2 () {
   const navigate = useNavigate();
   const [keyClicked, SetKeyClicked] = useState('');
   const handleRegistration = (data) => { setData(data); handleModalAppear(); reset();  }
-  const buttonEntry = countModal < wordsArr.length ? 'Enter' : 'Submit Test';
+  const buttonEntry = countModal < wordsArr.length + 15 ? 'Enter' : 'Submit Test';
   const wordCount = countModal + 1;
 
  //isMounted declaration and 2 useEffect's below ensure no memory leak in component
@@ -408,7 +407,7 @@ const handleModalAppear = (e) => {
   const count = (countModal + 1);
   setCountModal(count);
   setFormState(false);
-  if (count < wordsArr.length ) {
+  if (count < wordsArr.length + 15 ) {
     setTimeout(toggleFormState, 300);
   }
 };
@@ -429,35 +428,35 @@ const handlePostWords = () => {
   setTestListATrials(countUp);
   if (testListATrials === 1) {
     setRepeatListA(true);
-    param = {id: userId, ListAEntries_Trial1v2: wordsEnteredListA, time: date };
+    param = {id: userId, _37ListAEntries_Trial1v2: wordsEnteredListA, time: date };
   }
   if (testListATrials === 2) {
     setRepeatListA(true);
-    param = {id: userId, ListAEntries_Trial2v2: wordsEnteredListA, time: date };
+    param = {id: userId, _38ListAEntries_Trial2v2: wordsEnteredListA, time: date };
   }
   if (testListATrials === 3) {
     setRepeatListA(true);
-    param = {id: userId, ListAEntries_Trial3v2: wordsEnteredListA, time: date };
+    param = {id: userId, _39ListAEntries_Trial3v2: wordsEnteredListA, time: date };
   }
   if (testListATrials === 4) {
     setRepeatListA(true);
-    param = {id: userId, ListAEntries_Trial4v2: wordsEnteredListA, time: date };
+    param = {id: userId, _40ListAEntries_Trial4v2: wordsEnteredListA, time: date };
   }
   if (testListATrials === 5) {
     setwrdRecall(false);
     setRepeatListA(true);
     setListBStart(true);
-    param = {id: userId, ListAEntries_Trial5v2: wordsEnteredListA, time: date };
+    param = {id: userId, _41ListAEntries_Trial5v2: wordsEnteredListA, time: date };
     setCountModal(0);
   }
   if (testListATrials === 6) {
     setwrdRecall(false);
     setRepeatListA(true);
-    param = {id: userId, ListBEntriesv2: wordsEnteredListA, time: date};
+    param = {id: userId, _42ListBEntriesv2: wordsEnteredListA, time: date};
     setCountModal(0);
   }
   if (testListATrials === 7) {
-    param = {id: userId, ListAEntriesRecallv2: wordsEnteredListA, time: date};
+    param = {id: userId, _43ListAEntriesRecallv2: wordsEnteredListA, time: date};
     setCountModal(0);
   }
 
@@ -490,7 +489,7 @@ const handlePostWords = () => {
 
 //Handle next trial when all modal entries entered
 useEffect(()=> {
-  if (countModal === wordsArr.length - 1) {
+  if (countModal === wordsArr.length + 15 - 1) {
     const modalCountdown = testListATrials;
     modalCountdown > 0 ? setTestListATrials(modalCountdown) : null;
   }
@@ -547,39 +546,39 @@ const handleInput = (e) => {
   setWordInput(e.target.value);
 }
 
-// useEffect(() => {
-//   if (userId) {
-//     axios.get('/api/user', {params: {_id: userId}})
-//     .then((res)=>{
-//       setCompletionTime(res.data.user.Test4RecallCompletionTime)
-//     })
-//     .catch((err)=>{
-//      console.log(err)
-//     })
-//   }
-//  }, [userId])
+useEffect(() => {
+  if (userId) {
+    axios.get('/api/user', {params: {_id: userId}})
+    .then((res)=>{
+      setCompletionTime(res.data.user.Test4RecallCompletionTime)
+    })
+    .catch((err)=>{
+     console.log(err)
+    })
+  }
+ }, [userId])
 
-// useEffect(() => {
-//   if (completionTime) {
-//       const now = moment();
-//       const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(2, 'hours');  //144
-//       const expiryDate = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(120, 'hours'); //720
+useEffect(() => {
+  if (completionTime) {
+      const now = moment();
+      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(144, 'hours');  //144
+      const expiryDate = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(720, 'hours'); //120
 
-//       let expired = moment.duration(expiryDate.diff(now))
-//       let duration = moment.duration(then.diff(now))
-//       let hours = duration.asHours()
-//       let hours2 = expired.asHours()
-//       let mins2 = expired.asMinutes()
-//       let secs2 = expired.asSeconds()
-//       if (hours2 <= 0 && mins2 <= 0 && secs2 <= 0) {
-//         navigate('/expired-test')
-//       } else if (hours >= 0) {
-//         navigate('/countdown2')
-//       } else {
-//         setCountdownComplete(true);
-//       }
-//   }
-// }, [completionTime]);
+      let expired = moment.duration(expiryDate.diff(now))
+      let duration = moment.duration(then.diff(now))
+      let hours = duration.asHours()
+      let hours2 = expired.asHours()
+      let mins2 = expired.asMinutes()
+      let secs2 = expired.asSeconds()
+      if (hours2 <= 0 && mins2 <= 0 && secs2 <= 0) {
+        navigate('/expired-test')
+      } else if (hours >= 0) {
+        navigate('/countdown2')
+      } else {
+        setCountdownComplete(true);
+      }
+  }
+}, [completionTime]);
 
 useEffect(() => {
   if (testListATrials !== null) {
@@ -604,7 +603,7 @@ useEffect(() => {
 
  return (
   <>
-  {userAuth ?  //&& countdownComplete
+  {userAuth && countdownComplete ?
   <>
     <NavigationBar />
     <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', height: '100vh', maxWidth: '100vw', background: '#000', color: '#fff', top: 0, bottom: 0, }} >
@@ -650,7 +649,7 @@ useEffect(() => {
           <DialogContent >
             <div>
               <form onSubmit={handleSubmit(onSubmitWord)} autoComplete='off' >
-                {countModal < wordsArr.length - 1 ?
+                {countModal < wordsArr.length + 15 - 1 ?
                   <>
                     <div style={formTitle}>ENTER WORD {wordCount}</div>
                     <div style={{ position: 'relative', display: 'inline-block', paddingBottom: '85px' }}>

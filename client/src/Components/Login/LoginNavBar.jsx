@@ -160,6 +160,22 @@ const LoginNavBar = () => {
         if (!data.user.userConfirmed) {
           setErrorMessage('Account not confirmed!');
           navigate('/login')
+        } else if (data.token && !data.user.test1Completion) {
+          navigate("/cognitivetest1")
+        } else if (data.token && !data.user.test2Completion) {
+          navigate("/cognitivetest2")
+        } else if (data.token && !data.user.test3Completion) {
+          navigate("/cognitivetest3")
+        } else if (data.token && !data.user.test4Completion) {
+          navigate("/cognitivetest4")
+        } else if (data.token && !data.user.test1CompletionRecall) {
+          navigate("/cognitivetest1recall")
+        } else if (data.token && !data.user.test2CompletionRecall) {
+          navigate("/cognitivetest2recall")
+        } else if (data.token && !data.user.test3CompletionRecall) {
+          navigate("/cognitivetest3recall")
+        } else if (data.token && !data.user.test4CompletionRecall) {
+          navigate("/cognitivetest4recall")
         } else if (data.token && !data.user.test1Completionv2) {
           navigate("/cognitivetest1v2")
         } else if (data.token && !data.user.test2Completionv2) {
@@ -176,25 +192,7 @@ const LoginNavBar = () => {
           navigate("/cognitivetest3recallv2")
         } else if (data.token && !data.user.test4CompletionRecallv2) {
           navigate("/cognitivetest4recallv2")
-        } else if (data.token && !data.user.test1Completionv2) {
-          console.log('Hee :', data.user)
-          navigate("/cognitivetest1v2")
         }
-        // else if (data.token && !data.user.test2Completionv2) {
-        //   navigate("/cognitivetest2v2")
-        // } else if (data.token && !data.user.test3Completionv2) {
-        //   navigate("/cognitivetest3v2")
-        // } else if (data.token && !data.user.test4Completionv2) {
-        //   navigate("/cognitivetest4v2")
-        // } else if (data.token && !data.user.test1CompletionRecallv2) {
-        //   navigate("/cognitivetest1recallv2")
-        // } else if (data.token && !data.user.test2CompletionRecallv2) {
-        //   navigate("/cognitivetest2recallv2")
-        // } else if (data.token && !data.user.test3CompletionRecallv2) {
-        //   navigate("/cognitivetest3recallv2")
-        // } else if (data.token && !data.user.test4CompletionRecallv2) {
-        //   navigate("/cognitivetest4recallv2")
-        // }
         else if (data.token && data.user.test4CompletionRecallv2) {
           navigate("/test-end")
         }

@@ -20,7 +20,6 @@ import moment from 'moment';
 import '../../Styles.scss'
 
 
-
 const centerScreen = {
   width: '70vw',
   height: '50vh',
@@ -65,7 +64,6 @@ function countdownTimer2 () {
   const classes = useStyles();
   const navigate = useNavigate();
   const [keyClicked, SetKeyClicked] = useState('');
-
 
 
  //isMounted declaration and 2 useEffect's below ensure no memory leak in component
@@ -124,7 +122,7 @@ useEffect(() => {
   if (completionTime) {
     setInterval(() => {
       const now = moment();
-      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(2, 'hours');  //6, 'days'
+      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(6, 'days');  //2, 'hours'
 
       let duration = moment.duration(then.diff(now));
       let hours = duration.asHours();

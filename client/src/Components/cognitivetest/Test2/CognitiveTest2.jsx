@@ -335,7 +335,7 @@ const Cognitivetest2 = () => {
               />
             </div>
             <div style={{ fontSize: 35, fontWeight: 50, marginBottom: '6vh' }}>
-              Click previous to re-read instructions or click start to begin test.
+              Click start to begin test.
             </div>
             <div style={{ display: "inline-block", margin: "4px" }} >
               {/* <button style={{ margin: "8px", background: "#000" }} onClick={slidePrev} >Previous</button> */}

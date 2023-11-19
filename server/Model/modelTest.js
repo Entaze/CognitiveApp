@@ -152,6 +152,7 @@ module.exports = {
       cb(err);
     })
   },
+
   postRating2: (body, cb) => {
     let data = body.obj;
     db.CognitiveTest.findOneAndUpdate(

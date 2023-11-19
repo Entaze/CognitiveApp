@@ -1063,7 +1063,7 @@ const Cognitivetest4 = () => {
                     <div style={{ display: 'flex', alignItems: 'center', }}>
                       <img
                         alt="Test3-Rating"
-                        src='https://res.cloudinary.com/entazesoftware/image/upload/v1679848199/Screenshot_2023-03-26_at_18.26.47_ntncfb.png'
+                        src='https://res.cloudinary.com/entazesoftware/image/upload/v1700384333/CognitiveApp/Screenshot_2023-11-19_at_10.47.28_ji4kjm.png'
                         style={PracticeStyle }
                       />
                     </div>

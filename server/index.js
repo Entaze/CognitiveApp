@@ -98,7 +98,7 @@ app.post('/api/test5section2v2', testController.postTest5Section2v2)
 // }
 
 //  -----------HEROKU DEPLOYMENT-----------
-if (process.env.NODE_ENV === 'production') {   //production
+if (process.env.NODE_ENV === 'production') {   //development
   app.get("/mockServiceWorker.js", (req, res) => {
     res.sendFile(path.resolve(__dirname, "../client/src/mocks/browser.js"));
   });

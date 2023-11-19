@@ -1242,7 +1242,7 @@ const CognitiveTest3 = () => {
                 <span style={{ color: '#fff', fontSize: '40px', fontWeight: 700, margin: '5px 15px 0 0' }}>Very Negative</span>
                 <img
                   alt="Test3-Rating"
-                  src='https://res.cloudinary.com/entazesoftware/image/upload/v1668022235/image2_jezpza.webp'
+                  src='https://res.cloudinary.com/entazesoftware/image/upload/v1668769653/RatingImage1_beicbl.png'
                   style={imgLoadedRatingS2 ? TestRatings : { display: 'none' } }
                   onLoad={() => setLoadedRatingS2(true)}
                 />

@@ -122,7 +122,7 @@ useEffect(() => {
   if (completionTime) {
     setInterval(() => {
       const now = moment();
-      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(10, 'hours'); //10
+      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(12, 'hours'); //12
 
       let duration = moment.duration(then.diff(now));
       let hours = duration.asHours();
@@ -157,7 +157,10 @@ const handleBeginRecall = () => {
               <>
               <div style={centerScreen} >
                 {!countdownComplete ?
-                  <h1 style={{ color: '#e67373', fontSize: 50, }} >COUNTDOWN TO RECALL SESSION</h1>
+                  <>
+                    <h1 style={{ color: '#e67373', fontSize: 50, }} >COUNTDOWN TO RECALL SESSION</h1>
+                    <h2 style={{ color: '#e67373', fontSize: 30, }} >Please log out and log back in after time shown.</h2>
+                  </>
                 : null}
                 {countdownComplete ?
                   <h1 style={{ color: '#e67373', fontSize: 50, }} >START RECALL SESSION</h1>

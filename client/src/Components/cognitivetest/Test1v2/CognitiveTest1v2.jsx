@@ -580,6 +580,7 @@ useEffect(() => {
   }
 }, [completionTime]);
 
+
 useEffect(() => {
   if (testListATrials !== null) {
     if(testListATrials === 6) {

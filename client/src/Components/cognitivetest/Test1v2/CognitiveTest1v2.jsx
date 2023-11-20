@@ -573,6 +573,7 @@ useEffect(() => {
       if (hours2 <= 0 && mins2 <= 0 && secs2 <= 0) {
         navigate('/expired-test')
       } else if (hours >= 0) {
+        console.log('hrs :', hours)
         navigate('/countdown2')
       } else {
         setCountdownComplete(true);

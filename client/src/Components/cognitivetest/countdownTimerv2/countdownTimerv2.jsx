@@ -65,48 +65,48 @@ function countdownTimerv2 () {
   const [keyClicked, SetKeyClicked] = useState('');
 
 
- //isMounted declaration and 2 useEffect's below ensure no memory leak in component
-  const [isMounted, setIsMounted] = useState(false);
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+//isMounted declaration and 2 useEffect's below ensure no memory leak in component
+const [isMounted, setIsMounted] = useState(false);
+useEffect(() => {
+  setIsMounted(true);
+}, []);
 
-  useEffect(() => {
-    return () => {
-      setIsMounted(false);
-    }
-  }, []);
-
-  useEffect(()=> {
-    if (userProfile) {
-      if (userloggedIn._id) {
-        setUserId(userloggedIn._id);
-      }
-      if (userProfile._id) {
-        setUserId(userProfile._id);
-      }
-    }
-  }, [userloggedIn, userProfile])
-
- useEffect(() => {
-  if (userProfile && token) {
-    setUserAuth(true);
-  } else {
-    navigate('/login')
+useEffect(() => {
+  return () => {
+    setIsMounted(false);
   }
- }, [userProfile])
+}, []);
 
- useEffect(() => {
-  if (userId) {
-    axios.get('/api/user', {params: {_id: userId}})
-    .then((res)=>{
-      setCompletionTime(res.data.user.Sctn6CompletionTimev2)
-    })
-    .catch((err)=>{
-     console.log(err)
-    })
+useEffect(()=> {
+  if (userProfile) {
+    if (userloggedIn) {
+      setUserId(userloggedIn);
+    }
+    if (userProfile._id) {
+      setUserId(userProfile._id);
+    }
   }
- }, [userId])
+}, [userloggedIn, userProfile])
+
+useEffect(() => {
+if (userProfile && token) {
+  setUserAuth(true);
+} else {
+  navigate('/login')
+}
+}, [userProfile])
+
+useEffect(() => {
+if (userId) {
+  axios.get('/api/user', {params: {_id: userId}})
+  .then((res)=>{
+    setCompletionTime(res.data.user.Sctn6CompletionTimev2)
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
+}
+}, [userId])
 
 //Listen to keyboard events
 useEffect(() => {

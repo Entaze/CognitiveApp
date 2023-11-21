@@ -239,6 +239,8 @@ function CognitiveTest4Recallv2 () {
  }, [userProfile])
 
 
+
+
 //Listen to keyboard events
 useEffect(() => {
   document.addEventListener('keydown', detectSpaceBar, true)

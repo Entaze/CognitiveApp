@@ -266,10 +266,9 @@ exports.getUser = (req, res) => {
 }
 
 exports.updateUser = (req, res) => {
-  let query = req.query;
+  // let query = req.query;
   let body = req.body;
-  //For Postman, use: let body = req.query;
-  // console.log('Req :', req.body)
+  //For Postman, use: let query = req.query;
   let param;
   if (body.userConfirmed) {
     param = { userConfirmed: body.userConfirmed }

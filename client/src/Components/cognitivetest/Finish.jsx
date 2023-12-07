@@ -66,19 +66,6 @@ const Finish = () => {
     }
    }, [userProfile])
 
-   useEffect(() => {
-    // let complete = {_id: userProfile._id, test3CompletionRecallv2: false};
-    // axios.post('/api/user', complete)
-    // .then((res)=>{
-    //   console.log('Res 1:', res)
-    //   let complete = {_id: userProfile._id, test4CompletionRecallv2: false};
-    //   axios.post('/api/user', complete)
-    //   .then((res) => {
-    //     console.log('Res 2:', res)
-    //   })
-    // })
-   }, [])
-
     return (
       <>
         {userAuth ?

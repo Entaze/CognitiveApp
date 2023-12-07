@@ -561,8 +561,8 @@ useEffect(() => {
 useEffect(() => {
   if (completionTime) {
       const now = moment();
-      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(2, 'hours');  //144
-      const expiryDate = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(720, 'hours'); //120
+      const then = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(144, 'hours');  //2
+      const expiryDate = moment(completionTime, 'YYYY/MM/DD hh:mm:ss').add(720, 'hours'); //720
 
       let expired = moment.duration(expiryDate.diff(now))
       let duration = moment.duration(then.diff(now))

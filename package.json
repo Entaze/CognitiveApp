@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "An app to test cognition",
   "main": "index.js",
+  "engines": {
+    "node": "17.8.0",
+    "npm": "8.5.5"
+  },
   "scripts": {
     "start": "nodemon server/index.js",
 
